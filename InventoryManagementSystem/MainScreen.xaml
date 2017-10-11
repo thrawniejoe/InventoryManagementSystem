@@ -10,6 +10,7 @@
     <Window.Resources>
     </Window.Resources>
     <Grid>
+
         <TabControl TabStripPlacement="Left" >
             <TabControl.Resources>
                 <Style TargetType="{x:Type TabItem}">
@@ -28,32 +29,38 @@
                 </Style>
             </TabControl.Resources>
             <TabItem Header="Inventory" Margin="0,60,0,-60">
-                <Label >
-                    <TabControl Height="721" Width="976">
-                        <TabControl.Resources>
-                            <Style TargetType="{x:Type TabItem}">
-                                <Setter Property="HeaderTemplate">
-                                    <Setter.Value>
-                                        <DataTemplate>
-                                            <ContentPresenter Content="{TemplateBinding Content}">
-                                                <ContentPresenter.LayoutTransform>
-                                                    <RotateTransform Angle="0" />
-                                                </ContentPresenter.LayoutTransform>
-                                            </ContentPresenter>
-                                        </DataTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Setter Property="Padding" Value="3" />
-                            </Style>
-                        </TabControl.Resources>
-                        <TabItem Header="Inventory List">
-                            <Grid Background="#FFE5E5E5"/>
-                        </TabItem>
-                        <TabItem Header="Item Details">
-                            <Grid Background="#FFE5E5E5"/>
-                        </TabItem>
-                    </TabControl>
-                </Label>
+                <TabControl Width="976" Margin="0,39,0,7">
+                    <TabControl.Resources>
+                        <Style TargetType="{x:Type TabItem}">
+                            <Setter Property="HeaderTemplate">
+                                <Setter.Value>
+                                    <DataTemplate>
+                                        <ContentPresenter Content="{TemplateBinding Content}">
+                                            <ContentPresenter.LayoutTransform>
+                                                <RotateTransform Angle="0" />
+                                            </ContentPresenter.LayoutTransform>
+                                        </ContentPresenter>
+                                    </DataTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Padding" Value="3" />
+                        </Style>
+                    </TabControl.Resources>
+                    <TabItem Header="Inventory List">
+                        <Grid Background="#FFE5E5E5">
+                            <WrapPanel HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" VerticalAlignment="Top" Width="950">
+                                <Button x:Name="btnAddItem" Content="Add Item" Width="75"/>
+                                <Button x:Name="btnDeleteItem" Content="Delete" Width="75"/>
+                                <Button x:Name="btnClearFilter" Content="Clear Filter" Width="75"/>
+                                <ComboBox Width="120"/>
+                            </WrapPanel>
+                            <DataGrid x:Name="gvInventoryList" HorizontalAlignment="Left" Height="595" Margin="10,50,0,0" VerticalAlignment="Top" Width="950"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Item Details">
+                        <Grid Background="#FFE5E5E5"/>
+                    </TabItem>
+                </TabControl>
             </TabItem>
             <TabItem Header="Personnel" Margin="0,60,0,-60" />
             <TabItem Header="Building Map" Margin="0,60,0,-60" />

@@ -29,6 +29,7 @@ namespace InventoryManagementSystem
         {
             //add user check here
 
+            var context = new InventoryManagementSystem.InventoryDBEntities();
             //opens MainScreen
             MainScreen ms = new MainScreen();
             ms.Show();
