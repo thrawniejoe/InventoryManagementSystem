@@ -28,12 +28,23 @@ namespace InventoryManagementSystem
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             //add user check here
+            var username = txtUsername.Text;
+            var password = txtPassword.Password;
 
             var context = new InventoryManagementSystem.InventoryDBEntities();
-            //opens MainScreen
-            MainScreen ms = new MainScreen();
-            ms.Show();
-            this.Close();
+
+            var getPass = (from user in context.users
+                          where user.emailAddress == username
+                          select user.password).FirstOrDefault();
+
+            if(password == getPass)
+            {
+                //opens MainScreen
+                MainScreen ms = new MainScreen();
+                ms.Show();
+                this.Close();
+            }
+            
         }
 
         private void btnX_Click(object sender, RoutedEventArgs e)

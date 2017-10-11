@@ -10,10 +10,10 @@
         <EntityTypeShape EntityType="InventoryDBModel.Employee" Width="1.5" PointX="7.75" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="InventoryDBModel.Inventory" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="InventoryDBModel.OfficeList" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InventoryDBModel.user" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="InventoryDBModel.FK__Inventory__model__300424B4" ManuallyRouted="false" />
         <AssociationConnector Association="InventoryDBModel.FK__Inventory__docum__30F848ED" ManuallyRouted="false" />
         <AssociationConnector Association="InventoryDBModel.FK__Inventory__assig__2F10007B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="InventoryDBModel.user" Width="1.5" PointX="5.125" PointY="4.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
