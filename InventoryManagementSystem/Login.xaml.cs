@@ -37,14 +37,34 @@ namespace InventoryManagementSystem
                           where user.emailAddress == username
                           select user.password).FirstOrDefault();
 
-            if(password == getPass)
+            var getRole = (from u in context.users
+                           where u.emailAddress.Equals(username)
+                           select u.role).SingleOrDefault();
+
+            if (password == getPass)
             {
-                //opens MainScreen
-                MainScreen ms = new MainScreen();
-                ms.Show();
+                Window mainWindow = null;
+                switch (getRole)
+                {
+                    case 1:  //Admin
+                        mainWindow = new MainScreen();
+                        break;
+                    case 2:  //Manager
+                        //mainWindow = new ManagerMain();
+                        break;
+                    case 3:  //User
+                        //mainWindow = new MainWindow();
+                        break;
+                }
+                Properties.Settings.Default.CurrentUserRole = getRole; //saves the user role to the applcation settings file
+                Properties.Settings.Default.Save();
+                mainWindow.Show();
                 this.Close();
             }
-            
+            else
+            {
+                MessageBox.Show("Invalid Username and/or Password. Please try again.");
+            }
         }
 
         private void btnX_Click(object sender, RoutedEventArgs e)
@@ -57,5 +77,7 @@ namespace InventoryManagementSystem
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
+
+
     }
 }

@@ -73,6 +73,14 @@
           <Property Name="officeName" Type="varchar" MaxLength="1" Nullable="false" />
           <Property Name="officeFloor" Type="int" />
         </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="roleID" />
+          </Key>
+          <Property Name="roleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="permissionLevel" Type="varchar" MaxLength="15" />
+        </EntityType>
         <EntityType Name="users">
           <Key>
             <PropertyRef Name="userID" />
@@ -122,12 +130,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__users__role__4AB81AF0">
+          <End Role="roles" Type="Self.roles" Multiplicity="1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="roleID" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="InventoryDBModelStoreContainer">
           <EntitySet Name="ComputerSpecsList" EntityType="Self.ComputerSpecsList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Documentation" EntityType="Self.Documentation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OfficeList" EntityType="Self.OfficeList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Inventory__assig__2F10007B" Association="Self.FK__Inventory__assig__2F10007B">
             <End Role="Employees" EntitySet="Employees" />
@@ -140,6 +161,10 @@
           <AssociationSet Name="FK__Inventory__model__300424B4" Association="Self.FK__Inventory__model__300424B4">
             <End Role="ComputerSpecsList" EntitySet="ComputerSpecsList" />
             <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__users__role__4AB81AF0" Association="Self.FK__users__role__4AB81AF0">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="users" EntitySet="users" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -274,8 +299,22 @@
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Inventory" EntitySet="Inventories" />
           </AssociationSet>
+          <EntitySet Name="roles" EntityType="InventoryDBModel.role" />
           <EntitySet Name="users" EntityType="InventoryDBModel.user" />
+          <AssociationSet Name="FK__users__role__4AB81AF0" Association="InventoryDBModel.FK__users__role__4AB81AF0">
+            <End Role="role" EntitySet="roles" />
+            <End Role="user" EntitySet="users" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="roleID" />
+          </Key>
+          <Property Name="roleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="permissionLevel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="users" Relationship="InventoryDBModel.FK__users__role__4AB81AF0" FromRole="role" ToRole="user" />
+        </EntityType>
         <EntityType Name="user">
           <Key>
             <PropertyRef Name="userID" />
@@ -288,7 +327,20 @@
           <Property Name="password" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="title" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="emailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="role1" Relationship="InventoryDBModel.FK__users__role__4AB81AF0" FromRole="user" ToRole="role" />
         </EntityType>
+        <Association Name="FK__users__role__4AB81AF0">
+          <End Type="InventoryDBModel.role" Role="role" Multiplicity="1" />
+          <End Type="InventoryDBModel.user" Role="user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="roleID" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -365,6 +417,15 @@
                 <ScalarProperty Name="officeID" ColumnName="officeID" />
                 <ScalarProperty Name="officeName" ColumnName="officeName" />
                 <ScalarProperty Name="officeFloor" ColumnName="officeFloor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="InventoryDBModel.role">
+              <MappingFragment StoreEntitySet="roles">
+                <ScalarProperty Name="permissionLevel" ColumnName="permissionLevel" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="roleID" ColumnName="roleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

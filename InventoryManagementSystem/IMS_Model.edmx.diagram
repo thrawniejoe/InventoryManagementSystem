@@ -4,16 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d3fbd84a81ab4bbabe69e8ab0d888f90" Name="Diagram1">
+      <Diagram DiagramId="d3fbd84a81ab4bbabe69e8ab0d888f90" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="InventoryDBModel.ComputerSpecsList" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="InventoryDBModel.Documentation" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="InventoryDBModel.Employee" Width="1.5" PointX="7.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventoryDBModel.Documentation" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventoryDBModel.Employee" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="InventoryDBModel.Inventory" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="InventoryDBModel.OfficeList" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventoryDBModel.OfficeList" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="InventoryDBModel.FK__Inventory__model__300424B4" ManuallyRouted="false" />
         <AssociationConnector Association="InventoryDBModel.FK__Inventory__docum__30F848ED" ManuallyRouted="false" />
         <AssociationConnector Association="InventoryDBModel.FK__Inventory__assig__2F10007B" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="InventoryDBModel.user" Width="1.5" PointX="5.125" PointY="4.375" />
+        <EntityTypeShape EntityType="InventoryDBModel.role" Width="1.5" PointX="5.75" PointY="1.5" />
+        <EntityTypeShape EntityType="InventoryDBModel.user" Width="1.5" PointX="8" PointY="1" />
+        <AssociationConnector Association="InventoryDBModel.FK__users__role__4AB81AF0" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

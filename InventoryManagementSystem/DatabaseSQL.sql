@@ -70,3 +70,13 @@ CREATE TABLE users (
   title varchar(15) NOT NULL,
   PRIMARY KEY (userID)
 );
+
+CREATE TABLE roles(
+	roleID int NOT NULL IDENTITY(1,1),
+	Title varchar(25) NOT NULL,
+	permissionLevel varchar(15),
+	PRIMARY KEY(roleID)
+);
+
+ALTER TABLE users
+ADD FOREIGN KEY (role) REFERENCES roles(RoldID);

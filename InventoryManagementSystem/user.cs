@@ -22,5 +22,7 @@ namespace InventoryManagementSystem
         public string password { get; set; }
         public string title { get; set; }
         public string emailAddress { get; set; }
+    
+        public virtual role role1 { get; set; }
     }
 }
