@@ -12,7 +12,6 @@
         <CollectionViewSource x:Key="usersViewSource" Source="{Binding users, Source={StaticResource inventoryDBDataSet}}"/>
     </Window.Resources>
     <Grid>
-
         <TabControl TabStripPlacement="Left" >
             <TabControl.Resources>
                 <Style TargetType="{x:Type TabItem}">
@@ -30,6 +29,7 @@
                     <Setter Property="Padding" Value="3" />
                 </Style>
             </TabControl.Resources>
+            <TabItem Header="Home" Margin="0,36,0,-60"/>
             <TabItem Header="Inventory" Margin="0,60,0,-60">
                 <TabControl Width="976" Margin="0,39,0,7">
                     <TabControl.Resources>
@@ -94,14 +94,11 @@
                                 <Button x:Name="btnClear" Content="Clear Filter" Width="75"/>
                                 <ComboBox Width="120"/>
                             </WrapPanel>
-                            <DataGrid x:Name="usersDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="110,94,10,10" RowDetailsVisibilityMode="VisibleWhenSelected">
+                            <DataGrid x:Name="usersDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="54,50,407,214" RowDetailsVisibilityMode="VisibleWhenSelected">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn x:Name="firstNameColumn" Binding="{Binding firstName}" Header="first Name" Width="120"/>
                                     <DataGridTextColumn x:Name="lastNameColumn" Binding="{Binding lastName}" Header="last Name" Width="120"/>
-                                    <DataGridTextColumn x:Name="phoneColumn" Binding="{Binding phone}" Header="phone" Width="120"/>
-                                    <DataGridTextColumn x:Name="roleColumn" Binding="{Binding role}" Header="role" Width="90"/>
                                     <DataGridTextColumn x:Name="titleColumn" Binding="{Binding title}" Header="title" Width="120"/>
-                                    <DataGridTextColumn x:Name="emailAddressColumn" Binding="{Binding emailAddress}" Header="email Address" Width="120"/>
                                     <DataGridTemplateColumn x:Name="modifyUserColumn" Header="" Width="70">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
