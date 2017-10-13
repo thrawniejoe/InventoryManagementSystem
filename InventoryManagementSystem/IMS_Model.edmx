@@ -89,7 +89,7 @@
           <Property Name="firstName" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="lastName" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="phone" Type="varchar" MaxLength="15" />
-          <Property Name="role" Type="int" Nullable="false" />
+          <Property Name="roleID" Type="int" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="title" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="emailAddress" Type="varchar" MaxLength="50" />
@@ -138,7 +138,7 @@
               <PropertyRef Name="roleID" />
             </Principal>
             <Dependent Role="users">
-              <PropertyRef Name="role" />
+              <PropertyRef Name="roleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -323,11 +323,11 @@
           <Property Name="firstName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="lastName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="role" Type="Int32" Nullable="false" />
+          <Property Name="roleID" Type="Int32" Nullable="false" />
           <Property Name="password" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="title" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="emailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="role1" Relationship="InventoryDBModel.FK__users__role__4AB81AF0" FromRole="user" ToRole="role" />
+          <NavigationProperty Name="role" Relationship="InventoryDBModel.FK__users__role__4AB81AF0" FromRole="user" ToRole="role" />
         </EntityType>
         <Association Name="FK__users__role__4AB81AF0">
           <End Type="InventoryDBModel.role" Role="role" Multiplicity="1" />
@@ -337,7 +337,7 @@
               <PropertyRef Name="roleID" />
             </Principal>
             <Dependent Role="user">
-              <PropertyRef Name="role" />
+              <PropertyRef Name="roleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -435,7 +435,7 @@
                 <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="roleID" ColumnName="roleID" />
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="lastName" ColumnName="lastName" />
                 <ScalarProperty Name="firstName" ColumnName="firstName" />

@@ -39,7 +39,7 @@ namespace InventoryManagementSystem
 
             var getRole = (from u in context.users
                            where u.emailAddress.Equals(username)
-                           select u.role).SingleOrDefault();
+                           select u.roleID).SingleOrDefault();
 
             if (password == getPass)
             {
@@ -56,6 +56,7 @@ namespace InventoryManagementSystem
                         //mainWindow = new MainWindow();
                         break;
                 }
+
                 Properties.Settings.Default.CurrentUserRole = getRole; //saves the user role to the applcation settings file
                 Properties.Settings.Default.Save();
                 mainWindow.Show();

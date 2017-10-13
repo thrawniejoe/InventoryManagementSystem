@@ -10,9 +10,10 @@
     <Window.Resources>
         <local:InventoryDBDataSet x:Key="inventoryDBDataSet"/>
         <CollectionViewSource x:Key="usersViewSource" Source="{Binding users, Source={StaticResource inventoryDBDataSet}}"/>
+        <CollectionViewSource x:Key="inventoryViewSource" Source="{Binding Inventory, Source={StaticResource inventoryDBDataSet}}"/>
     </Window.Resources>
     <Grid>
-        <TabControl TabStripPlacement="Left" >
+        <TabControl x:Name="tcMainTabController" TabStripPlacement="Left" >
             <TabControl.Resources>
                 <Style TargetType="{x:Type TabItem}">
                     <Setter Property="HeaderTemplate">
@@ -29,7 +30,12 @@
                     <Setter Property="Padding" Value="3" />
                 </Style>
             </TabControl.Resources>
-            <TabItem Header="Home" Margin="0,36,0,-60"/>
+            <TabItem Header="Home" Margin="0,36,0,-60">
+                <Grid Background="#FFE5E5E5">
+                    <Label Content="Welcome to the Inventory Management System" HorizontalAlignment="Left" Margin="270,79,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+
+                </Grid>
+            </TabItem>
             <TabItem Header="Inventory" Margin="0,60,0,-60">
                 <TabControl Width="976" Margin="0,39,0,7">
                     <TabControl.Resources>
@@ -49,14 +55,44 @@
                         </Style>
                     </TabControl.Resources>
                     <TabItem Header="Inventory List">
-                        <Grid Background="#FFE5E5E5">
+                        <Grid Background="#FFE5E5E5" DataContext="{StaticResource inventoryViewSource}">
                             <WrapPanel HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" VerticalAlignment="Top" Width="950">
                                 <Button x:Name="btnAddItem" Content="Add Item" Width="75"/>
                                 <Button x:Name="btnDeleteItem" Content="Delete" Width="75"/>
                                 <Button x:Name="btnClearFilter" Content="Clear Filter" Width="75"/>
                                 <ComboBox Width="120"/>
                             </WrapPanel>
-                            <DataGrid x:Name="gvInventoryList" HorizontalAlignment="Left" Height="595" Margin="10,50,0,0" VerticalAlignment="Top" Width="950"/>
+                            <DataGrid x:Name="inventoryDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,45,10,10" RowDetailsVisibilityMode="VisibleWhenSelected">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn x:Name="itemIDColumn" Binding="{Binding itemID}" Header="item ID" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="itemNameColumn" Binding="{Binding itemName}" Header="item Name" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="tagColumn" Binding="{Binding tag}" Header="tag" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="serialNumberColumn" Binding="{Binding serialNumber}" Header="serial Number" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="manufacturerColumn" Binding="{Binding manufacturer}" Header="manufacturer" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="modelIDColumn" Binding="{Binding modelID}" Header="model ID" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="modelNumberColumn" Binding="{Binding modelNumber}" Header="model Number" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="categoryColumn" Binding="{Binding category}" Header="category" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="locationColumn" Binding="{Binding location}" Header="location" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="statusColumn" Binding="{Binding status}" Header="status" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="assignedToColumn" Binding="{Binding assignedTo}" Header="assigned To" Width="SizeToHeader"/>
+                                    <DataGridTemplateColumn x:Name="dateAssignedColumn" Header="date Assigned" Width="SizeToHeader">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <DatePicker SelectedDate="{Binding dateAssigned, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn x:Name="documentationIDColumn" Binding="{Binding documentationID}" Header="documentation ID" Width="SizeToHeader"/>
+                                    <DataGridTemplateColumn x:Name="datePurchasedColumn" Header="date Purchased" Width="SizeToHeader">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <DatePicker SelectedDate="{Binding datePurchased, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn x:Name="assignedLocationColumn" Binding="{Binding assignedLocation}" Header="assigned Location" Width="SizeToHeader"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </Grid>
                     </TabItem>
                     <TabItem Header="Item Details">
@@ -68,7 +104,7 @@
             <TabItem Header="Building Map" Margin="0,60,0,-60" />
             <TabItem Header="Reports" Margin="0,60,0,-60" />
             <TabItem Header="Settings" Margin="-2,60,0,-60" />
-            <TabItem Header="Administration" Margin="-2,60,0,-60" Name="tabAdmin">
+            <TabItem Header="Administration" Margin="-2,60,0,-60" Name="tabAdmin" Background="Red">
                 <TabControl Width="976" Margin="0,39,0,7">
                     <TabControl.Resources>
                         <Style TargetType="{x:Type TabItem}">
@@ -89,7 +125,7 @@
                     <TabItem Header="User Management">
                         <Grid Background="#FFE5E5E5" DataContext="{StaticResource usersViewSource}">
                             <WrapPanel HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" VerticalAlignment="Top" Width="950">
-                                <Button x:Name="btnAdd" Content="Add" Width="75"/>
+                                <Button x:Name="btnAdd" Content="Add" Width="75" Click="btnAdd_Click"/>
                                 <Button x:Name="btnRemove" Content="Remove" Width="75"/>
                                 <Button x:Name="btnClear" Content="Clear Filter" Width="75"/>
                                 <ComboBox Width="120"/>

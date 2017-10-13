@@ -13,8 +13,8 @@
         <AssociationConnector Association="InventoryDBModel.FK__Inventory__model__300424B4" ManuallyRouted="false" />
         <AssociationConnector Association="InventoryDBModel.FK__Inventory__docum__30F848ED" ManuallyRouted="false" />
         <AssociationConnector Association="InventoryDBModel.FK__Inventory__assig__2F10007B" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="InventoryDBModel.role" Width="1.5" PointX="5.75" PointY="1.5" />
-        <EntityTypeShape EntityType="InventoryDBModel.user" Width="1.5" PointX="8" PointY="1" />
+        <EntityTypeShape EntityType="InventoryDBModel.role" Width="1.5" PointX="5.375" PointY="1.5" />
+        <EntityTypeShape EntityType="InventoryDBModel.user" Width="1.5" PointX="7.625" PointY="1" />
         <AssociationConnector Association="InventoryDBModel.FK__users__role__4AB81AF0" />
       </Diagram>
     </edmx:Diagrams>

@@ -388,7 +388,7 @@ namespace InventoryManagementSystem {
             this.Relations.Add(this.relationFK__Inventory__model__300424B4);
             this.relationFK__users__role__4AB81AF0 = new global::System.Data.DataRelation("FK__users__role__4AB81AF0", new global::System.Data.DataColumn[] {
                         this.tableroles.roleIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableusers.roleColumn}, false);
+                        this.tableusers.roleIDColumn}, false);
             this.Relations.Add(this.relationFK__users__role__4AB81AF0);
         }
         
@@ -2682,7 +2682,7 @@ namespace InventoryManagementSystem {
             
             private global::System.Data.DataColumn columnphone;
             
-            private global::System.Data.DataColumn columnrole;
+            private global::System.Data.DataColumn columnroleID;
             
             private global::System.Data.DataColumn columnpassword;
             
@@ -2757,9 +2757,9 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn roleColumn {
+            public global::System.Data.DataColumn roleIDColumn {
                 get {
-                    return this.columnrole;
+                    return this.columnroleID;
                 }
             }
             
@@ -2871,7 +2871,7 @@ namespace InventoryManagementSystem {
                 this.columnfirstName = base.Columns["firstName"];
                 this.columnlastName = base.Columns["lastName"];
                 this.columnphone = base.Columns["phone"];
-                this.columnrole = base.Columns["role"];
+                this.columnroleID = base.Columns["roleID"];
                 this.columnpassword = base.Columns["password"];
                 this.columntitle = base.Columns["title"];
                 this.columnemailAddress = base.Columns["emailAddress"];
@@ -2888,8 +2888,8 @@ namespace InventoryManagementSystem {
                 base.Columns.Add(this.columnlastName);
                 this.columnphone = new global::System.Data.DataColumn("phone", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnphone);
-                this.columnrole = new global::System.Data.DataColumn("role", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnrole);
+                this.columnroleID = new global::System.Data.DataColumn("roleID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnroleID);
                 this.columnpassword = new global::System.Data.DataColumn("password", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpassword);
                 this.columntitle = new global::System.Data.DataColumn("title", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2909,7 +2909,7 @@ namespace InventoryManagementSystem {
                 this.columnlastName.AllowDBNull = false;
                 this.columnlastName.MaxLength = 25;
                 this.columnphone.MaxLength = 15;
-                this.columnrole.AllowDBNull = false;
+                this.columnroleID.AllowDBNull = false;
                 this.columnpassword.AllowDBNull = false;
                 this.columnpassword.MaxLength = 45;
                 this.columntitle.AllowDBNull = false;
@@ -4408,12 +4408,12 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int role {
+            public int roleID {
                 get {
-                    return ((int)(this[this.tableusers.roleColumn]));
+                    return ((int)(this[this.tableusers.roleIDColumn]));
                 }
                 set {
-                    this[this.tableusers.roleColumn] = value;
+                    this[this.tableusers.roleIDColumn] = value;
                 }
             }
             
@@ -8173,46 +8173,46 @@ SELECT roleID, Title, permissionLevel FROM roles WHERE (roleID = @roleID)";
             tableMapping.ColumnMappings.Add("firstName", "firstName");
             tableMapping.ColumnMappings.Add("lastName", "lastName");
             tableMapping.ColumnMappings.Add("phone", "phone");
-            tableMapping.ColumnMappings.Add("role", "role");
+            tableMapping.ColumnMappings.Add("roleID", "roleID");
             tableMapping.ColumnMappings.Add("password", "password");
             tableMapping.ColumnMappings.Add("title", "title");
             tableMapping.ColumnMappings.Add("emailAddress", "emailAddress");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[users] WHERE (([userID] = @Original_userID) AND ([firstName] = @Original_firstName) AND ([lastName] = @Original_lastName) AND ((@IsNull_phone = 1 AND [phone] IS NULL) OR ([phone] = @Original_phone)) AND ([role] = @Original_role) AND ([password] = @Original_password) AND ([title] = @Original_title) AND ((@IsNull_emailAddress = 1 AND [emailAddress] IS NULL) OR ([emailAddress] = @Original_emailAddress)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[users] WHERE (([userID] = @Original_userID) AND ([firstName] = @Original_firstName) AND ([lastName] = @Original_lastName) AND ((@IsNull_phone = 1 AND [phone] IS NULL) OR ([phone] = @Original_phone)) AND ([roleID] = @Original_roleID) AND ([password] = @Original_password) AND ([title] = @Original_title) AND ((@IsNull_emailAddress = 1 AND [emailAddress] IS NULL) OR ([emailAddress] = @Original_emailAddress)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_userID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_firstName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_lastName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lastName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_phone", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phone", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_phone", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phone", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_role", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "role", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_roleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "roleID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_password", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_title", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "title", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_emailAddress", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "emailAddress", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_emailAddress", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "emailAddress", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[users] ([firstName], [lastName], [phone], [role], [password], [title], [emailAddress]) VALUES (@firstName, @lastName, @phone, @role, @password, @title, @emailAddress);
-SELECT userID, firstName, lastName, phone, role, password, title, emailAddress FROM users WHERE (userID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[users] ([firstName], [lastName], [phone], [roleID], [password], [title], [emailAddress]) VALUES (@firstName, @lastName, @phone, @roleID, @password, @title, @emailAddress);
+SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress FROM users WHERE (userID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@firstName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lastName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@phone", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@role", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "role", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@roleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "roleID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@password", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@title", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@emailAddress", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "emailAddress", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[users] SET [firstName] = @firstName, [lastName] = @lastName, [phone] = @phone, [role] = @role, [password] = @password, [title] = @title, [emailAddress] = @emailAddress WHERE (([userID] = @Original_userID) AND ([firstName] = @Original_firstName) AND ([lastName] = @Original_lastName) AND ((@IsNull_phone = 1 AND [phone] IS NULL) OR ([phone] = @Original_phone)) AND ([role] = @Original_role) AND ([password] = @Original_password) AND ([title] = @Original_title) AND ((@IsNull_emailAddress = 1 AND [emailAddress] IS NULL) OR ([emailAddress] = @Original_emailAddress)));
-SELECT userID, firstName, lastName, phone, role, password, title, emailAddress FROM users WHERE (userID = @userID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[users] SET [firstName] = @firstName, [lastName] = @lastName, [phone] = @phone, [roleID] = @roleID, [password] = @password, [title] = @title, [emailAddress] = @emailAddress WHERE (([userID] = @Original_userID) AND ([firstName] = @Original_firstName) AND ([lastName] = @Original_lastName) AND ((@IsNull_phone = 1 AND [phone] IS NULL) OR ([phone] = @Original_phone)) AND ([roleID] = @Original_roleID) AND ([password] = @Original_password) AND ([title] = @Original_title) AND ((@IsNull_emailAddress = 1 AND [emailAddress] IS NULL) OR ([emailAddress] = @Original_emailAddress)));
+SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress FROM users WHERE (userID = @userID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@firstName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lastName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@phone", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@role", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "role", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@roleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "roleID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@password", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@title", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@emailAddress", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "emailAddress", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8221,7 +8221,7 @@ SELECT userID, firstName, lastName, phone, role, password, title, emailAddress F
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_lastName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lastName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_phone", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phone", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_phone", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phone", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_role", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "role", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_roleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "roleID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_password", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_title", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "title", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_emailAddress", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "emailAddress", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -8242,8 +8242,8 @@ SELECT userID, firstName, lastName, phone, role, password, title, emailAddress F
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT userID, firstName, lastName, phone, role, password, title, emailAddress FR" +
-                "OM dbo.users";
+            this._commandCollection[0].CommandText = "SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress " +
+                "FROM dbo.users";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8304,7 +8304,7 @@ SELECT userID, firstName, lastName, phone, role, password, title, emailAddress F
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_userID, string Original_firstName, string Original_lastName, string Original_phone, int Original_role, string Original_password, string Original_title, string Original_emailAddress) {
+        public virtual int Delete(int Original_userID, string Original_firstName, string Original_lastName, string Original_phone, int Original_roleID, string Original_password, string Original_title, string Original_emailAddress) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_userID));
             if ((Original_firstName == null)) {
                 throw new global::System.ArgumentNullException("Original_firstName");
@@ -8326,7 +8326,7 @@ SELECT userID, firstName, lastName, phone, role, password, title, emailAddress F
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_phone));
             }
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_role));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_roleID));
             if ((Original_password == null)) {
                 throw new global::System.ArgumentNullException("Original_password");
             }
@@ -8367,7 +8367,7 @@ SELECT userID, firstName, lastName, phone, role, password, title, emailAddress F
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string firstName, string lastName, string phone, int role, string password, string title, string emailAddress) {
+        public virtual int Insert(string firstName, string lastName, string phone, int roleID, string password, string title, string emailAddress) {
             if ((firstName == null)) {
                 throw new global::System.ArgumentNullException("firstName");
             }
@@ -8386,7 +8386,7 @@ SELECT userID, firstName, lastName, phone, role, password, title, emailAddress F
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(phone));
             }
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(role));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(roleID));
             if ((password == null)) {
                 throw new global::System.ArgumentNullException("password");
             }
@@ -8429,7 +8429,7 @@ SELECT userID, firstName, lastName, phone, role, password, title, emailAddress F
                     string firstName, 
                     string lastName, 
                     string phone, 
-                    int role, 
+                    int roleID, 
                     string password, 
                     string title, 
                     string emailAddress, 
@@ -8437,7 +8437,7 @@ SELECT userID, firstName, lastName, phone, role, password, title, emailAddress F
                     string Original_firstName, 
                     string Original_lastName, 
                     string Original_phone, 
-                    int Original_role, 
+                    int Original_roleID, 
                     string Original_password, 
                     string Original_title, 
                     string Original_emailAddress, 
@@ -8460,7 +8460,7 @@ SELECT userID, firstName, lastName, phone, role, password, title, emailAddress F
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(phone));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(role));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(roleID));
             if ((password == null)) {
                 throw new global::System.ArgumentNullException("password");
             }
@@ -8500,7 +8500,7 @@ SELECT userID, firstName, lastName, phone, role, password, title, emailAddress F
                 this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_phone));
             }
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_role));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_roleID));
             if ((Original_password == null)) {
                 throw new global::System.ArgumentNullException("Original_password");
             }
@@ -8542,8 +8542,8 @@ SELECT userID, firstName, lastName, phone, role, password, title, emailAddress F
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string firstName, string lastName, string phone, int role, string password, string title, string emailAddress, int Original_userID, string Original_firstName, string Original_lastName, string Original_phone, int Original_role, string Original_password, string Original_title, string Original_emailAddress) {
-            return this.Update(firstName, lastName, phone, role, password, title, emailAddress, Original_userID, Original_firstName, Original_lastName, Original_phone, Original_role, Original_password, Original_title, Original_emailAddress, Original_userID);
+        public virtual int Update(string firstName, string lastName, string phone, int roleID, string password, string title, string emailAddress, int Original_userID, string Original_firstName, string Original_lastName, string Original_phone, int Original_roleID, string Original_password, string Original_title, string Original_emailAddress) {
+            return this.Update(firstName, lastName, phone, roleID, password, title, emailAddress, Original_userID, Original_firstName, Original_lastName, Original_phone, Original_roleID, Original_password, Original_title, Original_emailAddress, Original_userID);
         }
     }
     
