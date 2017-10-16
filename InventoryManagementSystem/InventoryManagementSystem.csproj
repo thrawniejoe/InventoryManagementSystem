@@ -119,8 +119,14 @@
     <Compile Include="User.cs">
       <DependentUpon>IMS_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddItem.xaml.cs">
+      <DependentUpon>AddItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddUser.xaml.cs">
       <DependentUpon>AddUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vInventoryList.cs">
+      <DependentUpon>IMS_Model.tt</DependentUpon>
     </Compile>
     <Page Include="Login.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -135,6 +141,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MainScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

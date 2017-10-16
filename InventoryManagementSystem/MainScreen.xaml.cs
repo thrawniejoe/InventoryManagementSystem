@@ -40,9 +40,6 @@ namespace InventoryManagementSystem
             }
 
             InventoryManagementSystem.InventoryDBDataSet inventoryDBDataSet = ((InventoryManagementSystem.InventoryDBDataSet)(this.FindResource("inventoryDBDataSet")));
-            // Load data into the table users. You can modify this code as needed.
-            InventoryManagementSystem.InventoryDBDataSetTableAdapters.UsersTableAdapter inventoryDBDataSetusersTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.UsersTableAdapter();
-            inventoryDBDataSetusersTableAdapter.Fill(inventoryDBDataSet.Users);
             System.Windows.Data.CollectionViewSource usersViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("usersViewSource")));
             usersViewSource.View.MoveCurrentToFirst();
             RefreshUserList();
@@ -54,6 +51,16 @@ namespace InventoryManagementSystem
             // Load data into the table Users. You can modify this code as needed.
             InventoryManagementSystem.InventoryDBDataSetTableAdapters.UsersTableAdapter inventoryDBDataSetUsersTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.UsersTableAdapter();
             inventoryDBDataSetUsersTableAdapter.Fill(inventoryDBDataSet.Users);
+            // Load data into the table Employees. You can modify this code as needed.
+            InventoryManagementSystem.InventoryDBDataSetTableAdapters.EmployeesTableAdapter inventoryDBDataSetEmployeesTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.EmployeesTableAdapter();
+            inventoryDBDataSetEmployeesTableAdapter.Fill(inventoryDBDataSet.Employees);
+            System.Windows.Data.CollectionViewSource employeesViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("employeesViewSource")));
+            employeesViewSource.View.MoveCurrentToFirst();
+            // Load data into the table vInventoryList. You can modify this code as needed.
+            InventoryManagementSystem.InventoryDBDataSetTableAdapters.vInventoryListTableAdapter inventoryDBDataSetvInventoryListTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.vInventoryListTableAdapter();
+            inventoryDBDataSetvInventoryListTableAdapter.Fill(inventoryDBDataSet.vInventoryList);
+            System.Windows.Data.CollectionViewSource vInventoryListViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("vInventoryListViewSource")));
+            vInventoryListViewSource.View.MoveCurrentToFirst();
         }
 
         private void btnDeleteUser_Click(object sender, RoutedEventArgs e)
@@ -82,11 +89,11 @@ namespace InventoryManagementSystem
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Views.AddUser au = new Views.AddUser();
-            au.Owner = this;
-            au.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            au.refreshPage += RefreshUserList;
-            au.ShowDialog();
+            Views.AddUser newUser = new Views.AddUser();
+            newUser.Owner = this;
+            newUser.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            newUser.refreshPage += RefreshUserList;
+            newUser.ShowDialog();
         }
 
         public void RefreshUserList()
@@ -96,5 +103,33 @@ namespace InventoryManagementSystem
                             select r).ToList();
             usersDataGrid.ItemsSource = UserList;
         }
+
+        private void btnAddItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+        //Removes Asset From DB
+        //private void btnRemove_Click(object sender, EventArgs e)
+        //{
+        //    if (idTextBox.Text.Length != 0)
+        //    {
+        //        DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this record?", "DELETE RECORD", MessageBoxButtons.YesNo);
+        //        if (dialogResult == DialogResult.Yes)
+        //        {
+        //            int id = Convert.ToInt32(idTextBox.Text);
+        //            var context = new AssetDatabaseEntities();
+        //            Asset asset = (Asset)context.Assets.Where(b => b.Id == id).First(); //Finds the asset
+        //            context.Assets.Remove(asset);                                       //Deletes the asset
+        //            context.SaveChanges();                                              //Saves changes to the database
+        //            MessageBox.Show("Removing asset #" + state_asset_tagTextBox.Text);
+        //            AssetList al = new AssetList();
+        //            al.MdiParent = MainMenu.ActiveForm;
+        //            al.Show();
+        //            this.Close();
+        //        }
+        //    }
+        //}
     }
 }

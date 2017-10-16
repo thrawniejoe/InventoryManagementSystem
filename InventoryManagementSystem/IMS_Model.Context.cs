@@ -32,5 +32,6 @@ namespace InventoryManagementSystem
         public virtual DbSet<OfficeList> OfficeLists { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<vInventoryList> vInventoryLists { get; set; }
     }
 }

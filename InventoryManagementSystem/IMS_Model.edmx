@@ -96,6 +96,25 @@
           <Property Name="title" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="emailAddress" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAGEMENTSYSTEM\INVENTORYMANAGEMENTSYSTEM\INVENTORYDB.MDF.dbo.vInventoryList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vInventoryList">
+          <Key>
+            <PropertyRef Name="itemName" />
+            <PropertyRef Name="emailAddress" />
+            <PropertyRef Name="itemID" />
+          </Key>
+          <Property Name="itemName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="modelNumber" Type="varchar" MaxLength="100" />
+          <Property Name="tag" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+          <Property Name="emailAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="category" Type="varchar" MaxLength="50" />
+          <Property Name="itemID" Type="int" Nullable="false" />
+          <Property Name="officeID" Type="int" />
+          <Property Name="location" Type="varchar" MaxLength="50" />
+        </EntityType>
         <Association Name="FK__Inventory__assig__47A6A41B">
           <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
@@ -176,6 +195,20 @@
           <EntitySet Name="OfficeList" EntityType="Self.OfficeList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vInventoryList" EntityType="Self.vInventoryList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vInventoryList].[itemName] AS [itemName], 
+    [vInventoryList].[modelNumber] AS [modelNumber], 
+    [vInventoryList].[tag] AS [tag], 
+    [vInventoryList].[status] AS [status], 
+    [vInventoryList].[emailAddress] AS [emailAddress], 
+    [vInventoryList].[Name] AS [Name], 
+    [vInventoryList].[category] AS [category], 
+    [vInventoryList].[itemID] AS [itemID], 
+    [vInventoryList].[officeID] AS [officeID], 
+    [vInventoryList].[location] AS [location]
+    FROM [dbo].[vInventoryList] AS [vInventoryList]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__Inventory__assig__47A6A41B" Association="Self.FK__Inventory__assig__47A6A41B">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Inventory" EntitySet="Inventory" />
@@ -213,6 +246,7 @@
           <EntitySet Name="OfficeLists" EntityType="InventoryDBModel.OfficeList" />
           <EntitySet Name="Roles" EntityType="InventoryDBModel.Role" />
           <EntitySet Name="Users" EntityType="InventoryDBModel.User" />
+          <EntitySet Name="vInventoryLists" EntityType="InventoryDBModel.vInventoryList" />
           <AssociationSet Name="FK__Inventory__model__489AC854" Association="InventoryDBModel.FK__Inventory__model__489AC854">
             <End Role="ComputerSpecsList" EntitySet="ComputerSpecsLists" />
             <End Role="Inventory" EntitySet="Inventories" />
@@ -340,6 +374,23 @@
           <Property Name="emailAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK__Inventory__recor__45BE5BA9" FromRole="User" ToRole="Inventory" />
           <NavigationProperty Name="Role" Relationship="InventoryDBModel.FK__Users__roleID__42E1EEFE" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="vInventoryList">
+          <Key>
+            <PropertyRef Name="itemName" />
+            <PropertyRef Name="emailAddress" />
+            <PropertyRef Name="itemID" />
+          </Key>
+          <Property Name="itemName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="modelNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="emailAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="itemID" Type="Int32" Nullable="false" />
+          <Property Name="officeID" Type="Int32" />
+          <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__Inventory__model__489AC854">
           <End Type="InventoryDBModel.ComputerSpecsList" Role="ComputerSpecsList" Multiplicity="0..1" />
@@ -514,6 +565,22 @@
                 <ScalarProperty Name="lastName" ColumnName="lastName" />
                 <ScalarProperty Name="firstName" ColumnName="firstName" />
                 <ScalarProperty Name="userID" ColumnName="userID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vInventoryLists">
+            <EntityTypeMapping TypeName="InventoryDBModel.vInventoryList">
+              <MappingFragment StoreEntitySet="vInventoryList">
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="officeID" ColumnName="officeID" />
+                <ScalarProperty Name="itemID" ColumnName="itemID" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="tag" ColumnName="tag" />
+                <ScalarProperty Name="modelNumber" ColumnName="modelNumber" />
+                <ScalarProperty Name="itemName" ColumnName="itemName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -86,3 +86,10 @@ CREATE TABLE Inventory (
 
 ALTER TABLE Users
 ADD FOREIGN KEY (role) REFERENCES roles(RoldID);
+
+
+CREATE VIEW [dbo].[vInventoryList]
+	AS select itemName, i.tag, i.serialNumber, c.modelNumber, i.category, i.location, i.status, e.Name, i.dateAssigned, i.dateRecordModified, u.emailAddress, i.datePurchased, i.itemID, i.officeID from Inventory as i
+INNER JOIN ComputerSpecsList as c on i.modelID = c.modelID
+INNER JOIN Employees as e on i.assignedTo = e.EmployeeID
+INNER JOIN Users as u on i.recordModifiedBy_userID = u.userID;
