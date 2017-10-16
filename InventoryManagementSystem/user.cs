@@ -12,8 +12,14 @@ namespace InventoryManagementSystem
     using System;
     using System.Collections.Generic;
     
-    public partial class user
+    public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.Inventories = new HashSet<Inventory>();
+        }
+    
         public int userID { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
@@ -23,6 +29,8 @@ namespace InventoryManagementSystem
         public string title { get; set; }
         public string emailAddress { get; set; }
     
-        public virtual role role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Inventory> Inventories { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

@@ -14,8 +14,17 @@ namespace InventoryManagementSystem
     
     public partial class OfficeList
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public OfficeList()
+        {
+            this.Inventories = new HashSet<Inventory>();
+        }
+    
         public int officeID { get; set; }
         public string officeName { get; set; }
         public Nullable<int> officeFloor { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Inventory> Inventories { get; set; }
     }
 }

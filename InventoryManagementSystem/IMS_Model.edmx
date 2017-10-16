@@ -61,9 +61,11 @@
           <Property Name="status" Type="varchar" MaxLength="50" />
           <Property Name="assignedTo" Type="int" />
           <Property Name="dateAssigned" Type="datetime" />
+          <Property Name="dateRecordModified" Type="datetime" />
+          <Property Name="recordModifiedBy_userID" Type="int" />
           <Property Name="documentationID" Type="int" />
           <Property Name="datePurchased" Type="datetime" />
-          <Property Name="assignedLocation" Type="varchar" MaxLength="50" />
+          <Property Name="officeID" Type="int" />
         </EntityType>
         <EntityType Name="OfficeList">
           <Key>
@@ -73,7 +75,7 @@
           <Property Name="officeName" Type="varchar" MaxLength="1" Nullable="false" />
           <Property Name="officeFloor" Type="int" />
         </EntityType>
-        <EntityType Name="roles">
+        <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="roleID" />
           </Key>
@@ -81,7 +83,7 @@
           <Property Name="Title" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="permissionLevel" Type="varchar" MaxLength="15" />
         </EntityType>
-        <EntityType Name="users">
+        <EntityType Name="Users">
           <Key>
             <PropertyRef Name="userID" />
           </Key>
@@ -92,9 +94,9 @@
           <Property Name="roleID" Type="int" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="title" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="emailAddress" Type="varchar" MaxLength="50" />
+          <Property Name="emailAddress" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Inventory__assig__2F10007B">
+        <Association Name="FK__Inventory__assig__47A6A41B">
           <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
           <ReferentialConstraint>
@@ -106,7 +108,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inventory__docum__30F848ED">
+        <Association Name="FK__Inventory__docum__498EEC8D">
           <End Role="Documentation" Type="Self.Documentation" Multiplicity="0..1" />
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
           <ReferentialConstraint>
@@ -118,7 +120,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inventory__model__300424B4">
+        <Association Name="FK__Inventory__model__489AC854">
           <End Role="ComputerSpecsList" Type="Self.ComputerSpecsList" Multiplicity="0..1" />
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
           <ReferentialConstraint>
@@ -130,14 +132,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__users__role__4AB81AF0">
-          <End Role="roles" Type="Self.roles" Multiplicity="1" />
-          <End Role="users" Type="Self.users" Multiplicity="*" />
+        <Association Name="FK__Inventory__offic__46B27FE2">
+          <End Role="OfficeList" Type="Self.OfficeList" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="roles">
+            <Principal Role="OfficeList">
+              <PropertyRef Name="officeID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="officeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventory__recor__45BE5BA9">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="recordModifiedBy_userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__roleID__42E1EEFE">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
               <PropertyRef Name="roleID" />
             </Principal>
-            <Dependent Role="users">
+            <Dependent Role="Users">
               <PropertyRef Name="roleID" />
             </Dependent>
           </ReferentialConstraint>
@@ -148,29 +174,70 @@
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OfficeList" EntityType="Self.OfficeList" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Inventory__assig__2F10007B" Association="Self.FK__Inventory__assig__2F10007B">
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Inventory__assig__47A6A41B" Association="Self.FK__Inventory__assig__47A6A41B">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Inventory" EntitySet="Inventory" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inventory__docum__30F848ED" Association="Self.FK__Inventory__docum__30F848ED">
+          <AssociationSet Name="FK__Inventory__docum__498EEC8D" Association="Self.FK__Inventory__docum__498EEC8D">
             <End Role="Documentation" EntitySet="Documentation" />
             <End Role="Inventory" EntitySet="Inventory" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inventory__model__300424B4" Association="Self.FK__Inventory__model__300424B4">
+          <AssociationSet Name="FK__Inventory__model__489AC854" Association="Self.FK__Inventory__model__489AC854">
             <End Role="ComputerSpecsList" EntitySet="ComputerSpecsList" />
             <End Role="Inventory" EntitySet="Inventory" />
           </AssociationSet>
-          <AssociationSet Name="FK__users__role__4AB81AF0" Association="Self.FK__users__role__4AB81AF0">
-            <End Role="roles" EntitySet="roles" />
-            <End Role="users" EntitySet="users" />
+          <AssociationSet Name="FK__Inventory__offic__46B27FE2" Association="Self.FK__Inventory__offic__46B27FE2">
+            <End Role="OfficeList" EntitySet="OfficeList" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventory__recor__45BE5BA9" Association="Self.FK__Inventory__recor__45BE5BA9">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__roleID__42E1EEFE" Association="Self.FK__Users__roleID__42E1EEFE">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="InventoryDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="InventoryDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ComputerSpecsLists" EntityType="InventoryDBModel.ComputerSpecsList" />
+          <EntitySet Name="Documentations" EntityType="InventoryDBModel.Documentation" />
+          <EntitySet Name="Employees" EntityType="InventoryDBModel.Employee" />
+          <EntitySet Name="Inventories" EntityType="InventoryDBModel.Inventory" />
+          <EntitySet Name="OfficeLists" EntityType="InventoryDBModel.OfficeList" />
+          <EntitySet Name="Roles" EntityType="InventoryDBModel.Role" />
+          <EntitySet Name="Users" EntityType="InventoryDBModel.User" />
+          <AssociationSet Name="FK__Inventory__model__489AC854" Association="InventoryDBModel.FK__Inventory__model__489AC854">
+            <End Role="ComputerSpecsList" EntitySet="ComputerSpecsLists" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventory__docum__498EEC8D" Association="InventoryDBModel.FK__Inventory__docum__498EEC8D">
+            <End Role="Documentation" EntitySet="Documentations" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventory__assig__47A6A41B" Association="InventoryDBModel.FK__Inventory__assig__47A6A41B">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventory__offic__46B27FE2" Association="InventoryDBModel.FK__Inventory__offic__46B27FE2">
+            <End Role="OfficeList" EntitySet="OfficeLists" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventory__recor__45BE5BA9" Association="InventoryDBModel.FK__Inventory__recor__45BE5BA9">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__roleID__42E1EEFE" Association="InventoryDBModel.FK__Users__roleID__42E1EEFE">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="ComputerSpecsList">
           <Key>
             <PropertyRef Name="modelID" />
@@ -187,7 +254,7 @@
           <Property Name="DisplayPorts" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="HDMIPorts" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="USBPorts" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Inventories" Relationship="Self.FK__Inventory__model__300424B4" FromRole="ComputerSpecsList" ToRole="Inventory" />
+          <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK__Inventory__model__489AC854" FromRole="ComputerSpecsList" ToRole="Inventory" />
         </EntityType>
         <EntityType Name="Documentation">
           <Key>
@@ -196,7 +263,7 @@
           <Property Name="DocID" Type="Int32" Nullable="false" />
           <Property Name="DocLink" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="DateAdded" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Inventories" Relationship="Self.FK__Inventory__docum__30F848ED" FromRole="Documentation" ToRole="Inventory" />
+          <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK__Inventory__docum__498EEC8D" FromRole="Documentation" ToRole="Inventory" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -212,14 +279,14 @@
           <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Inventories" Relationship="Self.FK__Inventory__assig__2F10007B" FromRole="Employees" ToRole="Inventory" />
+          <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK__Inventory__assig__47A6A41B" FromRole="Employee" ToRole="Inventory" />
         </EntityType>
         <EntityType Name="Inventory">
           <Key>
             <PropertyRef Name="itemID" />
           </Key>
           <Property Name="itemID" Type="Int32" Nullable="false" />
-          <Property Name="itemName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="itemName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="serialNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="manufacturer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -230,92 +297,36 @@
           <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="assignedTo" Type="Int32" />
           <Property Name="dateAssigned" Type="DateTime" Precision="3" />
+          <Property Name="dateRecordModified" Type="DateTime" Precision="3" />
+          <Property Name="recordModifiedBy_userID" Type="Int32" />
           <Property Name="documentationID" Type="Int32" />
           <Property Name="datePurchased" Type="DateTime" Precision="3" />
-          <Property Name="assignedLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ComputerSpecsList" Relationship="Self.FK__Inventory__model__300424B4" FromRole="Inventory" ToRole="ComputerSpecsList" />
-          <NavigationProperty Name="Documentation" Relationship="Self.FK__Inventory__docum__30F848ED" FromRole="Inventory" ToRole="Documentation" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK__Inventory__assig__2F10007B" FromRole="Inventory" ToRole="Employees" />
+          <Property Name="officeID" Type="Int32" />
+          <NavigationProperty Name="ComputerSpecsList" Relationship="InventoryDBModel.FK__Inventory__model__489AC854" FromRole="Inventory" ToRole="ComputerSpecsList" />
+          <NavigationProperty Name="Documentation" Relationship="InventoryDBModel.FK__Inventory__docum__498EEC8D" FromRole="Inventory" ToRole="Documentation" />
+          <NavigationProperty Name="Employee" Relationship="InventoryDBModel.FK__Inventory__assig__47A6A41B" FromRole="Inventory" ToRole="Employee" />
+          <NavigationProperty Name="OfficeList" Relationship="InventoryDBModel.FK__Inventory__offic__46B27FE2" FromRole="Inventory" ToRole="OfficeList" />
+          <NavigationProperty Name="User" Relationship="InventoryDBModel.FK__Inventory__recor__45BE5BA9" FromRole="Inventory" ToRole="User" />
         </EntityType>
         <EntityType Name="OfficeList">
           <Key>
             <PropertyRef Name="officeID" />
           </Key>
           <Property Name="officeID" Type="Int32" Nullable="false" />
-          <Property Name="officeName" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="officeName" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="officeFloor" Type="Int32" />
+          <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK__Inventory__offic__46B27FE2" FromRole="OfficeList" ToRole="Inventory" />
         </EntityType>
-        <Association Name="FK__Inventory__model__300424B4">
-          <End Role="ComputerSpecsList" Type="Self.ComputerSpecsList" Multiplicity="0..1" />
-          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ComputerSpecsList">
-              <PropertyRef Name="modelID" />
-            </Principal>
-            <Dependent Role="Inventory">
-              <PropertyRef Name="modelID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Inventory__docum__30F848ED">
-          <End Role="Documentation" Type="Self.Documentation" Multiplicity="0..1" />
-          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Documentation">
-              <PropertyRef Name="DocID" />
-            </Principal>
-            <Dependent Role="Inventory">
-              <PropertyRef Name="documentationID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Inventory__assig__2F10007B">
-          <End Role="Employees" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employees">
-              <PropertyRef Name="EmployeeID" />
-            </Principal>
-            <Dependent Role="Inventory">
-              <PropertyRef Name="assignedTo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="InventoryDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ComputerSpecsLists" EntityType="Self.ComputerSpecsList" />
-          <EntitySet Name="Documentations" EntityType="Self.Documentation" />
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
-          <EntitySet Name="Inventories" EntityType="Self.Inventory" />
-          <EntitySet Name="OfficeLists" EntityType="Self.OfficeList" />
-          <AssociationSet Name="FK__Inventory__model__300424B4" Association="Self.FK__Inventory__model__300424B4">
-            <End Role="ComputerSpecsList" EntitySet="ComputerSpecsLists" />
-            <End Role="Inventory" EntitySet="Inventories" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Inventory__docum__30F848ED" Association="Self.FK__Inventory__docum__30F848ED">
-            <End Role="Documentation" EntitySet="Documentations" />
-            <End Role="Inventory" EntitySet="Inventories" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Inventory__assig__2F10007B" Association="Self.FK__Inventory__assig__2F10007B">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="Inventory" EntitySet="Inventories" />
-          </AssociationSet>
-          <EntitySet Name="roles" EntityType="InventoryDBModel.role" />
-          <EntitySet Name="users" EntityType="InventoryDBModel.user" />
-          <AssociationSet Name="FK__users__role__4AB81AF0" Association="InventoryDBModel.FK__users__role__4AB81AF0">
-            <End Role="role" EntitySet="roles" />
-            <End Role="user" EntitySet="users" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="role">
+        <EntityType Name="Role">
           <Key>
             <PropertyRef Name="roleID" />
           </Key>
           <Property Name="roleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="permissionLevel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="users" Relationship="InventoryDBModel.FK__users__role__4AB81AF0" FromRole="role" ToRole="user" />
+          <NavigationProperty Name="Users" Relationship="InventoryDBModel.FK__Users__roleID__42E1EEFE" FromRole="Role" ToRole="User" />
         </EntityType>
-        <EntityType Name="user">
+        <EntityType Name="User">
           <Key>
             <PropertyRef Name="userID" />
           </Key>
@@ -326,22 +337,83 @@
           <Property Name="roleID" Type="Int32" Nullable="false" />
           <Property Name="password" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="title" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="emailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="role" Relationship="InventoryDBModel.FK__users__role__4AB81AF0" FromRole="user" ToRole="role" />
+          <Property Name="emailAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK__Inventory__recor__45BE5BA9" FromRole="User" ToRole="Inventory" />
+          <NavigationProperty Name="Role" Relationship="InventoryDBModel.FK__Users__roleID__42E1EEFE" FromRole="User" ToRole="Role" />
         </EntityType>
-        <Association Name="FK__users__role__4AB81AF0">
-          <End Type="InventoryDBModel.role" Role="role" Multiplicity="1" />
-          <End Type="InventoryDBModel.user" Role="user" Multiplicity="*" />
+        <Association Name="FK__Inventory__model__489AC854">
+          <End Type="InventoryDBModel.ComputerSpecsList" Role="ComputerSpecsList" Multiplicity="0..1" />
+          <End Type="InventoryDBModel.Inventory" Role="Inventory" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="role">
+            <Principal Role="ComputerSpecsList">
+              <PropertyRef Name="modelID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="modelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventory__docum__498EEC8D">
+          <End Type="InventoryDBModel.Documentation" Role="Documentation" Multiplicity="0..1" />
+          <End Type="InventoryDBModel.Inventory" Role="Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documentation">
+              <PropertyRef Name="DocID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="documentationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventory__assig__47A6A41B">
+          <End Type="InventoryDBModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="InventoryDBModel.Inventory" Role="Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="assignedTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventory__offic__46B27FE2">
+          <End Type="InventoryDBModel.OfficeList" Role="OfficeList" Multiplicity="0..1" />
+          <End Type="InventoryDBModel.Inventory" Role="Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfficeList">
+              <PropertyRef Name="officeID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="officeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventory__recor__45BE5BA9">
+          <End Type="InventoryDBModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="InventoryDBModel.Inventory" Role="Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="recordModifiedBy_userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__roleID__42E1EEFE">
+          <End Type="InventoryDBModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="InventoryDBModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
               <PropertyRef Name="roleID" />
             </Principal>
-            <Dependent Role="user">
+            <Dependent Role="User">
               <PropertyRef Name="roleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -350,88 +422,90 @@
           <EntitySetMapping Name="ComputerSpecsLists">
             <EntityTypeMapping TypeName="InventoryDBModel.ComputerSpecsList">
               <MappingFragment StoreEntitySet="ComputerSpecsList">
-                <ScalarProperty Name="modelID" ColumnName="modelID" />
-                <ScalarProperty Name="modelNumber" ColumnName="modelNumber" />
-                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
-                <ScalarProperty Name="HD_Type" ColumnName="HD_Type" />
-                <ScalarProperty Name="HD_Capacity" ColumnName="HD_Capacity" />
-                <ScalarProperty Name="Ram" ColumnName="Ram" />
-                <ScalarProperty Name="CPU" ColumnName="CPU" />
-                <ScalarProperty Name="DVIPorts" ColumnName="DVIPorts" />
-                <ScalarProperty Name="VGAPorts" ColumnName="VGAPorts" />
-                <ScalarProperty Name="DisplayPorts" ColumnName="DisplayPorts" />
-                <ScalarProperty Name="HDMIPorts" ColumnName="HDMIPorts" />
                 <ScalarProperty Name="USBPorts" ColumnName="USBPorts" />
+                <ScalarProperty Name="HDMIPorts" ColumnName="HDMIPorts" />
+                <ScalarProperty Name="DisplayPorts" ColumnName="DisplayPorts" />
+                <ScalarProperty Name="VGAPorts" ColumnName="VGAPorts" />
+                <ScalarProperty Name="DVIPorts" ColumnName="DVIPorts" />
+                <ScalarProperty Name="CPU" ColumnName="CPU" />
+                <ScalarProperty Name="Ram" ColumnName="Ram" />
+                <ScalarProperty Name="HD_Capacity" ColumnName="HD_Capacity" />
+                <ScalarProperty Name="HD_Type" ColumnName="HD_Type" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+                <ScalarProperty Name="modelNumber" ColumnName="modelNumber" />
+                <ScalarProperty Name="modelID" ColumnName="modelID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Documentations">
             <EntityTypeMapping TypeName="InventoryDBModel.Documentation">
               <MappingFragment StoreEntitySet="Documentation">
-                <ScalarProperty Name="DocID" ColumnName="DocID" />
-                <ScalarProperty Name="DocLink" ColumnName="DocLink" />
                 <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="DocLink" ColumnName="DocLink" />
+                <ScalarProperty Name="DocID" ColumnName="DocID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="InventoryDBModel.Employee">
               <MappingFragment StoreEntitySet="Employees">
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-                <ScalarProperty Name="Manager" ColumnName="Manager" />
-                <ScalarProperty Name="Division" ColumnName="Division" />
-                <ScalarProperty Name="Location" ColumnName="Location" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Inventories">
             <EntityTypeMapping TypeName="InventoryDBModel.Inventory">
               <MappingFragment StoreEntitySet="Inventory">
-                <ScalarProperty Name="itemID" ColumnName="itemID" />
-                <ScalarProperty Name="itemName" ColumnName="itemName" />
-                <ScalarProperty Name="tag" ColumnName="tag" />
-                <ScalarProperty Name="serialNumber" ColumnName="serialNumber" />
-                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
-                <ScalarProperty Name="modelID" ColumnName="modelID" />
-                <ScalarProperty Name="modelNumber" ColumnName="modelNumber" />
-                <ScalarProperty Name="category" ColumnName="category" />
-                <ScalarProperty Name="location" ColumnName="location" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
-                <ScalarProperty Name="dateAssigned" ColumnName="dateAssigned" />
-                <ScalarProperty Name="documentationID" ColumnName="documentationID" />
+                <ScalarProperty Name="officeID" ColumnName="officeID" />
                 <ScalarProperty Name="datePurchased" ColumnName="datePurchased" />
-                <ScalarProperty Name="assignedLocation" ColumnName="assignedLocation" />
+                <ScalarProperty Name="documentationID" ColumnName="documentationID" />
+                <ScalarProperty Name="recordModifiedBy_userID" ColumnName="recordModifiedBy_userID" />
+                <ScalarProperty Name="dateRecordModified" ColumnName="dateRecordModified" />
+                <ScalarProperty Name="dateAssigned" ColumnName="dateAssigned" />
+                <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="modelNumber" ColumnName="modelNumber" />
+                <ScalarProperty Name="modelID" ColumnName="modelID" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+                <ScalarProperty Name="serialNumber" ColumnName="serialNumber" />
+                <ScalarProperty Name="tag" ColumnName="tag" />
+                <ScalarProperty Name="itemName" ColumnName="itemName" />
+                <ScalarProperty Name="itemID" ColumnName="itemID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OfficeLists">
             <EntityTypeMapping TypeName="InventoryDBModel.OfficeList">
               <MappingFragment StoreEntitySet="OfficeList">
-                <ScalarProperty Name="officeID" ColumnName="officeID" />
-                <ScalarProperty Name="officeName" ColumnName="officeName" />
                 <ScalarProperty Name="officeFloor" ColumnName="officeFloor" />
+                <ScalarProperty Name="officeName" ColumnName="officeName" />
+                <ScalarProperty Name="officeID" ColumnName="officeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="roles">
-            <EntityTypeMapping TypeName="InventoryDBModel.role">
-              <MappingFragment StoreEntitySet="roles">
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="InventoryDBModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
                 <ScalarProperty Name="permissionLevel" ColumnName="permissionLevel" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="roleID" ColumnName="roleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="users">
-            <EntityTypeMapping TypeName="InventoryDBModel.user">
-              <MappingFragment StoreEntitySet="users">
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="InventoryDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="password" ColumnName="password" />

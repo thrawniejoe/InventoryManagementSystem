@@ -41,8 +41,8 @@ namespace InventoryManagementSystem
 
             InventoryManagementSystem.InventoryDBDataSet inventoryDBDataSet = ((InventoryManagementSystem.InventoryDBDataSet)(this.FindResource("inventoryDBDataSet")));
             // Load data into the table users. You can modify this code as needed.
-            InventoryManagementSystem.InventoryDBDataSetTableAdapters.usersTableAdapter inventoryDBDataSetusersTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.usersTableAdapter();
-            inventoryDBDataSetusersTableAdapter.Fill(inventoryDBDataSet.users);
+            InventoryManagementSystem.InventoryDBDataSetTableAdapters.UsersTableAdapter inventoryDBDataSetusersTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.UsersTableAdapter();
+            inventoryDBDataSetusersTableAdapter.Fill(inventoryDBDataSet.Users);
             System.Windows.Data.CollectionViewSource usersViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("usersViewSource")));
             usersViewSource.View.MoveCurrentToFirst();
             RefreshUserList();
@@ -51,6 +51,9 @@ namespace InventoryManagementSystem
             inventoryDBDataSetInventoryTableAdapter.Fill(inventoryDBDataSet.Inventory);
             System.Windows.Data.CollectionViewSource inventoryViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("inventoryViewSource")));
             inventoryViewSource.View.MoveCurrentToFirst();
+            // Load data into the table Users. You can modify this code as needed.
+            InventoryManagementSystem.InventoryDBDataSetTableAdapters.UsersTableAdapter inventoryDBDataSetUsersTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.UsersTableAdapter();
+            inventoryDBDataSetUsersTableAdapter.Fill(inventoryDBDataSet.Users);
         }
 
         private void btnDeleteUser_Click(object sender, RoutedEventArgs e)
@@ -63,9 +66,9 @@ namespace InventoryManagementSystem
             
             if (result == MessageBoxResult.Yes)
             {
-                user nu = new user { userID = myid };
-                context.users.Attach(nu); //attaches the user object by the id given to the object above
-                context.users.Remove(nu); //Adds the change to Deletes the user from the database
+                User nu = new User { userID = myid };
+                context.Users.Attach(nu); //attaches the user object by the id given to the object above
+                context.Users.Remove(nu); //Adds the change to Deletes the user from the database
                 context.SaveChanges();  //Saves changes to the database
             }
             RefreshUserList();
@@ -89,7 +92,7 @@ namespace InventoryManagementSystem
         public void RefreshUserList()
         {
             var context = new InventoryManagementSystem.InventoryDBEntities();
-            var UserList = (from r in context.users
+            var UserList = (from r in context.Users
                             select r).ToList();
             usersDataGrid.ItemsSource = UserList;
         }

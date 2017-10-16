@@ -9,7 +9,7 @@
 
     <Window.Resources>
         <local:InventoryDBDataSet x:Key="inventoryDBDataSet"/>
-        <CollectionViewSource x:Key="usersViewSource" Source="{Binding users, Source={StaticResource inventoryDBDataSet}}"/>
+        <CollectionViewSource x:Key="usersViewSource" Source="{Binding Users, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="inventoryViewSource" Source="{Binding Inventory, Source={StaticResource inventoryDBDataSet}}"/>
     </Window.Resources>
     <Grid>
@@ -33,7 +33,6 @@
             <TabItem Header="Home" Margin="0,36,0,-60">
                 <Grid Background="#FFE5E5E5">
                     <Label Content="Welcome to the Inventory Management System" HorizontalAlignment="Left" Margin="270,79,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-
                 </Grid>
             </TabItem>
             <TabItem Header="Inventory" Margin="0,60,0,-60">

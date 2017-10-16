@@ -87,10 +87,20 @@
     <Compile Include="Employee.cs">
       <DependentUpon>IMS_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="IMS_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IMS_Model.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="IMS_Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>IMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IMS_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IMS_Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Inventory.cs">
       <DependentUpon>IMS_Model.tt</DependentUpon>
@@ -103,10 +113,10 @@
     <Compile Include="OfficeList.cs">
       <DependentUpon>IMS_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="role.cs">
+    <Compile Include="Role.cs">
       <DependentUpon>IMS_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="user.cs">
+    <Compile Include="User.cs">
       <DependentUpon>IMS_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Views\AddUser.xaml.cs">
@@ -119,16 +129,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="IMS_Model.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IMS_Model.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="IMS_Model.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IMS_Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>

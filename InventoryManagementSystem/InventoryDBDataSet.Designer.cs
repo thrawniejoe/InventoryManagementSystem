@@ -34,17 +34,21 @@ namespace InventoryManagementSystem {
         
         private OfficeListDataTable tableOfficeList;
         
-        private rolesDataTable tableroles;
+        private RolesDataTable tableRoles;
         
-        private usersDataTable tableusers;
+        private UsersDataTable tableUsers;
         
-        private global::System.Data.DataRelation relationFK__Inventory__assig__2F10007B;
+        private global::System.Data.DataRelation relationFK__Inventory__assig__25518C17;
         
-        private global::System.Data.DataRelation relationFK__Inventory__docum__30F848ED;
+        private global::System.Data.DataRelation relationFK__Inventory__docum__2739D489;
         
-        private global::System.Data.DataRelation relationFK__Inventory__model__300424B4;
+        private global::System.Data.DataRelation relationFK__Inventory__model__2645B050;
         
-        private global::System.Data.DataRelation relationFK__users__role__4AB81AF0;
+        private global::System.Data.DataRelation relationFK__Inventory__offic__245D67DE;
+        
+        private global::System.Data.DataRelation relationFK__Inventory__recor__236943A5;
+        
+        private global::System.Data.DataRelation relationFK__Users__roleID__208CD6FA;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -89,11 +93,11 @@ namespace InventoryManagementSystem {
                 if ((ds.Tables["OfficeList"] != null)) {
                     base.Tables.Add(new OfficeListDataTable(ds.Tables["OfficeList"]));
                 }
-                if ((ds.Tables["roles"] != null)) {
-                    base.Tables.Add(new rolesDataTable(ds.Tables["roles"]));
+                if ((ds.Tables["Roles"] != null)) {
+                    base.Tables.Add(new RolesDataTable(ds.Tables["Roles"]));
                 }
-                if ((ds.Tables["users"] != null)) {
-                    base.Tables.Add(new usersDataTable(ds.Tables["users"]));
+                if ((ds.Tables["Users"] != null)) {
+                    base.Tables.Add(new UsersDataTable(ds.Tables["Users"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -167,9 +171,9 @@ namespace InventoryManagementSystem {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public rolesDataTable roles {
+        public RolesDataTable Roles {
             get {
-                return this.tableroles;
+                return this.tableRoles;
             }
         }
         
@@ -177,9 +181,9 @@ namespace InventoryManagementSystem {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public usersDataTable users {
+        public UsersDataTable Users {
             get {
-                return this.tableusers;
+                return this.tableUsers;
             }
         }
         
@@ -265,11 +269,11 @@ namespace InventoryManagementSystem {
                 if ((ds.Tables["OfficeList"] != null)) {
                     base.Tables.Add(new OfficeListDataTable(ds.Tables["OfficeList"]));
                 }
-                if ((ds.Tables["roles"] != null)) {
-                    base.Tables.Add(new rolesDataTable(ds.Tables["roles"]));
+                if ((ds.Tables["Roles"] != null)) {
+                    base.Tables.Add(new RolesDataTable(ds.Tables["Roles"]));
                 }
-                if ((ds.Tables["users"] != null)) {
-                    base.Tables.Add(new usersDataTable(ds.Tables["users"]));
+                if ((ds.Tables["Users"] != null)) {
+                    base.Tables.Add(new UsersDataTable(ds.Tables["Users"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -334,22 +338,24 @@ namespace InventoryManagementSystem {
                     this.tableOfficeList.InitVars();
                 }
             }
-            this.tableroles = ((rolesDataTable)(base.Tables["roles"]));
+            this.tableRoles = ((RolesDataTable)(base.Tables["Roles"]));
             if ((initTable == true)) {
-                if ((this.tableroles != null)) {
-                    this.tableroles.InitVars();
+                if ((this.tableRoles != null)) {
+                    this.tableRoles.InitVars();
                 }
             }
-            this.tableusers = ((usersDataTable)(base.Tables["users"]));
+            this.tableUsers = ((UsersDataTable)(base.Tables["Users"]));
             if ((initTable == true)) {
-                if ((this.tableusers != null)) {
-                    this.tableusers.InitVars();
+                if ((this.tableUsers != null)) {
+                    this.tableUsers.InitVars();
                 }
             }
-            this.relationFK__Inventory__assig__2F10007B = this.Relations["FK__Inventory__assig__2F10007B"];
-            this.relationFK__Inventory__docum__30F848ED = this.Relations["FK__Inventory__docum__30F848ED"];
-            this.relationFK__Inventory__model__300424B4 = this.Relations["FK__Inventory__model__300424B4"];
-            this.relationFK__users__role__4AB81AF0 = this.Relations["FK__users__role__4AB81AF0"];
+            this.relationFK__Inventory__assig__25518C17 = this.Relations["FK__Inventory__assig__25518C17"];
+            this.relationFK__Inventory__docum__2739D489 = this.Relations["FK__Inventory__docum__2739D489"];
+            this.relationFK__Inventory__model__2645B050 = this.Relations["FK__Inventory__model__2645B050"];
+            this.relationFK__Inventory__offic__245D67DE = this.Relations["FK__Inventory__offic__245D67DE"];
+            this.relationFK__Inventory__recor__236943A5 = this.Relations["FK__Inventory__recor__236943A5"];
+            this.relationFK__Users__roleID__208CD6FA = this.Relations["FK__Users__roleID__208CD6FA"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -370,26 +376,34 @@ namespace InventoryManagementSystem {
             base.Tables.Add(this.tableInventory);
             this.tableOfficeList = new OfficeListDataTable();
             base.Tables.Add(this.tableOfficeList);
-            this.tableroles = new rolesDataTable();
-            base.Tables.Add(this.tableroles);
-            this.tableusers = new usersDataTable();
-            base.Tables.Add(this.tableusers);
-            this.relationFK__Inventory__assig__2F10007B = new global::System.Data.DataRelation("FK__Inventory__assig__2F10007B", new global::System.Data.DataColumn[] {
+            this.tableRoles = new RolesDataTable();
+            base.Tables.Add(this.tableRoles);
+            this.tableUsers = new UsersDataTable();
+            base.Tables.Add(this.tableUsers);
+            this.relationFK__Inventory__assig__25518C17 = new global::System.Data.DataRelation("FK__Inventory__assig__25518C17", new global::System.Data.DataColumn[] {
                         this.tableEmployees.EmployeeIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableInventory.assignedToColumn}, false);
-            this.Relations.Add(this.relationFK__Inventory__assig__2F10007B);
-            this.relationFK__Inventory__docum__30F848ED = new global::System.Data.DataRelation("FK__Inventory__docum__30F848ED", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK__Inventory__assig__25518C17);
+            this.relationFK__Inventory__docum__2739D489 = new global::System.Data.DataRelation("FK__Inventory__docum__2739D489", new global::System.Data.DataColumn[] {
                         this.tableDocumentation.DocIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableInventory.documentationIDColumn}, false);
-            this.Relations.Add(this.relationFK__Inventory__docum__30F848ED);
-            this.relationFK__Inventory__model__300424B4 = new global::System.Data.DataRelation("FK__Inventory__model__300424B4", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK__Inventory__docum__2739D489);
+            this.relationFK__Inventory__model__2645B050 = new global::System.Data.DataRelation("FK__Inventory__model__2645B050", new global::System.Data.DataColumn[] {
                         this.tableComputerSpecsList.modelIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableInventory.modelIDColumn}, false);
-            this.Relations.Add(this.relationFK__Inventory__model__300424B4);
-            this.relationFK__users__role__4AB81AF0 = new global::System.Data.DataRelation("FK__users__role__4AB81AF0", new global::System.Data.DataColumn[] {
-                        this.tableroles.roleIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableusers.roleIDColumn}, false);
-            this.Relations.Add(this.relationFK__users__role__4AB81AF0);
+            this.Relations.Add(this.relationFK__Inventory__model__2645B050);
+            this.relationFK__Inventory__offic__245D67DE = new global::System.Data.DataRelation("FK__Inventory__offic__245D67DE", new global::System.Data.DataColumn[] {
+                        this.tableOfficeList.officeIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableInventory.officeIDColumn}, false);
+            this.Relations.Add(this.relationFK__Inventory__offic__245D67DE);
+            this.relationFK__Inventory__recor__236943A5 = new global::System.Data.DataRelation("FK__Inventory__recor__236943A5", new global::System.Data.DataColumn[] {
+                        this.tableUsers.userIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableInventory.recordModifiedBy_userIDColumn}, false);
+            this.Relations.Add(this.relationFK__Inventory__recor__236943A5);
+            this.relationFK__Users__roleID__208CD6FA = new global::System.Data.DataRelation("FK__Users__roleID__208CD6FA", new global::System.Data.DataColumn[] {
+                        this.tableRoles.roleIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableUsers.roleIDColumn}, false);
+            this.Relations.Add(this.relationFK__Users__roleID__208CD6FA);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -424,13 +438,13 @@ namespace InventoryManagementSystem {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeroles() {
+        private bool ShouldSerializeRoles() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeusers() {
+        private bool ShouldSerializeUsers() {
             return false;
         }
         
@@ -505,10 +519,10 @@ namespace InventoryManagementSystem {
         public delegate void OfficeListRowChangeEventHandler(object sender, OfficeListRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void rolesRowChangeEventHandler(object sender, rolesRowChangeEvent e);
+        public delegate void RolesRowChangeEventHandler(object sender, RolesRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void usersRowChangeEventHandler(object sender, usersRowChangeEvent e);
+        public delegate void UsersRowChangeEventHandler(object sender, UsersRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1644,11 +1658,15 @@ namespace InventoryManagementSystem {
             
             private global::System.Data.DataColumn columndateAssigned;
             
+            private global::System.Data.DataColumn columndateRecordModified;
+            
+            private global::System.Data.DataColumn columnrecordModifiedBy_userID;
+            
             private global::System.Data.DataColumn columndocumentationID;
             
             private global::System.Data.DataColumn columndatePurchased;
             
-            private global::System.Data.DataColumn columnassignedLocation;
+            private global::System.Data.DataColumn columnofficeID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -1781,6 +1799,22 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn dateRecordModifiedColumn {
+                get {
+                    return this.columndateRecordModified;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn recordModifiedBy_userIDColumn {
+                get {
+                    return this.columnrecordModifiedBy_userID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn documentationIDColumn {
                 get {
                     return this.columndocumentationID;
@@ -1797,9 +1831,9 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn assignedLocationColumn {
+            public global::System.Data.DataColumn officeIDColumn {
                 get {
-                    return this.columnassignedLocation;
+                    return this.columnofficeID;
                 }
             }
             
@@ -1840,7 +1874,24 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public InventoryRow AddInventoryRow(int itemID, string itemName, string tag, string serialNumber, string manufacturer, ComputerSpecsListRow parentComputerSpecsListRowByFK__Inventory__model__300424B4, string modelNumber, string category, string location, string status, EmployeesRow parentEmployeesRowByFK__Inventory__assig__2F10007B, System.DateTime dateAssigned, DocumentationRow parentDocumentationRowByFK__Inventory__docum__30F848ED, System.DateTime datePurchased, string assignedLocation) {
+            public InventoryRow AddInventoryRow(
+                        int itemID, 
+                        string itemName, 
+                        string tag, 
+                        string serialNumber, 
+                        string manufacturer, 
+                        ComputerSpecsListRow parentComputerSpecsListRowByFK__Inventory__model__2645B050, 
+                        string modelNumber, 
+                        string category, 
+                        string location, 
+                        string status, 
+                        EmployeesRow parentEmployeesRowByFK__Inventory__assig__25518C17, 
+                        System.DateTime dateAssigned, 
+                        System.DateTime dateRecordModified, 
+                        UsersRow parentUsersRowByFK__Inventory__recor__236943A5, 
+                        DocumentationRow parentDocumentationRowByFK__Inventory__docum__2739D489, 
+                        System.DateTime datePurchased, 
+                        OfficeListRow parentOfficeListRowByFK__Inventory__offic__245D67DE) {
                 InventoryRow rowInventoryRow = ((InventoryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         itemID,
@@ -1855,17 +1906,25 @@ namespace InventoryManagementSystem {
                         status,
                         null,
                         dateAssigned,
+                        dateRecordModified,
+                        null,
                         null,
                         datePurchased,
-                        assignedLocation};
-                if ((parentComputerSpecsListRowByFK__Inventory__model__300424B4 != null)) {
-                    columnValuesArray[5] = parentComputerSpecsListRowByFK__Inventory__model__300424B4[0];
+                        null};
+                if ((parentComputerSpecsListRowByFK__Inventory__model__2645B050 != null)) {
+                    columnValuesArray[5] = parentComputerSpecsListRowByFK__Inventory__model__2645B050[0];
                 }
-                if ((parentEmployeesRowByFK__Inventory__assig__2F10007B != null)) {
-                    columnValuesArray[10] = parentEmployeesRowByFK__Inventory__assig__2F10007B[0];
+                if ((parentEmployeesRowByFK__Inventory__assig__25518C17 != null)) {
+                    columnValuesArray[10] = parentEmployeesRowByFK__Inventory__assig__25518C17[0];
                 }
-                if ((parentDocumentationRowByFK__Inventory__docum__30F848ED != null)) {
-                    columnValuesArray[12] = parentDocumentationRowByFK__Inventory__docum__30F848ED[0];
+                if ((parentUsersRowByFK__Inventory__recor__236943A5 != null)) {
+                    columnValuesArray[13] = parentUsersRowByFK__Inventory__recor__236943A5[0];
+                }
+                if ((parentDocumentationRowByFK__Inventory__docum__2739D489 != null)) {
+                    columnValuesArray[14] = parentDocumentationRowByFK__Inventory__docum__2739D489[0];
+                }
+                if ((parentOfficeListRowByFK__Inventory__offic__245D67DE != null)) {
+                    columnValuesArray[16] = parentOfficeListRowByFK__Inventory__offic__245D67DE[0];
                 }
                 rowInventoryRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowInventoryRow);
@@ -1908,9 +1967,11 @@ namespace InventoryManagementSystem {
                 this.columnstatus = base.Columns["status"];
                 this.columnassignedTo = base.Columns["assignedTo"];
                 this.columndateAssigned = base.Columns["dateAssigned"];
+                this.columndateRecordModified = base.Columns["dateRecordModified"];
+                this.columnrecordModifiedBy_userID = base.Columns["recordModifiedBy_userID"];
                 this.columndocumentationID = base.Columns["documentationID"];
                 this.columndatePurchased = base.Columns["datePurchased"];
-                this.columnassignedLocation = base.Columns["assignedLocation"];
+                this.columnofficeID = base.Columns["officeID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1940,12 +2001,16 @@ namespace InventoryManagementSystem {
                 base.Columns.Add(this.columnassignedTo);
                 this.columndateAssigned = new global::System.Data.DataColumn("dateAssigned", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndateAssigned);
+                this.columndateRecordModified = new global::System.Data.DataColumn("dateRecordModified", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndateRecordModified);
+                this.columnrecordModifiedBy_userID = new global::System.Data.DataColumn("recordModifiedBy_userID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrecordModifiedBy_userID);
                 this.columndocumentationID = new global::System.Data.DataColumn("documentationID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndocumentationID);
                 this.columndatePurchased = new global::System.Data.DataColumn("datePurchased", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndatePurchased);
-                this.columnassignedLocation = new global::System.Data.DataColumn("assignedLocation", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnassignedLocation);
+                this.columnofficeID = new global::System.Data.DataColumn("officeID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnofficeID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnitemID}, true));
                 this.columnitemID.AllowDBNull = false;
@@ -1959,7 +2024,6 @@ namespace InventoryManagementSystem {
                 this.columncategory.MaxLength = 50;
                 this.columnlocation.MaxLength = 50;
                 this.columnstatus.MaxLength = 50;
-                this.columnassignedLocation.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2379,7 +2443,7 @@ namespace InventoryManagementSystem {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class rolesDataTable : global::System.Data.TypedTableBase<rolesRow> {
+        public partial class RolesDataTable : global::System.Data.TypedTableBase<RolesRow> {
             
             private global::System.Data.DataColumn columnroleID;
             
@@ -2389,8 +2453,8 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public rolesDataTable() {
-                this.TableName = "roles";
+            public RolesDataTable() {
+                this.TableName = "Roles";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -2398,7 +2462,7 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal rolesDataTable(global::System.Data.DataTable table) {
+            internal RolesDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -2415,7 +2479,7 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected rolesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected RolesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -2455,54 +2519,54 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public rolesRow this[int index] {
+            public RolesRow this[int index] {
                 get {
-                    return ((rolesRow)(this.Rows[index]));
+                    return ((RolesRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event rolesRowChangeEventHandler rolesRowChanging;
+            public event RolesRowChangeEventHandler RolesRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event rolesRowChangeEventHandler rolesRowChanged;
+            public event RolesRowChangeEventHandler RolesRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event rolesRowChangeEventHandler rolesRowDeleting;
+            public event RolesRowChangeEventHandler RolesRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event rolesRowChangeEventHandler rolesRowDeleted;
+            public event RolesRowChangeEventHandler RolesRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddrolesRow(rolesRow row) {
+            public void AddRolesRow(RolesRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public rolesRow AddrolesRow(string Title, string permissionLevel) {
-                rolesRow rowrolesRow = ((rolesRow)(this.NewRow()));
+            public RolesRow AddRolesRow(string Title, string permissionLevel) {
+                RolesRow rowRolesRow = ((RolesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Title,
                         permissionLevel};
-                rowrolesRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowrolesRow);
-                return rowrolesRow;
+                rowRolesRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowRolesRow);
+                return rowRolesRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public rolesRow FindByroleID(int roleID) {
-                return ((rolesRow)(this.Rows.Find(new object[] {
+            public RolesRow FindByroleID(int roleID) {
+                return ((RolesRow)(this.Rows.Find(new object[] {
                             roleID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                rolesDataTable cln = ((rolesDataTable)(base.Clone()));
+                RolesDataTable cln = ((RolesDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -2510,7 +2574,7 @@ namespace InventoryManagementSystem {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new rolesDataTable();
+                return new RolesDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2545,28 +2609,28 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public rolesRow NewrolesRow() {
-                return ((rolesRow)(this.NewRow()));
+            public RolesRow NewRolesRow() {
+                return ((RolesRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new rolesRow(builder);
+                return new RolesRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(rolesRow);
+                return typeof(RolesRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.rolesRowChanged != null)) {
-                    this.rolesRowChanged(this, new rolesRowChangeEvent(((rolesRow)(e.Row)), e.Action));
+                if ((this.RolesRowChanged != null)) {
+                    this.RolesRowChanged(this, new RolesRowChangeEvent(((RolesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2574,8 +2638,8 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.rolesRowChanging != null)) {
-                    this.rolesRowChanging(this, new rolesRowChangeEvent(((rolesRow)(e.Row)), e.Action));
+                if ((this.RolesRowChanging != null)) {
+                    this.RolesRowChanging(this, new RolesRowChangeEvent(((RolesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2583,8 +2647,8 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.rolesRowDeleted != null)) {
-                    this.rolesRowDeleted(this, new rolesRowChangeEvent(((rolesRow)(e.Row)), e.Action));
+                if ((this.RolesRowDeleted != null)) {
+                    this.RolesRowDeleted(this, new RolesRowChangeEvent(((RolesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2592,14 +2656,14 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.rolesRowDeleting != null)) {
-                    this.rolesRowDeleting(this, new rolesRowChangeEvent(((rolesRow)(e.Row)), e.Action));
+                if ((this.RolesRowDeleting != null)) {
+                    this.RolesRowDeleting(this, new RolesRowChangeEvent(((RolesRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoverolesRow(rolesRow row) {
+            public void RemoveRolesRow(RolesRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -2626,7 +2690,7 @@ namespace InventoryManagementSystem {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "rolesDataTable";
+                attribute2.FixedValue = "RolesDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2672,7 +2736,7 @@ namespace InventoryManagementSystem {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class usersDataTable : global::System.Data.TypedTableBase<usersRow> {
+        public partial class UsersDataTable : global::System.Data.TypedTableBase<UsersRow> {
             
             private global::System.Data.DataColumn columnuserID;
             
@@ -2692,8 +2756,8 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public usersDataTable() {
-                this.TableName = "users";
+            public UsersDataTable() {
+                this.TableName = "Users";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -2701,7 +2765,7 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal usersDataTable(global::System.Data.DataTable table) {
+            internal UsersDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -2718,7 +2782,7 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected usersDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected UsersDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -2798,34 +2862,34 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public usersRow this[int index] {
+            public UsersRow this[int index] {
                 get {
-                    return ((usersRow)(this.Rows[index]));
+                    return ((UsersRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event usersRowChangeEventHandler usersRowChanging;
+            public event UsersRowChangeEventHandler UsersRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event usersRowChangeEventHandler usersRowChanged;
+            public event UsersRowChangeEventHandler UsersRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event usersRowChangeEventHandler usersRowDeleting;
+            public event UsersRowChangeEventHandler UsersRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event usersRowChangeEventHandler usersRowDeleted;
+            public event UsersRowChangeEventHandler UsersRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddusersRow(usersRow row) {
+            public void AddUsersRow(UsersRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public usersRow AddusersRow(string firstName, string lastName, string phone, rolesRow parentrolesRowByFK__users__role__4AB81AF0, string password, string title, string emailAddress) {
-                usersRow rowusersRow = ((usersRow)(this.NewRow()));
+            public UsersRow AddUsersRow(string firstName, string lastName, string phone, RolesRow parentRolesRowByFK__Users__roleID__208CD6FA, string password, string title, string emailAddress) {
+                UsersRow rowUsersRow = ((UsersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         firstName,
@@ -2835,25 +2899,25 @@ namespace InventoryManagementSystem {
                         password,
                         title,
                         emailAddress};
-                if ((parentrolesRowByFK__users__role__4AB81AF0 != null)) {
-                    columnValuesArray[4] = parentrolesRowByFK__users__role__4AB81AF0[0];
+                if ((parentRolesRowByFK__Users__roleID__208CD6FA != null)) {
+                    columnValuesArray[4] = parentRolesRowByFK__Users__roleID__208CD6FA[0];
                 }
-                rowusersRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowusersRow);
-                return rowusersRow;
+                rowUsersRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowUsersRow);
+                return rowUsersRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public usersRow FindByuserID(int userID) {
-                return ((usersRow)(this.Rows.Find(new object[] {
+            public UsersRow FindByuserID(int userID) {
+                return ((UsersRow)(this.Rows.Find(new object[] {
                             userID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                usersDataTable cln = ((usersDataTable)(base.Clone()));
+                UsersDataTable cln = ((UsersDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -2861,7 +2925,7 @@ namespace InventoryManagementSystem {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new usersDataTable();
+                return new UsersDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2914,33 +2978,34 @@ namespace InventoryManagementSystem {
                 this.columnpassword.MaxLength = 45;
                 this.columntitle.AllowDBNull = false;
                 this.columntitle.MaxLength = 15;
+                this.columnemailAddress.AllowDBNull = false;
                 this.columnemailAddress.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public usersRow NewusersRow() {
-                return ((usersRow)(this.NewRow()));
+            public UsersRow NewUsersRow() {
+                return ((UsersRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new usersRow(builder);
+                return new UsersRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(usersRow);
+                return typeof(UsersRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.usersRowChanged != null)) {
-                    this.usersRowChanged(this, new usersRowChangeEvent(((usersRow)(e.Row)), e.Action));
+                if ((this.UsersRowChanged != null)) {
+                    this.UsersRowChanged(this, new UsersRowChangeEvent(((UsersRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2948,8 +3013,8 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.usersRowChanging != null)) {
-                    this.usersRowChanging(this, new usersRowChangeEvent(((usersRow)(e.Row)), e.Action));
+                if ((this.UsersRowChanging != null)) {
+                    this.UsersRowChanging(this, new UsersRowChangeEvent(((UsersRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2957,8 +3022,8 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.usersRowDeleted != null)) {
-                    this.usersRowDeleted(this, new usersRowChangeEvent(((usersRow)(e.Row)), e.Action));
+                if ((this.UsersRowDeleted != null)) {
+                    this.UsersRowDeleted(this, new UsersRowChangeEvent(((UsersRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2966,14 +3031,14 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.usersRowDeleting != null)) {
-                    this.usersRowDeleting(this, new usersRowChangeEvent(((usersRow)(e.Row)), e.Action));
+                if ((this.UsersRowDeleting != null)) {
+                    this.UsersRowDeleting(this, new UsersRowChangeEvent(((UsersRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveusersRow(usersRow row) {
+            public void RemoveUsersRow(UsersRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -3000,7 +3065,7 @@ namespace InventoryManagementSystem {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "usersDataTable";
+                attribute2.FixedValue = "UsersDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -3377,11 +3442,11 @@ namespace InventoryManagementSystem {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public InventoryRow[] GetInventoryRows() {
-                if ((this.Table.ChildRelations["FK__Inventory__model__300424B4"] == null)) {
+                if ((this.Table.ChildRelations["FK__Inventory__model__2645B050"] == null)) {
                     return new InventoryRow[0];
                 }
                 else {
-                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Inventory__model__300424B4"])));
+                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Inventory__model__2645B050"])));
                 }
             }
         }
@@ -3470,11 +3535,11 @@ namespace InventoryManagementSystem {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public InventoryRow[] GetInventoryRows() {
-                if ((this.Table.ChildRelations["FK__Inventory__docum__30F848ED"] == null)) {
+                if ((this.Table.ChildRelations["FK__Inventory__docum__2739D489"] == null)) {
                     return new InventoryRow[0];
                 }
                 else {
-                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Inventory__docum__30F848ED"])));
+                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Inventory__docum__2739D489"])));
                 }
             }
         }
@@ -3759,11 +3824,11 @@ namespace InventoryManagementSystem {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public InventoryRow[] GetInventoryRows() {
-                if ((this.Table.ChildRelations["FK__Inventory__assig__2F10007B"] == null)) {
+                if ((this.Table.ChildRelations["FK__Inventory__assig__25518C17"] == null)) {
                     return new InventoryRow[0];
                 }
                 else {
-                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Inventory__assig__2F10007B"])));
+                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Inventory__assig__25518C17"])));
                 }
             }
         }
@@ -3966,6 +4031,38 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime dateRecordModified {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableInventory.dateRecordModifiedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'dateRecordModified\' in table \'Inventory\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInventory.dateRecordModifiedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int recordModifiedBy_userID {
+                get {
+                    try {
+                        return ((int)(this[this.tableInventory.recordModifiedBy_userIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'recordModifiedBy_userID\' in table \'Inventory\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInventory.recordModifiedBy_userIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int documentationID {
                 get {
                     try {
@@ -3998,17 +4095,17 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string assignedLocation {
+            public int officeID {
                 get {
                     try {
-                        return ((string)(this[this.tableInventory.assignedLocationColumn]));
+                        return ((int)(this[this.tableInventory.officeIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'assignedLocation\' in table \'Inventory\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'officeID\' in table \'Inventory\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableInventory.assignedLocationColumn] = value;
+                    this[this.tableInventory.officeIDColumn] = value;
                 }
             }
             
@@ -4016,10 +4113,10 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public EmployeesRow EmployeesRow {
                 get {
-                    return ((EmployeesRow)(this.GetParentRow(this.Table.ParentRelations["FK__Inventory__assig__2F10007B"])));
+                    return ((EmployeesRow)(this.GetParentRow(this.Table.ParentRelations["FK__Inventory__assig__25518C17"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Inventory__assig__2F10007B"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Inventory__assig__25518C17"]);
                 }
             }
             
@@ -4027,10 +4124,10 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public DocumentationRow DocumentationRow {
                 get {
-                    return ((DocumentationRow)(this.GetParentRow(this.Table.ParentRelations["FK__Inventory__docum__30F848ED"])));
+                    return ((DocumentationRow)(this.GetParentRow(this.Table.ParentRelations["FK__Inventory__docum__2739D489"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Inventory__docum__30F848ED"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Inventory__docum__2739D489"]);
                 }
             }
             
@@ -4038,10 +4135,32 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ComputerSpecsListRow ComputerSpecsListRow {
                 get {
-                    return ((ComputerSpecsListRow)(this.GetParentRow(this.Table.ParentRelations["FK__Inventory__model__300424B4"])));
+                    return ((ComputerSpecsListRow)(this.GetParentRow(this.Table.ParentRelations["FK__Inventory__model__2645B050"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Inventory__model__300424B4"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Inventory__model__2645B050"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public OfficeListRow OfficeListRow {
+                get {
+                    return ((OfficeListRow)(this.GetParentRow(this.Table.ParentRelations["FK__Inventory__offic__245D67DE"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Inventory__offic__245D67DE"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public UsersRow UsersRow {
+                get {
+                    return ((UsersRow)(this.GetParentRow(this.Table.ParentRelations["FK__Inventory__recor__236943A5"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Inventory__recor__236943A5"]);
                 }
             }
             
@@ -4167,6 +4286,30 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsdateRecordModifiedNull() {
+                return this.IsNull(this.tableInventory.dateRecordModifiedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetdateRecordModifiedNull() {
+                this[this.tableInventory.dateRecordModifiedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsrecordModifiedBy_userIDNull() {
+                return this.IsNull(this.tableInventory.recordModifiedBy_userIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetrecordModifiedBy_userIDNull() {
+                this[this.tableInventory.recordModifiedBy_userIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsdocumentationIDNull() {
                 return this.IsNull(this.tableInventory.documentationIDColumn);
             }
@@ -4191,14 +4334,14 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsassignedLocationNull() {
-                return this.IsNull(this.tableInventory.assignedLocationColumn);
+            public bool IsofficeIDNull() {
+                return this.IsNull(this.tableInventory.officeIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetassignedLocationNull() {
-                this[this.tableInventory.assignedLocationColumn] = global::System.Convert.DBNull;
+            public void SetofficeIDNull() {
+                this[this.tableInventory.officeIDColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4265,30 +4408,41 @@ namespace InventoryManagementSystem {
             public void SetofficeFloorNull() {
                 this[this.tableOfficeList.officeFloorColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public InventoryRow[] GetInventoryRows() {
+                if ((this.Table.ChildRelations["FK__Inventory__offic__245D67DE"] == null)) {
+                    return new InventoryRow[0];
+                }
+                else {
+                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Inventory__offic__245D67DE"])));
+                }
+            }
         }
         
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class rolesRow : global::System.Data.DataRow {
+        public partial class RolesRow : global::System.Data.DataRow {
             
-            private rolesDataTable tableroles;
+            private RolesDataTable tableRoles;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal rolesRow(global::System.Data.DataRowBuilder rb) : 
+            internal RolesRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableroles = ((rolesDataTable)(this.Table));
+                this.tableRoles = ((RolesDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int roleID {
                 get {
-                    return ((int)(this[this.tableroles.roleIDColumn]));
+                    return ((int)(this[this.tableRoles.roleIDColumn]));
                 }
                 set {
-                    this[this.tableroles.roleIDColumn] = value;
+                    this[this.tableRoles.roleIDColumn] = value;
                 }
             }
             
@@ -4296,10 +4450,10 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string Title {
                 get {
-                    return ((string)(this[this.tableroles.TitleColumn]));
+                    return ((string)(this[this.tableRoles.TitleColumn]));
                 }
                 set {
-                    this[this.tableroles.TitleColumn] = value;
+                    this[this.tableRoles.TitleColumn] = value;
                 }
             }
             
@@ -4308,37 +4462,37 @@ namespace InventoryManagementSystem {
             public string permissionLevel {
                 get {
                     try {
-                        return ((string)(this[this.tableroles.permissionLevelColumn]));
+                        return ((string)(this[this.tableRoles.permissionLevelColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'permissionLevel\' in table \'roles\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'permissionLevel\' in table \'Roles\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableroles.permissionLevelColumn] = value;
+                    this[this.tableRoles.permissionLevelColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IspermissionLevelNull() {
-                return this.IsNull(this.tableroles.permissionLevelColumn);
+                return this.IsNull(this.tableRoles.permissionLevelColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetpermissionLevelNull() {
-                this[this.tableroles.permissionLevelColumn] = global::System.Convert.DBNull;
+                this[this.tableRoles.permissionLevelColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public usersRow[] GetusersRows() {
-                if ((this.Table.ChildRelations["FK__users__role__4AB81AF0"] == null)) {
-                    return new usersRow[0];
+            public UsersRow[] GetUsersRows() {
+                if ((this.Table.ChildRelations["FK__Users__roleID__208CD6FA"] == null)) {
+                    return new UsersRow[0];
                 }
                 else {
-                    return ((usersRow[])(base.GetChildRows(this.Table.ChildRelations["FK__users__role__4AB81AF0"])));
+                    return ((UsersRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Users__roleID__208CD6FA"])));
                 }
             }
         }
@@ -4346,25 +4500,25 @@ namespace InventoryManagementSystem {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class usersRow : global::System.Data.DataRow {
+        public partial class UsersRow : global::System.Data.DataRow {
             
-            private usersDataTable tableusers;
+            private UsersDataTable tableUsers;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal usersRow(global::System.Data.DataRowBuilder rb) : 
+            internal UsersRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableusers = ((usersDataTable)(this.Table));
+                this.tableUsers = ((UsersDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int userID {
                 get {
-                    return ((int)(this[this.tableusers.userIDColumn]));
+                    return ((int)(this[this.tableUsers.userIDColumn]));
                 }
                 set {
-                    this[this.tableusers.userIDColumn] = value;
+                    this[this.tableUsers.userIDColumn] = value;
                 }
             }
             
@@ -4372,10 +4526,10 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string firstName {
                 get {
-                    return ((string)(this[this.tableusers.firstNameColumn]));
+                    return ((string)(this[this.tableUsers.firstNameColumn]));
                 }
                 set {
-                    this[this.tableusers.firstNameColumn] = value;
+                    this[this.tableUsers.firstNameColumn] = value;
                 }
             }
             
@@ -4383,10 +4537,10 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string lastName {
                 get {
-                    return ((string)(this[this.tableusers.lastNameColumn]));
+                    return ((string)(this[this.tableUsers.lastNameColumn]));
                 }
                 set {
-                    this[this.tableusers.lastNameColumn] = value;
+                    this[this.tableUsers.lastNameColumn] = value;
                 }
             }
             
@@ -4395,14 +4549,14 @@ namespace InventoryManagementSystem {
             public string phone {
                 get {
                     try {
-                        return ((string)(this[this.tableusers.phoneColumn]));
+                        return ((string)(this[this.tableUsers.phoneColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'phone\' in table \'users\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'phone\' in table \'Users\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableusers.phoneColumn] = value;
+                    this[this.tableUsers.phoneColumn] = value;
                 }
             }
             
@@ -4410,10 +4564,10 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int roleID {
                 get {
-                    return ((int)(this[this.tableusers.roleIDColumn]));
+                    return ((int)(this[this.tableUsers.roleIDColumn]));
                 }
                 set {
-                    this[this.tableusers.roleIDColumn] = value;
+                    this[this.tableUsers.roleIDColumn] = value;
                 }
             }
             
@@ -4421,10 +4575,10 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string password {
                 get {
-                    return ((string)(this[this.tableusers.passwordColumn]));
+                    return ((string)(this[this.tableUsers.passwordColumn]));
                 }
                 set {
-                    this[this.tableusers.passwordColumn] = value;
+                    this[this.tableUsers.passwordColumn] = value;
                 }
             }
             
@@ -4432,10 +4586,10 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string title {
                 get {
-                    return ((string)(this[this.tableusers.titleColumn]));
+                    return ((string)(this[this.tableUsers.titleColumn]));
                 }
                 set {
-                    this[this.tableusers.titleColumn] = value;
+                    this[this.tableUsers.titleColumn] = value;
                 }
             }
             
@@ -4443,51 +4597,45 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string emailAddress {
                 get {
-                    try {
-                        return ((string)(this[this.tableusers.emailAddressColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'emailAddress\' in table \'users\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableUsers.emailAddressColumn]));
                 }
                 set {
-                    this[this.tableusers.emailAddressColumn] = value;
+                    this[this.tableUsers.emailAddressColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public rolesRow rolesRow {
+            public RolesRow RolesRow {
                 get {
-                    return ((rolesRow)(this.GetParentRow(this.Table.ParentRelations["FK__users__role__4AB81AF0"])));
+                    return ((RolesRow)(this.GetParentRow(this.Table.ParentRelations["FK__Users__roleID__208CD6FA"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__users__role__4AB81AF0"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Users__roleID__208CD6FA"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsphoneNull() {
-                return this.IsNull(this.tableusers.phoneColumn);
+                return this.IsNull(this.tableUsers.phoneColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetphoneNull() {
-                this[this.tableusers.phoneColumn] = global::System.Convert.DBNull;
+                this[this.tableUsers.phoneColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsemailAddressNull() {
-                return this.IsNull(this.tableusers.emailAddressColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetemailAddressNull() {
-                this[this.tableusers.emailAddressColumn] = global::System.Convert.DBNull;
+            public InventoryRow[] GetInventoryRows() {
+                if ((this.Table.ChildRelations["FK__Inventory__recor__236943A5"] == null)) {
+                    return new InventoryRow[0];
+                }
+                else {
+                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Inventory__recor__236943A5"])));
+                }
             }
         }
         
@@ -4665,22 +4813,22 @@ namespace InventoryManagementSystem {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class rolesRowChangeEvent : global::System.EventArgs {
+        public class RolesRowChangeEvent : global::System.EventArgs {
             
-            private rolesRow eventRow;
+            private RolesRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public rolesRowChangeEvent(rolesRow row, global::System.Data.DataRowAction action) {
+            public RolesRowChangeEvent(RolesRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public rolesRow Row {
+            public RolesRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4699,22 +4847,22 @@ namespace InventoryManagementSystem {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class usersRowChangeEvent : global::System.EventArgs {
+        public class UsersRowChangeEvent : global::System.EventArgs {
             
-            private usersRow eventRow;
+            private UsersRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public usersRowChangeEvent(usersRow row, global::System.Data.DataRowAction action) {
+            public UsersRowChangeEvent(UsersRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public usersRow Row {
+            public UsersRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -6613,13 +6761,35 @@ SELECT EmployeeID, Name, Title, Username, EmailAddress, Manager, Division, Locat
             tableMapping.ColumnMappings.Add("status", "status");
             tableMapping.ColumnMappings.Add("assignedTo", "assignedTo");
             tableMapping.ColumnMappings.Add("dateAssigned", "dateAssigned");
+            tableMapping.ColumnMappings.Add("dateRecordModified", "dateRecordModified");
+            tableMapping.ColumnMappings.Add("recordModifiedBy_userID", "recordModifiedBy_userID");
             tableMapping.ColumnMappings.Add("documentationID", "documentationID");
             tableMapping.ColumnMappings.Add("datePurchased", "datePurchased");
-            tableMapping.ColumnMappings.Add("assignedLocation", "assignedLocation");
+            tableMapping.ColumnMappings.Add("officeID", "officeID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Inventory] WHERE (([itemID] = @Original_itemID) AND ([itemName] = @Original_itemName) AND ((@IsNull_tag = 1 AND [tag] IS NULL) OR ([tag] = @Original_tag)) AND ((@IsNull_serialNumber = 1 AND [serialNumber] IS NULL) OR ([serialNumber] = @Original_serialNumber)) AND ((@IsNull_manufacturer = 1 AND [manufacturer] IS NULL) OR ([manufacturer] = @Original_manufacturer)) AND ((@IsNull_modelID = 1 AND [modelID] IS NULL) OR ([modelID] = @Original_modelID)) AND ((@IsNull_modelNumber = 1 AND [modelNumber] IS NULL) OR ([modelNumber] = @Original_modelNumber)) AND ((@IsNull_category = 1 AND [category] IS NULL) OR ([category] = @Original_category)) AND ((@IsNull_location = 1 AND [location] IS NULL) OR ([location] = @Original_location)) AND ((@IsNull_status = 1 AND [status] IS NULL) OR ([status] = @Original_status)) AND ((@IsNull_assignedTo = 1 AND [assignedTo] IS NULL) OR ([assignedTo] = @Original_assignedTo)) AND ((@IsNull_dateAssigned = 1 AND [dateAssigned] IS NULL) OR ([dateAssigned] = @Original_dateAssigned)) AND ((@IsNull_documentationID = 1 AND [documentationID] IS NULL) OR ([documentationID] = @Original_documentationID)) AND ((@IsNull_datePurchased = 1 AND [datePurchased] IS NULL) OR ([datePurchased] = @Original_datePurchased)) AND ((@IsNull_assignedLocation = 1 AND [assignedLocation] IS NULL) OR ([assignedLocation] = @Original_assignedLocation)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Inventory] WHERE (([itemID] = @Original_itemID) AND ([itemName" +
+                "] = @Original_itemName) AND ((@IsNull_tag = 1 AND [tag] IS NULL) OR ([tag] = @Or" +
+                "iginal_tag)) AND ((@IsNull_serialNumber = 1 AND [serialNumber] IS NULL) OR ([ser" +
+                "ialNumber] = @Original_serialNumber)) AND ((@IsNull_manufacturer = 1 AND [manufa" +
+                "cturer] IS NULL) OR ([manufacturer] = @Original_manufacturer)) AND ((@IsNull_mod" +
+                "elID = 1 AND [modelID] IS NULL) OR ([modelID] = @Original_modelID)) AND ((@IsNul" +
+                "l_modelNumber = 1 AND [modelNumber] IS NULL) OR ([modelNumber] = @Original_model" +
+                "Number)) AND ((@IsNull_category = 1 AND [category] IS NULL) OR ([category] = @Or" +
+                "iginal_category)) AND ((@IsNull_location = 1 AND [location] IS NULL) OR ([locati" +
+                "on] = @Original_location)) AND ((@IsNull_status = 1 AND [status] IS NULL) OR ([s" +
+                "tatus] = @Original_status)) AND ((@IsNull_assignedTo = 1 AND [assignedTo] IS NUL" +
+                "L) OR ([assignedTo] = @Original_assignedTo)) AND ((@IsNull_dateAssigned = 1 AND " +
+                "[dateAssigned] IS NULL) OR ([dateAssigned] = @Original_dateAssigned)) AND ((@IsN" +
+                "ull_dateRecordModified = 1 AND [dateRecordModified] IS NULL) OR ([dateRecordModi" +
+                "fied] = @Original_dateRecordModified)) AND ((@IsNull_recordModifiedBy_userID = 1" +
+                " AND [recordModifiedBy_userID] IS NULL) OR ([recordModifiedBy_userID] = @Origina" +
+                "l_recordModifiedBy_userID)) AND ((@IsNull_documentationID = 1 AND [documentation" +
+                "ID] IS NULL) OR ([documentationID] = @Original_documentationID)) AND ((@IsNull_d" +
+                "atePurchased = 1 AND [datePurchased] IS NULL) OR ([datePurchased] = @Original_da" +
+                "tePurchased)) AND ((@IsNull_officeID = 1 AND [officeID] IS NULL) OR ([officeID] " +
+                "= @Original_officeID)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_itemID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_itemName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -6643,16 +6813,20 @@ SELECT EmployeeID, Name, Title, Username, EmailAddress, Manager, Division, Locat
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_assignedTo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "assignedTo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dateAssigned", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateAssigned", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dateAssigned", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateAssigned", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dateRecordModified", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateRecordModified", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dateRecordModified", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateRecordModified", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_recordModifiedBy_userID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "recordModifiedBy_userID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_recordModifiedBy_userID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "recordModifiedBy_userID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_documentationID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "documentationID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_documentationID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "documentationID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_datePurchased", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "datePurchased", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_datePurchased", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "datePurchased", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_assignedLocation", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "assignedLocation", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_assignedLocation", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "assignedLocation", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_officeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_officeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Inventory] ([itemID], [itemName], [tag], [serialNumber], [manufacturer], [modelID], [modelNumber], [category], [location], [status], [assignedTo], [dateAssigned], [documentationID], [datePurchased], [assignedLocation]) VALUES (@itemID, @itemName, @tag, @serialNumber, @manufacturer, @modelID, @modelNumber, @category, @location, @status, @assignedTo, @dateAssigned, @documentationID, @datePurchased, @assignedLocation);
-SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, category, location, status, assignedTo, dateAssigned, documentationID, datePurchased, assignedLocation FROM Inventory WHERE (itemID = @itemID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Inventory] ([itemID], [itemName], [tag], [serialNumber], [manufacturer], [modelID], [modelNumber], [category], [location], [status], [assignedTo], [dateAssigned], [dateRecordModified], [recordModifiedBy_userID], [documentationID], [datePurchased], [officeID]) VALUES (@itemID, @itemName, @tag, @serialNumber, @manufacturer, @modelID, @modelNumber, @category, @location, @status, @assignedTo, @dateAssigned, @dateRecordModified, @recordModifiedBy_userID, @documentationID, @datePurchased, @officeID);
+SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, category, location, status, assignedTo, dateAssigned, dateRecordModified, recordModifiedBy_userID, documentationID, datePurchased, officeID FROM Inventory WHERE (itemID = @itemID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6666,37 +6840,43 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@assignedTo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "assignedTo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateAssigned", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateAssigned", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateRecordModified", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateRecordModified", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@recordModifiedBy_userID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "recordModifiedBy_userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@documentationID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "documentationID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@datePurchased", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "datePurchased", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@assignedLocation", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "assignedLocation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@officeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Inventory] SET [itemID] = @itemID, [itemName] = @itemName, [tag] = " +
                 "@tag, [serialNumber] = @serialNumber, [manufacturer] = @manufacturer, [modelID] " +
                 "= @modelID, [modelNumber] = @modelNumber, [category] = @category, [location] = @" +
                 "location, [status] = @status, [assignedTo] = @assignedTo, [dateAssigned] = @date" +
-                "Assigned, [documentationID] = @documentationID, [datePurchased] = @datePurchased" +
-                ", [assignedLocation] = @assignedLocation WHERE (([itemID] = @Original_itemID) AN" +
-                "D ([itemName] = @Original_itemName) AND ((@IsNull_tag = 1 AND [tag] IS NULL) OR " +
-                "([tag] = @Original_tag)) AND ((@IsNull_serialNumber = 1 AND [serialNumber] IS NU" +
-                "LL) OR ([serialNumber] = @Original_serialNumber)) AND ((@IsNull_manufacturer = 1" +
-                " AND [manufacturer] IS NULL) OR ([manufacturer] = @Original_manufacturer)) AND (" +
-                "(@IsNull_modelID = 1 AND [modelID] IS NULL) OR ([modelID] = @Original_modelID)) " +
-                "AND ((@IsNull_modelNumber = 1 AND [modelNumber] IS NULL) OR ([modelNumber] = @Or" +
-                "iginal_modelNumber)) AND ((@IsNull_category = 1 AND [category] IS NULL) OR ([cat" +
-                "egory] = @Original_category)) AND ((@IsNull_location = 1 AND [location] IS NULL)" +
-                " OR ([location] = @Original_location)) AND ((@IsNull_status = 1 AND [status] IS " +
-                "NULL) OR ([status] = @Original_status)) AND ((@IsNull_assignedTo = 1 AND [assign" +
-                "edTo] IS NULL) OR ([assignedTo] = @Original_assignedTo)) AND ((@IsNull_dateAssig" +
-                "ned = 1 AND [dateAssigned] IS NULL) OR ([dateAssigned] = @Original_dateAssigned)" +
-                ") AND ((@IsNull_documentationID = 1 AND [documentationID] IS NULL) OR ([document" +
-                "ationID] = @Original_documentationID)) AND ((@IsNull_datePurchased = 1 AND [date" +
-                "Purchased] IS NULL) OR ([datePurchased] = @Original_datePurchased)) AND ((@IsNul" +
-                "l_assignedLocation = 1 AND [assignedLocation] IS NULL) OR ([assignedLocation] = " +
-                "@Original_assignedLocation)));\r\nSELECT itemID, itemName, tag, serialNumber, manu" +
-                "facturer, modelID, modelNumber, category, location, status, assignedTo, dateAssi" +
-                "gned, documentationID, datePurchased, assignedLocation FROM Inventory WHERE (ite" +
-                "mID = @itemID)";
+                "Assigned, [dateRecordModified] = @dateRecordModified, [recordModifiedBy_userID] " +
+                "= @recordModifiedBy_userID, [documentationID] = @documentationID, [datePurchased" +
+                "] = @datePurchased, [officeID] = @officeID WHERE (([itemID] = @Original_itemID) " +
+                "AND ([itemName] = @Original_itemName) AND ((@IsNull_tag = 1 AND [tag] IS NULL) O" +
+                "R ([tag] = @Original_tag)) AND ((@IsNull_serialNumber = 1 AND [serialNumber] IS " +
+                "NULL) OR ([serialNumber] = @Original_serialNumber)) AND ((@IsNull_manufacturer =" +
+                " 1 AND [manufacturer] IS NULL) OR ([manufacturer] = @Original_manufacturer)) AND" +
+                " ((@IsNull_modelID = 1 AND [modelID] IS NULL) OR ([modelID] = @Original_modelID)" +
+                ") AND ((@IsNull_modelNumber = 1 AND [modelNumber] IS NULL) OR ([modelNumber] = @" +
+                "Original_modelNumber)) AND ((@IsNull_category = 1 AND [category] IS NULL) OR ([c" +
+                "ategory] = @Original_category)) AND ((@IsNull_location = 1 AND [location] IS NUL" +
+                "L) OR ([location] = @Original_location)) AND ((@IsNull_status = 1 AND [status] I" +
+                "S NULL) OR ([status] = @Original_status)) AND ((@IsNull_assignedTo = 1 AND [assi" +
+                "gnedTo] IS NULL) OR ([assignedTo] = @Original_assignedTo)) AND ((@IsNull_dateAss" +
+                "igned = 1 AND [dateAssigned] IS NULL) OR ([dateAssigned] = @Original_dateAssigne" +
+                "d)) AND ((@IsNull_dateRecordModified = 1 AND [dateRecordModified] IS NULL) OR ([" +
+                "dateRecordModified] = @Original_dateRecordModified)) AND ((@IsNull_recordModifie" +
+                "dBy_userID = 1 AND [recordModifiedBy_userID] IS NULL) OR ([recordModifiedBy_user" +
+                "ID] = @Original_recordModifiedBy_userID)) AND ((@IsNull_documentationID = 1 AND " +
+                "[documentationID] IS NULL) OR ([documentationID] = @Original_documentationID)) A" +
+                "ND ((@IsNull_datePurchased = 1 AND [datePurchased] IS NULL) OR ([datePurchased] " +
+                "= @Original_datePurchased)) AND ((@IsNull_officeID = 1 AND [officeID] IS NULL) O" +
+                "R ([officeID] = @Original_officeID)));\r\nSELECT itemID, itemName, tag, serialNumb" +
+                "er, manufacturer, modelID, modelNumber, category, location, status, assignedTo, " +
+                "dateAssigned, dateRecordModified, recordModifiedBy_userID, documentationID, date" +
+                "Purchased, officeID FROM Inventory WHERE (itemID = @itemID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6710,9 +6890,11 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@assignedTo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "assignedTo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateAssigned", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateAssigned", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateRecordModified", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateRecordModified", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@recordModifiedBy_userID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "recordModifiedBy_userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@documentationID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "documentationID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@datePurchased", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "datePurchased", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@assignedLocation", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "assignedLocation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@officeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_itemID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_itemName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tag", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tag", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -6735,12 +6917,16 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_assignedTo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "assignedTo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dateAssigned", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateAssigned", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dateAssigned", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateAssigned", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dateRecordModified", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateRecordModified", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dateRecordModified", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateRecordModified", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_recordModifiedBy_userID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "recordModifiedBy_userID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_recordModifiedBy_userID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "recordModifiedBy_userID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_documentationID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "documentationID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_documentationID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "documentationID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_datePurchased", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "datePurchased", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_datePurchased", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "datePurchased", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_assignedLocation", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "assignedLocation", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_assignedLocation", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "assignedLocation", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_officeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_officeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6757,8 +6943,8 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, c" +
-                "ategory, location, status, assignedTo, dateAssigned, documentationID, datePurcha" +
-                "sed, assignedLocation FROM dbo.Inventory";
+                "ategory, location, status, assignedTo, dateAssigned, dateRecordModified, recordM" +
+                "odifiedBy_userID, documentationID, datePurchased, officeID FROM dbo.Inventory";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -6819,7 +7005,24 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_itemID, string Original_itemName, string Original_tag, string Original_serialNumber, string Original_manufacturer, global::System.Nullable<int> Original_modelID, string Original_modelNumber, string Original_category, string Original_location, string Original_status, global::System.Nullable<int> Original_assignedTo, global::System.Nullable<global::System.DateTime> Original_dateAssigned, global::System.Nullable<int> Original_documentationID, global::System.Nullable<global::System.DateTime> Original_datePurchased, string Original_assignedLocation) {
+        public virtual int Delete(
+                    int Original_itemID, 
+                    string Original_itemName, 
+                    string Original_tag, 
+                    string Original_serialNumber, 
+                    string Original_manufacturer, 
+                    global::System.Nullable<int> Original_modelID, 
+                    string Original_modelNumber, 
+                    string Original_category, 
+                    string Original_location, 
+                    string Original_status, 
+                    global::System.Nullable<int> Original_assignedTo, 
+                    global::System.Nullable<global::System.DateTime> Original_dateAssigned, 
+                    global::System.Nullable<global::System.DateTime> Original_dateRecordModified, 
+                    global::System.Nullable<int> Original_recordModifiedBy_userID, 
+                    global::System.Nullable<int> Original_documentationID, 
+                    global::System.Nullable<global::System.DateTime> Original_datePurchased, 
+                    global::System.Nullable<int> Original_officeID) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_itemID));
             if ((Original_itemName == null)) {
                 throw new global::System.ArgumentNullException("Original_itemName");
@@ -6907,29 +7110,45 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
                 this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
-            if ((Original_documentationID.HasValue == true)) {
+            if ((Original_dateRecordModified.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[23].Value = ((int)(Original_documentationID.Value));
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((System.DateTime)(Original_dateRecordModified.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
-            if ((Original_datePurchased.HasValue == true)) {
+            if ((Original_recordModifiedBy_userID.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[25].Value = ((System.DateTime)(Original_datePurchased.Value));
+                this.Adapter.DeleteCommand.Parameters[25].Value = ((int)(Original_recordModifiedBy_userID.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
-            if ((Original_assignedLocation == null)) {
+            if ((Original_documentationID.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[27].Value = ((int)(Original_documentationID.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
+            if ((Original_datePurchased.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[29].Value = ((System.DateTime)(Original_datePurchased.Value));
+            }
             else {
-                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[27].Value = ((string)(Original_assignedLocation));
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            if ((Original_officeID.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[30].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[31].Value = ((int)(Original_officeID.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[30].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -6951,7 +7170,24 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int itemID, string itemName, string tag, string serialNumber, string manufacturer, global::System.Nullable<int> modelID, string modelNumber, string category, string location, string status, global::System.Nullable<int> assignedTo, global::System.Nullable<global::System.DateTime> dateAssigned, global::System.Nullable<int> documentationID, global::System.Nullable<global::System.DateTime> datePurchased, string assignedLocation) {
+        public virtual int Insert(
+                    int itemID, 
+                    string itemName, 
+                    string tag, 
+                    string serialNumber, 
+                    string manufacturer, 
+                    global::System.Nullable<int> modelID, 
+                    string modelNumber, 
+                    string category, 
+                    string location, 
+                    string status, 
+                    global::System.Nullable<int> assignedTo, 
+                    global::System.Nullable<global::System.DateTime> dateAssigned, 
+                    global::System.Nullable<global::System.DateTime> dateRecordModified, 
+                    global::System.Nullable<int> recordModifiedBy_userID, 
+                    global::System.Nullable<int> documentationID, 
+                    global::System.Nullable<global::System.DateTime> datePurchased, 
+                    global::System.Nullable<int> officeID) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(itemID));
             if ((itemName == null)) {
                 throw new global::System.ArgumentNullException("itemName");
@@ -7019,23 +7255,35 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
             else {
                 this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((documentationID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((int)(documentationID.Value));
+            if ((dateRecordModified.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((System.DateTime)(dateRecordModified.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((datePurchased.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((System.DateTime)(datePurchased.Value));
+            if ((recordModifiedBy_userID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((int)(recordModifiedBy_userID.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((assignedLocation == null)) {
-                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
+            if ((documentationID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[14].Value = ((int)(documentationID.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(assignedLocation));
+                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((datePurchased.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((System.DateTime)(datePurchased.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            if ((officeID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[16].Value = ((int)(officeID.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -7070,9 +7318,11 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
                     string status, 
                     global::System.Nullable<int> assignedTo, 
                     global::System.Nullable<global::System.DateTime> dateAssigned, 
+                    global::System.Nullable<global::System.DateTime> dateRecordModified, 
+                    global::System.Nullable<int> recordModifiedBy_userID, 
                     global::System.Nullable<int> documentationID, 
                     global::System.Nullable<global::System.DateTime> datePurchased, 
-                    string assignedLocation, 
+                    global::System.Nullable<int> officeID, 
                     int Original_itemID, 
                     string Original_itemName, 
                     string Original_tag, 
@@ -7085,9 +7335,11 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
                     string Original_status, 
                     global::System.Nullable<int> Original_assignedTo, 
                     global::System.Nullable<global::System.DateTime> Original_dateAssigned, 
+                    global::System.Nullable<global::System.DateTime> Original_dateRecordModified, 
+                    global::System.Nullable<int> Original_recordModifiedBy_userID, 
                     global::System.Nullable<int> Original_documentationID, 
                     global::System.Nullable<global::System.DateTime> Original_datePurchased, 
-                    string Original_assignedLocation) {
+                    global::System.Nullable<int> Original_officeID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(itemID));
             if ((itemName == null)) {
                 throw new global::System.ArgumentNullException("itemName");
@@ -7155,134 +7407,162 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
             else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((documentationID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(documentationID.Value));
+            if ((dateRecordModified.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(dateRecordModified.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((datePurchased.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(datePurchased.Value));
+            if ((recordModifiedBy_userID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(recordModifiedBy_userID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((assignedLocation == null)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            if ((documentationID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(documentationID.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(assignedLocation));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_itemID));
+            if ((datePurchased.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(datePurchased.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            if ((officeID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(officeID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_itemID));
             if ((Original_itemName == null)) {
                 throw new global::System.ArgumentNullException("Original_itemName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_itemName));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_itemName));
             }
             if ((Original_tag == null)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_tag));
-            }
-            if ((Original_serialNumber == null)) {
                 this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_serialNumber));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_tag));
             }
-            if ((Original_manufacturer == null)) {
+            if ((Original_serialNumber == null)) {
                 this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_manufacturer));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_serialNumber));
             }
-            if ((Original_modelID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(Original_modelID.Value));
-            }
-            else {
+            if ((Original_manufacturer == null)) {
                 this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
-            if ((Original_modelNumber == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_manufacturer));
+            }
+            if ((Original_modelID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((int)(Original_modelID.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_modelNumber));
-            }
-            if ((Original_category == null)) {
+            if ((Original_modelNumber == null)) {
                 this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_category));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_modelNumber));
             }
-            if ((Original_location == null)) {
+            if ((Original_category == null)) {
                 this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_location));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_category));
             }
-            if ((Original_status == null)) {
+            if ((Original_location == null)) {
                 this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_status));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_location));
             }
-            if ((Original_assignedTo.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((int)(Original_assignedTo.Value));
-            }
-            else {
+            if ((Original_status == null)) {
                 this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
-            if ((Original_dateAssigned.HasValue == true)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(Original_status));
+            }
+            if ((Original_assignedTo.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((System.DateTime)(Original_dateAssigned.Value));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((int)(Original_assignedTo.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
             }
-            if ((Original_documentationID.HasValue == true)) {
+            if ((Original_dateAssigned.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((int)(Original_documentationID.Value));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((System.DateTime)(Original_dateAssigned.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
             }
-            if ((Original_datePurchased.HasValue == true)) {
+            if ((Original_dateRecordModified.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((System.DateTime)(Original_datePurchased.Value));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((System.DateTime)(Original_dateRecordModified.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
             }
-            if ((Original_assignedLocation == null)) {
+            if ((Original_recordModifiedBy_userID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((int)(Original_recordModifiedBy_userID.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
             }
+            if ((Original_documentationID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((int)(Original_documentationID.Value));
+            }
             else {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((string)(Original_assignedLocation));
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
+            }
+            if ((Original_datePurchased.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((System.DateTime)(Original_datePurchased.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
+            }
+            if ((Original_officeID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((int)(Original_officeID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[48].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -7316,9 +7596,11 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
                     string status, 
                     global::System.Nullable<int> assignedTo, 
                     global::System.Nullable<global::System.DateTime> dateAssigned, 
+                    global::System.Nullable<global::System.DateTime> dateRecordModified, 
+                    global::System.Nullable<int> recordModifiedBy_userID, 
                     global::System.Nullable<int> documentationID, 
                     global::System.Nullable<global::System.DateTime> datePurchased, 
-                    string assignedLocation, 
+                    global::System.Nullable<int> officeID, 
                     int Original_itemID, 
                     string Original_itemName, 
                     string Original_tag, 
@@ -7331,10 +7613,12 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
                     string Original_status, 
                     global::System.Nullable<int> Original_assignedTo, 
                     global::System.Nullable<global::System.DateTime> Original_dateAssigned, 
+                    global::System.Nullable<global::System.DateTime> Original_dateRecordModified, 
+                    global::System.Nullable<int> Original_recordModifiedBy_userID, 
                     global::System.Nullable<int> Original_documentationID, 
                     global::System.Nullable<global::System.DateTime> Original_datePurchased, 
-                    string Original_assignedLocation) {
-            return this.Update(Original_itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, category, location, status, assignedTo, dateAssigned, documentationID, datePurchased, assignedLocation, Original_itemID, Original_itemName, Original_tag, Original_serialNumber, Original_manufacturer, Original_modelID, Original_modelNumber, Original_category, Original_location, Original_status, Original_assignedTo, Original_dateAssigned, Original_documentationID, Original_datePurchased, Original_assignedLocation);
+                    global::System.Nullable<int> Original_officeID) {
+            return this.Update(Original_itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, category, location, status, assignedTo, dateAssigned, dateRecordModified, recordModifiedBy_userID, documentationID, datePurchased, officeID, Original_itemID, Original_itemName, Original_tag, Original_serialNumber, Original_manufacturer, Original_modelID, Original_modelNumber, Original_category, Original_location, Original_status, Original_assignedTo, Original_dateAssigned, Original_dateRecordModified, Original_recordModifiedBy_userID, Original_documentationID, Original_datePurchased, Original_officeID);
         }
     }
     
@@ -7703,7 +7987,7 @@ SELECT officeID, officeName, officeFloor FROM OfficeList WHERE (officeID = @offi
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class rolesTableAdapter : global::System.ComponentModel.Component {
+    public partial class RolesTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -7717,7 +8001,7 @@ SELECT officeID, officeName, officeFloor FROM OfficeList WHERE (officeID = @offi
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public rolesTableAdapter() {
+        public RolesTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -7814,14 +8098,14 @@ SELECT officeID, officeName, officeFloor FROM OfficeList WHERE (officeID = @offi
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "roles";
+            tableMapping.DataSetTable = "Roles";
             tableMapping.ColumnMappings.Add("roleID", "roleID");
             tableMapping.ColumnMappings.Add("Title", "Title");
             tableMapping.ColumnMappings.Add("permissionLevel", "permissionLevel");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[roles] WHERE (([roleID] = @Original_roleID) AND ([Title] = @Or" +
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Roles] WHERE (([roleID] = @Original_roleID) AND ([Title] = @Or" +
                 "iginal_Title) AND ((@IsNull_permissionLevel = 1 AND [permissionLevel] IS NULL) O" +
                 "R ([permissionLevel] = @Original_permissionLevel)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
@@ -7831,16 +8115,16 @@ SELECT officeID, officeName, officeFloor FROM OfficeList WHERE (officeID = @offi
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_permissionLevel", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "permissionLevel", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[roles] ([Title], [permissionLevel]) VALUES (@Title, @permissio" +
-                "nLevel);\r\nSELECT roleID, Title, permissionLevel FROM roles WHERE (roleID = SCOPE" +
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Roles] ([Title], [permissionLevel]) VALUES (@Title, @permissio" +
+                "nLevel);\r\nSELECT roleID, Title, permissionLevel FROM Roles WHERE (roleID = SCOPE" +
                 "_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Title", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@permissionLevel", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "permissionLevel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[roles] SET [Title] = @Title, [permissionLevel] = @permissionLevel WHERE (([roleID] = @Original_roleID) AND ([Title] = @Original_Title) AND ((@IsNull_permissionLevel = 1 AND [permissionLevel] IS NULL) OR ([permissionLevel] = @Original_permissionLevel)));
-SELECT roleID, Title, permissionLevel FROM roles WHERE (roleID = @roleID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Roles] SET [Title] = @Title, [permissionLevel] = @permissionLevel WHERE (([roleID] = @Original_roleID) AND ([Title] = @Original_Title) AND ((@IsNull_permissionLevel = 1 AND [permissionLevel] IS NULL) OR ([permissionLevel] = @Original_permissionLevel)));
+SELECT roleID, Title, permissionLevel FROM Roles WHERE (roleID = @roleID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Title", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@permissionLevel", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "permissionLevel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7864,7 +8148,7 @@ SELECT roleID, Title, permissionLevel FROM roles WHERE (roleID = @roleID)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT roleID, Title, permissionLevel FROM dbo.roles";
+            this._commandCollection[0].CommandText = "SELECT roleID, Title, permissionLevel FROM dbo.Roles";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7872,7 +8156,7 @@ SELECT roleID, Title, permissionLevel FROM roles WHERE (roleID = @roleID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(InventoryDBDataSet.rolesDataTable dataTable) {
+        public virtual int Fill(InventoryDBDataSet.RolesDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -7885,9 +8169,9 @@ SELECT roleID, Title, permissionLevel FROM roles WHERE (roleID = @roleID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual InventoryDBDataSet.rolesDataTable GetData() {
+        public virtual InventoryDBDataSet.RolesDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            InventoryDBDataSet.rolesDataTable dataTable = new InventoryDBDataSet.rolesDataTable();
+            InventoryDBDataSet.RolesDataTable dataTable = new InventoryDBDataSet.RolesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -7895,7 +8179,7 @@ SELECT roleID, Title, permissionLevel FROM roles WHERE (roleID = @roleID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(InventoryDBDataSet.rolesDataTable dataTable) {
+        public virtual int Update(InventoryDBDataSet.RolesDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -7903,7 +8187,7 @@ SELECT roleID, Title, permissionLevel FROM roles WHERE (roleID = @roleID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(InventoryDBDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "roles");
+            return this.Adapter.Update(dataSet, "Roles");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8057,7 +8341,7 @@ SELECT roleID, Title, permissionLevel FROM roles WHERE (roleID = @roleID)";
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class usersTableAdapter : global::System.ComponentModel.Component {
+    public partial class UsersTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -8071,7 +8355,7 @@ SELECT roleID, Title, permissionLevel FROM roles WHERE (roleID = @roleID)";
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public usersTableAdapter() {
+        public UsersTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -8168,7 +8452,7 @@ SELECT roleID, Title, permissionLevel FROM roles WHERE (roleID = @roleID)";
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "users";
+            tableMapping.DataSetTable = "Users";
             tableMapping.ColumnMappings.Add("userID", "userID");
             tableMapping.ColumnMappings.Add("firstName", "firstName");
             tableMapping.ColumnMappings.Add("lastName", "lastName");
@@ -8180,7 +8464,7 @@ SELECT roleID, Title, permissionLevel FROM roles WHERE (roleID = @roleID)";
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[users] WHERE (([userID] = @Original_userID) AND ([firstName] = @Original_firstName) AND ([lastName] = @Original_lastName) AND ((@IsNull_phone = 1 AND [phone] IS NULL) OR ([phone] = @Original_phone)) AND ([roleID] = @Original_roleID) AND ([password] = @Original_password) AND ([title] = @Original_title) AND ((@IsNull_emailAddress = 1 AND [emailAddress] IS NULL) OR ([emailAddress] = @Original_emailAddress)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Users] WHERE (([userID] = @Original_userID) AND ([firstName] = @Original_firstName) AND ([lastName] = @Original_lastName) AND ((@IsNull_phone = 1 AND [phone] IS NULL) OR ([phone] = @Original_phone)) AND ([roleID] = @Original_roleID) AND ([password] = @Original_password) AND ([title] = @Original_title) AND ([emailAddress] = @Original_emailAddress))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_userID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_firstName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -8190,12 +8474,11 @@ SELECT roleID, Title, permissionLevel FROM roles WHERE (roleID = @roleID)";
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_roleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "roleID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_password", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_title", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "title", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_emailAddress", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "emailAddress", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_emailAddress", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "emailAddress", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[users] ([firstName], [lastName], [phone], [roleID], [password], [title], [emailAddress]) VALUES (@firstName, @lastName, @phone, @roleID, @password, @title, @emailAddress);
-SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress FROM users WHERE (userID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Users] ([firstName], [lastName], [phone], [roleID], [password], [title], [emailAddress]) VALUES (@firstName, @lastName, @phone, @roleID, @password, @title, @emailAddress);
+SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress FROM Users WHERE (userID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@firstName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lastName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8206,8 +8489,8 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@emailAddress", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "emailAddress", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[users] SET [firstName] = @firstName, [lastName] = @lastName, [phone] = @phone, [roleID] = @roleID, [password] = @password, [title] = @title, [emailAddress] = @emailAddress WHERE (([userID] = @Original_userID) AND ([firstName] = @Original_firstName) AND ([lastName] = @Original_lastName) AND ((@IsNull_phone = 1 AND [phone] IS NULL) OR ([phone] = @Original_phone)) AND ([roleID] = @Original_roleID) AND ([password] = @Original_password) AND ([title] = @Original_title) AND ((@IsNull_emailAddress = 1 AND [emailAddress] IS NULL) OR ([emailAddress] = @Original_emailAddress)));
-SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress FROM users WHERE (userID = @userID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Users] SET [firstName] = @firstName, [lastName] = @lastName, [phone] = @phone, [roleID] = @roleID, [password] = @password, [title] = @title, [emailAddress] = @emailAddress WHERE (([userID] = @Original_userID) AND ([firstName] = @Original_firstName) AND ([lastName] = @Original_lastName) AND ((@IsNull_phone = 1 AND [phone] IS NULL) OR ([phone] = @Original_phone)) AND ([roleID] = @Original_roleID) AND ([password] = @Original_password) AND ([title] = @Original_title) AND ([emailAddress] = @Original_emailAddress));
+SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress FROM Users WHERE (userID = @userID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@firstName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lastName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8224,7 +8507,6 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_roleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "roleID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_password", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_title", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "title", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_emailAddress", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "emailAddress", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_emailAddress", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "emailAddress", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -8243,7 +8525,7 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress " +
-                "FROM dbo.users";
+                "FROM Users";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8251,7 +8533,7 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(InventoryDBDataSet.usersDataTable dataTable) {
+        public virtual int Fill(InventoryDBDataSet.UsersDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -8264,9 +8546,9 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual InventoryDBDataSet.usersDataTable GetData() {
+        public virtual InventoryDBDataSet.UsersDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            InventoryDBDataSet.usersDataTable dataTable = new InventoryDBDataSet.usersDataTable();
+            InventoryDBDataSet.UsersDataTable dataTable = new InventoryDBDataSet.UsersDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -8274,7 +8556,7 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(InventoryDBDataSet.usersDataTable dataTable) {
+        public virtual int Update(InventoryDBDataSet.UsersDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -8282,7 +8564,7 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(InventoryDBDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "users");
+            return this.Adapter.Update(dataSet, "Users");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8340,12 +8622,10 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_title));
             }
             if ((Original_emailAddress == null)) {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_emailAddress");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Original_emailAddress));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_emailAddress));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8400,7 +8680,7 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
                 this.Adapter.InsertCommand.Parameters[5].Value = ((string)(title));
             }
             if ((emailAddress == null)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("emailAddress");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = ((string)(emailAddress));
@@ -8474,7 +8754,7 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(title));
             }
             if ((emailAddress == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("emailAddress");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(emailAddress));
@@ -8514,14 +8794,12 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_title));
             }
             if ((Original_emailAddress == null)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_emailAddress");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_emailAddress));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_emailAddress));
             }
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(userID));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(userID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8569,9 +8847,9 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
         
         private OfficeListTableAdapter _officeListTableAdapter;
         
-        private rolesTableAdapter _rolesTableAdapter;
+        private RolesTableAdapter _rolesTableAdapter;
         
-        private usersTableAdapter _usersTableAdapter;
+        private UsersTableAdapter _usersTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -8663,7 +8941,7 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public rolesTableAdapter rolesTableAdapter {
+        public RolesTableAdapter RolesTableAdapter {
             get {
                 return this._rolesTableAdapter;
             }
@@ -8677,7 +8955,7 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public usersTableAdapter usersTableAdapter {
+        public UsersTableAdapter UsersTableAdapter {
             get {
                 return this._usersTableAdapter;
             }
@@ -8778,6 +9056,15 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateUpdatedRows(InventoryDBDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._rolesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Roles.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._rolesTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._computerSpecsListTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.ComputerSpecsList.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -8805,24 +9092,6 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._rolesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.roles.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._rolesTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._inventoryTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Inventory.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._inventoryTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._officeListTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.OfficeList.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -8833,11 +9102,20 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
                 }
             }
             if ((this._usersTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.users.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                global::System.Data.DataRow[] updatedRows = dataSet.Users.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._usersTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._inventoryTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Inventory.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._inventoryTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -8851,6 +9129,14 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateInsertedRows(InventoryDBDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._rolesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Roles.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._rolesTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._computerSpecsListTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ComputerSpecsList.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -8875,22 +9161,6 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._rolesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.roles.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._rolesTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._inventoryTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Inventory.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._inventoryTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._officeListTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.OfficeList.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -8900,10 +9170,18 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
                 }
             }
             if ((this._usersTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.users.Select(null, null, global::System.Data.DataViewRowState.Added);
+                global::System.Data.DataRow[] addedRows = dataSet.Users.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._usersTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._inventoryTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Inventory.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._inventoryTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -8917,8 +9195,16 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateDeletedRows(InventoryDBDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._inventoryTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Inventory.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._inventoryTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._usersTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.users.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                global::System.Data.DataRow[] deletedRows = dataSet.Users.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._usersTableAdapter.Update(deletedRows));
@@ -8930,22 +9216,6 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._officeListTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._inventoryTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Inventory.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._inventoryTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._rolesTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.roles.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._rolesTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -8970,6 +9240,14 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._computerSpecsListTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._rolesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Roles.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._rolesTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

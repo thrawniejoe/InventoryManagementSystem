@@ -26,12 +26,16 @@ namespace InventoryManagementSystem
         public string status { get; set; }
         public Nullable<int> assignedTo { get; set; }
         public Nullable<System.DateTime> dateAssigned { get; set; }
+        public Nullable<System.DateTime> dateRecordModified { get; set; }
+        public Nullable<int> recordModifiedBy_userID { get; set; }
         public Nullable<int> documentationID { get; set; }
         public Nullable<System.DateTime> datePurchased { get; set; }
-        public string assignedLocation { get; set; }
+        public Nullable<int> officeID { get; set; }
     
         public virtual ComputerSpecsList ComputerSpecsList { get; set; }
         public virtual Documentation Documentation { get; set; }
         public virtual Employee Employee { get; set; }
+        public virtual OfficeList OfficeList { get; set; }
+        public virtual User User { get; set; }
     }
 }

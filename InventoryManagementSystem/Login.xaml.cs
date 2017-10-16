@@ -33,11 +33,11 @@ namespace InventoryManagementSystem
 
             var context = new InventoryManagementSystem.InventoryDBEntities();
 
-            var getPass = (from user in context.users
+            var getPass = (from user in context.Users
                           where user.emailAddress == username
                           select user.password).FirstOrDefault();
 
-            var getRole = (from u in context.users
+            var getRole = (from u in context.Users
                            where u.emailAddress.Equals(username)
                            select u.roleID).SingleOrDefault();
 

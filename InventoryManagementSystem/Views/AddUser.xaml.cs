@@ -34,7 +34,7 @@ namespace InventoryManagementSystem.Views
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var context = new InventoryManagementSystem.InventoryDBEntities();
-            var roles = (from r in context.roles
+            var roles = (from r in context.Roles
                          select new { title = r.Title, id = r.roleID }).ToList();
             roleComboBox.ItemsSource = roles;
             roleComboBox.DisplayMemberPath = "title";
@@ -47,17 +47,17 @@ namespace InventoryManagementSystem.Views
                     break;
 
                 case "Modify":
-                    var userInfo = (from u in context.users
+                    var userInfo = (from u in context.Users
                                     where u.userID == userID
                                     select u).FirstOrDefault();
 
-                    user mU = new user();
+                    User mU = new User();
                     mU = userInfo;
 
                     firstNameTextBox.Text = mU.firstName;
                     lastNameTextBox.Text = mU.lastName;
                     phoneTextBox.Text = mU.phone;
-                    roleComboBox.Text = mU.role.Title;
+                    roleComboBox.Text = mU.Role.Title;
                     passwordTextBox.Text = mU.password;
                     emailAddressTextBox.Text = mU.emailAddress;
                     break;
@@ -69,7 +69,7 @@ namespace InventoryManagementSystem.Views
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
             var context = new InventoryManagementSystem.InventoryDBEntities();
-            user newUser = new user();
+            User newUser = new User();
 
             Boolean validated = true;
             //DO VALIDATION CHECK HERE
@@ -83,7 +83,7 @@ namespace InventoryManagementSystem.Views
                 newUser.phone = phoneTextBox.Text;
                 newUser.roleID = Convert.ToInt16(roleComboBox.SelectedValue);
                 newUser.title = "Not Availible";
-                context.users.Add(newUser);
+                context.Users.Add(newUser);
                 context.SaveChanges();
                 MessageBox.Show("User " + firstNameTextBox.Text + " " + lastNameTextBox.Text +" Added to the system.");
                 refreshPage();

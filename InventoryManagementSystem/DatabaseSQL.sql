@@ -1,29 +1,10 @@
-CREATE TABLE Inventory (
-  itemID int not null PRIMARY KEY,
-  itemName varchar(100) not null,
-  tag varchar(50),
-  serialNumber varchar(100),
-  manufacturer varchar(100),
-  modelID int,
-  modelNumber varchar(50),
-  category varchar(50),
-  location varchar(50),
-  status varchar(50),
-  assignedTo int,
-  dateAssigned datetime,
-  documentationID int,
-  datePurchased datetime,
-  assignedLocation varchar(50),
-  FOREIGN KEY (assignedTo) REFERENCES Employees(EmployeeID),
-  FOREIGN KEY (modelID) REFERENCES ComputerSpecsList(modelID),
-  FOREIGN KEY (documentationID) REFERENCES Documentation(DocID)
-)
+
 
 CREATE TABLE OfficeList (
   officeID int not null PRIMARY KEY,
   officeName varchar not null,
   officeFloor int
-)
+);
 
 CREATE TABLE Employees (
   EmployeeID int not null PRIMARY KEY,
@@ -36,13 +17,13 @@ CREATE TABLE Employees (
   Location varchar(100),
   Status varchar(100),
   PhoneNumber varchar(50)
-)
+);
 
 CREATE TABLE Documentation (
   DocID int not null PRIMARY KEY,
   DocLink varchar(255),
   DateAdded datetime
-)
+);
 
 CREATE TABLE ComputerSpecsList (
   modelID int not null PRIMARY KEY,
@@ -57,26 +38,51 @@ CREATE TABLE ComputerSpecsList (
   DisplayPorts varchar(10),
   HDMIPorts varchar(10),
   USBPorts varchar(10)
-)
-
-
-CREATE TABLE users (
-  userID int NOT NULL IDENTITY(1,1),
-  firstName varchar(25) NOT NULL,
-  lastName varchar(25) NOT NULL,
-  phone varchar(15) DEFAULT NULL,
-  role int NOT NULL,
-  password varchar(45) NOT NULL,
-  title varchar(15) NOT NULL,
-  PRIMARY KEY (userID)
 );
 
-CREATE TABLE roles(
+CREATE TABLE Roles(
 	roleID int NOT NULL IDENTITY(1,1),
 	Title varchar(25) NOT NULL,
 	permissionLevel varchar(15),
 	PRIMARY KEY(roleID)
 );
 
-ALTER TABLE users
+CREATE TABLE Users (
+  userID int NOT NULL IDENTITY(1,1),
+  firstName varchar(25) NOT NULL,
+  lastName varchar(25) NOT NULL,
+  phone varchar(15) DEFAULT NULL,
+  roleID int NOT NULL,
+  password varchar(45) NOT NULL,
+  title varchar(15) NOT NULL,
+  PRIMARY KEY (userID),
+  FOREIGN KEY (roleID) REFERENCES Roles(roleID)
+);
+
+CREATE TABLE Inventory (
+  itemID int not null PRIMARY KEY,
+  itemName varchar(100) not null,
+  tag varchar(50),
+  serialNumber varchar(100),
+  manufacturer varchar(100),
+  modelID int,
+  modelNumber varchar(50),
+  category varchar(50),
+  location varchar(50),
+  status varchar(50),
+  assignedTo int,
+  dateAssigned datetime,
+  dateRecordModified datetime,
+  recordModifiedBy_userID int,
+  documentationID int,
+  datePurchased datetime,
+  officeID int,
+  FOREIGN KEY (recordModifiedBy_userID) REFERENCES Users(userID),
+  FOREIGN KEY (officeID) REFERENCES OfficeList(officeID),
+  FOREIGN KEY (assignedTo) REFERENCES Employees(EmployeeID),
+  FOREIGN KEY (modelID) REFERENCES ComputerSpecsList(modelID),
+  FOREIGN KEY (documentationID) REFERENCES Documentation(DocID)
+);
+
+ALTER TABLE Users
 ADD FOREIGN KEY (role) REFERENCES roles(RoldID);
