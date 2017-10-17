@@ -147,7 +147,13 @@ namespace InventoryManagementSystem
 
         private void BtnModitfyItem_Click(object sender, RoutedEventArgs e)
         {
-
+            Views.ItemLookUp newUser = new Views.ItemLookUp
+            {
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
+            //newUser.RefreshPage += RefreshUserList;
+            newUser.ShowDialog();
         }
 
         private void btnClearFilter_Click(object sender, RoutedEventArgs e)
