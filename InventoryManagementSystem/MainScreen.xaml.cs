@@ -19,6 +19,7 @@ namespace InventoryManagementSystem
     /// </summary>
     public partial class MainScreen : Window
     {
+
         public MainScreen()
         {
             InitializeComponent();
@@ -61,6 +62,7 @@ namespace InventoryManagementSystem
             inventoryDBDataSetvInventoryListTableAdapter.Fill(inventoryDBDataSet.vInventoryList);
             System.Windows.Data.CollectionViewSource vInventoryListViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("vInventoryListViewSource")));
             vInventoryListViewSource.View.MoveCurrentToFirst();
+            RefreshFilterList();
         }
 
         private void BtnDeleteUser_Click(object sender, RoutedEventArgs e)
@@ -97,6 +99,9 @@ namespace InventoryManagementSystem
             newUser.RefreshPage += RefreshUserList;
             newUser.ShowDialog();
         }
+        //--------------------------------------//
+        //********** Refresh Group *************//
+        //--------------------------------------//
 
         public void RefreshUserList()
         {
@@ -106,6 +111,29 @@ namespace InventoryManagementSystem
             usersDataGrid.ItemsSource = UserList;
         }
 
+        public void RefreshFilterList()
+        {
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            var FilterList = (from r in context.Inventories
+                              group r.category by r.category into g
+                              select g.Key).ToList();
+
+            cboFilterList.ItemsSource = FilterList;
+        }
+
+        public void RefreshInventory()
+        {
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            string value = Convert.ToString(cboFilterList.SelectedValue);
+            //MessageBox.Show(value);
+            var Inventory = (from i in context.vInventoryLists
+                             where i.category == value
+                             select i).ToList();
+            vInventoryListDataGrid.ItemsSource = Inventory;
+        }
+        //--------------------------------------//
+        //**********End Refresh Group *************//
+        //--------------------------------------//
         private void BtnAddItem_Click(object sender, RoutedEventArgs e)
         {
             Views.AddItem newUser = new Views.AddItem
@@ -120,6 +148,19 @@ namespace InventoryManagementSystem
         private void BtnModitfyItem_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnClearFilter_Click(object sender, RoutedEventArgs e)
+        {
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            var Inventory = (from i in context.vInventoryLists
+                             select i).ToList();
+            vInventoryListDataGrid.ItemsSource = Inventory;
+        }
+
+        private void cboFilterList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            RefreshInventory();
         }
 
 

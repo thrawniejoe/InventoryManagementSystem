@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace InventoryManagementSystem.Views
+{
+    /// <summary>
+    /// Interaction logic for ItemLookUp.xaml
+    /// </summary>
+    public partial class ItemLookUp : Window
+    {
+        public ItemLookUp()
+        {
+            InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            InventoryManagementSystem.InventoryDBDataSet inventoryDBDataSet = ((InventoryManagementSystem.InventoryDBDataSet)(this.FindResource("inventoryDBDataSet")));
+            // Load data into the table vInventoryList. You can modify this code as needed.
+            InventoryManagementSystem.InventoryDBDataSetTableAdapters.vInventoryListTableAdapter inventoryDBDataSetvInventoryListTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.vInventoryListTableAdapter();
+            inventoryDBDataSetvInventoryListTableAdapter.Fill(inventoryDBDataSet.vInventoryList);
+            System.Windows.Data.CollectionViewSource vInventoryListViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("vInventoryListViewSource")));
+            vInventoryListViewSource.View.MoveCurrentToFirst();
+            // Load data into the table Inventory. You can modify this code as needed.
+            InventoryManagementSystem.InventoryDBDataSetTableAdapters.InventoryTableAdapter inventoryDBDataSetInventoryTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.InventoryTableAdapter();
+            inventoryDBDataSetInventoryTableAdapter.Fill(inventoryDBDataSet.Inventory);
+            System.Windows.Data.CollectionViewSource inventoryViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("inventoryViewSource")));
+            inventoryViewSource.View.MoveCurrentToFirst();
+            // Load data into the table Documentation. You can modify this code as needed.
+            InventoryManagementSystem.InventoryDBDataSetTableAdapters.DocumentationTableAdapter inventoryDBDataSetDocumentationTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.DocumentationTableAdapter();
+            inventoryDBDataSetDocumentationTableAdapter.Fill(inventoryDBDataSet.Documentation);
+            System.Windows.Data.CollectionViewSource documentationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("documentationViewSource")));
+            documentationViewSource.View.MoveCurrentToFirst();
+        }
+    }
+}
