@@ -22,7 +22,7 @@ namespace InventoryManagementSystem.Views
     public partial class AddUser : Window
     {
         public delegate void Refresh();
-        public event Refresh refreshPage;
+        public event Refresh RefreshPage;
         public string RequestType;
         private int userID;
 
@@ -66,7 +66,7 @@ namespace InventoryManagementSystem.Views
 
         }
 
-        private void btnSubmit_Click(object sender, RoutedEventArgs e)
+        private void BtnSubmit_Click(object sender, RoutedEventArgs e)
         {
             var context = new InventoryManagementSystem.InventoryDBEntities();
             User newUser = new User();
@@ -86,12 +86,12 @@ namespace InventoryManagementSystem.Views
                 context.Users.Add(newUser);
                 context.SaveChanges();
                 MessageBox.Show("User " + firstNameTextBox.Text + " " + lastNameTextBox.Text +" Added to the system.");
-                refreshPage();
+                RefreshPage();
                 this.Close();
             }
         }
 
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

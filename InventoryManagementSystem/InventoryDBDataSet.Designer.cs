@@ -40,17 +40,17 @@ namespace InventoryManagementSystem {
         
         private vInventoryListDataTable tablevInventoryList;
         
-        private global::System.Data.DataRelation relationFK__Inventory__assig__47A6A41B;
+        private global::System.Data.DataRelation relationFK__Inventory__assig__72910220;
         
-        private global::System.Data.DataRelation relationFK__Inventory__docum__498EEC8D;
+        private global::System.Data.DataRelation relationFK__Inventory__docum__74794A92;
         
-        private global::System.Data.DataRelation relationFK__Inventory__model__489AC854;
+        private global::System.Data.DataRelation relationFK__Inventory__model__73852659;
         
-        private global::System.Data.DataRelation relationFK__Inventory__offic__46B27FE2;
+        private global::System.Data.DataRelation relationFK__Inventory__offic__719CDDE7;
         
-        private global::System.Data.DataRelation relationFK__Inventory__recor__45BE5BA9;
+        private global::System.Data.DataRelation relationFK__Inventory__recor__70A8B9AE;
         
-        private global::System.Data.DataRelation relationFK__Users__roleID__42E1EEFE;
+        private global::System.Data.DataRelation relationFK__Users__roleID__6DCC4D03;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -374,12 +374,12 @@ namespace InventoryManagementSystem {
                     this.tablevInventoryList.InitVars();
                 }
             }
-            this.relationFK__Inventory__assig__47A6A41B = this.Relations["FK__Inventory__assig__47A6A41B"];
-            this.relationFK__Inventory__docum__498EEC8D = this.Relations["FK__Inventory__docum__498EEC8D"];
-            this.relationFK__Inventory__model__489AC854 = this.Relations["FK__Inventory__model__489AC854"];
-            this.relationFK__Inventory__offic__46B27FE2 = this.Relations["FK__Inventory__offic__46B27FE2"];
-            this.relationFK__Inventory__recor__45BE5BA9 = this.Relations["FK__Inventory__recor__45BE5BA9"];
-            this.relationFK__Users__roleID__42E1EEFE = this.Relations["FK__Users__roleID__42E1EEFE"];
+            this.relationFK__Inventory__assig__72910220 = this.Relations["FK__Inventory__assig__72910220"];
+            this.relationFK__Inventory__docum__74794A92 = this.Relations["FK__Inventory__docum__74794A92"];
+            this.relationFK__Inventory__model__73852659 = this.Relations["FK__Inventory__model__73852659"];
+            this.relationFK__Inventory__offic__719CDDE7 = this.Relations["FK__Inventory__offic__719CDDE7"];
+            this.relationFK__Inventory__recor__70A8B9AE = this.Relations["FK__Inventory__recor__70A8B9AE"];
+            this.relationFK__Users__roleID__6DCC4D03 = this.Relations["FK__Users__roleID__6DCC4D03"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -406,30 +406,30 @@ namespace InventoryManagementSystem {
             base.Tables.Add(this.tableUsers);
             this.tablevInventoryList = new vInventoryListDataTable();
             base.Tables.Add(this.tablevInventoryList);
-            this.relationFK__Inventory__assig__47A6A41B = new global::System.Data.DataRelation("FK__Inventory__assig__47A6A41B", new global::System.Data.DataColumn[] {
+            this.relationFK__Inventory__assig__72910220 = new global::System.Data.DataRelation("FK__Inventory__assig__72910220", new global::System.Data.DataColumn[] {
                         this.tableEmployees.EmployeeIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableInventory.assignedToColumn}, false);
-            this.Relations.Add(this.relationFK__Inventory__assig__47A6A41B);
-            this.relationFK__Inventory__docum__498EEC8D = new global::System.Data.DataRelation("FK__Inventory__docum__498EEC8D", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK__Inventory__assig__72910220);
+            this.relationFK__Inventory__docum__74794A92 = new global::System.Data.DataRelation("FK__Inventory__docum__74794A92", new global::System.Data.DataColumn[] {
                         this.tableDocumentation.DocIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableInventory.documentationIDColumn}, false);
-            this.Relations.Add(this.relationFK__Inventory__docum__498EEC8D);
-            this.relationFK__Inventory__model__489AC854 = new global::System.Data.DataRelation("FK__Inventory__model__489AC854", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK__Inventory__docum__74794A92);
+            this.relationFK__Inventory__model__73852659 = new global::System.Data.DataRelation("FK__Inventory__model__73852659", new global::System.Data.DataColumn[] {
                         this.tableComputerSpecsList.modelIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableInventory.modelIDColumn}, false);
-            this.Relations.Add(this.relationFK__Inventory__model__489AC854);
-            this.relationFK__Inventory__offic__46B27FE2 = new global::System.Data.DataRelation("FK__Inventory__offic__46B27FE2", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK__Inventory__model__73852659);
+            this.relationFK__Inventory__offic__719CDDE7 = new global::System.Data.DataRelation("FK__Inventory__offic__719CDDE7", new global::System.Data.DataColumn[] {
                         this.tableOfficeList.officeIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableInventory.officeIDColumn}, false);
-            this.Relations.Add(this.relationFK__Inventory__offic__46B27FE2);
-            this.relationFK__Inventory__recor__45BE5BA9 = new global::System.Data.DataRelation("FK__Inventory__recor__45BE5BA9", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK__Inventory__offic__719CDDE7);
+            this.relationFK__Inventory__recor__70A8B9AE = new global::System.Data.DataRelation("FK__Inventory__recor__70A8B9AE", new global::System.Data.DataColumn[] {
                         this.tableUsers.userIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableInventory.recordModifiedBy_userIDColumn}, false);
-            this.Relations.Add(this.relationFK__Inventory__recor__45BE5BA9);
-            this.relationFK__Users__roleID__42E1EEFE = new global::System.Data.DataRelation("FK__Users__roleID__42E1EEFE", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK__Inventory__recor__70A8B9AE);
+            this.relationFK__Users__roleID__6DCC4D03 = new global::System.Data.DataRelation("FK__Users__roleID__6DCC4D03", new global::System.Data.DataColumn[] {
                         this.tableRoles.roleIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableUsers.roleIDColumn}, false);
-            this.Relations.Add(this.relationFK__Users__roleID__42E1EEFE);
+            this.Relations.Add(this.relationFK__Users__roleID__6DCC4D03);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -756,10 +756,10 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ComputerSpecsListRow AddComputerSpecsListRow(int modelID, string modelNumber, string manufacturer, string HD_Type, string HD_Capacity, string Ram, string CPU, string DVIPorts, string VGAPorts, string DisplayPorts, string HDMIPorts, string USBPorts) {
+            public ComputerSpecsListRow AddComputerSpecsListRow(string modelNumber, string manufacturer, string HD_Type, string HD_Capacity, string Ram, string CPU, string DVIPorts, string VGAPorts, string DisplayPorts, string HDMIPorts, string USBPorts) {
                 ComputerSpecsListRow rowComputerSpecsListRow = ((ComputerSpecsListRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        modelID,
+                        null,
                         modelNumber,
                         manufacturer,
                         HD_Type,
@@ -843,7 +843,11 @@ namespace InventoryManagementSystem {
                 base.Columns.Add(this.columnUSBPorts);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnmodelID}, true));
+                this.columnmodelID.AutoIncrement = true;
+                this.columnmodelID.AutoIncrementSeed = -1;
+                this.columnmodelID.AutoIncrementStep = -1;
                 this.columnmodelID.AllowDBNull = false;
+                this.columnmodelID.ReadOnly = true;
                 this.columnmodelID.Unique = true;
                 this.columnmodelNumber.MaxLength = 100;
                 this.columnmanufacturer.MaxLength = 50;
@@ -1089,10 +1093,10 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DocumentationRow AddDocumentationRow(int DocID, string DocLink, System.DateTime DateAdded) {
+            public DocumentationRow AddDocumentationRow(string DocLink, System.DateTime DateAdded) {
                 DocumentationRow rowDocumentationRow = ((DocumentationRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        DocID,
+                        null,
                         DocLink,
                         DateAdded};
                 rowDocumentationRow.ItemArray = columnValuesArray;
@@ -1140,7 +1144,11 @@ namespace InventoryManagementSystem {
                 base.Columns.Add(this.columnDateAdded);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnDocID}, true));
+                this.columnDocID.AutoIncrement = true;
+                this.columnDocID.AutoIncrementSeed = -1;
+                this.columnDocID.AutoIncrementStep = -1;
                 this.columnDocID.AllowDBNull = false;
+                this.columnDocID.ReadOnly = true;
                 this.columnDocID.Unique = true;
                 this.columnDocLink.MaxLength = 255;
             }
@@ -1446,10 +1454,10 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public EmployeesRow AddEmployeesRow(int EmployeeID, string Name, string Title, string Username, string EmailAddress, string Manager, string Division, string Location, string Status, string PhoneNumber) {
+            public EmployeesRow AddEmployeesRow(string Name, string Title, string Username, string EmailAddress, string Manager, string Division, string Location, string Status, string PhoneNumber) {
                 EmployeesRow rowEmployeesRow = ((EmployeesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        EmployeeID,
+                        null,
                         Name,
                         Title,
                         Username,
@@ -1525,7 +1533,11 @@ namespace InventoryManagementSystem {
                 base.Columns.Add(this.columnPhoneNumber);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnEmployeeID}, true));
+                this.columnEmployeeID.AutoIncrement = true;
+                this.columnEmployeeID.AutoIncrementSeed = -1;
+                this.columnEmployeeID.AutoIncrementStep = -1;
                 this.columnEmployeeID.AllowDBNull = false;
+                this.columnEmployeeID.ReadOnly = true;
                 this.columnEmployeeID.Unique = true;
                 this.columnName.MaxLength = 100;
                 this.columnTitle.MaxLength = 50;
@@ -1910,26 +1922,25 @@ namespace InventoryManagementSystem {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public InventoryRow AddInventoryRow(
-                        int itemID, 
                         string itemName, 
                         string tag, 
                         string serialNumber, 
                         string manufacturer, 
-                        ComputerSpecsListRow parentComputerSpecsListRowByFK__Inventory__model__489AC854, 
+                        ComputerSpecsListRow parentComputerSpecsListRowByFK__Inventory__model__73852659, 
                         string modelNumber, 
                         string category, 
                         string location, 
                         string status, 
-                        EmployeesRow parentEmployeesRowByFK__Inventory__assig__47A6A41B, 
+                        EmployeesRow parentEmployeesRowByFK__Inventory__assig__72910220, 
                         System.DateTime dateAssigned, 
                         System.DateTime dateRecordModified, 
-                        UsersRow parentUsersRowByFK__Inventory__recor__45BE5BA9, 
-                        DocumentationRow parentDocumentationRowByFK__Inventory__docum__498EEC8D, 
+                        UsersRow parentUsersRowByFK__Inventory__recor__70A8B9AE, 
+                        DocumentationRow parentDocumentationRowByFK__Inventory__docum__74794A92, 
                         System.DateTime datePurchased, 
-                        OfficeListRow parentOfficeListRowByFK__Inventory__offic__46B27FE2) {
+                        OfficeListRow parentOfficeListRowByFK__Inventory__offic__719CDDE7) {
                 InventoryRow rowInventoryRow = ((InventoryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        itemID,
+                        null,
                         itemName,
                         tag,
                         serialNumber,
@@ -1946,20 +1957,20 @@ namespace InventoryManagementSystem {
                         null,
                         datePurchased,
                         null};
-                if ((parentComputerSpecsListRowByFK__Inventory__model__489AC854 != null)) {
-                    columnValuesArray[5] = parentComputerSpecsListRowByFK__Inventory__model__489AC854[0];
+                if ((parentComputerSpecsListRowByFK__Inventory__model__73852659 != null)) {
+                    columnValuesArray[5] = parentComputerSpecsListRowByFK__Inventory__model__73852659[0];
                 }
-                if ((parentEmployeesRowByFK__Inventory__assig__47A6A41B != null)) {
-                    columnValuesArray[10] = parentEmployeesRowByFK__Inventory__assig__47A6A41B[0];
+                if ((parentEmployeesRowByFK__Inventory__assig__72910220 != null)) {
+                    columnValuesArray[10] = parentEmployeesRowByFK__Inventory__assig__72910220[0];
                 }
-                if ((parentUsersRowByFK__Inventory__recor__45BE5BA9 != null)) {
-                    columnValuesArray[13] = parentUsersRowByFK__Inventory__recor__45BE5BA9[0];
+                if ((parentUsersRowByFK__Inventory__recor__70A8B9AE != null)) {
+                    columnValuesArray[13] = parentUsersRowByFK__Inventory__recor__70A8B9AE[0];
                 }
-                if ((parentDocumentationRowByFK__Inventory__docum__498EEC8D != null)) {
-                    columnValuesArray[14] = parentDocumentationRowByFK__Inventory__docum__498EEC8D[0];
+                if ((parentDocumentationRowByFK__Inventory__docum__74794A92 != null)) {
+                    columnValuesArray[14] = parentDocumentationRowByFK__Inventory__docum__74794A92[0];
                 }
-                if ((parentOfficeListRowByFK__Inventory__offic__46B27FE2 != null)) {
-                    columnValuesArray[16] = parentOfficeListRowByFK__Inventory__offic__46B27FE2[0];
+                if ((parentOfficeListRowByFK__Inventory__offic__719CDDE7 != null)) {
+                    columnValuesArray[16] = parentOfficeListRowByFK__Inventory__offic__719CDDE7[0];
                 }
                 rowInventoryRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowInventoryRow);
@@ -2048,7 +2059,11 @@ namespace InventoryManagementSystem {
                 base.Columns.Add(this.columnofficeID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnitemID}, true));
+                this.columnitemID.AutoIncrement = true;
+                this.columnitemID.AutoIncrementSeed = -1;
+                this.columnitemID.AutoIncrementStep = -1;
                 this.columnitemID.AllowDBNull = false;
+                this.columnitemID.ReadOnly = true;
                 this.columnitemID.Unique = true;
                 this.columnitemName.AllowDBNull = false;
                 this.columnitemName.MaxLength = 100;
@@ -2292,10 +2307,10 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public OfficeListRow AddOfficeListRow(int officeID, string officeName, int officeFloor) {
+            public OfficeListRow AddOfficeListRow(string officeName, int officeFloor) {
                 OfficeListRow rowOfficeListRow = ((OfficeListRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        officeID,
+                        null,
                         officeName,
                         officeFloor};
                 rowOfficeListRow.ItemArray = columnValuesArray;
@@ -2343,10 +2358,14 @@ namespace InventoryManagementSystem {
                 base.Columns.Add(this.columnofficeFloor);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnofficeID}, true));
+                this.columnofficeID.AutoIncrement = true;
+                this.columnofficeID.AutoIncrementSeed = -1;
+                this.columnofficeID.AutoIncrementStep = -1;
                 this.columnofficeID.AllowDBNull = false;
+                this.columnofficeID.ReadOnly = true;
                 this.columnofficeID.Unique = true;
                 this.columnofficeName.AllowDBNull = false;
-                this.columnofficeName.MaxLength = 1;
+                this.columnofficeName.MaxLength = 55;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2923,7 +2942,7 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public UsersRow AddUsersRow(string firstName, string lastName, string phone, RolesRow parentRolesRowByFK__Users__roleID__42E1EEFE, string password, string title, string emailAddress) {
+            public UsersRow AddUsersRow(string firstName, string lastName, string phone, RolesRow parentRolesRowByFK__Users__roleID__6DCC4D03, string password, string title, string emailAddress) {
                 UsersRow rowUsersRow = ((UsersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2934,8 +2953,8 @@ namespace InventoryManagementSystem {
                         password,
                         title,
                         emailAddress};
-                if ((parentRolesRowByFK__Users__roleID__42E1EEFE != null)) {
-                    columnValuesArray[4] = parentRolesRowByFK__Users__roleID__42E1EEFE[0];
+                if ((parentRolesRowByFK__Users__roleID__6DCC4D03 != null)) {
+                    columnValuesArray[4] = parentRolesRowByFK__Users__roleID__6DCC4D03[0];
                 }
                 rowUsersRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowUsersRow);
@@ -3014,7 +3033,7 @@ namespace InventoryManagementSystem {
                 this.columntitle.AllowDBNull = false;
                 this.columntitle.MaxLength = 15;
                 this.columnemailAddress.AllowDBNull = false;
-                this.columnemailAddress.MaxLength = 50;
+                this.columnemailAddress.MaxLength = 55;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3463,7 +3482,7 @@ namespace InventoryManagementSystem {
                 this.columnstatus.MaxLength = 50;
                 this.columnName.MaxLength = 100;
                 this.columnemailAddress.AllowDBNull = false;
-                this.columnemailAddress.MaxLength = 50;
+                this.columnemailAddress.MaxLength = 55;
                 this.columnitemID.AllowDBNull = false;
                 this.columnitemID.Unique = true;
             }
@@ -3928,11 +3947,11 @@ namespace InventoryManagementSystem {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public InventoryRow[] GetInventoryRows() {
-                if ((this.Table.ChildRelations["FK__Inventory__model__489AC854"] == null)) {
+                if ((this.Table.ChildRelations["FK__Inventory__model__73852659"] == null)) {
                     return new InventoryRow[0];
                 }
                 else {
-                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Inventory__model__489AC854"])));
+                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Inventory__model__73852659"])));
                 }
             }
         }
@@ -4021,11 +4040,11 @@ namespace InventoryManagementSystem {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public InventoryRow[] GetInventoryRows() {
-                if ((this.Table.ChildRelations["FK__Inventory__docum__498EEC8D"] == null)) {
+                if ((this.Table.ChildRelations["FK__Inventory__docum__74794A92"] == null)) {
                     return new InventoryRow[0];
                 }
                 else {
-                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Inventory__docum__498EEC8D"])));
+                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Inventory__docum__74794A92"])));
                 }
             }
         }
@@ -4310,11 +4329,11 @@ namespace InventoryManagementSystem {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public InventoryRow[] GetInventoryRows() {
-                if ((this.Table.ChildRelations["FK__Inventory__assig__47A6A41B"] == null)) {
+                if ((this.Table.ChildRelations["FK__Inventory__assig__72910220"] == null)) {
                     return new InventoryRow[0];
                 }
                 else {
-                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Inventory__assig__47A6A41B"])));
+                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Inventory__assig__72910220"])));
                 }
             }
         }
@@ -4599,10 +4618,10 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public EmployeesRow EmployeesRow {
                 get {
-                    return ((EmployeesRow)(this.GetParentRow(this.Table.ParentRelations["FK__Inventory__assig__47A6A41B"])));
+                    return ((EmployeesRow)(this.GetParentRow(this.Table.ParentRelations["FK__Inventory__assig__72910220"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Inventory__assig__47A6A41B"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Inventory__assig__72910220"]);
                 }
             }
             
@@ -4610,10 +4629,10 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public DocumentationRow DocumentationRow {
                 get {
-                    return ((DocumentationRow)(this.GetParentRow(this.Table.ParentRelations["FK__Inventory__docum__498EEC8D"])));
+                    return ((DocumentationRow)(this.GetParentRow(this.Table.ParentRelations["FK__Inventory__docum__74794A92"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Inventory__docum__498EEC8D"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Inventory__docum__74794A92"]);
                 }
             }
             
@@ -4621,10 +4640,10 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ComputerSpecsListRow ComputerSpecsListRow {
                 get {
-                    return ((ComputerSpecsListRow)(this.GetParentRow(this.Table.ParentRelations["FK__Inventory__model__489AC854"])));
+                    return ((ComputerSpecsListRow)(this.GetParentRow(this.Table.ParentRelations["FK__Inventory__model__73852659"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Inventory__model__489AC854"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Inventory__model__73852659"]);
                 }
             }
             
@@ -4632,10 +4651,10 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public OfficeListRow OfficeListRow {
                 get {
-                    return ((OfficeListRow)(this.GetParentRow(this.Table.ParentRelations["FK__Inventory__offic__46B27FE2"])));
+                    return ((OfficeListRow)(this.GetParentRow(this.Table.ParentRelations["FK__Inventory__offic__719CDDE7"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Inventory__offic__46B27FE2"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Inventory__offic__719CDDE7"]);
                 }
             }
             
@@ -4643,10 +4662,10 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public UsersRow UsersRow {
                 get {
-                    return ((UsersRow)(this.GetParentRow(this.Table.ParentRelations["FK__Inventory__recor__45BE5BA9"])));
+                    return ((UsersRow)(this.GetParentRow(this.Table.ParentRelations["FK__Inventory__recor__70A8B9AE"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Inventory__recor__45BE5BA9"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Inventory__recor__70A8B9AE"]);
                 }
             }
             
@@ -4898,11 +4917,11 @@ namespace InventoryManagementSystem {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public InventoryRow[] GetInventoryRows() {
-                if ((this.Table.ChildRelations["FK__Inventory__offic__46B27FE2"] == null)) {
+                if ((this.Table.ChildRelations["FK__Inventory__offic__719CDDE7"] == null)) {
                     return new InventoryRow[0];
                 }
                 else {
-                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Inventory__offic__46B27FE2"])));
+                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Inventory__offic__719CDDE7"])));
                 }
             }
         }
@@ -4974,11 +4993,11 @@ namespace InventoryManagementSystem {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public UsersRow[] GetUsersRows() {
-                if ((this.Table.ChildRelations["FK__Users__roleID__42E1EEFE"] == null)) {
+                if ((this.Table.ChildRelations["FK__Users__roleID__6DCC4D03"] == null)) {
                     return new UsersRow[0];
                 }
                 else {
-                    return ((UsersRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Users__roleID__42E1EEFE"])));
+                    return ((UsersRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Users__roleID__6DCC4D03"])));
                 }
             }
         }
@@ -5094,10 +5113,10 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public RolesRow RolesRow {
                 get {
-                    return ((RolesRow)(this.GetParentRow(this.Table.ParentRelations["FK__Users__roleID__42E1EEFE"])));
+                    return ((RolesRow)(this.GetParentRow(this.Table.ParentRelations["FK__Users__roleID__6DCC4D03"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Users__roleID__42E1EEFE"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Users__roleID__6DCC4D03"]);
                 }
             }
             
@@ -5116,11 +5135,11 @@ namespace InventoryManagementSystem {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public InventoryRow[] GetInventoryRows() {
-                if ((this.Table.ChildRelations["FK__Inventory__recor__45BE5BA9"] == null)) {
+                if ((this.Table.ChildRelations["FK__Inventory__recor__70A8B9AE"] == null)) {
                     return new InventoryRow[0];
                 }
                 else {
-                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Inventory__recor__45BE5BA9"])));
+                    return ((InventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Inventory__recor__70A8B9AE"])));
                 }
             }
         }
@@ -5920,10 +5939,9 @@ namespace InventoryManagementSystem.InventoryDBDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_USBPorts", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "USBPorts", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[ComputerSpecsList] ([modelID], [modelNumber], [manufacturer], [HD_Type], [HD_Capacity], [Ram], [CPU], [DVIPorts], [VGAPorts], [DisplayPorts], [HDMIPorts], [USBPorts]) VALUES (@modelID, @modelNumber, @manufacturer, @HD_Type, @HD_Capacity, @Ram, @CPU, @DVIPorts, @VGAPorts, @DisplayPorts, @HDMIPorts, @USBPorts);
-SELECT modelID, modelNumber, manufacturer, HD_Type, HD_Capacity, Ram, CPU, DVIPorts, VGAPorts, DisplayPorts, HDMIPorts, USBPorts FROM ComputerSpecsList WHERE (modelID = @modelID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[ComputerSpecsList] ([modelNumber], [manufacturer], [HD_Type], [HD_Capacity], [Ram], [CPU], [DVIPorts], [VGAPorts], [DisplayPorts], [HDMIPorts], [USBPorts]) VALUES (@modelNumber, @manufacturer, @HD_Type, @HD_Capacity, @Ram, @CPU, @DVIPorts, @VGAPorts, @DisplayPorts, @HDMIPorts, @USBPorts);
+SELECT modelID, modelNumber, manufacturer, HD_Type, HD_Capacity, Ram, CPU, DVIPorts, VGAPorts, DisplayPorts, HDMIPorts, USBPorts FROM ComputerSpecsList WHERE (modelID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@modelID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "modelID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@modelNumber", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "modelNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@manufacturer", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "manufacturer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HD_Type", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HD_Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5937,28 +5955,27 @@ SELECT modelID, modelNumber, manufacturer, HD_Type, HD_Capacity, Ram, CPU, DVIPo
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USBPorts", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "USBPorts", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[ComputerSpecsList] SET [modelID] = @modelID, [modelNumber] = @model" +
-                "Number, [manufacturer] = @manufacturer, [HD_Type] = @HD_Type, [HD_Capacity] = @H" +
-                "D_Capacity, [Ram] = @Ram, [CPU] = @CPU, [DVIPorts] = @DVIPorts, [VGAPorts] = @VG" +
-                "APorts, [DisplayPorts] = @DisplayPorts, [HDMIPorts] = @HDMIPorts, [USBPorts] = @" +
-                "USBPorts WHERE (([modelID] = @Original_modelID) AND ((@IsNull_modelNumber = 1 AN" +
-                "D [modelNumber] IS NULL) OR ([modelNumber] = @Original_modelNumber)) AND ((@IsNu" +
-                "ll_manufacturer = 1 AND [manufacturer] IS NULL) OR ([manufacturer] = @Original_m" +
-                "anufacturer)) AND ((@IsNull_HD_Type = 1 AND [HD_Type] IS NULL) OR ([HD_Type] = @" +
-                "Original_HD_Type)) AND ((@IsNull_HD_Capacity = 1 AND [HD_Capacity] IS NULL) OR (" +
-                "[HD_Capacity] = @Original_HD_Capacity)) AND ((@IsNull_Ram = 1 AND [Ram] IS NULL)" +
-                " OR ([Ram] = @Original_Ram)) AND ((@IsNull_CPU = 1 AND [CPU] IS NULL) OR ([CPU] " +
-                "= @Original_CPU)) AND ((@IsNull_DVIPorts = 1 AND [DVIPorts] IS NULL) OR ([DVIPor" +
-                "ts] = @Original_DVIPorts)) AND ((@IsNull_VGAPorts = 1 AND [VGAPorts] IS NULL) OR" +
-                " ([VGAPorts] = @Original_VGAPorts)) AND ((@IsNull_DisplayPorts = 1 AND [DisplayP" +
-                "orts] IS NULL) OR ([DisplayPorts] = @Original_DisplayPorts)) AND ((@IsNull_HDMIP" +
-                "orts = 1 AND [HDMIPorts] IS NULL) OR ([HDMIPorts] = @Original_HDMIPorts)) AND ((" +
-                "@IsNull_USBPorts = 1 AND [USBPorts] IS NULL) OR ([USBPorts] = @Original_USBPorts" +
-                ")));\r\nSELECT modelID, modelNumber, manufacturer, HD_Type, HD_Capacity, Ram, CPU," +
-                " DVIPorts, VGAPorts, DisplayPorts, HDMIPorts, USBPorts FROM ComputerSpecsList WH" +
-                "ERE (modelID = @modelID)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[ComputerSpecsList] SET [modelNumber] = @modelNumber, [manufacturer]" +
+                " = @manufacturer, [HD_Type] = @HD_Type, [HD_Capacity] = @HD_Capacity, [Ram] = @R" +
+                "am, [CPU] = @CPU, [DVIPorts] = @DVIPorts, [VGAPorts] = @VGAPorts, [DisplayPorts]" +
+                " = @DisplayPorts, [HDMIPorts] = @HDMIPorts, [USBPorts] = @USBPorts WHERE (([mode" +
+                "lID] = @Original_modelID) AND ((@IsNull_modelNumber = 1 AND [modelNumber] IS NUL" +
+                "L) OR ([modelNumber] = @Original_modelNumber)) AND ((@IsNull_manufacturer = 1 AN" +
+                "D [manufacturer] IS NULL) OR ([manufacturer] = @Original_manufacturer)) AND ((@I" +
+                "sNull_HD_Type = 1 AND [HD_Type] IS NULL) OR ([HD_Type] = @Original_HD_Type)) AND" +
+                " ((@IsNull_HD_Capacity = 1 AND [HD_Capacity] IS NULL) OR ([HD_Capacity] = @Origi" +
+                "nal_HD_Capacity)) AND ((@IsNull_Ram = 1 AND [Ram] IS NULL) OR ([Ram] = @Original" +
+                "_Ram)) AND ((@IsNull_CPU = 1 AND [CPU] IS NULL) OR ([CPU] = @Original_CPU)) AND " +
+                "((@IsNull_DVIPorts = 1 AND [DVIPorts] IS NULL) OR ([DVIPorts] = @Original_DVIPor" +
+                "ts)) AND ((@IsNull_VGAPorts = 1 AND [VGAPorts] IS NULL) OR ([VGAPorts] = @Origin" +
+                "al_VGAPorts)) AND ((@IsNull_DisplayPorts = 1 AND [DisplayPorts] IS NULL) OR ([Di" +
+                "splayPorts] = @Original_DisplayPorts)) AND ((@IsNull_HDMIPorts = 1 AND [HDMIPort" +
+                "s] IS NULL) OR ([HDMIPorts] = @Original_HDMIPorts)) AND ((@IsNull_USBPorts = 1 A" +
+                "ND [USBPorts] IS NULL) OR ([USBPorts] = @Original_USBPorts)));\r\nSELECT modelID, " +
+                "modelNumber, manufacturer, HD_Type, HD_Capacity, Ram, CPU, DVIPorts, VGAPorts, D" +
+                "isplayPorts, HDMIPorts, USBPorts FROM ComputerSpecsList WHERE (modelID = @modelI" +
+                "D)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@modelID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "modelID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@modelNumber", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "modelNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@manufacturer", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "manufacturer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HD_Type", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HD_Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5993,6 +6010,7 @@ SELECT modelID, modelNumber, manufacturer, HD_Type, HD_Capacity, Ram, CPU, DVIPo
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HDMIPorts", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HDMIPorts", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_USBPorts", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "USBPorts", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_USBPorts", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "USBPorts", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@modelID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "modelID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6180,73 +6198,72 @@ SELECT modelID, modelNumber, manufacturer, HD_Type, HD_Capacity, Ram, CPU, DVIPo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int modelID, string modelNumber, string manufacturer, string HD_Type, string HD_Capacity, string Ram, string CPU, string DVIPorts, string VGAPorts, string DisplayPorts, string HDMIPorts, string USBPorts) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(modelID));
+        public virtual int Insert(string modelNumber, string manufacturer, string HD_Type, string HD_Capacity, string Ram, string CPU, string DVIPorts, string VGAPorts, string DisplayPorts, string HDMIPorts, string USBPorts) {
             if ((modelNumber == null)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(modelNumber));
+            }
+            if ((manufacturer == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(modelNumber));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(manufacturer));
             }
-            if ((manufacturer == null)) {
+            if ((HD_Type == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(manufacturer));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(HD_Type));
             }
-            if ((HD_Type == null)) {
+            if ((HD_Capacity == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(HD_Type));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(HD_Capacity));
             }
-            if ((HD_Capacity == null)) {
+            if ((Ram == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(HD_Capacity));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Ram));
             }
-            if ((Ram == null)) {
+            if ((CPU == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Ram));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(CPU));
             }
-            if ((CPU == null)) {
+            if ((DVIPorts == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(CPU));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(DVIPorts));
             }
-            if ((DVIPorts == null)) {
+            if ((VGAPorts == null)) {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(DVIPorts));
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(VGAPorts));
             }
-            if ((VGAPorts == null)) {
+            if ((DisplayPorts == null)) {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(VGAPorts));
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(DisplayPorts));
             }
-            if ((DisplayPorts == null)) {
+            if ((HDMIPorts == null)) {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(DisplayPorts));
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(HDMIPorts));
             }
-            if ((HDMIPorts == null)) {
+            if ((USBPorts == null)) {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(HDMIPorts));
-            }
-            if ((USBPorts == null)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(USBPorts));
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(USBPorts));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -6269,7 +6286,6 @@ SELECT modelID, modelNumber, manufacturer, HD_Type, HD_Capacity, Ram, CPU, DVIPo
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    int modelID, 
                     string modelNumber, 
                     string manufacturer, 
                     string HD_Type, 
@@ -6292,163 +6308,164 @@ SELECT modelID, modelNumber, manufacturer, HD_Type, HD_Capacity, Ram, CPU, DVIPo
                     string Original_VGAPorts, 
                     string Original_DisplayPorts, 
                     string Original_HDMIPorts, 
-                    string Original_USBPorts) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(modelID));
+                    string Original_USBPorts, 
+                    int modelID) {
             if ((modelNumber == null)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(modelNumber));
+            }
+            if ((manufacturer == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(modelNumber));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(manufacturer));
             }
-            if ((manufacturer == null)) {
+            if ((HD_Type == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(manufacturer));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(HD_Type));
             }
-            if ((HD_Type == null)) {
+            if ((HD_Capacity == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(HD_Type));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(HD_Capacity));
             }
-            if ((HD_Capacity == null)) {
+            if ((Ram == null)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(HD_Capacity));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Ram));
             }
-            if ((Ram == null)) {
+            if ((CPU == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Ram));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(CPU));
             }
-            if ((CPU == null)) {
+            if ((DVIPorts == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(CPU));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(DVIPorts));
             }
-            if ((DVIPorts == null)) {
+            if ((VGAPorts == null)) {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(DVIPorts));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(VGAPorts));
             }
-            if ((VGAPorts == null)) {
+            if ((DisplayPorts == null)) {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(VGAPorts));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(DisplayPorts));
             }
-            if ((DisplayPorts == null)) {
+            if ((HDMIPorts == null)) {
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(DisplayPorts));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(HDMIPorts));
             }
-            if ((HDMIPorts == null)) {
+            if ((USBPorts == null)) {
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(HDMIPorts));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(USBPorts));
             }
-            if ((USBPorts == null)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(USBPorts));
-            }
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_modelID));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_modelID));
             if ((Original_modelNumber == null)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_modelNumber));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_modelNumber));
             }
             if ((Original_manufacturer == null)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_manufacturer));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_manufacturer));
             }
             if ((Original_HD_Type == null)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_HD_Type));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_HD_Type));
             }
             if ((Original_HD_Capacity == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_HD_Capacity));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_HD_Capacity));
             }
             if ((Original_Ram == null)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_Ram));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_Ram));
             }
             if ((Original_CPU == null)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_CPU));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Original_CPU));
             }
             if ((Original_DVIPorts == null)) {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_DVIPorts));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_DVIPorts));
             }
             if ((Original_VGAPorts == null)) {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_VGAPorts));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_VGAPorts));
             }
             if ((Original_DisplayPorts == null)) {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_DisplayPorts));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(Original_DisplayPorts));
             }
             if ((Original_HDMIPorts == null)) {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_HDMIPorts));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Original_HDMIPorts));
             }
             if ((Original_USBPorts == null)) {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(Original_USBPorts));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(Original_USBPorts));
             }
+            this.Adapter.UpdateCommand.Parameters[34].Value = ((int)(modelID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6493,7 +6510,7 @@ SELECT modelID, modelNumber, manufacturer, HD_Type, HD_Capacity, Ram, CPU, DVIPo
                     string Original_DisplayPorts, 
                     string Original_HDMIPorts, 
                     string Original_USBPorts) {
-            return this.Update(Original_modelID, modelNumber, manufacturer, HD_Type, HD_Capacity, Ram, CPU, DVIPorts, VGAPorts, DisplayPorts, HDMIPorts, USBPorts, Original_modelID, Original_modelNumber, Original_manufacturer, Original_HD_Type, Original_HD_Capacity, Original_Ram, Original_CPU, Original_DVIPorts, Original_VGAPorts, Original_DisplayPorts, Original_HDMIPorts, Original_USBPorts);
+            return this.Update(modelNumber, manufacturer, HD_Type, HD_Capacity, Ram, CPU, DVIPorts, VGAPorts, DisplayPorts, HDMIPorts, USBPorts, Original_modelID, Original_modelNumber, Original_manufacturer, Original_HD_Type, Original_HD_Capacity, Original_Ram, Original_CPU, Original_DVIPorts, Original_VGAPorts, Original_DisplayPorts, Original_HDMIPorts, Original_USBPorts, Original_modelID);
         }
     }
     
@@ -6636,19 +6653,17 @@ SELECT modelID, modelNumber, manufacturer, HD_Type, HD_Capacity, Ram, CPU, DVIPo
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateAdded", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateAdded", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Documentation] ([DocID], [DocLink], [DateAdded]) VALUES (@DocI" +
-                "D, @DocLink, @DateAdded);\r\nSELECT DocID, DocLink, DateAdded FROM Documentation W" +
-                "HERE (DocID = @DocID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Documentation] ([DocLink], [DateAdded]) VALUES (@DocLink, @Dat" +
+                "eAdded);\r\nSELECT DocID, DocLink, DateAdded FROM Documentation WHERE (DocID = SCO" +
+                "PE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DocID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DocID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DocLink", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DocLink", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateAdded", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateAdded", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Documentation] SET [DocID] = @DocID, [DocLink] = @DocLink, [DateAdded] = @DateAdded WHERE (([DocID] = @Original_DocID) AND ((@IsNull_DocLink = 1 AND [DocLink] IS NULL) OR ([DocLink] = @Original_DocLink)) AND ((@IsNull_DateAdded = 1 AND [DateAdded] IS NULL) OR ([DateAdded] = @Original_DateAdded)));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Documentation] SET [DocLink] = @DocLink, [DateAdded] = @DateAdded WHERE (([DocID] = @Original_DocID) AND ((@IsNull_DocLink = 1 AND [DocLink] IS NULL) OR ([DocLink] = @Original_DocLink)) AND ((@IsNull_DateAdded = 1 AND [DateAdded] IS NULL) OR ([DateAdded] = @Original_DateAdded)));
 SELECT DocID, DocLink, DateAdded FROM Documentation WHERE (DocID = @DocID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DocID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DocID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DocLink", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DocLink", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateAdded", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateAdded", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DocID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DocID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -6656,6 +6671,7 @@ SELECT DocID, DocLink, DateAdded FROM Documentation WHERE (DocID = @DocID)";
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DocLink", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DocLink", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateAdded", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateAdded", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateAdded", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateAdded", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DocID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "DocID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6770,19 +6786,18 @@ SELECT DocID, DocLink, DateAdded FROM Documentation WHERE (DocID = @DocID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int DocID, string DocLink, global::System.Nullable<global::System.DateTime> DateAdded) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(DocID));
+        public virtual int Insert(string DocLink, global::System.Nullable<global::System.DateTime> DateAdded) {
             if ((DocLink == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(DocLink));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(DocLink));
             }
             if ((DateAdded.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(DateAdded.Value));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(DateAdded.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -6804,37 +6819,37 @@ SELECT DocID, DocLink, DateAdded FROM Documentation WHERE (DocID = @DocID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int DocID, string DocLink, global::System.Nullable<global::System.DateTime> DateAdded, int Original_DocID, string Original_DocLink, global::System.Nullable<global::System.DateTime> Original_DateAdded) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(DocID));
+        public virtual int Update(string DocLink, global::System.Nullable<global::System.DateTime> DateAdded, int Original_DocID, string Original_DocLink, global::System.Nullable<global::System.DateTime> Original_DateAdded, int DocID) {
             if ((DocLink == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(DocLink));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(DocLink));
             }
             if ((DateAdded.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(DateAdded.Value));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(DateAdded.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_DocID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_DocID));
             if ((Original_DocLink == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_DocLink));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_DocLink));
             }
             if ((Original_DateAdded.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(Original_DateAdded.Value));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(Original_DateAdded.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(DocID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6856,7 +6871,7 @@ SELECT DocID, DocLink, DateAdded FROM Documentation WHERE (DocID = @DocID)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string DocLink, global::System.Nullable<global::System.DateTime> DateAdded, int Original_DocID, string Original_DocLink, global::System.Nullable<global::System.DateTime> Original_DateAdded) {
-            return this.Update(Original_DocID, DocLink, DateAdded, Original_DocID, Original_DocLink, Original_DateAdded);
+            return this.Update(DocLink, DateAdded, Original_DocID, Original_DocLink, Original_DateAdded, Original_DocID);
         }
     }
     
@@ -7017,10 +7032,9 @@ SELECT DocID, DocLink, DateAdded FROM Documentation WHERE (DocID = @DocID)";
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PhoneNumber", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhoneNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Employees] ([EmployeeID], [Name], [Title], [Username], [EmailAddress], [Manager], [Division], [Location], [Status], [PhoneNumber]) VALUES (@EmployeeID, @Name, @Title, @Username, @EmailAddress, @Manager, @Division, @Location, @Status, @PhoneNumber);
-SELECT EmployeeID, Name, Title, Username, EmailAddress, Manager, Division, Location, Status, PhoneNumber FROM Employees WHERE (EmployeeID = @EmployeeID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Employees] ([Name], [Title], [Username], [EmailAddress], [Manager], [Division], [Location], [Status], [PhoneNumber]) VALUES (@Name, @Title, @Username, @EmailAddress, @Manager, @Division, @Location, @Status, @PhoneNumber);
+SELECT EmployeeID, Name, Title, Username, EmailAddress, Manager, Division, Location, Status, PhoneNumber FROM Employees WHERE (EmployeeID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Title", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Username", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7032,10 +7046,9 @@ SELECT EmployeeID, Name, Title, Username, EmailAddress, Manager, Division, Locat
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PhoneNumber", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhoneNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Employees] SET [EmployeeID] = @EmployeeID, [Name] = @Name, [Title] = @Title, [Username] = @Username, [EmailAddress] = @EmailAddress, [Manager] = @Manager, [Division] = @Division, [Location] = @Location, [Status] = @Status, [PhoneNumber] = @PhoneNumber WHERE (([EmployeeID] = @Original_EmployeeID) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Title = 1 AND [Title] IS NULL) OR ([Title] = @Original_Title)) AND ((@IsNull_Username = 1 AND [Username] IS NULL) OR ([Username] = @Original_Username)) AND ((@IsNull_EmailAddress = 1 AND [EmailAddress] IS NULL) OR ([EmailAddress] = @Original_EmailAddress)) AND ((@IsNull_Manager = 1 AND [Manager] IS NULL) OR ([Manager] = @Original_Manager)) AND ((@IsNull_Division = 1 AND [Division] IS NULL) OR ([Division] = @Original_Division)) AND ((@IsNull_Location = 1 AND [Location] IS NULL) OR ([Location] = @Original_Location)) AND ((@IsNull_Status = 1 AND [Status] IS NULL) OR ([Status] = @Original_Status)) AND ((@IsNull_PhoneNumber = 1 AND [PhoneNumber] IS NULL) OR ([PhoneNumber] = @Original_PhoneNumber)));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Employees] SET [Name] = @Name, [Title] = @Title, [Username] = @Username, [EmailAddress] = @EmailAddress, [Manager] = @Manager, [Division] = @Division, [Location] = @Location, [Status] = @Status, [PhoneNumber] = @PhoneNumber WHERE (([EmployeeID] = @Original_EmployeeID) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Title = 1 AND [Title] IS NULL) OR ([Title] = @Original_Title)) AND ((@IsNull_Username = 1 AND [Username] IS NULL) OR ([Username] = @Original_Username)) AND ((@IsNull_EmailAddress = 1 AND [EmailAddress] IS NULL) OR ([EmailAddress] = @Original_EmailAddress)) AND ((@IsNull_Manager = 1 AND [Manager] IS NULL) OR ([Manager] = @Original_Manager)) AND ((@IsNull_Division = 1 AND [Division] IS NULL) OR ([Division] = @Original_Division)) AND ((@IsNull_Location = 1 AND [Location] IS NULL) OR ([Location] = @Original_Location)) AND ((@IsNull_Status = 1 AND [Status] IS NULL) OR ([Status] = @Original_Status)) AND ((@IsNull_PhoneNumber = 1 AND [PhoneNumber] IS NULL) OR ([PhoneNumber] = @Original_PhoneNumber)));
 SELECT EmployeeID, Name, Title, Username, EmailAddress, Manager, Division, Location, Status, PhoneNumber FROM Employees WHERE (EmployeeID = @EmployeeID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Title", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Username", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7064,6 +7077,7 @@ SELECT EmployeeID, Name, Title, Username, EmailAddress, Manager, Division, Locat
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PhoneNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhoneNumber", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PhoneNumber", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhoneNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7235,61 +7249,60 @@ SELECT EmployeeID, Name, Title, Username, EmailAddress, Manager, Division, Locat
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int EmployeeID, string Name, string Title, string Username, string EmailAddress, string Manager, string Division, string Location, string Status, string PhoneNumber) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(EmployeeID));
+        public virtual int Insert(string Name, string Title, string Username, string EmailAddress, string Manager, string Division, string Location, string Status, string PhoneNumber) {
             if ((Name == null)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Name));
+            }
+            if ((Title == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Name));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Title));
             }
-            if ((Title == null)) {
+            if ((Username == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Title));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Username));
             }
-            if ((Username == null)) {
+            if ((EmailAddress == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Username));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(EmailAddress));
             }
-            if ((EmailAddress == null)) {
+            if ((Manager == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(EmailAddress));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Manager));
             }
-            if ((Manager == null)) {
+            if ((Division == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Manager));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Division));
             }
-            if ((Division == null)) {
+            if ((Location == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Division));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Location));
             }
-            if ((Location == null)) {
+            if ((Status == null)) {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Location));
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Status));
             }
-            if ((Status == null)) {
+            if ((PhoneNumber == null)) {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(Status));
-            }
-            if ((PhoneNumber == null)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(PhoneNumber));
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(PhoneNumber));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -7312,7 +7325,6 @@ SELECT EmployeeID, Name, Title, Username, EmailAddress, Manager, Division, Locat
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    int EmployeeID, 
                     string Name, 
                     string Title, 
                     string Username, 
@@ -7331,135 +7343,136 @@ SELECT EmployeeID, Name, Title, Username, EmailAddress, Manager, Division, Locat
                     string Original_Division, 
                     string Original_Location, 
                     string Original_Status, 
-                    string Original_PhoneNumber) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(EmployeeID));
+                    string Original_PhoneNumber, 
+                    int EmployeeID) {
             if ((Name == null)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Name));
+            }
+            if ((Title == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Name));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Title));
             }
-            if ((Title == null)) {
+            if ((Username == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Title));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Username));
             }
-            if ((Username == null)) {
+            if ((EmailAddress == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Username));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(EmailAddress));
             }
-            if ((EmailAddress == null)) {
+            if ((Manager == null)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(EmailAddress));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Manager));
             }
-            if ((Manager == null)) {
+            if ((Division == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Manager));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Division));
             }
-            if ((Division == null)) {
+            if ((Location == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Division));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Location));
             }
-            if ((Location == null)) {
+            if ((Status == null)) {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Location));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Status));
             }
-            if ((Status == null)) {
+            if ((PhoneNumber == null)) {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Status));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(PhoneNumber));
             }
-            if ((PhoneNumber == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(PhoneNumber));
-            }
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_EmployeeID));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_EmployeeID));
             if ((Original_Name == null)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_Name));
             }
             if ((Original_Title == null)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_Title));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_Title));
             }
             if ((Original_Username == null)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_Username));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_Username));
             }
             if ((Original_EmailAddress == null)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_EmailAddress));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_EmailAddress));
             }
             if ((Original_Manager == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_Manager));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_Manager));
             }
             if ((Original_Division == null)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_Division));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_Division));
             }
             if ((Original_Location == null)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_Location));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Original_Location));
             }
             if ((Original_Status == null)) {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_Status));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_Status));
             }
             if ((Original_PhoneNumber == null)) {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_PhoneNumber));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_PhoneNumber));
             }
+            this.Adapter.UpdateCommand.Parameters[28].Value = ((int)(EmployeeID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7500,7 +7513,7 @@ SELECT EmployeeID, Name, Title, Username, EmailAddress, Manager, Division, Locat
                     string Original_Location, 
                     string Original_Status, 
                     string Original_PhoneNumber) {
-            return this.Update(Original_EmployeeID, Name, Title, Username, EmailAddress, Manager, Division, Location, Status, PhoneNumber, Original_EmployeeID, Original_Name, Original_Title, Original_Username, Original_EmailAddress, Original_Manager, Original_Division, Original_Location, Original_Status, Original_PhoneNumber);
+            return this.Update(Name, Title, Username, EmailAddress, Manager, Division, Location, Status, PhoneNumber, Original_EmployeeID, Original_Name, Original_Title, Original_Username, Original_EmailAddress, Original_Manager, Original_Division, Original_Location, Original_Status, Original_PhoneNumber, Original_EmployeeID);
         }
     }
     
@@ -7701,10 +7714,9 @@ SELECT EmployeeID, Name, Title, Username, EmailAddress, Manager, Division, Locat
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_officeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Inventory] ([itemID], [itemName], [tag], [serialNumber], [manufacturer], [modelID], [modelNumber], [category], [location], [status], [assignedTo], [dateAssigned], [dateRecordModified], [recordModifiedBy_userID], [documentationID], [datePurchased], [officeID]) VALUES (@itemID, @itemName, @tag, @serialNumber, @manufacturer, @modelID, @modelNumber, @category, @location, @status, @assignedTo, @dateAssigned, @dateRecordModified, @recordModifiedBy_userID, @documentationID, @datePurchased, @officeID);
-SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, category, location, status, assignedTo, dateAssigned, dateRecordModified, recordModifiedBy_userID, documentationID, datePurchased, officeID FROM Inventory WHERE (itemID = @itemID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Inventory] ([itemName], [tag], [serialNumber], [manufacturer], [modelID], [modelNumber], [category], [location], [status], [assignedTo], [dateAssigned], [dateRecordModified], [recordModifiedBy_userID], [documentationID], [datePurchased], [officeID]) VALUES (@itemName, @tag, @serialNumber, @manufacturer, @modelID, @modelNumber, @category, @location, @status, @assignedTo, @dateAssigned, @dateRecordModified, @recordModifiedBy_userID, @documentationID, @datePurchased, @officeID);
+SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, category, location, status, assignedTo, dateAssigned, dateRecordModified, recordModifiedBy_userID, documentationID, datePurchased, officeID FROM Inventory WHERE (itemID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tag", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tag", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@serialNumber", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "serialNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7723,38 +7735,37 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@officeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Inventory] SET [itemID] = @itemID, [itemName] = @itemName, [tag] = " +
-                "@tag, [serialNumber] = @serialNumber, [manufacturer] = @manufacturer, [modelID] " +
-                "= @modelID, [modelNumber] = @modelNumber, [category] = @category, [location] = @" +
-                "location, [status] = @status, [assignedTo] = @assignedTo, [dateAssigned] = @date" +
-                "Assigned, [dateRecordModified] = @dateRecordModified, [recordModifiedBy_userID] " +
-                "= @recordModifiedBy_userID, [documentationID] = @documentationID, [datePurchased" +
-                "] = @datePurchased, [officeID] = @officeID WHERE (([itemID] = @Original_itemID) " +
-                "AND ([itemName] = @Original_itemName) AND ((@IsNull_tag = 1 AND [tag] IS NULL) O" +
-                "R ([tag] = @Original_tag)) AND ((@IsNull_serialNumber = 1 AND [serialNumber] IS " +
-                "NULL) OR ([serialNumber] = @Original_serialNumber)) AND ((@IsNull_manufacturer =" +
-                " 1 AND [manufacturer] IS NULL) OR ([manufacturer] = @Original_manufacturer)) AND" +
-                " ((@IsNull_modelID = 1 AND [modelID] IS NULL) OR ([modelID] = @Original_modelID)" +
-                ") AND ((@IsNull_modelNumber = 1 AND [modelNumber] IS NULL) OR ([modelNumber] = @" +
-                "Original_modelNumber)) AND ((@IsNull_category = 1 AND [category] IS NULL) OR ([c" +
-                "ategory] = @Original_category)) AND ((@IsNull_location = 1 AND [location] IS NUL" +
-                "L) OR ([location] = @Original_location)) AND ((@IsNull_status = 1 AND [status] I" +
-                "S NULL) OR ([status] = @Original_status)) AND ((@IsNull_assignedTo = 1 AND [assi" +
-                "gnedTo] IS NULL) OR ([assignedTo] = @Original_assignedTo)) AND ((@IsNull_dateAss" +
-                "igned = 1 AND [dateAssigned] IS NULL) OR ([dateAssigned] = @Original_dateAssigne" +
-                "d)) AND ((@IsNull_dateRecordModified = 1 AND [dateRecordModified] IS NULL) OR ([" +
-                "dateRecordModified] = @Original_dateRecordModified)) AND ((@IsNull_recordModifie" +
-                "dBy_userID = 1 AND [recordModifiedBy_userID] IS NULL) OR ([recordModifiedBy_user" +
-                "ID] = @Original_recordModifiedBy_userID)) AND ((@IsNull_documentationID = 1 AND " +
-                "[documentationID] IS NULL) OR ([documentationID] = @Original_documentationID)) A" +
-                "ND ((@IsNull_datePurchased = 1 AND [datePurchased] IS NULL) OR ([datePurchased] " +
-                "= @Original_datePurchased)) AND ((@IsNull_officeID = 1 AND [officeID] IS NULL) O" +
-                "R ([officeID] = @Original_officeID)));\r\nSELECT itemID, itemName, tag, serialNumb" +
-                "er, manufacturer, modelID, modelNumber, category, location, status, assignedTo, " +
-                "dateAssigned, dateRecordModified, recordModifiedBy_userID, documentationID, date" +
-                "Purchased, officeID FROM Inventory WHERE (itemID = @itemID)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Inventory] SET [itemName] = @itemName, [tag] = @tag, [serialNumber]" +
+                " = @serialNumber, [manufacturer] = @manufacturer, [modelID] = @modelID, [modelNu" +
+                "mber] = @modelNumber, [category] = @category, [location] = @location, [status] =" +
+                " @status, [assignedTo] = @assignedTo, [dateAssigned] = @dateAssigned, [dateRecor" +
+                "dModified] = @dateRecordModified, [recordModifiedBy_userID] = @recordModifiedBy_" +
+                "userID, [documentationID] = @documentationID, [datePurchased] = @datePurchased, " +
+                "[officeID] = @officeID WHERE (([itemID] = @Original_itemID) AND ([itemName] = @O" +
+                "riginal_itemName) AND ((@IsNull_tag = 1 AND [tag] IS NULL) OR ([tag] = @Original" +
+                "_tag)) AND ((@IsNull_serialNumber = 1 AND [serialNumber] IS NULL) OR ([serialNum" +
+                "ber] = @Original_serialNumber)) AND ((@IsNull_manufacturer = 1 AND [manufacturer" +
+                "] IS NULL) OR ([manufacturer] = @Original_manufacturer)) AND ((@IsNull_modelID =" +
+                " 1 AND [modelID] IS NULL) OR ([modelID] = @Original_modelID)) AND ((@IsNull_mode" +
+                "lNumber = 1 AND [modelNumber] IS NULL) OR ([modelNumber] = @Original_modelNumber" +
+                ")) AND ((@IsNull_category = 1 AND [category] IS NULL) OR ([category] = @Original" +
+                "_category)) AND ((@IsNull_location = 1 AND [location] IS NULL) OR ([location] = " +
+                "@Original_location)) AND ((@IsNull_status = 1 AND [status] IS NULL) OR ([status]" +
+                " = @Original_status)) AND ((@IsNull_assignedTo = 1 AND [assignedTo] IS NULL) OR " +
+                "([assignedTo] = @Original_assignedTo)) AND ((@IsNull_dateAssigned = 1 AND [dateA" +
+                "ssigned] IS NULL) OR ([dateAssigned] = @Original_dateAssigned)) AND ((@IsNull_da" +
+                "teRecordModified = 1 AND [dateRecordModified] IS NULL) OR ([dateRecordModified] " +
+                "= @Original_dateRecordModified)) AND ((@IsNull_recordModifiedBy_userID = 1 AND [" +
+                "recordModifiedBy_userID] IS NULL) OR ([recordModifiedBy_userID] = @Original_reco" +
+                "rdModifiedBy_userID)) AND ((@IsNull_documentationID = 1 AND [documentationID] IS" +
+                " NULL) OR ([documentationID] = @Original_documentationID)) AND ((@IsNull_datePur" +
+                "chased = 1 AND [datePurchased] IS NULL) OR ([datePurchased] = @Original_datePurc" +
+                "hased)) AND ((@IsNull_officeID = 1 AND [officeID] IS NULL) OR ([officeID] = @Ori" +
+                "ginal_officeID)));\r\nSELECT itemID, itemName, tag, serialNumber, manufacturer, mo" +
+                "delID, modelNumber, category, location, status, assignedTo, dateAssigned, dateRe" +
+                "cordModified, recordModifiedBy_userID, documentationID, datePurchased, officeID " +
+                "FROM Inventory WHERE (itemID = @itemID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tag", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tag", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@serialNumber", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "serialNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7803,6 +7814,7 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_datePurchased", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "datePurchased", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_officeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_officeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "itemID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8047,7 +8059,6 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
-                    int itemID, 
                     string itemName, 
                     string tag, 
                     string serialNumber, 
@@ -8064,102 +8075,101 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
                     global::System.Nullable<int> documentationID, 
                     global::System.Nullable<global::System.DateTime> datePurchased, 
                     global::System.Nullable<int> officeID) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(itemID));
             if ((itemName == null)) {
                 throw new global::System.ArgumentNullException("itemName");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(itemName));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(itemName));
             }
             if ((tag == null)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(tag));
+            }
+            if ((serialNumber == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(tag));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(serialNumber));
             }
-            if ((serialNumber == null)) {
+            if ((manufacturer == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(serialNumber));
-            }
-            if ((manufacturer == null)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(manufacturer));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(manufacturer));
             }
             if ((modelID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(modelID.Value));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(modelID.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             if ((modelNumber == null)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(modelNumber));
+            }
+            if ((category == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(modelNumber));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(category));
             }
-            if ((category == null)) {
+            if ((location == null)) {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(category));
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(location));
             }
-            if ((location == null)) {
+            if ((status == null)) {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(location));
-            }
-            if ((status == null)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(status));
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(status));
             }
             if ((assignedTo.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((int)(assignedTo.Value));
+                this.Adapter.InsertCommand.Parameters[9].Value = ((int)(assignedTo.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((dateAssigned.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((System.DateTime)(dateAssigned.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((dateAssigned.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((System.DateTime)(dateAssigned.Value));
+            if ((dateRecordModified.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((System.DateTime)(dateRecordModified.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((dateRecordModified.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((System.DateTime)(dateRecordModified.Value));
+            if ((recordModifiedBy_userID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((int)(recordModifiedBy_userID.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((recordModifiedBy_userID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((int)(recordModifiedBy_userID.Value));
+            if ((documentationID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((int)(documentationID.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((documentationID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[14].Value = ((int)(documentationID.Value));
+            if ((datePurchased.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[14].Value = ((System.DateTime)(datePurchased.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            if ((datePurchased.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[15].Value = ((System.DateTime)(datePurchased.Value));
+            if ((officeID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((int)(officeID.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
-            }
-            if ((officeID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[16].Value = ((int)(officeID.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8182,7 +8192,6 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    int itemID, 
                     string itemName, 
                     string tag, 
                     string serialNumber, 
@@ -8215,231 +8224,232 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
                     global::System.Nullable<int> Original_recordModifiedBy_userID, 
                     global::System.Nullable<int> Original_documentationID, 
                     global::System.Nullable<global::System.DateTime> Original_datePurchased, 
-                    global::System.Nullable<int> Original_officeID) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(itemID));
+                    global::System.Nullable<int> Original_officeID, 
+                    int itemID) {
             if ((itemName == null)) {
                 throw new global::System.ArgumentNullException("itemName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(itemName));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(itemName));
             }
             if ((tag == null)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(tag));
+            }
+            if ((serialNumber == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(tag));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(serialNumber));
             }
-            if ((serialNumber == null)) {
+            if ((manufacturer == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(serialNumber));
-            }
-            if ((manufacturer == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(manufacturer));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(manufacturer));
             }
             if ((modelID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(modelID.Value));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(modelID.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             if ((modelNumber == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(modelNumber));
+            }
+            if ((category == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(modelNumber));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(category));
             }
-            if ((category == null)) {
+            if ((location == null)) {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(category));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(location));
             }
-            if ((location == null)) {
+            if ((status == null)) {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(location));
-            }
-            if ((status == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(status));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(status));
             }
             if ((assignedTo.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(assignedTo.Value));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(assignedTo.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((dateAssigned.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(dateAssigned.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((dateAssigned.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(dateAssigned.Value));
+            if ((dateRecordModified.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(dateRecordModified.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((dateRecordModified.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(dateRecordModified.Value));
+            if ((recordModifiedBy_userID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(recordModifiedBy_userID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((recordModifiedBy_userID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(recordModifiedBy_userID.Value));
+            if ((documentationID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(documentationID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((documentationID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(documentationID.Value));
+            if ((datePurchased.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((System.DateTime)(datePurchased.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            if ((datePurchased.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(datePurchased.Value));
+            if ((officeID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(officeID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
-            if ((officeID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(officeID.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_itemID));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_itemID));
             if ((Original_itemName == null)) {
                 throw new global::System.ArgumentNullException("Original_itemName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_itemName));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_itemName));
             }
             if ((Original_tag == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_tag));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_tag));
             }
             if ((Original_serialNumber == null)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_serialNumber));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_serialNumber));
             }
             if ((Original_manufacturer == null)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_manufacturer));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Original_manufacturer));
             }
             if ((Original_modelID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((int)(Original_modelID.Value));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((int)(Original_modelID.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
             if ((Original_modelNumber == null)) {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_modelNumber));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_modelNumber));
             }
             if ((Original_category == null)) {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_category));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(Original_category));
             }
             if ((Original_location == null)) {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_location));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Original_location));
             }
             if ((Original_status == null)) {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(Original_status));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(Original_status));
             }
             if ((Original_assignedTo.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((int)(Original_assignedTo.Value));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((int)(Original_assignedTo.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
             if ((Original_dateAssigned.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((System.DateTime)(Original_dateAssigned.Value));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((System.DateTime)(Original_dateAssigned.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
             }
             if ((Original_dateRecordModified.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((System.DateTime)(Original_dateRecordModified.Value));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((System.DateTime)(Original_dateRecordModified.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
             }
             if ((Original_recordModifiedBy_userID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((int)(Original_recordModifiedBy_userID.Value));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((int)(Original_recordModifiedBy_userID.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
             }
             if ((Original_documentationID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((int)(Original_documentationID.Value));
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((int)(Original_documentationID.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
             }
             if ((Original_datePurchased.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((System.DateTime)(Original_datePurchased.Value));
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((System.DateTime)(Original_datePurchased.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
             }
             if ((Original_officeID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((int)(Original_officeID.Value));
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((int)(Original_officeID.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[48].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[47].Value = global::System.DBNull.Value;
             }
+            this.Adapter.UpdateCommand.Parameters[48].Value = ((int)(itemID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8494,7 +8504,7 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
                     global::System.Nullable<int> Original_documentationID, 
                     global::System.Nullable<global::System.DateTime> Original_datePurchased, 
                     global::System.Nullable<int> Original_officeID) {
-            return this.Update(Original_itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, category, location, status, assignedTo, dateAssigned, dateRecordModified, recordModifiedBy_userID, documentationID, datePurchased, officeID, Original_itemID, Original_itemName, Original_tag, Original_serialNumber, Original_manufacturer, Original_modelID, Original_modelNumber, Original_category, Original_location, Original_status, Original_assignedTo, Original_dateAssigned, Original_dateRecordModified, Original_recordModifiedBy_userID, Original_documentationID, Original_datePurchased, Original_officeID);
+            return this.Update(itemName, tag, serialNumber, manufacturer, modelID, modelNumber, category, location, status, assignedTo, dateAssigned, dateRecordModified, recordModifiedBy_userID, documentationID, datePurchased, officeID, Original_itemID, Original_itemName, Original_tag, Original_serialNumber, Original_manufacturer, Original_modelID, Original_modelNumber, Original_category, Original_location, Original_status, Original_assignedTo, Original_dateAssigned, Original_dateRecordModified, Original_recordModifiedBy_userID, Original_documentationID, Original_datePurchased, Original_officeID, Original_itemID);
         }
     }
     
@@ -8635,25 +8645,24 @@ SELECT itemID, itemName, tag, serialNumber, manufacturer, modelID, modelNumber, 
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_officeFloor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeFloor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[OfficeList] ([officeID], [officeName], [officeFloor]) VALUES (" +
-                "@officeID, @officeName, @officeFloor);\r\nSELECT officeID, officeName, officeFloor" +
-                " FROM OfficeList WHERE (officeID = @officeID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[OfficeList] ([officeName], [officeFloor]) VALUES (@officeName," +
+                " @officeFloor);\r\nSELECT officeID, officeName, officeFloor FROM OfficeList WHERE " +
+                "(officeID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@officeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@officeName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@officeFloor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeFloor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[OfficeList] SET [officeID] = @officeID, [officeName] = @officeName, [officeFloor] = @officeFloor WHERE (([officeID] = @Original_officeID) AND ([officeName] = @Original_officeName) AND ((@IsNull_officeFloor = 1 AND [officeFloor] IS NULL) OR ([officeFloor] = @Original_officeFloor)));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[OfficeList] SET [officeName] = @officeName, [officeFloor] = @officeFloor WHERE (([officeID] = @Original_officeID) AND ([officeName] = @Original_officeName) AND ((@IsNull_officeFloor = 1 AND [officeFloor] IS NULL) OR ([officeFloor] = @Original_officeFloor)));
 SELECT officeID, officeName, officeFloor FROM OfficeList WHERE (officeID = @officeID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@officeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@officeName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@officeFloor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeFloor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_officeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_officeName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_officeFloor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeFloor", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_officeFloor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "officeFloor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@officeID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "officeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8766,19 +8775,18 @@ SELECT officeID, officeName, officeFloor FROM OfficeList WHERE (officeID = @offi
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int officeID, string officeName, global::System.Nullable<int> officeFloor) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(officeID));
+        public virtual int Insert(string officeName, global::System.Nullable<int> officeFloor) {
             if ((officeName == null)) {
                 throw new global::System.ArgumentNullException("officeName");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(officeName));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(officeName));
             }
             if ((officeFloor.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(officeFloor.Value));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(officeFloor.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8800,35 +8808,35 @@ SELECT officeID, officeName, officeFloor FROM OfficeList WHERE (officeID = @offi
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int officeID, string officeName, global::System.Nullable<int> officeFloor, int Original_officeID, string Original_officeName, global::System.Nullable<int> Original_officeFloor) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(officeID));
+        public virtual int Update(string officeName, global::System.Nullable<int> officeFloor, int Original_officeID, string Original_officeName, global::System.Nullable<int> Original_officeFloor, int officeID) {
             if ((officeName == null)) {
                 throw new global::System.ArgumentNullException("officeName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(officeName));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(officeName));
             }
             if ((officeFloor.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(officeFloor.Value));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(officeFloor.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_officeID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_officeID));
             if ((Original_officeName == null)) {
                 throw new global::System.ArgumentNullException("Original_officeName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_officeName));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_officeName));
             }
             if ((Original_officeFloor.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_officeFloor.Value));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_officeFloor.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(officeID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8850,7 +8858,7 @@ SELECT officeID, officeName, officeFloor FROM OfficeList WHERE (officeID = @offi
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string officeName, global::System.Nullable<int> officeFloor, int Original_officeID, string Original_officeName, global::System.Nullable<int> Original_officeFloor) {
-            return this.Update(Original_officeID, officeName, officeFloor, Original_officeID, Original_officeName, Original_officeFloor);
+            return this.Update(officeName, officeFloor, Original_officeID, Original_officeName, Original_officeFloor, Original_officeID);
         }
     }
     

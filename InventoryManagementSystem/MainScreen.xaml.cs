@@ -63,7 +63,7 @@ namespace InventoryManagementSystem
             vInventoryListViewSource.View.MoveCurrentToFirst();
         }
 
-        private void btnDeleteUser_Click(object sender, RoutedEventArgs e)
+        private void BtnDeleteUser_Click(object sender, RoutedEventArgs e)
         {
             var context = new InventoryManagementSystem.InventoryDBEntities();
             Button b = sender as Button;
@@ -82,17 +82,19 @@ namespace InventoryManagementSystem
 
         }
 
-        private void btnModifyUser_Click(object sender, RoutedEventArgs e)
+        private void BtnModifyUser_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Views.AddUser newUser = new Views.AddUser();
-            newUser.Owner = this;
-            newUser.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            newUser.refreshPage += RefreshUserList;
+            Views.AddUser newUser = new Views.AddUser
+            {
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
+            newUser.RefreshPage += RefreshUserList;
             newUser.ShowDialog();
         }
 
@@ -104,7 +106,18 @@ namespace InventoryManagementSystem
             usersDataGrid.ItemsSource = UserList;
         }
 
-        private void btnAddItem_Click(object sender, RoutedEventArgs e)
+        private void BtnAddItem_Click(object sender, RoutedEventArgs e)
+        {
+            Views.AddItem newUser = new Views.AddItem
+            {
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
+            newUser.RefreshPage += RefreshUserList;
+            newUser.ShowDialog();
+        }
+
+        private void BtnModitfyItem_Click(object sender, RoutedEventArgs e)
         {
 
         }

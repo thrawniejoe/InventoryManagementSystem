@@ -213,6 +213,7 @@
       <DependentUpon>IMS_Model.edmx</DependentUpon>
       <LastGenOutput>IMS_Model.cs</LastGenOutput>
     </Content>
+    <Content Include="MOCK_DATA_Inventory.sql" />
     <Content Include="InventoryDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -220,6 +221,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>InventoryDB.mdf</DependentUpon>
     </Content>
+    <Content Include="MOCK_DATA_Employees.sql" />
+    <Content Include="MOCK_DATA_Office.sql" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

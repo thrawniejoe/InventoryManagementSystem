@@ -15,14 +15,18 @@ namespace InventoryManagementSystem
     public partial class vInventoryList
     {
         public string itemName { get; set; }
-        public string modelNumber { get; set; }
         public string tag { get; set; }
-        public string status { get; set; }
-        public string emailAddress { get; set; }
-        public string Name { get; set; }
+        public string serialNumber { get; set; }
+        public string modelNumber { get; set; }
         public string category { get; set; }
+        public string location { get; set; }
+        public string status { get; set; }
+        public string Name { get; set; }
+        public Nullable<System.DateTime> dateAssigned { get; set; }
+        public Nullable<System.DateTime> dateRecordModified { get; set; }
+        public string emailAddress { get; set; }
+        public Nullable<System.DateTime> datePurchased { get; set; }
         public int itemID { get; set; }
         public Nullable<int> officeID { get; set; }
-        public string location { get; set; }
     }
 }

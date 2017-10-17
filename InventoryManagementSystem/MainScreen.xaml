@@ -58,7 +58,7 @@
                     <TabItem Header="Inventory List">
                         <Grid Background="#FFE5E5E5" DataContext="{StaticResource inventoryViewSource}">
                             <WrapPanel HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" VerticalAlignment="Top" Width="950">
-                                <Button x:Name="btnAddItem" Content="Add Item" Width="75" Click="btnAddItem_Click"/>
+                                <Button x:Name="btnAddItem" Content="Add Item" Width="75" Click="BtnAddItem_Click"/>
                                 <Button x:Name="btnDeleteItem" Content="Delete" Width="75"/>
                                 <Button x:Name="btnClearFilter" Content="Clear Filter" Width="75"/>
                                 <ComboBox Width="120"/>
@@ -68,7 +68,7 @@
                                     <DataGridTemplateColumn x:Name="btnModifyRecord" Header="" Width="SizeToHeader">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button x:Name="btnModifyRecord" Content="Moditfy" Tag="{Binding itemID, Mode=OneWay}" Click="btnModitfyItem_Click"/>
+                                                <Button x:Name="btnModifyRecord" Content="Moditfy" Tag="{Binding itemID, Mode=OneWay}" Click="BtnModitfyItem_Click"/>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
@@ -145,7 +145,7 @@
                     <TabItem Header="User Management">
                         <Grid Background="#FFE5E5E5" DataContext="{StaticResource usersViewSource}">
                             <WrapPanel HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" VerticalAlignment="Top" Width="950">
-                                <Button x:Name="btnAdd" Content="Add" Width="75" Click="btnAdd_Click"/>
+                                <Button x:Name="btnAdd" Content="Add" Width="75" Click="BtnAdd_Click"/>
                                 <Button x:Name="btnRemove" Content="Remove" Width="75"/>
                                 <Button x:Name="btnClear" Content="Clear Filter" Width="75"/>
                                 <ComboBox Width="120"/>
@@ -158,14 +158,14 @@
                                     <DataGridTemplateColumn x:Name="modifyUserColumn" Header="" Width="70">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button x:Name="btnModifyUser" Content="Modify" Tag="{Binding userID}" BorderThickness="0" Margin="0" Padding="1" Grid.IsSharedSizeScope="False" Width="Auto" Click="btnModifyUser_Click"/>
+                                                <Button x:Name="btnModifyUser" Content="Modify" Tag="{Binding userID}" BorderThickness="0" Margin="0" Padding="1" Grid.IsSharedSizeScope="False" Width="Auto" Click="BtnModifyUser_Click"/>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
                                     <DataGridTemplateColumn x:Name="deleteUserColumn" Header="" Width="70">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button x:Name="btnDeleteUser" Content="Delete" Tag="{Binding userID}" BorderThickness="0" Margin="0" Padding="1" Grid.IsSharedSizeScope="False" Width="Auto" Click="btnDeleteUser_Click"/>
+                                                <Button x:Name="btnDeleteUser" Content="Delete" Tag="{Binding userID}" BorderThickness="0" Margin="0" Padding="1" Grid.IsSharedSizeScope="False" Width="Auto" Click="BtnDeleteUser_Click"/>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>

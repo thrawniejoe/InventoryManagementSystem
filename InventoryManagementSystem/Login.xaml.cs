@@ -25,7 +25,7 @@ namespace InventoryManagementSystem
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             //add user check here
             var username = txtUsername.Text;
@@ -68,7 +68,7 @@ namespace InventoryManagementSystem
             }
         }
 
-        private void btnX_Click(object sender, RoutedEventArgs e)
+        private void BtnX_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
