@@ -18,9 +18,9 @@ namespace InventoryManagementSystem
         public string tag { get; set; }
         public string serialNumber { get; set; }
         public string modelNumber { get; set; }
-        public string category { get; set; }
-        public string location { get; set; }
-        public string status { get; set; }
+        public string CategoryName { get; set; }
+        public string Location { get; set; }
+        public string Status { get; set; }
         public string Name { get; set; }
         public Nullable<System.DateTime> dateAssigned { get; set; }
         public Nullable<System.DateTime> dateRecordModified { get; set; }

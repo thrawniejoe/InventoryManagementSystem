@@ -14,17 +14,11 @@ namespace InventoryManagementSystem
     
     public partial class Documentation
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Documentation()
-        {
-            this.Inventories = new HashSet<Inventory>();
-        }
-    
         public int DocID { get; set; }
+        public int ItemID { get; set; }
         public string DocLink { get; set; }
         public Nullable<System.DateTime> DateAdded { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Inventory> Inventories { get; set; }
+        public virtual Inventory Inventory { get; set; }
     }
 }

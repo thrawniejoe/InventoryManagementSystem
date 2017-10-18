@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="InventoryDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="ComputerSpecsList">
           <Key>
             <PropertyRef Name="modelID" />
@@ -27,6 +34,7 @@
             <PropertyRef Name="DocID" />
           </Key>
           <Property Name="DocID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
           <Property Name="DocLink" Type="varchar" MaxLength="255" />
           <Property Name="DateAdded" Type="datetime" />
         </EntityType>
@@ -56,16 +64,23 @@
           <Property Name="manufacturer" Type="varchar" MaxLength="100" />
           <Property Name="modelID" Type="int" />
           <Property Name="modelNumber" Type="varchar" MaxLength="50" />
-          <Property Name="category" Type="varchar" MaxLength="50" />
-          <Property Name="location" Type="varchar" MaxLength="50" />
-          <Property Name="status" Type="varchar" MaxLength="50" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="LocationID" Type="int" />
+          <Property Name="StatusID" Type="int" />
           <Property Name="assignedTo" Type="int" />
           <Property Name="dateAssigned" Type="datetime" />
           <Property Name="dateRecordModified" Type="datetime" />
           <Property Name="recordModifiedBy_userID" Type="int" />
-          <Property Name="documentationID" Type="int" />
           <Property Name="datePurchased" Type="datetime" />
           <Property Name="officeID" Type="int" />
+        </EntityType>
+        <EntityType Name="Locations">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="OfficeList">
           <Key>
@@ -82,6 +97,13 @@
           <Property Name="roleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="permissionLevel" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="StatusList">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -108,74 +130,26 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
           <Property Name="tag" Type="varchar" MaxLength="50" />
           <Property Name="serialNumber" Type="varchar" MaxLength="100" />
           <Property Name="modelNumber" Type="varchar" MaxLength="100" />
-          <Property Name="category" Type="varchar" MaxLength="50" />
-          <Property Name="location" Type="varchar" MaxLength="50" />
-          <Property Name="status" Type="varchar" MaxLength="50" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
           <Property Name="Name" Type="varchar" MaxLength="100" />
           <Property Name="dateAssigned" Type="datetime" />
           <Property Name="dateRecordModified" Type="datetime" />
-          <Property Name="emailAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="emailAddress" Type="varchar" MaxLength="55" Nullable="false" />
           <Property Name="datePurchased" Type="datetime" />
           <Property Name="itemID" Type="int" Nullable="false" />
           <Property Name="officeID" Type="int" />
         </EntityType>
-        <Association Name="FK__Inventory__assig__72910220">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
-          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+        <Association Name="FK__Documenta__ItemI__4C364F0E">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
+          <End Role="Documentation" Type="Self.Documentation" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Employees">
-              <PropertyRef Name="EmployeeID" />
+            <Principal Role="Inventory">
+              <PropertyRef Name="itemID" />
             </Principal>
-            <Dependent Role="Inventory">
-              <PropertyRef Name="assignedTo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Inventory__docum__74794A92">
-          <End Role="Documentation" Type="Self.Documentation" Multiplicity="0..1" />
-          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Documentation">
-              <PropertyRef Name="DocID" />
-            </Principal>
-            <Dependent Role="Inventory">
-              <PropertyRef Name="documentationID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Inventory__model__73852659">
-          <End Role="ComputerSpecsList" Type="Self.ComputerSpecsList" Multiplicity="0..1" />
-          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ComputerSpecsList">
-              <PropertyRef Name="modelID" />
-            </Principal>
-            <Dependent Role="Inventory">
-              <PropertyRef Name="modelID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Inventory__offic__719CDDE7">
-          <End Role="OfficeList" Type="Self.OfficeList" Multiplicity="0..1" />
-          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OfficeList">
-              <PropertyRef Name="officeID" />
-            </Principal>
-            <Dependent Role="Inventory">
-              <PropertyRef Name="officeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Inventory__recor__70A8B9AE">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="userID" />
-            </Principal>
-            <Dependent Role="Inventory">
-              <PropertyRef Name="recordModifiedBy_userID" />
+            <Dependent Role="Documentation">
+              <PropertyRef Name="ItemID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -191,13 +165,100 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_AssignedTo">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="assignedTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryID">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationID">
+          <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModelID">
+          <End Role="ComputerSpecsList" Type="Self.ComputerSpecsList" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComputerSpecsList">
+              <PropertyRef Name="modelID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="modelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficeID">
+          <End Role="OfficeList" Type="Self.OfficeList" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfficeList">
+              <PropertyRef Name="officeID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="officeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusID">
+          <End Role="StatusList" Type="Self.StatusList" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusList">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserID">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="recordModifiedBy_userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="InventoryDBModelStoreContainer">
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ComputerSpecsList" EntityType="Self.ComputerSpecsList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Documentation" EntityType="Self.Documentation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OfficeList" EntityType="Self.OfficeList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusList" EntityType="Self.StatusList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vInventoryList" EntityType="Self.vInventoryList" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -205,9 +266,9 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
     [vInventoryList].[tag] AS [tag], 
     [vInventoryList].[serialNumber] AS [serialNumber], 
     [vInventoryList].[modelNumber] AS [modelNumber], 
-    [vInventoryList].[category] AS [category], 
-    [vInventoryList].[location] AS [location], 
-    [vInventoryList].[status] AS [status], 
+    [vInventoryList].[CategoryName] AS [CategoryName], 
+    [vInventoryList].[Location] AS [Location], 
+    [vInventoryList].[Status] AS [Status], 
     [vInventoryList].[Name] AS [Name], 
     [vInventoryList].[dateAssigned] AS [dateAssigned], 
     [vInventoryList].[dateRecordModified] AS [dateRecordModified], 
@@ -217,29 +278,41 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
     [vInventoryList].[officeID] AS [officeID]
     FROM [dbo].[vInventoryList] AS [vInventoryList]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Inventory__assig__72910220" Association="Self.FK__Inventory__assig__72910220">
-            <End Role="Employees" EntitySet="Employees" />
+          <AssociationSet Name="FK__Documenta__ItemI__4C364F0E" Association="Self.FK__Documenta__ItemI__4C364F0E">
             <End Role="Inventory" EntitySet="Inventory" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Inventory__docum__74794A92" Association="Self.FK__Inventory__docum__74794A92">
             <End Role="Documentation" EntitySet="Documentation" />
-            <End Role="Inventory" EntitySet="Inventory" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Inventory__model__73852659" Association="Self.FK__Inventory__model__73852659">
-            <End Role="ComputerSpecsList" EntitySet="ComputerSpecsList" />
-            <End Role="Inventory" EntitySet="Inventory" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Inventory__offic__719CDDE7" Association="Self.FK__Inventory__offic__719CDDE7">
-            <End Role="OfficeList" EntitySet="OfficeList" />
-            <End Role="Inventory" EntitySet="Inventory" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Inventory__recor__70A8B9AE" Association="Self.FK__Inventory__recor__70A8B9AE">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Inventory" EntitySet="Inventory" />
           </AssociationSet>
           <AssociationSet Name="FK__Users__roleID__6DCC4D03" Association="Self.FK__Users__roleID__6DCC4D03">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssignedTo" Association="Self.FK_AssignedTo">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryID" Association="Self.FK_CategoryID">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationID" Association="Self.FK_LocationID">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModelID" Association="Self.FK_ModelID">
+            <End Role="ComputerSpecsList" EntitySet="ComputerSpecsList" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficeID" Association="Self.FK_OfficeID">
+            <End Role="OfficeList" EntitySet="OfficeList" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusID" Association="Self.FK_StatusID">
+            <End Role="StatusList" EntitySet="StatusList" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserID" Association="Self.FK_UserID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Inventory" EntitySet="Inventory" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -247,31 +320,45 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
     <edmx:ConceptualModels>
       <Schema Namespace="InventoryDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="InventoryDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="InventoryDBModel.Category" />
           <EntitySet Name="ComputerSpecsLists" EntityType="InventoryDBModel.ComputerSpecsList" />
           <EntitySet Name="Documentations" EntityType="InventoryDBModel.Documentation" />
           <EntitySet Name="Employees" EntityType="InventoryDBModel.Employee" />
           <EntitySet Name="Inventories" EntityType="InventoryDBModel.Inventory" />
+          <EntitySet Name="Locations" EntityType="InventoryDBModel.Location" />
           <EntitySet Name="OfficeLists" EntityType="InventoryDBModel.OfficeList" />
           <EntitySet Name="Roles" EntityType="InventoryDBModel.Role" />
+          <EntitySet Name="StatusLists" EntityType="InventoryDBModel.StatusList" />
           <EntitySet Name="Users" EntityType="InventoryDBModel.User" />
-          <EntitySet Name="vInventoryLists" EntityType="InventoryDBModel.vInventoryList" />
-          <AssociationSet Name="FK__Inventory__model__73852659" Association="InventoryDBModel.FK__Inventory__model__73852659">
+          <AssociationSet Name="FK_CategoryID" Association="InventoryDBModel.FK_CategoryID">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModelID" Association="InventoryDBModel.FK_ModelID">
             <End Role="ComputerSpecsList" EntitySet="ComputerSpecsLists" />
             <End Role="Inventory" EntitySet="Inventories" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inventory__docum__74794A92" Association="InventoryDBModel.FK__Inventory__docum__74794A92">
-            <End Role="Documentation" EntitySet="Documentations" />
+          <AssociationSet Name="FK__Documenta__ItemI__4C364F0E" Association="InventoryDBModel.FK__Documenta__ItemI__4C364F0E">
             <End Role="Inventory" EntitySet="Inventories" />
+            <End Role="Documentation" EntitySet="Documentations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inventory__assig__72910220" Association="InventoryDBModel.FK__Inventory__assig__72910220">
+          <AssociationSet Name="FK_AssignedTo" Association="InventoryDBModel.FK_AssignedTo">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Inventory" EntitySet="Inventories" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inventory__offic__719CDDE7" Association="InventoryDBModel.FK__Inventory__offic__719CDDE7">
+          <AssociationSet Name="FK_LocationID" Association="InventoryDBModel.FK_LocationID">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficeID" Association="InventoryDBModel.FK_OfficeID">
             <End Role="OfficeList" EntitySet="OfficeLists" />
             <End Role="Inventory" EntitySet="Inventories" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inventory__recor__70A8B9AE" Association="InventoryDBModel.FK__Inventory__recor__70A8B9AE">
+          <AssociationSet Name="FK_StatusID" Association="InventoryDBModel.FK_StatusID">
+            <End Role="StatusList" EntitySet="StatusLists" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserID" Association="InventoryDBModel.FK_UserID">
             <End Role="User" EntitySet="Users" />
             <End Role="Inventory" EntitySet="Inventories" />
           </AssociationSet>
@@ -279,7 +366,16 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
             <End Role="Role" EntitySet="Roles" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="vInventoryLists" EntityType="InventoryDBModel.vInventoryList" />
         </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK_CategoryID" FromRole="Category" ToRole="Inventory" />
+        </EntityType>
         <EntityType Name="ComputerSpecsList">
           <Key>
             <PropertyRef Name="modelID" />
@@ -296,16 +392,17 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
           <Property Name="DisplayPorts" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="HDMIPorts" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="USBPorts" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK__Inventory__model__73852659" FromRole="ComputerSpecsList" ToRole="Inventory" />
+          <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK_ModelID" FromRole="ComputerSpecsList" ToRole="Inventory" />
         </EntityType>
         <EntityType Name="Documentation">
           <Key>
             <PropertyRef Name="DocID" />
           </Key>
           <Property Name="DocID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
           <Property Name="DocLink" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="DateAdded" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK__Inventory__docum__74794A92" FromRole="Documentation" ToRole="Inventory" />
+          <NavigationProperty Name="Inventory" Relationship="InventoryDBModel.FK__Documenta__ItemI__4C364F0E" FromRole="Documentation" ToRole="Inventory" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -321,7 +418,7 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
           <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK__Inventory__assig__72910220" FromRole="Employee" ToRole="Inventory" />
+          <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK_AssignedTo" FromRole="Employee" ToRole="Inventory" />
         </EntityType>
         <EntityType Name="Inventory">
           <Key>
@@ -334,21 +431,32 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
           <Property Name="manufacturer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="modelID" Type="Int32" />
           <Property Name="modelNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="LocationID" Type="Int32" />
+          <Property Name="StatusID" Type="Int32" />
           <Property Name="assignedTo" Type="Int32" />
           <Property Name="dateAssigned" Type="DateTime" Precision="3" />
           <Property Name="dateRecordModified" Type="DateTime" Precision="3" />
           <Property Name="recordModifiedBy_userID" Type="Int32" />
-          <Property Name="documentationID" Type="Int32" />
           <Property Name="datePurchased" Type="DateTime" Precision="3" />
           <Property Name="officeID" Type="Int32" />
-          <NavigationProperty Name="ComputerSpecsList" Relationship="InventoryDBModel.FK__Inventory__model__73852659" FromRole="Inventory" ToRole="ComputerSpecsList" />
-          <NavigationProperty Name="Documentation" Relationship="InventoryDBModel.FK__Inventory__docum__74794A92" FromRole="Inventory" ToRole="Documentation" />
-          <NavigationProperty Name="Employee" Relationship="InventoryDBModel.FK__Inventory__assig__72910220" FromRole="Inventory" ToRole="Employee" />
-          <NavigationProperty Name="OfficeList" Relationship="InventoryDBModel.FK__Inventory__offic__719CDDE7" FromRole="Inventory" ToRole="OfficeList" />
-          <NavigationProperty Name="User" Relationship="InventoryDBModel.FK__Inventory__recor__70A8B9AE" FromRole="Inventory" ToRole="User" />
+          <NavigationProperty Name="Category" Relationship="InventoryDBModel.FK_CategoryID" FromRole="Inventory" ToRole="Category" />
+          <NavigationProperty Name="ComputerSpecsList" Relationship="InventoryDBModel.FK_ModelID" FromRole="Inventory" ToRole="ComputerSpecsList" />
+          <NavigationProperty Name="Documentations" Relationship="InventoryDBModel.FK__Documenta__ItemI__4C364F0E" FromRole="Inventory" ToRole="Documentation" />
+          <NavigationProperty Name="Employee" Relationship="InventoryDBModel.FK_AssignedTo" FromRole="Inventory" ToRole="Employee" />
+          <NavigationProperty Name="Location" Relationship="InventoryDBModel.FK_LocationID" FromRole="Inventory" ToRole="Location" />
+          <NavigationProperty Name="OfficeList" Relationship="InventoryDBModel.FK_OfficeID" FromRole="Inventory" ToRole="OfficeList" />
+          <NavigationProperty Name="StatusList" Relationship="InventoryDBModel.FK_StatusID" FromRole="Inventory" ToRole="StatusList" />
+          <NavigationProperty Name="User" Relationship="InventoryDBModel.FK_UserID" FromRole="Inventory" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Location1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK_LocationID" FromRole="Location" ToRole="Inventory" />
         </EntityType>
         <EntityType Name="OfficeList">
           <Key>
@@ -357,7 +465,7 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
           <Property Name="officeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="officeName" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="false" />
           <Property Name="officeFloor" Type="Int32" />
-          <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK__Inventory__offic__719CDDE7" FromRole="OfficeList" ToRole="Inventory" />
+          <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK_OfficeID" FromRole="OfficeList" ToRole="Inventory" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -367,6 +475,14 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
           <Property Name="Title" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="permissionLevel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Users" Relationship="InventoryDBModel.FK__Users__roleID__6DCC4D03" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="StatusList">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK_StatusID" FromRole="StatusList" ToRole="Inventory" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -380,31 +496,22 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
           <Property Name="password" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="title" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="emailAddress" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK__Inventory__recor__70A8B9AE" FromRole="User" ToRole="Inventory" />
+          <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK_UserID" FromRole="User" ToRole="Inventory" />
           <NavigationProperty Name="Role" Relationship="InventoryDBModel.FK__Users__roleID__6DCC4D03" FromRole="User" ToRole="Role" />
         </EntityType>
-        <EntityType Name="vInventoryList">
-          <Key>
-            <PropertyRef Name="itemName" />
-            <PropertyRef Name="emailAddress" />
-            <PropertyRef Name="itemID" />
-          </Key>
-          <Property Name="itemName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="serialNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="modelNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="dateAssigned" Type="DateTime" Precision="3" />
-          <Property Name="dateRecordModified" Type="DateTime" Precision="3" />
-          <Property Name="emailAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="datePurchased" Type="DateTime" Precision="3" />
-          <Property Name="itemID" Type="Int32" Nullable="false" />
-          <Property Name="officeID" Type="Int32" />
-        </EntityType>
-        <Association Name="FK__Inventory__model__73852659">
+        <Association Name="FK_CategoryID">
+          <End Type="InventoryDBModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="InventoryDBModel.Inventory" Role="Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModelID">
           <End Type="InventoryDBModel.ComputerSpecsList" Role="ComputerSpecsList" Multiplicity="0..1" />
           <End Type="InventoryDBModel.Inventory" Role="Inventory" Multiplicity="*" />
           <ReferentialConstraint>
@@ -416,19 +523,19 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inventory__docum__74794A92">
-          <End Type="InventoryDBModel.Documentation" Role="Documentation" Multiplicity="0..1" />
-          <End Type="InventoryDBModel.Inventory" Role="Inventory" Multiplicity="*" />
+        <Association Name="FK__Documenta__ItemI__4C364F0E">
+          <End Type="InventoryDBModel.Inventory" Role="Inventory" Multiplicity="1" />
+          <End Type="InventoryDBModel.Documentation" Role="Documentation" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Documentation">
-              <PropertyRef Name="DocID" />
+            <Principal Role="Inventory">
+              <PropertyRef Name="itemID" />
             </Principal>
-            <Dependent Role="Inventory">
-              <PropertyRef Name="documentationID" />
+            <Dependent Role="Documentation">
+              <PropertyRef Name="ItemID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inventory__assig__72910220">
+        <Association Name="FK_AssignedTo">
           <End Type="InventoryDBModel.Employee" Role="Employee" Multiplicity="0..1" />
           <End Type="InventoryDBModel.Inventory" Role="Inventory" Multiplicity="*" />
           <ReferentialConstraint>
@@ -440,7 +547,19 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inventory__offic__719CDDE7">
+        <Association Name="FK_LocationID">
+          <End Type="InventoryDBModel.Location" Role="Location" Multiplicity="0..1" />
+          <End Type="InventoryDBModel.Inventory" Role="Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficeID">
           <End Type="InventoryDBModel.OfficeList" Role="OfficeList" Multiplicity="0..1" />
           <End Type="InventoryDBModel.Inventory" Role="Inventory" Multiplicity="*" />
           <ReferentialConstraint>
@@ -452,7 +571,19 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inventory__recor__70A8B9AE">
+        <Association Name="FK_StatusID">
+          <End Type="InventoryDBModel.StatusList" Role="StatusList" Multiplicity="0..1" />
+          <End Type="InventoryDBModel.Inventory" Role="Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusList">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserID">
           <End Type="InventoryDBModel.User" Role="User" Multiplicity="0..1" />
           <End Type="InventoryDBModel.Inventory" Role="Inventory" Multiplicity="*" />
           <ReferentialConstraint>
@@ -476,12 +607,41 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="vInventoryList">
+          <Key>
+            <PropertyRef Name="itemName" />
+            <PropertyRef Name="emailAddress" />
+            <PropertyRef Name="itemID" />
+          </Key>
+          <Property Name="itemName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="serialNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="modelNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dateAssigned" Type="DateTime" Precision="3" />
+          <Property Name="dateRecordModified" Type="DateTime" Precision="3" />
+          <Property Name="emailAddress" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="false" />
+          <Property Name="datePurchased" Type="DateTime" Precision="3" />
+          <Property Name="itemID" Type="Int32" Nullable="false" />
+          <Property Name="officeID" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="InventoryDBModelStoreContainer" CdmEntityContainer="InventoryDBEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="InventoryDBModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ComputerSpecsLists">
             <EntityTypeMapping TypeName="InventoryDBModel.ComputerSpecsList">
               <MappingFragment StoreEntitySet="ComputerSpecsList">
@@ -505,6 +665,7 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
               <MappingFragment StoreEntitySet="Documentation">
                 <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
                 <ScalarProperty Name="DocLink" ColumnName="DocLink" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
                 <ScalarProperty Name="DocID" ColumnName="DocID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -530,14 +691,13 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
               <MappingFragment StoreEntitySet="Inventory">
                 <ScalarProperty Name="officeID" ColumnName="officeID" />
                 <ScalarProperty Name="datePurchased" ColumnName="datePurchased" />
-                <ScalarProperty Name="documentationID" ColumnName="documentationID" />
                 <ScalarProperty Name="recordModifiedBy_userID" ColumnName="recordModifiedBy_userID" />
                 <ScalarProperty Name="dateRecordModified" ColumnName="dateRecordModified" />
                 <ScalarProperty Name="dateAssigned" ColumnName="dateAssigned" />
                 <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="location" ColumnName="location" />
-                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="modelNumber" ColumnName="modelNumber" />
                 <ScalarProperty Name="modelID" ColumnName="modelID" />
                 <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
@@ -545,6 +705,15 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
                 <ScalarProperty Name="tag" ColumnName="tag" />
                 <ScalarProperty Name="itemName" ColumnName="itemName" />
                 <ScalarProperty Name="itemID" ColumnName="itemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="InventoryDBModel.Location">
+              <MappingFragment StoreEntitySet="Locations">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Location1" ColumnName="Location" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -563,6 +732,14 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
                 <ScalarProperty Name="permissionLevel" ColumnName="permissionLevel" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="roleID" ColumnName="roleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusLists">
+            <EntityTypeMapping TypeName="InventoryDBModel.StatusList">
+              <MappingFragment StoreEntitySet="StatusList">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -590,9 +767,9 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
                 <ScalarProperty Name="dateRecordModified" ColumnName="dateRecordModified" />
                 <ScalarProperty Name="dateAssigned" ColumnName="dateAssigned" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="location" ColumnName="location" />
-                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
                 <ScalarProperty Name="modelNumber" ColumnName="modelNumber" />
                 <ScalarProperty Name="serialNumber" ColumnName="serialNumber" />
                 <ScalarProperty Name="tag" ColumnName="tag" />
@@ -614,8 +791,8 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

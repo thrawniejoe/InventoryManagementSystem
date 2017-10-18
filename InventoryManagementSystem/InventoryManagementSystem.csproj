@@ -78,6 +78,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Category.cs">
+      <DependentUpon>IMS_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="ComputerSpecsList.cs">
       <DependentUpon>IMS_Model.tt</DependentUpon>
     </Compile>
@@ -110,10 +113,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InventoryDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Location.cs">
+      <DependentUpon>IMS_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="OfficeList.cs">
       <DependentUpon>IMS_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Role.cs">
+      <DependentUpon>IMS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StatusList.cs">
       <DependentUpon>IMS_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
@@ -209,7 +218,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DatabaseSQL.sql" />
+    <Content Include="DatabaseSQL.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="IMS_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>IMS_Model.edmx</DependentUpon>

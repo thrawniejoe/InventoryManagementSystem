@@ -19,11 +19,6 @@ CREATE TABLE Employees (
   PhoneNumber varchar(50)
 );
 
-CREATE TABLE Documentation (
-  DocID int not null IDENTITY(1,1) PRIMARY KEY,
-  DocLink varchar(255),
-  DateAdded datetime
-);
 
 CREATE TABLE ComputerSpecsList (
   modelID int not null IDENTITY(1,1) PRIMARY KEY,
@@ -60,6 +55,22 @@ CREATE TABLE Users (
   FOREIGN KEY (roleID) REFERENCES Roles(roleID)
 );
 
+CREATE TABLE Categories (
+	CategoryID int not null IDENTITY(1,1) PRIMARY KEY,
+	CategoryName varchar(50)
+);
+
+CREATE TABLE Locations (
+	LocationID int not null IDENTITY(1,1) PRIMARY KEY,
+	Location varchar(50),
+	State varchar(50)
+);
+
+CREATE TABLE StatusList (
+	StatusID int not null IDENTITY(1,1) PRIMARY KEY,
+	Status varchar(50)
+);
+
 CREATE TABLE Inventory (
   itemID int not null IDENTITY(1,1) PRIMARY KEY,
   itemName varchar(100) not null,
@@ -68,21 +79,30 @@ CREATE TABLE Inventory (
   manufacturer varchar(100),
   modelID int,
   modelNumber varchar(50),
-  category varchar(50),
-  location varchar(50),
-  status varchar(50),
+  CategoryID int,
+  LocationID int,
+  StatusID int,
   assignedTo int,
   dateAssigned datetime,
   dateRecordModified datetime,
   recordModifiedBy_userID int,
-  documentationID int,
   datePurchased datetime,
   officeID int,
-  FOREIGN KEY (recordModifiedBy_userID) REFERENCES Users(userID),
-  FOREIGN KEY (officeID) REFERENCES OfficeList(officeID),
-  FOREIGN KEY (assignedTo) REFERENCES Employees(EmployeeID),
-  FOREIGN KEY (modelID) REFERENCES ComputerSpecsList(modelID),
-  FOREIGN KEY (documentationID) REFERENCES Documentation(DocID)
+  CONSTRAINT FK_UserID FOREIGN KEY (recordModifiedBy_userID) REFERENCES Users(userID),
+  CONSTRAINT FK_OfficeID FOREIGN KEY (officeID) REFERENCES OfficeList(officeID),
+  CONSTRAINT FK_AssignedTo FOREIGN KEY (assignedTo) REFERENCES Employees(EmployeeID),
+  CONSTRAINT FK_ModelID FOREIGN KEY (modelID) REFERENCES ComputerSpecsList(modelID),
+  CONSTRAINT FK_CategoryID FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID),
+  CONSTRAINT FK_LocationID FOREIGN KEY (LocationID) REFERENCES Locations(LocationID),
+  CONSTRAINT FK_StatusID FOREIGN KEY (StatusID) REFERENCES StatusList(StatusID)
+);
+
+CREATE TABLE Documentation (
+  DocID int not null IDENTITY(1,1) PRIMARY KEY,
+  ItemID int not null,
+  DocLink varchar(255),
+  DateAdded datetime,
+  FOREIGN KEY (ItemID) REFERENCES Inventory(ItemID)
 );
 
 ALTER TABLE Users
@@ -90,7 +110,10 @@ ADD FOREIGN KEY (role) REFERENCES roles(RoldID);
 
 
 --CREATE VIEW [dbo].[vInventoryList]
---	AS select itemName, i.tag, i.serialNumber, c.modelNumber, i.category, i.location, i.status, e.Name, i.dateAssigned, i.dateRecordModified, u.emailAddress, i.datePurchased, i.itemID, i.officeID from Inventory as i
---INNER JOIN ComputerSpecsList as c on i.modelID = c.modelID
+--	AS select itemName, i.tag, i.serialNumber, cs.modelNumber, c.CategoryName, l.Location, s.Status, e.Name, i.dateAssigned, i.dateRecordModified, u.emailAddress, i.datePurchased, i.itemID, i.officeID from Inventory as i
+--INNER JOIN ComputerSpecsList as cs on i.modelID = cs.modelID
 --INNER JOIN Employees as e on i.assignedTo = e.EmployeeID
+--INNER JOIN Categories as c on i.CategoryID = c.CategoryID
+--INNER JOIN Locations as l on i.LocationID = l.LocationID
+--INNER JOIN StatusList as s on i.StatusID = s.StatusID
 --INNER JOIN Users as u on i.recordModifiedBy_userID = u.userID;

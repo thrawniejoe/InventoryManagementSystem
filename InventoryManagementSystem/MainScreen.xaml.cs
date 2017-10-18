@@ -44,11 +44,6 @@ namespace InventoryManagementSystem
             System.Windows.Data.CollectionViewSource usersViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("usersViewSource")));
             usersViewSource.View.MoveCurrentToFirst();
             RefreshUserList();
-            // Load data into the table Inventory. You can modify this code as needed.
-            InventoryManagementSystem.InventoryDBDataSetTableAdapters.InventoryTableAdapter inventoryDBDataSetInventoryTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.InventoryTableAdapter();
-            inventoryDBDataSetInventoryTableAdapter.Fill(inventoryDBDataSet.Inventory);
-            System.Windows.Data.CollectionViewSource inventoryViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("inventoryViewSource")));
-            inventoryViewSource.View.MoveCurrentToFirst();
             // Load data into the table Users. You can modify this code as needed.
             InventoryManagementSystem.InventoryDBDataSetTableAdapters.UsersTableAdapter inventoryDBDataSetUsersTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.UsersTableAdapter();
             inventoryDBDataSetUsersTableAdapter.Fill(inventoryDBDataSet.Users);
@@ -57,11 +52,7 @@ namespace InventoryManagementSystem
             inventoryDBDataSetEmployeesTableAdapter.Fill(inventoryDBDataSet.Employees);
             System.Windows.Data.CollectionViewSource employeesViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("employeesViewSource")));
             employeesViewSource.View.MoveCurrentToFirst();
-            // Load data into the table vInventoryList. You can modify this code as needed.
-            InventoryManagementSystem.InventoryDBDataSetTableAdapters.vInventoryListTableAdapter inventoryDBDataSetvInventoryListTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.vInventoryListTableAdapter();
-            inventoryDBDataSetvInventoryListTableAdapter.Fill(inventoryDBDataSet.vInventoryList);
-            System.Windows.Data.CollectionViewSource vInventoryListViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("vInventoryListViewSource")));
-            vInventoryListViewSource.View.MoveCurrentToFirst();
+            
             RefreshFilterList();
         }
 
@@ -114,9 +105,8 @@ namespace InventoryManagementSystem
         public void RefreshFilterList()
         {
             var context = new InventoryManagementSystem.InventoryDBEntities();
-            var FilterList = (from r in context.Inventories
-                              group r.category by r.category into g
-                              select g.Key).ToList();
+            var FilterList = (from r in context.Categories
+                              select r.CategoryName).ToList();
 
             cboFilterList.ItemsSource = FilterList;
         }
@@ -127,7 +117,7 @@ namespace InventoryManagementSystem
             string value = Convert.ToString(cboFilterList.SelectedValue);
             //MessageBox.Show(value);
             var Inventory = (from i in context.vInventoryLists
-                             where i.category == value
+                             where i.CategoryName == value
                              select i).ToList();
             vInventoryListDataGrid.ItemsSource = Inventory;
         }
@@ -156,7 +146,7 @@ namespace InventoryManagementSystem
             newUser.ShowDialog();
         }
 
-        private void btnClearFilter_Click(object sender, RoutedEventArgs e)
+        private void BtnClearFilter_Click(object sender, RoutedEventArgs e)
         {
             var context = new InventoryManagementSystem.InventoryDBEntities();
             var Inventory = (from i in context.vInventoryLists
@@ -164,7 +154,7 @@ namespace InventoryManagementSystem
             vInventoryListDataGrid.ItemsSource = Inventory;
         }
 
-        private void cboFilterList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CboFilterList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             RefreshInventory();
         }

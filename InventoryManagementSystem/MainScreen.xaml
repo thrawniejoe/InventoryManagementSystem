@@ -10,7 +10,7 @@
     <Window.Resources>
         <local:InventoryDBDataSet x:Key="inventoryDBDataSet"/>
         <CollectionViewSource x:Key="usersViewSource" Source="{Binding Users, Source={StaticResource inventoryDBDataSet}}"/>
-        <CollectionViewSource x:Key="inventoryViewSource" Source="{Binding Inventory, Source={StaticResource inventoryDBDataSet}}"/>
+
         <CollectionViewSource x:Key="employeesViewSource" Source="{Binding Employees, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="vInventoryListViewSource" Source="{Binding vInventoryList, Source={StaticResource inventoryDBDataSet}}"/>
     </Window.Resources>
@@ -56,43 +56,41 @@
                         </Style>
                     </TabControl.Resources>
                     <TabItem Header="Inventory List">
-                        <Grid Background="#FFE5E5E5" DataContext="{StaticResource inventoryViewSource}">
+                        <Grid Background="#FFE5E5E5" DataContext="{StaticResource vInventoryListViewSource}">
                             <WrapPanel HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" VerticalAlignment="Top" Width="950">
                                 <Button x:Name="btnAddItem" Content="Add Item" Width="75" Click="BtnAddItem_Click"/>
-                                <Button x:Name="btnClearFilter" Content="Clear Filter" Width="75" Click="btnClearFilter_Click"/>
-                                <ComboBox x:Name="cboFilterList" Width="120" SelectionChanged="cboFilterList_SelectionChanged"/>
+                                <Button x:Name="btnClearFilter" Content="Clear Filter" Width="75" Click="BtnClearFilter_Click"/>
+                                <ComboBox x:Name="cboFilterList" Width="120" SelectionChanged="CboFilterList_SelectionChanged"/>
                             </WrapPanel>
-                            <DataGrid x:Name="vInventoryListDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource vInventoryListViewSource}}" Margin="10,50,10,10" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserResizeColumns="False">
+                            <DataGrid x:Name="vInventoryListDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource vInventoryListViewSource}}" Margin="10,50,10,10" RowDetailsVisibilityMode="VisibleWhenSelected" GridLinesVisibility="None" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserDeleteRows="False" SelectionMode="Single">
                                 <DataGrid.Columns>
-                                    <DataGridTemplateColumn x:Name="btnModifyRecord" Header="" Width="55">
+                                    <DataGridTemplateColumn x:Name="btnModifyRecord" Header="" Width="100">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <Button x:Name="btnModifyRecord" Content="Moditfy" Tag="{Binding itemID, Mode=OneWay}" Click="BtnModitfyItem_Click"/>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
-                                    <DataGridTextColumn x:Name="itemNameColumn" Binding="{Binding itemName}" Header="Item Name" Width="120"/>
-                                    <DataGridTextColumn x:Name="serialNumberColumn" Binding="{Binding serialNumber}" Header="Serial Number" Width="120"/>
-                                    <DataGridTextColumn x:Name="categoryColumn" Binding="{Binding category}" Header="Category" Width="90"/>
-                                    <DataGridTextColumn x:Name="locationColumn" Binding="{Binding location}" Header="Location" Width="90"/>
-                                    <DataGridTextColumn x:Name="statusColumn" Binding="{Binding status}" Header="Status" Width="90"/>
-                                    <DataGridTextColumn x:Name="nameColumn1" Binding="{Binding Name}" Header="Name" Width="90"/>
-                                    <DataGridTemplateColumn x:Name="dateAssignedColumn" Header="Date Assigned" Width="90">
+                                    <DataGridTextColumn x:Name="itemNameColumn" Binding="{Binding itemName}" Header="item Name" Width="120"/>
+                                    <DataGridTextColumn x:Name="tagColumn" Binding="{Binding tag}" Header="tag" Width="90"/>
+                                    <DataGridTextColumn x:Name="categoryNameColumn" Binding="{Binding CategoryName}" Header="Category Name" Width="100"/>
+                                    <DataGridTextColumn x:Name="locationColumn" Binding="{Binding Location}" Header="Location" Width="100"/>
+                                    <DataGridTextColumn x:Name="statusColumn" Binding="{Binding Status}" Header="Status" Width="60"/>
+                                    <DataGridTextColumn x:Name="nameColumn1" Binding="{Binding Name}" Header="Name" Width="120"/>
+                                    <DataGridTemplateColumn x:Name="dateAssignedColumn" Header="date Assigned" Width="120">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <DatePicker SelectedDate="{Binding dateAssigned, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
-                                    <DataGridTextColumn x:Name="emailAddressColumn1" Binding="{Binding emailAddress}" Header="Email Address" Width="120"/>
-                                    <DataGridTemplateColumn x:Name="datePurchasedColumn" Header="date Purchased" Width="SizeToHeader">
+                                    <DataGridTemplateColumn x:Name="dateRecordModifiedColumn" Header="date Record Modified" Width="120">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <DatePicker SelectedDate="{Binding datePurchased, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                                <DatePicker SelectedDate="{Binding dateRecordModified, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
-                                    <DataGridTextColumn x:Name="officeIDColumn" Binding="{Binding officeID}" Header="Office" Width="SizeToHeader"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Grid>
@@ -104,20 +102,20 @@
             </TabItem>
             <TabItem Header="Personnel" Margin="0,60,0,-60" >
                 <Grid DataContext="{StaticResource employeesViewSource}">
-                    <DataGrid x:Name="employeesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="187,80,10,10" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid x:Name="employeesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="120,102,10,-12" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="employeeIDColumn" Binding="{Binding EmployeeID}" Header="Employee ID" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="titleColumn1" Binding="{Binding Title}" Header="Title" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="usernameColumn" Binding="{Binding Username}" Header="Username" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="emailAddressColumn" Binding="{Binding EmailAddress}" Header="Email Address" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="managerColumn" Binding="{Binding Manager}" Header="Manager" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="divisionColumn" Binding="{Binding Division}" Header="Division" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="locationColumn1" Binding="{Binding Location}" Header="Location" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="statusColumn1" Binding="{Binding Status}" Header="Status" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="phoneNumberColumn" Binding="{Binding PhoneNumber}" Header="Phone Number" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="120"/>
+                            <DataGridTextColumn x:Name="titleColumn1" Binding="{Binding Title}" Header="Title" Width="120"/>
+                            <DataGridTextColumn x:Name="emailAddressColumn" Binding="{Binding EmailAddress}" Header="Email Address" Width="120"/>
+                            <DataGridTextColumn x:Name="managerColumn" Binding="{Binding Manager}" Header="Manager" Width="90"/>
+                            <DataGridTextColumn x:Name="divisionColumn" Binding="{Binding Division}" Header="Division" Width="90"/>
+                            <DataGridTextColumn x:Name="locationColumn1" Binding="{Binding Location}" Header="Location" Width="90"/>
+                            <DataGridTextColumn x:Name="statusColumn1" Binding="{Binding Status}" Header="Status" Width="60"/>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="120,49,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="200,49,0,0" VerticalAlignment="Top" Width="75"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Building Map" Margin="0,60,0,-60" />
@@ -149,7 +147,7 @@
                                 <Button x:Name="btnClear" Content="Clear Filter" Width="75"/>
                                 <ComboBox Width="120"/>
                             </WrapPanel>
-                            <DataGrid x:Name="usersDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="45,50,416,214" RowDetailsVisibilityMode="VisibleWhenSelected">
+                            <DataGrid x:Name="usersDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="109,50,352,214" RowDetailsVisibilityMode="VisibleWhenSelected">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn x:Name="firstNameColumn" Binding="{Binding firstName}" Header="first Name" Width="120"/>
                                     <DataGridTextColumn x:Name="lastNameColumn" Binding="{Binding lastName}" Header="last Name" Width="120"/>

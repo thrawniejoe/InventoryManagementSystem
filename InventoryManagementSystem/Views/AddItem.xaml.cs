@@ -44,20 +44,20 @@ namespace InventoryManagementSystem.Views
             var assignedUser = (from emp in context.Employees
                          select new { name = emp.Name, id = emp.EmployeeID }).ToList();
             assignedToComboBox.ItemsSource = assignedUser;
-            assignedToComboBox.DisplayMemberPath = "name";
-            assignedToComboBox.SelectedValuePath = "id";
+            assignedToComboBox.DisplayMemberPath = "Name";
+            assignedToComboBox.SelectedValuePath = "EmployeeID";
 
-            var categories = (from i in context.Inventories
-                                select new { category = i.category}).ToList();
+            var categories = (from i in context.Categories
+                                select new { category = i.CategoryName}).ToList();
             categoryComboBox.ItemsSource = assignedUser;
-            categoryComboBox.DisplayMemberPath = "category";
-            categoryComboBox.SelectedValuePath = "category";
+            categoryComboBox.DisplayMemberPath = "Category";
+            categoryComboBox.SelectedValuePath = "CategoryID";
 
             var office = (from o in context.OfficeLists
                               select new { id = o.officeID, officeName = o.officeName }).ToList();
             officeIDComboBox.ItemsSource = office;
             officeIDComboBox.DisplayMemberPath = "officeName";
-            officeIDComboBox.SelectedValuePath = "id";
+            officeIDComboBox.SelectedValuePath = "officeID";
         }
 
         private void BtnAddItem_Click(object sender, RoutedEventArgs e)
@@ -70,15 +70,13 @@ namespace InventoryManagementSystem.Views
 
             if (validated == true)
             {
-                newItem.assignedTo = Convert.ToInt16(assignedToComboBox.SelectedValue);
-                newItem.category = categoryComboBox.Text;
+                int cat = Convert.ToInt16(categoryComboBox.SelectedValue);
+                newItem.dateAssigned = Convert.ToDateTime(assignedToComboBox.SelectedValue);
+                newItem.CategoryID = cat;
+                newItem.dateAssigned = dateAssignedDatePicker.SelectedDate;
+                newItem.datePurchased = datePurchasedDatePicker.SelectedDate;
+                newItem.dateRecordModified = dateRecordModifiedDatePicker.SelectedDate;
 
-                //newUser.firstName = firstNameTextBox.Text;
-                //newUser.lastName = lastNameTextBox.Text;
-                //newUser.password = passwordTextBox.Text;
-                //newUser.phone = phoneTextBox.Text;
-                //newUser.roleID = Convert.ToInt16(roleComboBox.SelectedValue);
-                //newUser.title = "Not Availible";
 
 
                 context.Inventories.Add(newItem);

@@ -24,7 +24,7 @@ namespace InventoryManagementSystem.Views
         public delegate void Refresh();
         public event Refresh RefreshPage;
         public string RequestType;
-        private int userID;
+        private int userID = 0;
 
         public AddUser()
         {
@@ -81,7 +81,7 @@ namespace InventoryManagementSystem.Views
                 newUser.lastName = lastNameTextBox.Text;
                 newUser.password = passwordTextBox.Text;
                 newUser.phone = phoneTextBox.Text;
-                newUser.roleID = Convert.ToInt16(roleComboBox.SelectedValue);
+                //newUser.Roles = Convert.ToInt16(roleComboBox.SelectedValue);
                 newUser.title = "Not Availible";
                 context.Users.Add(newUser);
                 context.SaveChanges();

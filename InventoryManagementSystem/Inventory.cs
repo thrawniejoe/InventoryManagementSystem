@@ -14,6 +14,12 @@ namespace InventoryManagementSystem
     
     public partial class Inventory
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Inventory()
+        {
+            this.Documentations = new HashSet<Documentation>();
+        }
+    
         public int itemID { get; set; }
         public string itemName { get; set; }
         public string tag { get; set; }
@@ -21,21 +27,24 @@ namespace InventoryManagementSystem
         public string manufacturer { get; set; }
         public Nullable<int> modelID { get; set; }
         public string modelNumber { get; set; }
-        public string category { get; set; }
-        public string location { get; set; }
-        public string status { get; set; }
+        public Nullable<int> CategoryID { get; set; }
+        public Nullable<int> LocationID { get; set; }
+        public Nullable<int> StatusID { get; set; }
         public Nullable<int> assignedTo { get; set; }
         public Nullable<System.DateTime> dateAssigned { get; set; }
         public Nullable<System.DateTime> dateRecordModified { get; set; }
         public Nullable<int> recordModifiedBy_userID { get; set; }
-        public Nullable<int> documentationID { get; set; }
         public Nullable<System.DateTime> datePurchased { get; set; }
         public Nullable<int> officeID { get; set; }
     
+        public virtual Category Category { get; set; }
         public virtual ComputerSpecsList ComputerSpecsList { get; set; }
-        public virtual Documentation Documentation { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Documentation> Documentations { get; set; }
         public virtual Employee Employee { get; set; }
+        public virtual Location Location { get; set; }
         public virtual OfficeList OfficeList { get; set; }
+        public virtual StatusList StatusList { get; set; }
         public virtual User User { get; set; }
     }
 }
