@@ -116,10 +116,10 @@
     <Compile Include="Location.cs">
       <DependentUpon>IMS_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelClass\Password.cs" />
     <Compile Include="OfficeList.cs">
       <DependentUpon>IMS_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelClass\Password.cs" />
     <Compile Include="Role.cs">
       <DependentUpon>IMS_Model.tt</DependentUpon>
     </Compile>

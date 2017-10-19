@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Security.Cryptography;
 
 
-namespace SeatingManager.ModelClass
+namespace InventoryManagementSystem.ModelClass
 {
     class Password
     {
@@ -36,8 +36,8 @@ namespace SeatingManager.ModelClass
         public static bool ConfirmPassword(string username, string password)
         {
             var context = new InventoryManagementSystem.InventoryDBDataSet();
-            byte[] recordedPassword = context.Users.Where(u => u.firstName == username).Single().password;
-            byte[] salt = context.Users.Where(u => u.firstName == username).Single().passwordSalt;
+            byte[] recordedPassword = context.Users.Where(u => u.emailAddress == username).Single().password;
+            byte[] salt = context.Users.Where(u => u.emailAddress == username).Single().passwordSalt;
             byte[] passwordHash = Hash(password, salt);
             byte[] recordedHash = recordedPassword;
             return recordedHash.SequenceEqual(passwordHash);

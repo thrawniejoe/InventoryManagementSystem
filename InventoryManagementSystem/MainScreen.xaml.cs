@@ -176,6 +176,11 @@ namespace InventoryManagementSystem
 
         }
 
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
 
         //Removes Asset From DB
         //private void btnRemove_Click(object sender, EventArgs e)

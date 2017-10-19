@@ -1,11 +1,11 @@
-﻿<Window x:Class="InventoryManagementSystem.MainWindow"
+﻿<Window x:Class="InventoryManagementSystem.Login"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryManagementSystem"
         mc:Ignorable="d"
-        Title="MainWindow" BorderBrush="Transparent" WindowStyle="none" Height="319.027" Width="514.934" AllowsTransparency="True" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown">
+        Title="Login" BorderBrush="Transparent" WindowStyle="none" Height="319.027" Width="514.934" AllowsTransparency="True" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown">
     <Window.Resources>
         <Style x:Key="EllipseStyle1" TargetType="{x:Type Ellipse}">
             <Style.Resources>

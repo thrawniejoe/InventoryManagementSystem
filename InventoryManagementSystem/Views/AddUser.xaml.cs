@@ -61,18 +61,14 @@ namespace InventoryManagementSystem.Views
                         lastNameTextBox.Text = mU.lastName;
                         phoneTextBox.Text = mU.phone;
                         roleComboBox.Text = mU.Role.Title;
-                        passwordTextBox.Text = mU.password;
+                        //passwordTextBox.Password = mU.password;
                         emailAddressTextBox.Text = mU.emailAddress;
                     }
                     break;
             }
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-                this.DragMove();
-        }
+
 
         private void BtnSubmit_Click(object sender, RoutedEventArgs e)
         {
@@ -138,7 +134,7 @@ namespace InventoryManagementSystem.Views
                     byte[] password = ModelClass.Password.Hash(passwordTextBox.Password, salt);
                     result.password = password;
                     result.passwordSalt = salt;
-
+                    
 
                     db.SaveChanges();
                 }
@@ -226,19 +222,6 @@ namespace InventoryManagementSystem.Views
                 check = false;
             }
 
-            //Title Selection Validation
-            if (titleTextBox.SelectedIndex == -1)
-            {
-                lblErrorMessage.Content = "Must select a title";
-                check = false;
-            }
-
-            //Hire Date Validation
-            if (!Validations.CheckEmptyString(dateHiredDatePicker.Text))
-            {
-                lblErrorMessage.Content = "Hire date cannot be blank.";
-                check = false;
-            }
             return check;
         }
 

@@ -18,9 +18,9 @@ namespace InventoryManagementSystem
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Login : Window
     {
-        public MainWindow()
+        public Login()
         {
             InitializeComponent();
         }
@@ -32,32 +32,32 @@ namespace InventoryManagementSystem
             var password = txtPassword.Password;
 
             var context = new InventoryManagementSystem.InventoryDBEntities();
+            string userName = txtUsername.Text;
 
-            var getPass = (from user in context.Users
-                          where user.emailAddress == username
-                          select user.password).FirstOrDefault();
+            var uCheck = (from u in context.Users
+                          where u.firstName.Equals(userName)
+                          select u.password).SingleOrDefault();
 
             var getRole = (from u in context.Users
-                           where u.emailAddress.Equals(username)
+                           where u.firstName.Equals(userName)
                            select u.roleID).SingleOrDefault();
 
-            if (password == getPass)
+            if (ModelClass.Password.ConfirmPassword(userName, txtPassword.Password))
             {
                 Window mainWindow = null;
                 switch (getRole)
                 {
-                    case 1:  //Admin
+                    case 1:
                         mainWindow = new MainScreen();
                         break;
-                    case 2:  //Manager
-                        //mainWindow = new ManagerMain();
+                    case 2:
+                        mainWindow = new MainScreen();
                         break;
-                    case 3:  //User
-                        //mainWindow = new MainWindow();
+                    case 3:
+                        mainWindow = new MainScreen();
                         break;
                 }
-
-                Properties.Settings.Default.CurrentUserRole = getRole; //saves the user role to the applcation settings file
+                Properties.Settings.Default.CurrentUserRole = Convert.ToInt16(getRole); //saves the user role to the applcation settings file
                 Properties.Settings.Default.Save();
                 mainWindow.Show();
                 this.Close();
@@ -75,10 +75,7 @@ namespace InventoryManagementSystem
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
-                this.DragMove();
+
         }
-
-
     }
 }
