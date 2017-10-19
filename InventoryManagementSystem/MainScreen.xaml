@@ -9,10 +9,10 @@
 
     <Window.Resources>
         <local:InventoryDBDataSet x:Key="inventoryDBDataSet"/>
-        <CollectionViewSource x:Key="usersViewSource" Source="{Binding Users, Source={StaticResource inventoryDBDataSet}}"/>
-
-        <CollectionViewSource x:Key="employeesViewSource" Source="{Binding Employees, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="vInventoryListViewSource" Source="{Binding vInventoryList, Source={StaticResource inventoryDBDataSet}}"/>
+        <CollectionViewSource x:Key="inventoryViewSource" Source="{Binding Inventory, Source={StaticResource inventoryDBDataSet}}"/>
+        <CollectionViewSource x:Key="usersViewSource" Source="{Binding Users, Source={StaticResource inventoryDBDataSet}}"/>
+        <CollectionViewSource x:Key="employeesViewSource" Source="{Binding Employees, Source={StaticResource inventoryDBDataSet}}"/>
     </Window.Resources>
     <Grid>
         <TabControl x:Name="tcMainTabController" TabStripPlacement="Left" >
@@ -102,8 +102,15 @@
             </TabItem>
             <TabItem Header="Personnel" Margin="0,60,0,-60" >
                 <Grid DataContext="{StaticResource employeesViewSource}">
-                    <DataGrid x:Name="employeesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="120,102,10,-12" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid x:Name="employeesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="96,80,10,10" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
+                            <DataGridTemplateColumn x:Name="RemoveEmployee" Header="" Width="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="btnRemoveEmployee" Content="Delete" Tag="{Binding EmployeeID, Mode=OneWay}" Click="BtnRemoveEmployee_Click"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTextColumn x:Name="employeeIDColumn" Binding="{Binding EmployeeID}" Header="Employee ID" Width="SizeToHeader"/>
                             <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="120"/>
                             <DataGridTextColumn x:Name="titleColumn1" Binding="{Binding Title}" Header="Title" Width="120"/>
@@ -114,8 +121,8 @@
                             <DataGridTextColumn x:Name="statusColumn1" Binding="{Binding Status}" Header="Status" Width="60"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Button" HorizontalAlignment="Left" Margin="120,49,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Button Content="Button" HorizontalAlignment="Left" Margin="200,49,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button Content="Add Employee" HorizontalAlignment="Left" Margin="96,49,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="176,49,0,0" VerticalAlignment="Top" Width="75"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Building Map" Margin="0,60,0,-60" />

@@ -159,6 +159,11 @@ namespace InventoryManagementSystem
             RefreshInventory();
         }
 
+        private void BtnRemoveEmployee_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
 
         //Removes Asset From DB
         //private void btnRemove_Click(object sender, EventArgs e)
