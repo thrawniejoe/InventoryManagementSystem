@@ -23,11 +23,17 @@ namespace InventoryManagementSystem.Views
         public delegate void Refresh();
         public event Refresh RefreshPage;
         public string RequestType;
-        private int userID;
+        //private int userID;
+        public string formType;
 
         public AddItem()
         {
             InitializeComponent();
+        }
+
+        public string FormType
+        {
+            get { return formType; }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

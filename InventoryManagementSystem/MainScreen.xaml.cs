@@ -77,18 +77,30 @@ namespace InventoryManagementSystem
 
         private void BtnModifyUser_Click(object sender, RoutedEventArgs e)
         {
+            Button b = sender as Button;
+            int myid = Convert.ToInt16(b.Tag);
 
+            Views.AddUser modifyUser = new Views.AddUser
+            {
+                userID = Convert.ToInt16(myid),
+                RequestType = "Modify",
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
+            modifyUser.RefreshPage += RefreshUserList;
+            modifyUser.ShowDialog();
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Views.AddUser newUser = new Views.AddUser
+            Views.AddUser addUser = new Views.AddUser
             {
+                RequestType = "Add",
                 Owner = this,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner
             };
-            newUser.RefreshPage += RefreshUserList;
-            newUser.ShowDialog();
+            addUser.RefreshPage += RefreshUserList;
+            addUser.ShowDialog();
         }
         //--------------------------------------//
         //********** Refresh Group *************//

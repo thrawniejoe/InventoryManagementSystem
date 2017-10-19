@@ -12,9 +12,7 @@
         <EntityTypeShape EntityType="InventoryDBModel.Inventory" Width="1.5" PointX="5.25" PointY="1.125" />
         <EntityTypeShape EntityType="InventoryDBModel.Location" Width="1.5" PointX="3" PointY="18" />
         <EntityTypeShape EntityType="InventoryDBModel.OfficeList" Width="1.5" PointX="3" PointY="6.5" />
-        <EntityTypeShape EntityType="InventoryDBModel.Role" Width="1.5" PointX="0.75" PointY="3" />
         <EntityTypeShape EntityType="InventoryDBModel.StatusList" Width="1.5" PointX="3" PointY="13.25" />
-        <EntityTypeShape EntityType="InventoryDBModel.User" Width="1.5" PointX="3" PointY="2.5" />
         <AssociationConnector Association="InventoryDBModel.FK_CategoryID" />
         <AssociationConnector Association="InventoryDBModel.FK_ModelID" />
         <AssociationConnector Association="InventoryDBModel.FK__Documenta__ItemI__4C364F0E" />
@@ -22,9 +20,11 @@
         <AssociationConnector Association="InventoryDBModel.FK_LocationID" />
         <AssociationConnector Association="InventoryDBModel.FK_OfficeID" />
         <AssociationConnector Association="InventoryDBModel.FK_StatusID" />
-        <AssociationConnector Association="InventoryDBModel.FK_UserID" />
-        <AssociationConnector Association="InventoryDBModel.FK__Users__roleID__6DCC4D03" />
         <EntityTypeShape EntityType="InventoryDBModel.vInventoryList" Width="1.5" PointX="7.375" PointY="5.75" />
+        <EntityTypeShape EntityType="InventoryDBModel.Role" Width="1.5" PointX="0.75" PointY="3" />
+        <EntityTypeShape EntityType="InventoryDBModel.User" Width="1.5" PointX="3" PointY="2.375" />
+        <AssociationConnector Association="InventoryDBModel.FK_UserID" />
+        <AssociationConnector Association="InventoryDBModel.FK__Users__roleID__57A801BA" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

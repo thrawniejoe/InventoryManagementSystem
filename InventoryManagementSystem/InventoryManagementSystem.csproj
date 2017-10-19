@@ -116,6 +116,7 @@
     <Compile Include="Location.cs">
       <DependentUpon>IMS_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelClass\Password.cs" />
     <Compile Include="OfficeList.cs">
       <DependentUpon>IMS_Model.tt</DependentUpon>
     </Compile>
@@ -128,6 +129,7 @@
     <Compile Include="User.cs">
       <DependentUpon>IMS_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Validations.cs" />
     <Compile Include="Views\AddItem.xaml.cs">
       <DependentUpon>AddItem.xaml</DependentUpon>
     </Compile>

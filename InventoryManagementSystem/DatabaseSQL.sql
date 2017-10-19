@@ -48,9 +48,10 @@ CREATE TABLE Users (
   lastName varchar(25) NOT NULL,
   phone varchar(15) DEFAULT NULL,
   roleID int NOT NULL,
-  password varchar(45) NOT NULL,
-  title varchar(15) NOT NULL,
+  password varbinary(256) NOT NULL,
+  title varchar(15),
   emailAddress varchar(55) NOT NULL,
+  hashedPassword varbinary(256),
   PRIMARY KEY (userID),
   FOREIGN KEY (roleID) REFERENCES Roles(roleID)
 );
