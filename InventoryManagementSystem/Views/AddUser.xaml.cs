@@ -87,7 +87,7 @@ namespace InventoryManagementSystem.Views
                         newUser.emailAddress = emailAddressTextBox.Text;
                         newUser.firstName = firstNameTextBox.Text;
                         newUser.lastName = lastNameTextBox.Text;
-                        newUser.password = passwordTextBox.Text;
+                        //newUser.password = passwordTextBox.Password;
                         newUser.phone = phoneTextBox.Text;
                         //newUser.Roles = Convert.ToInt16(roleComboBox.SelectedValue);
                         newUser.title = "Not Availible";
