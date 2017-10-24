@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:InventoryManagementSystem.Views"
         xmlns:InventoryManagementSystem="clr-namespace:InventoryManagementSystem" x:Class="InventoryManagementSystem.Views.ItemLookUp"
         mc:Ignorable="d"
-        Title="ItemLookUp" Height="605.5" Width="930.5" Loaded="Window_Loaded">
+        Title="ItemLookUp" Height="654.742" Width="1023.514" Loaded="Window_Loaded">
     <Window.Resources>
         <InventoryManagementSystem:InventoryDBDataSet x:Key="inventoryDBDataSet"/>
         <CollectionViewSource x:Key="vInventoryListViewSource" Source="{Binding vInventoryList, Source={StaticResource inventoryDBDataSet}}"/>
@@ -32,12 +32,13 @@
             </DataGrid.Columns>
         </DataGrid>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="11" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="1192"/>
-        <ComboBox HorizontalAlignment="Left" Margin="279,13,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox HorizontalAlignment="Left" Margin="526,13,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox HorizontalAlignment="Left" Margin="755,13,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="26,135,0,0" VerticalAlignment="Top" Width="142"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="26,110,0,0" VerticalAlignment="Top" Width="142"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="26,85,0,0" VerticalAlignment="Top" Width="142"/>
+        <ComboBox HorizontalAlignment="Left" Margin="256,13,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox HorizontalAlignment="Left" Margin="545,12,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox HorizontalAlignment="Left" Margin="886,13,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Add Item" HorizontalAlignment="Left" Margin="26,59,0,0" VerticalAlignment="Top" Width="142"/>
+        <Button Content="Update Item" HorizontalAlignment="Left" Margin="26,84,0,0" VerticalAlignment="Top" Width="142"/>
+        <Button Content="Close" HorizontalAlignment="Left" Margin="26,183,0,0" VerticalAlignment="Top" Width="142"/>
+        <Button Content="Remove Item" HorizontalAlignment="Left" Margin="26,134,0,0" VerticalAlignment="Top" Width="142"/>
         <Grid x:Name="grid1" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="65,78,0,0" Grid.Row="1" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -216,6 +217,10 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Label Content="Employee Name:" HorizontalAlignment="Left" Margin="781,10,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Office:" HorizontalAlignment="Left" Margin="496,9,0,0" VerticalAlignment="Top" Width="44"/>
+        <Label Content="Item Tag:" HorizontalAlignment="Left" Margin="191,10,0,0" VerticalAlignment="Top" Width="60"/>
+        <Label x:Name="lblCompanyName" Content="Company Name" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="168"/>
 
     </Grid>
 </Window>
