@@ -43,16 +43,26 @@ namespace InventoryManagementSystem.Views
             inventoryDBDataSetDocumentationTableAdapter.Fill(inventoryDBDataSet.Documentation);
             System.Windows.Data.CollectionViewSource documentationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("documentationViewSource")));
             documentationViewSource.View.MoveCurrentToFirst();
+            LoadDat();
         }
 
 
         private void LoadDat()
         {
+            cboEmplyeeList.ItemsSource = null;
             var context = new InventoryManagementSystem.InventoryDBEntities();
-            var UserList = (from r in context.Employees
-                            select r).ToList();
+            var EmployeeList_Name = (from r in context.Employees
+                            select r.Username).ToList();
 
-            cboEmplyeeList.ItemsSource = UserList;
+            cboEmplyeeList.ItemsSource = EmployeeList_Name;
+
+
+            var Office = (from r in context.OfficeLists
+                                     select r.officeName).ToList();
+
+            cboOfficeList.ItemsSource = Office;
+
+
         }
     }
 }
