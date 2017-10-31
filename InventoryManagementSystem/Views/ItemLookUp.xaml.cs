@@ -47,6 +47,7 @@ namespace InventoryManagementSystem.Views
         }
 
 
+        //Loads Data
         private void LoadDat()
         {
             cboEmplyeeList.ItemsSource = null;
@@ -62,7 +63,20 @@ namespace InventoryManagementSystem.Views
 
             cboOfficeList.ItemsSource = Office;
 
+            var TagNumber = (from r in context.Inventories
+                          select r.tag).ToList();
 
+            cboTagList.ItemsSource = TagNumber;
+
+        }
+
+        private void InventoryListView()
+        {
+            vInventoryListDataGrid.ItemsSource = null;
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            var InventoryList = (from i in context.vInventoryLists
+                                     select i).ToList();
+            vInventoryListDataGrid.ItemsSource = InventoryList;
         }
     }
 }
