@@ -32,9 +32,9 @@
             </DataGrid.Columns>
         </DataGrid>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="11" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="1192"/>
-        <ComboBox HorizontalAlignment="Left" Margin="256,13,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox HorizontalAlignment="Left" Margin="545,12,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox HorizontalAlignment="Left" Margin="886,13,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cboTagList" HorizontalAlignment="Left" Margin="256,13,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cboOfficeList" HorizontalAlignment="Left" Margin="545,12,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cboEmplyeeList" HorizontalAlignment="Left" Margin="886,13,0,0" VerticalAlignment="Top" Width="120"/>
         <Button Content="Add Item" HorizontalAlignment="Left" Margin="26,59,0,0" VerticalAlignment="Top" Width="142"/>
         <Button Content="Update Item" HorizontalAlignment="Left" Margin="26,84,0,0" VerticalAlignment="Top" Width="142"/>
         <Button Content="Close" HorizontalAlignment="Left" Margin="26,183,0,0" VerticalAlignment="Top" Width="142"/>

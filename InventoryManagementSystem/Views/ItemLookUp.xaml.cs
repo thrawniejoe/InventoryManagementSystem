@@ -44,5 +44,15 @@ namespace InventoryManagementSystem.Views
             System.Windows.Data.CollectionViewSource documentationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("documentationViewSource")));
             documentationViewSource.View.MoveCurrentToFirst();
         }
+
+
+        private void LoadDat()
+        {
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            var UserList = (from r in context.Employees
+                            select r).ToList();
+
+            cboEmplyeeList.ItemsSource = UserList;
+        }
     }
 }
