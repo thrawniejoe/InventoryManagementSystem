@@ -22,7 +22,7 @@ namespace InventoryManagementSystem.Views
 
         public int itemID;
         public delegate void Refresh();
-        public event Refresh refreshPage;
+        public event Refresh RefreshPage;
         public string RequestType;
 
         public ItemLookUp()
@@ -116,7 +116,7 @@ namespace InventoryManagementSystem.Views
             vInventoryListDataGrid.ItemsSource = InventoryList;
         }
 
-        private void btnAddItem_Click(object sender, RoutedEventArgs e)
+        private void BtnAddItem_Click(object sender, RoutedEventArgs e)
         {
             Views.AddItem newUser = new Views.AddItem
             {
@@ -125,6 +125,16 @@ namespace InventoryManagementSystem.Views
             };
             newUser.ShowDialog();
             Close();
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnRemoveItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

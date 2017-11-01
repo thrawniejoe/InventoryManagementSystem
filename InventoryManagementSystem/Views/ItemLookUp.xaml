@@ -35,10 +35,10 @@
         <ComboBox x:Name="cboTagList" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="256,13,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="cboOfficeList" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="545,12,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="cboEmplyeeList" ItemsSource="{Binding EmployeeID}" HorizontalAlignment="Left" Margin="886,13,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnAddItem" Content="Add Item" HorizontalAlignment="Left" Margin="26,59,0,0" VerticalAlignment="Top" Width="142" Click="btnAddItem_Click"/>
+        <Button x:Name="btnAddItem" Content="Add Item" HorizontalAlignment="Left" Margin="26,59,0,0" VerticalAlignment="Top" Width="142" Click="BtnAddItem_Click"/>
         <Button x:Name="btnUpdateItem" Content="Update Item" HorizontalAlignment="Left" Margin="26,84,0,0" VerticalAlignment="Top" Width="142"/>
-        <Button Content="Close" HorizontalAlignment="Left" Margin="26,183,0,0" VerticalAlignment="Top" Width="142"/>
-        <Button x:Name="btnRemoveItem" Content="Remove Item" HorizontalAlignment="Left" Margin="26,134,0,0" VerticalAlignment="Top" Width="142"/>
+        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="26,183,0,0" VerticalAlignment="Top" Width="142" Click="BtnClose_Click"/>
+        <Button x:Name="btnRemoveItem" Content="Remove Item" HorizontalAlignment="Left" Margin="26,134,0,0" VerticalAlignment="Top" Width="142" Click="btnRemoveItem_Click"/>
         <Grid x:Name="grid1" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="65,78,0,0" Grid.Row="1" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>

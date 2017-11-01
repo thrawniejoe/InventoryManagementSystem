@@ -163,7 +163,7 @@ namespace InventoryManagementSystem
         {
             Button b = sender as Button;
             int myid = Convert.ToInt16(b.Tag);
-            MessageBox.Show(Convert.ToString(myid));
+            //MessageBox.Show(Convert.ToString(myid));
             if(myid != 0)
             {
                 Views.ItemLookUp newUser = new Views.ItemLookUp
