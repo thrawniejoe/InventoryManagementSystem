@@ -19,6 +19,9 @@ namespace InventoryManagementSystem.Views
     /// </summary>
     public partial class ItemLookUp : Window
     {
+
+        public int itemID;
+
         public ItemLookUp()
         {
             InitializeComponent();
@@ -44,6 +47,7 @@ namespace InventoryManagementSystem.Views
             System.Windows.Data.CollectionViewSource documentationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("documentationViewSource")));
             documentationViewSource.View.MoveCurrentToFirst();
             LoadDat();
+            InventoryListView();
         }
 
 
@@ -75,8 +79,31 @@ namespace InventoryManagementSystem.Views
             vInventoryListDataGrid.ItemsSource = null;
             var context = new InventoryManagementSystem.InventoryDBEntities();
             var InventoryList = (from i in context.vInventoryLists
-                                     select i).ToList();
+                                 where i.ass == itemID  //lists by userid
+                                 select i).ToList();
+
             vInventoryListDataGrid.ItemsSource = InventoryList;
+
+            var SelectedItem = (from i in context.vInventoryLists
+                                     where i.itemID == itemID  //lists by userid
+                                 select i).ToList();
+
+            Inventory item = context.Inventories.First(i => i.itemID == itemID);
+            itemNameTextBox.Text = item.itemName;
+            tagTextBox.Text = item.tag;
+            serialNumberTextBox.Text = item.serialNumber;
+            manufacturerTextBox.Text = item.manufacturer;
+            modelIDTextBox.Text = Convert.ToString(item.modelID);
+            modelNumberTextBox.Text = item.modelNumber;
+            categoryTextBox.Text = Convert.ToString(item.Category.CategoryName);
+            locationTextBox.Text = Convert.ToString(item.Location.Location1);
+            statusTextBox.Text = item.StatusList.Status;
+            assignedToTextBox.Text = Convert.ToString(item.assignedTo);
+            dateAssignedDatePicker.SelectedDate = item.dateAssigned;
+            dateRecordModifiedDatePicker.SelectedDate = item.dateRecordModified;
+            recordModifiedBy_userIDTextBox.Text = Convert.ToString(item.dateRecordModified);
+            datePurchasedDatePicker.SelectedDate = item.datePurchased;
+            officeIDTextBox.Text = item.OfficeList.officeName;
         }
     }
 }

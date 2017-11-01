@@ -19,6 +19,7 @@ namespace InventoryManagementSystem
     /// </summary>
     public partial class MainScreen : Window
     {
+        public delegate void getItemID(int uid);
 
         public MainScreen()
         {
@@ -149,8 +150,12 @@ namespace InventoryManagementSystem
 
         private void BtnModitfyItem_Click(object sender, RoutedEventArgs e)
         {
+            Button b = sender as Button;
+            int myid = Convert.ToInt16(b.Tag);
+
             Views.ItemLookUp newUser = new Views.ItemLookUp
             {
+                itemID = myid,
                 Owner = this,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner
             };
