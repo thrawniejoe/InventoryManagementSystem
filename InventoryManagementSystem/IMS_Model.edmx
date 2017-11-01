@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="InventoryDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="InventoryDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="CategoryID" />
@@ -120,7 +120,7 @@
           <Property Name="passwordSalt" Type="varbinary" MaxLength="256" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\THRAWN\SOURCE\REPOS\INVENTORYMANAGEMENTSYSTEM\INVENTORYMANAGEMENTSYSTEM\INVENTORYDB.MDF.dbo.vInventoryList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAGEMENTSYSTEM\INVENTORYMANAGEMENTSYSTEM\INVENTORYDB.MDF.dbo.vInventoryList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vInventoryList">
           <Key>
             <PropertyRef Name="itemName" />
@@ -141,6 +141,7 @@ warning 6002: The table/view 'C:\USERS\THRAWN\SOURCE\REPOS\INVENTORYMANAGEMENTSY
           <Property Name="datePurchased" Type="datetime" />
           <Property Name="itemID" Type="int" Nullable="false" />
           <Property Name="officeID" Type="int" />
+          <Property Name="assignedTo" Type="int" />
         </EntityType>
         <Association Name="FK__Documenta__ItemI__4C364F0E">
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
@@ -276,7 +277,8 @@ warning 6002: The table/view 'C:\USERS\THRAWN\SOURCE\REPOS\INVENTORYMANAGEMENTSY
     [vInventoryList].[emailAddress] AS [emailAddress], 
     [vInventoryList].[datePurchased] AS [datePurchased], 
     [vInventoryList].[itemID] AS [itemID], 
-    [vInventoryList].[officeID] AS [officeID]
+    [vInventoryList].[officeID] AS [officeID], 
+    [vInventoryList].[assignedTo] AS [assignedTo]
     FROM [dbo].[vInventoryList] AS [vInventoryList]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__Documenta__ItemI__4C364F0E" Association="Self.FK__Documenta__ItemI__4C364F0E">
@@ -316,8 +318,7 @@ warning 6002: The table/view 'C:\USERS\THRAWN\SOURCE\REPOS\INVENTORYMANAGEMENTSY
             <End Role="Inventory" EntitySet="Inventory" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="InventoryDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -453,27 +454,6 @@ warning 6002: The table/view 'C:\USERS\THRAWN\SOURCE\REPOS\INVENTORYMANAGEMENTSY
           <NavigationProperty Name="Inventories" Relationship="Self.FK_UserID" FromRole="Users" ToRole="Inventory" />
           <NavigationProperty Name="Role" Relationship="Self.FK__Users__roleID__57A801BA" FromRole="Users" ToRole="Roles" />
         </EntityType>
-        <EntityType Name="vInventoryList">
-          <Key>
-            <PropertyRef Name="itemName" />
-            <PropertyRef Name="emailAddress" />
-            <PropertyRef Name="itemID" />
-          </Key>
-          <Property Name="itemName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="serialNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="modelNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="dateAssigned" Type="DateTime" Precision="3" />
-          <Property Name="dateRecordModified" Type="DateTime" Precision="3" />
-          <Property Name="emailAddress" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="datePurchased" Type="DateTime" Precision="3" />
-          <Property Name="itemID" Type="Int32" Nullable="false" />
-          <Property Name="officeID" Type="Int32" />
-        </EntityType>
         <Association Name="FK_CategoryID">
           <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
@@ -593,7 +573,6 @@ warning 6002: The table/view 'C:\USERS\THRAWN\SOURCE\REPOS\INVENTORYMANAGEMENTSY
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="StatusLists" EntityType="Self.StatusList" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="vInventoryLists" EntityType="Self.vInventoryList" />
           <AssociationSet Name="FK_CategoryID" Association="Self.FK_CategoryID">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Inventory" EntitySet="Inventories" />
@@ -630,7 +609,30 @@ warning 6002: The table/view 'C:\USERS\THRAWN\SOURCE\REPOS\INVENTORYMANAGEMENTSY
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="vInventoryLists" EntityType="InventoryDBModel.vInventoryList" />
         </EntityContainer>
+        <EntityType Name="vInventoryList">
+          <Key>
+            <PropertyRef Name="itemName" />
+            <PropertyRef Name="emailAddress" />
+            <PropertyRef Name="itemID" />
+          </Key>
+          <Property Name="itemName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="serialNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="modelNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dateAssigned" Type="DateTime" Precision="3" />
+          <Property Name="dateRecordModified" Type="DateTime" Precision="3" />
+          <Property Name="emailAddress" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="false" />
+          <Property Name="datePurchased" Type="DateTime" Precision="3" />
+          <Property Name="itemID" Type="Int32" Nullable="false" />
+          <Property Name="officeID" Type="Int32" />
+          <Property Name="assignedTo" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -764,20 +766,21 @@ warning 6002: The table/view 'C:\USERS\THRAWN\SOURCE\REPOS\INVENTORYMANAGEMENTSY
           <EntitySetMapping Name="vInventoryLists">
             <EntityTypeMapping TypeName="InventoryDBModel.vInventoryList">
               <MappingFragment StoreEntitySet="vInventoryList">
-                <ScalarProperty Name="itemName" ColumnName="itemName" />
-                <ScalarProperty Name="tag" ColumnName="tag" />
-                <ScalarProperty Name="serialNumber" ColumnName="serialNumber" />
-                <ScalarProperty Name="modelNumber" ColumnName="modelNumber" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-                <ScalarProperty Name="Location" ColumnName="Location" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="dateAssigned" ColumnName="dateAssigned" />
-                <ScalarProperty Name="dateRecordModified" ColumnName="dateRecordModified" />
-                <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
-                <ScalarProperty Name="datePurchased" ColumnName="datePurchased" />
-                <ScalarProperty Name="itemID" ColumnName="itemID" />
+                <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
                 <ScalarProperty Name="officeID" ColumnName="officeID" />
+                <ScalarProperty Name="itemID" ColumnName="itemID" />
+                <ScalarProperty Name="datePurchased" ColumnName="datePurchased" />
+                <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+                <ScalarProperty Name="dateRecordModified" ColumnName="dateRecordModified" />
+                <ScalarProperty Name="dateAssigned" ColumnName="dateAssigned" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="modelNumber" ColumnName="modelNumber" />
+                <ScalarProperty Name="serialNumber" ColumnName="serialNumber" />
+                <ScalarProperty Name="tag" ColumnName="tag" />
+                <ScalarProperty Name="itemName" ColumnName="itemName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -55,6 +55,7 @@ namespace InventoryManagementSystem
             employeesViewSource.View.MoveCurrentToFirst();
             
             RefreshFilterList();
+            RefreshInventory();
         }
 
         private void BtnDeleteUser_Click(object sender, RoutedEventArgs e)
@@ -129,10 +130,20 @@ namespace InventoryManagementSystem
             var context = new InventoryManagementSystem.InventoryDBEntities();
             string value = Convert.ToString(cboFilterList.SelectedValue);
             //MessageBox.Show(value);
-            var Inventory = (from i in context.vInventoryLists
-                             where i.CategoryName == value
-                             select i).ToList();
-            vInventoryListDataGrid.ItemsSource = Inventory;
+            if(cboFilterList.Text != "")
+            {
+                var InventoryList = (from i in context.vInventoryLists
+                                 where i.CategoryName == value
+                                 select i).ToList();
+                vInventoryListDataGrid.ItemsSource = InventoryList;
+            }
+            else
+            {
+                var InventoryList = (from i in context.vInventoryLists
+                                 select i).ToList();
+                vInventoryListDataGrid.ItemsSource = InventoryList;
+            }
+            
         }
         //--------------------------------------//
         //**********End Refresh Group *************//
@@ -152,23 +163,35 @@ namespace InventoryManagementSystem
         {
             Button b = sender as Button;
             int myid = Convert.ToInt16(b.Tag);
-
-            Views.ItemLookUp newUser = new Views.ItemLookUp
+            MessageBox.Show(Convert.ToString(myid));
+            if(myid != 0)
             {
-                itemID = myid,
-                Owner = this,
-                WindowStartupLocation = WindowStartupLocation.CenterOwner
-            };
-            //newUser.RefreshPage += RefreshUserList;
-            newUser.ShowDialog();
+                Views.ItemLookUp newUser = new Views.ItemLookUp
+                {
+                    itemID = myid,
+                    RequestType = "ModifyItem",
+                    Owner = this,
+                    WindowStartupLocation = WindowStartupLocation.CenterOwner
+                };
+                newUser.ShowDialog();
+            }
+            else
+            {
+                Views.ItemLookUp newUser = new Views.ItemLookUp
+                {
+                    itemID = myid,
+                    Owner = this,
+                    WindowStartupLocation = WindowStartupLocation.CenterOwner
+                };
+                newUser.ShowDialog();
+            }
+            //newUser.RefreshPage += RefreshUserList;          
         }
 
         private void BtnClearFilter_Click(object sender, RoutedEventArgs e)
         {
-            var context = new InventoryManagementSystem.InventoryDBEntities();
-            var Inventory = (from i in context.vInventoryLists
-                             select i).ToList();
-            vInventoryListDataGrid.ItemsSource = Inventory;
+            cboFilterList.Text = "";
+            RefreshInventory();
         }
 
         private void CboFilterList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -178,14 +201,26 @@ namespace InventoryManagementSystem
 
         private void BtnRemoveEmployee_Click(object sender, RoutedEventArgs e)
         {
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            Button b = sender as Button;
+            int myid = Convert.ToInt16(b.Tag);
 
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this item?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                Inventory nu = new Inventory { itemID = myid };
+                context.Inventories.Attach(nu); //attaches the user object by the id given to the object above
+                context.Inventories.Remove(nu); //Adds the change to Deletes the user from the database
+                context.SaveChanges();  //Saves changes to the database
+            }
+            RefreshInventory();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
         }
-
 
         //Removes Asset From DB
         //private void btnRemove_Click(object sender, EventArgs e)

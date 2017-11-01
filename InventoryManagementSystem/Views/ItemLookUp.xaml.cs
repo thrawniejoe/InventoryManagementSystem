@@ -21,6 +21,9 @@ namespace InventoryManagementSystem.Views
     {
 
         public int itemID;
+        public delegate void Refresh();
+        public event Refresh refreshPage;
+        public string RequestType;
 
         public ItemLookUp()
         {
@@ -47,11 +50,15 @@ namespace InventoryManagementSystem.Views
             System.Windows.Data.CollectionViewSource documentationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("documentationViewSource")));
             documentationViewSource.View.MoveCurrentToFirst();
             LoadDat();
-            InventoryListView();
+
+            if(RequestType == "ModifyItem")
+            {
+                InventoryListView();
+            }
         }
 
 
-        //Loads Data
+        //Loads Combobox data
         private void LoadDat()
         {
             cboEmplyeeList.ItemsSource = null;
@@ -74,15 +81,12 @@ namespace InventoryManagementSystem.Views
 
         }
 
+        //Loads Selected Informatinon
         private void InventoryListView()
         {
             vInventoryListDataGrid.ItemsSource = null;
             var context = new InventoryManagementSystem.InventoryDBEntities();
-            var InventoryList = (from i in context.vInventoryLists
-                                 where i.ass == itemID  //lists by userid
-                                 select i).ToList();
 
-            vInventoryListDataGrid.ItemsSource = InventoryList;
 
             var SelectedItem = (from i in context.vInventoryLists
                                      where i.itemID == itemID  //lists by userid
@@ -104,6 +108,23 @@ namespace InventoryManagementSystem.Views
             recordModifiedBy_userIDTextBox.Text = Convert.ToString(item.dateRecordModified);
             datePurchasedDatePicker.SelectedDate = item.datePurchased;
             officeIDTextBox.Text = item.OfficeList.officeName;
+
+            var InventoryList = (from i in context.vInventoryLists
+                                 where i.assignedTo == item.assignedTo  //lists by userid
+                                 select i).ToList();
+
+            vInventoryListDataGrid.ItemsSource = InventoryList;
+        }
+
+        private void btnAddItem_Click(object sender, RoutedEventArgs e)
+        {
+            Views.AddItem newUser = new Views.AddItem
+            {
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
+            newUser.ShowDialog();
+            Close();
         }
     }
 }

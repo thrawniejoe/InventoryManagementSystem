@@ -28,5 +28,6 @@ namespace InventoryManagementSystem
         public Nullable<System.DateTime> datePurchased { get; set; }
         public int itemID { get; set; }
         public Nullable<int> officeID { get; set; }
+        public Nullable<int> assignedTo { get; set; }
     }
 }
