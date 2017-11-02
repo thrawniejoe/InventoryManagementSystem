@@ -25,10 +25,11 @@ namespace InventoryManagementSystem
         public string lastName { get; set; }
         public string phone { get; set; }
         public Nullable<int> roleID { get; set; }
-        public byte[] password { get; set; }
+        public string password { get; set; }
         public string title { get; set; }
         public string emailAddress { get; set; }
         public byte[] passwordSalt { get; set; }
+        public byte[] hashedPassword { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Inventory> Inventories { get; set; }

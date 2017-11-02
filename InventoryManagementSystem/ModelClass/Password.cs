@@ -36,7 +36,7 @@ namespace InventoryManagementSystem.ModelClass
         public static bool ConfirmPassword(string username, string password)
         {
             var context = new InventoryManagementSystem.InventoryDBDataSet();
-            byte[] recordedPassword = context.Users.Where(u => u.emailAddress == username).Single().password;
+            byte[] recordedPassword = context.Users.Where(u => u.emailAddress == username).Single().hashedPassword;
             byte[] salt = context.Users.Where(u => u.emailAddress == username).Single().passwordSalt;
             byte[] passwordHash = Hash(password, salt);
             byte[] recordedHash = recordedPassword;

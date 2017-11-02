@@ -5,26 +5,26 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="058bea5e36e6401f9ecbb598d2562115" Name="Diagram1">
-        <EntityTypeShape EntityType="InventoryDBModel.Category" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="InventoryDBModel.ComputerSpecsList" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="InventoryDBModel.Documentation" Width="1.5" PointX="7.5" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="InventoryDBModel.Employee" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="InventoryDBModel.Inventory" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="InventoryDBModel.Location" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InventoryDBModel.OfficeList" Width="1.5" PointX="3" PointY="19.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="InventoryDBModel.Role" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="InventoryDBModel.StatusList" Width="1.5" PointX="3" PointY="21.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="InventoryDBModel.User" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
-        <AssociationConnector Association="InventoryDBModel.FK_CategoryID" ManuallyRouted="false" />
-        <AssociationConnector Association="InventoryDBModel.FK_ModelID" ManuallyRouted="false" />
-        <AssociationConnector Association="InventoryDBModel.FK__Documenta__ItemI__4C364F0E" ManuallyRouted="false" />
-        <AssociationConnector Association="InventoryDBModel.FK_AssignedTo" ManuallyRouted="false" />
-        <AssociationConnector Association="InventoryDBModel.FK_LocationID" ManuallyRouted="false" />
-        <AssociationConnector Association="InventoryDBModel.FK_OfficeID" ManuallyRouted="false" />
-        <AssociationConnector Association="InventoryDBModel.FK_StatusID" ManuallyRouted="false" />
-        <AssociationConnector Association="InventoryDBModel.FK_UserID" ManuallyRouted="false" />
-        <AssociationConnector Association="InventoryDBModel.FK__Users__roleID__57A801BA" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="InventoryDBModel.vInventoryList" Width="1.5" PointX="7.375" PointY="5.75" />
+        <EntityTypeShape EntityType="InventoryDBModel.Category" Width="1.5" PointX="3" PointY="19.5" />
+        <EntityTypeShape EntityType="InventoryDBModel.ComputerSpecsList" Width="1.5" PointX="3" PointY="15.25" />
+        <EntityTypeShape EntityType="InventoryDBModel.Documentation" Width="1.5" PointX="7.5" PointY="2.875" />
+        <EntityTypeShape EntityType="InventoryDBModel.Employee" Width="1.5" PointX="3" PointY="11.375" />
+        <EntityTypeShape EntityType="InventoryDBModel.Inventory" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="InventoryDBModel.Location" Width="1.5" PointX="3" PointY="6.5" />
+        <EntityTypeShape EntityType="InventoryDBModel.OfficeList" Width="1.5" PointX="3" PointY="21.875" />
+        <EntityTypeShape EntityType="InventoryDBModel.Role" Width="1.5" PointX="0.75" PointY="3" />
+        <EntityTypeShape EntityType="InventoryDBModel.StatusList" Width="1.5" PointX="3" PointY="9" />
+        <EntityTypeShape EntityType="InventoryDBModel.User" Width="1.5" PointX="3" PointY="2.25" />
+        <EntityTypeShape EntityType="InventoryDBModel.vInventoryList" Width="1.5" PointX="7.75" PointY="5.75" />
+        <AssociationConnector Association="InventoryDBModel.FK_CategoryID" />
+        <AssociationConnector Association="InventoryDBModel.FK_ModelID" />
+        <AssociationConnector Association="InventoryDBModel.FK__Documenta__ItemI__4C364F0E" />
+        <AssociationConnector Association="InventoryDBModel.FK_AssignedTo" />
+        <AssociationConnector Association="InventoryDBModel.FK_LocationID" />
+        <AssociationConnector Association="InventoryDBModel.FK_OfficeID" />
+        <AssociationConnector Association="InventoryDBModel.FK_StatusID" />
+        <AssociationConnector Association="InventoryDBModel.FK_UserID" />
+        <AssociationConnector Association="InventoryDBModel.FK__Users__roleID__57A801BA" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

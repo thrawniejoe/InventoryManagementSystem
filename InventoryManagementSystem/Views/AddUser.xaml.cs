@@ -132,10 +132,8 @@ namespace InventoryManagementSystem.Views
                     // set salt and hashed password, store it to the database
                     byte[] salt = ModelClass.Password.CreateSalt(12);
                     byte[] password = ModelClass.Password.Hash(passwordTextBox.Password, salt);
-                    result.password = password;
+                    result.hashedPassword = password;
                     result.passwordSalt = salt;
-                    
-
                     db.SaveChanges();
                 }
             }
