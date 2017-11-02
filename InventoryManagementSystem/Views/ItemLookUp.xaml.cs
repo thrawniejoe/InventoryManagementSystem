@@ -20,7 +20,7 @@ namespace InventoryManagementSystem.Views
     public partial class ItemLookUp : Window
     {
 
-        public int itemID;
+        private int itemID;
         public delegate void Refresh();
         public event Refresh RefreshPage;
         public string RequestType;
@@ -57,6 +57,11 @@ namespace InventoryManagementSystem.Views
             }
         }
 
+
+        public void getID(int myid)
+        {
+            itemID = myid;
+        }
 
         //Loads Combobox data
         private void LoadDat()
@@ -132,9 +137,20 @@ namespace InventoryManagementSystem.Views
             this.Close();
         }
 
-        private void btnRemoveItem_Click(object sender, RoutedEventArgs e)
+        private void BtnRemoveItem_Click(object sender, RoutedEventArgs e)
         {
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            Button b = sender as Button;
+            int myid = Convert.ToInt16(b.Tag);
 
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                Inventory nu = new Inventory { itemID = myid };
+                context.Inventories.Attach(nu); //attaches the user object by the id given to the object above
+                context.Inventories.Remove(nu); //Adds the change to Deletes the user from the database
+                context.SaveChanges();  //Saves changes to the database
+            }
         }
     }
 }

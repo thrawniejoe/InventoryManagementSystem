@@ -84,6 +84,7 @@ namespace InventoryManagementSystem
 
             Views.AddUser modifyUser = new Views.AddUser
             {
+                
                 userID = Convert.ToInt16(myid),
                 RequestType = "Modify",
                 Owner = this,
@@ -146,45 +147,39 @@ namespace InventoryManagementSystem
             
         }
         //--------------------------------------//
-        //**********End Refresh Group *************//
+        //**********End Refresh Group **********//
         //--------------------------------------//
         private void BtnAddItem_Click(object sender, RoutedEventArgs e)
         {
-            Views.AddItem newUser = new Views.AddItem
+            Views.AddItem additem = new Views.AddItem
             {
                 Owner = this,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner
             };
-            newUser.RefreshPage += RefreshUserList;
-            newUser.ShowDialog();
+            additem.RefreshPage += RefreshUserList;
+            additem.ShowDialog();
         }
 
         private void BtnModitfyItem_Click(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
             int myid = Convert.ToInt16(b.Tag);
+            Views.ItemLookUp lookUp = new Views.ItemLookUp();
+            getItemID del = new getItemID(lookUp.getID);
             //MessageBox.Show(Convert.ToString(myid));
-            if(myid != 0)
+            if (myid != 0)
             {
-                Views.ItemLookUp newUser = new Views.ItemLookUp
-                {
-                    itemID = myid,
-                    RequestType = "ModifyItem",
-                    Owner = this,
-                    WindowStartupLocation = WindowStartupLocation.CenterOwner
-                };
-                newUser.ShowDialog();
+                del(myid); //sets delagate value
+                lookUp.RequestType = "ModifyItem";
             }
             else
             {
-                Views.ItemLookUp newUser = new Views.ItemLookUp
-                {
-                    itemID = myid,
-                    Owner = this,
-                    WindowStartupLocation = WindowStartupLocation.CenterOwner
-                };
-                newUser.ShowDialog();
+                lookUp.RequestType = "LookUpItem";
             }
+            lookUp.Owner = this;
+            lookUp.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            lookUp.RefreshPage += RefreshInventory;
+            lookUp.ShowDialog();
             //newUser.RefreshPage += RefreshUserList;          
         }
 
@@ -220,6 +215,19 @@ namespace InventoryManagementSystem
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
+        }
+
+        private void btnLookUpItem_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            int myid = Convert.ToInt16(b.Tag);
+            Views.ItemLookUp lookUp = new Views.ItemLookUp();
+            getItemID del = new getItemID(lookUp.getID);
+            lookUp.RequestType = "LookUpItem";
+            lookUp.Owner = this;
+            lookUp.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            lookUp.RefreshPage += RefreshInventory;
+            lookUp.ShowDialog();
         }
 
         //Removes Asset From DB
