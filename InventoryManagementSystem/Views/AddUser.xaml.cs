@@ -87,6 +87,12 @@ namespace InventoryManagementSystem.Views
                         newUser.emailAddress = emailAddressTextBox.Text;
                         newUser.firstName = firstNameTextBox.Text;
                         newUser.lastName = lastNameTextBox.Text;
+
+                        // set salt and hashed password, store it to the database
+                        byte[] salt = ModelClass.Password.CreateSalt(12);
+                        byte[] password = ModelClass.Password.Hash(passwordTextBox.Password, salt);
+                        newUser.hashedPassword = password;
+                        newUser.passwordSalt = salt;
                         newUser.password = passwordTextBox.Password;
                         newUser.phone = phoneTextBox.Text;
                         newUser.roleID = Convert.ToInt16(roleComboBox.SelectedValue);

@@ -235,10 +235,10 @@
     </Content>
     <Content Include="MOCK_DATA_Inventory.sql" />
     <Content Include="InventoryDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="InventoryDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>InventoryDB.mdf</DependentUpon>
     </Content>
     <Content Include="MOCK_DATA_Employees.sql" />

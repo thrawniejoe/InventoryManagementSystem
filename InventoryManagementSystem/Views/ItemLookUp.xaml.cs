@@ -58,7 +58,7 @@ namespace InventoryManagementSystem.Views
         }
 
 
-        public void getID(int myid)
+        public void GetID(int myid)
         {
             itemID = myid;
         }
@@ -151,6 +151,7 @@ namespace InventoryManagementSystem.Views
                 context.Inventories.Remove(nu); //Adds the change to Deletes the user from the database
                 context.SaveChanges();  //Saves changes to the database
             }
+            RefreshPage();
         }
     }
 }

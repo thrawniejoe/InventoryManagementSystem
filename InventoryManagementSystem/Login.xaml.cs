@@ -28,15 +28,9 @@ namespace InventoryManagementSystem
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             //add user check here
-            var username = txtUsername.Text;
             var password = txtPassword.Password;
-
             var context = new InventoryManagementSystem.InventoryDBEntities();
             string userName = txtUsername.Text;
-
-            var uCheck = (from u in context.Users
-                          where u.firstName.Equals(userName)
-                          select u.password).SingleOrDefault();
 
             var getRole = (from u in context.Users
                            where u.firstName.Equals(userName)
@@ -45,19 +39,8 @@ namespace InventoryManagementSystem
             if (ModelClass.Password.ConfirmPassword(userName, txtPassword.Password))
             {
                 Window mainWindow = null;
-                switch (getRole)
-                {
-                    case 1:
-                        mainWindow = new MainScreen();
-                        break;
-                    case 2:
-                        mainWindow = new MainScreen();
-                        break;
-                    case 3:
-                        mainWindow = new MainScreen();
-                        break;
-                }
-                Properties.Settings.Default.CurrentUserRole = Convert.ToInt16(getRole); //saves the user role to the applcation settings file
+                mainWindow = new MainScreen();
+                Properties.Settings.Default.CurrentUserRole = Convert.ToInt16(getRole); //saves the user role to the applcation settings
                 Properties.Settings.Default.Save();
                 mainWindow.Show();
                 this.Close();
@@ -76,6 +59,17 @@ namespace InventoryManagementSystem
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            InventoryManagementSystem.InventoryDBDataSet inventoryDBDataSet = ((InventoryManagementSystem.InventoryDBDataSet)(this.FindResource("inventoryDBDataSet")));
+            // Load data into the table Users. You can modify this code as needed.
+            InventoryManagementSystem.InventoryDBDataSetTableAdapters.UsersTableAdapter inventoryDBDataSetUsersTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.UsersTableAdapter();
+            inventoryDBDataSetUsersTableAdapter.Fill(inventoryDBDataSet.Users);
+            System.Windows.Data.CollectionViewSource usersViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("usersViewSource")));
+            usersViewSource.View.MoveCurrentToFirst();
         }
     }
 }

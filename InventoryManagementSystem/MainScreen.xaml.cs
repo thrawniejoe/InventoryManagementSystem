@@ -165,7 +165,7 @@ namespace InventoryManagementSystem
             Button b = sender as Button;
             int myid = Convert.ToInt16(b.Tag);
             Views.ItemLookUp lookUp = new Views.ItemLookUp();
-            getItemID del = new getItemID(lookUp.getID);
+            getItemID del = new getItemID(lookUp.GetID);
             //MessageBox.Show(Convert.ToString(myid));
             if (myid != 0)
             {
@@ -222,7 +222,7 @@ namespace InventoryManagementSystem
             Button b = sender as Button;
             int myid = Convert.ToInt16(b.Tag);
             Views.ItemLookUp lookUp = new Views.ItemLookUp();
-            getItemID del = new getItemID(lookUp.getID);
+            getItemID del = new getItemID(lookUp.GetID);
             lookUp.RequestType = "LookUpItem";
             lookUp.Owner = this;
             lookUp.WindowStartupLocation = WindowStartupLocation.CenterOwner;
