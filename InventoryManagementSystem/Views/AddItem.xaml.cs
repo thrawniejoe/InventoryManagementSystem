@@ -92,6 +92,14 @@ namespace InventoryManagementSystem.Views
             assignedToComboBox.ItemsSource = getEmployeeList;
             assignedToComboBox.SelectedValuePath = "id";
             assignedToComboBox.DisplayMemberPath = "name";
+
+            //Populate the Office Combobox
+            var getOfficeList = (from r in context.OfficeLists
+                                 select new { name = r.officeName, id = r.officeID }).ToList();
+
+            officeIDComboBox.ItemsSource = getOfficeList;
+            officeIDComboBox.SelectedValuePath = "id";
+            officeIDComboBox.DisplayMemberPath = "name";
         }
 
         private void BtnAddItem_Click(object sender, RoutedEventArgs e)

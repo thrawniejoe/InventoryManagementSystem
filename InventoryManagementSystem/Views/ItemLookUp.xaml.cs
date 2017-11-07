@@ -78,10 +78,16 @@ namespace InventoryManagementSystem.Views
             cboEmplyeeList.DisplayMemberPath = "name";
 
             //Populate the Office Combobox
-            var Office = (from r in context.OfficeLists
-                                     select r.officeName).ToList();
+            var getOfficeList = (from r in context.OfficeLists
+                                 select new { name = r.officeName, id = r.officeID }).ToList();
 
-            cboOfficeList.ItemsSource = Office;
+            cboOfficeList.ItemsSource = getOfficeList;
+            cboOfficeList.SelectedValuePath = "id";
+            cboOfficeList.DisplayMemberPath = "name";
+
+            officeIDComboBox.ItemsSource = getOfficeList;
+            officeIDComboBox.SelectedValuePath = "id";
+            officeIDComboBox.DisplayMemberPath = "name";
 
             //Populate the Tag Combobox
             var TagNumber = (from r in context.Inventories
@@ -140,15 +146,15 @@ namespace InventoryManagementSystem.Views
             manufacturerTextBox.Text = item.manufacturer;
             modelIDTextBox.Text = Convert.ToString(item.modelID);
             modelNumberTextBox.Text = item.modelNumber;
-            categoryIDComboBox.Text = Convert.ToString(item.Category.CategoryName);
-            locationTextBox.Text = Convert.ToString(item.Location.Location1);
-            statusTextBox.Text = item.StatusList.Status;
-            assignedToTextBox.Text = Convert.ToString(item.assignedTo);
+            categoryIDComboBox.Text = item.Category.CategoryName;
+            locationIDComboBox.Text = item.Location.Location1;
+            statusIDComboBox.Text = item.StatusList.Status;
+            assignedToComboBox.SelectedValue = item.assignedTo;
             dateAssignedDatePicker.SelectedDate = item.dateAssigned;
             dateRecordModifiedDatePicker.SelectedDate = item.dateRecordModified;
             recordModifiedBy_userIDTextBox.Text = Convert.ToString(item.dateRecordModified);
             datePurchasedDatePicker.SelectedDate = item.datePurchased;
-            officeIDTextBox.Text = item.OfficeList.officeName;
+            officeIDComboBox.SelectedValue = item.officeID;
 
             var InventoryList = (from i in context.vInventoryLists
                                  where i.assignedTo == item.assignedTo  //lists by userid
@@ -192,7 +198,36 @@ namespace InventoryManagementSystem.Views
 
         private void BtnUpdateItem_Click(object sender, RoutedEventArgs e)
         {
+            var context = new InventoryManagementSystem.InventoryDBEntities();
 
+            if (Validate())
+            {
+                //Updates user in database
+                using (var db = new InventoryDBEntities())
+                {
+                    var item = db.Inventories.SingleOrDefault(b => b.itemID == itemID);
+                    if (item != null)
+                    {
+                        item.itemName = itemNameTextBox.Text;
+                        item.tag = tagTextBox.Text;
+                        item.serialNumber = serialNumberTextBox.Text;
+                        item.modelID = Convert.ToInt16(modelIDTextBox.Text);
+                        item.CategoryID = categoryIDComboBox.SelectedItem.;
+
+
+                        
+                        db.SaveChanges();
+                    }
+                }
+                this.Close();
+            }
+
+        }
+
+        private bool Validate()
+        {
+
+            return true;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
