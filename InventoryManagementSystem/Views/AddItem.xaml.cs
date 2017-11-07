@@ -46,24 +46,52 @@ namespace InventoryManagementSystem.Views
             System.Windows.Data.CollectionViewSource inventoryViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("inventoryViewSource")));
             inventoryViewSource.View.MoveCurrentToFirst();
 
+            LoadDat();
+        }
+
+        //Loads Combobox data
+        private void LoadDat()
+        {
             var context = new InventoryManagementSystem.InventoryDBEntities();
-            var assignedUser = (from emp in context.Employees
-                         select new { name = emp.Name, id = emp.EmployeeID }).ToList();
-            assignedToComboBox.ItemsSource = assignedUser;
-            assignedToComboBox.DisplayMemberPath = "Name";
-            assignedToComboBox.SelectedValuePath = "EmployeeID";
 
-            var categories = (from i in context.Categories
-                                select new { category = i.CategoryName}).ToList();
-            categoryComboBox.ItemsSource = assignedUser;
-            categoryComboBox.DisplayMemberPath = "Category";
-            categoryComboBox.SelectedValuePath = "CategoryID";
+            //Populate the Office Combobox
+            var Office = (from r in context.OfficeLists
+                          select r.officeName).ToList();
 
-            var office = (from o in context.OfficeLists
-                              select new { id = o.officeID, officeName = o.officeName }).ToList();
-            officeIDComboBox.ItemsSource = office;
-            officeIDComboBox.DisplayMemberPath = "officeName";
-            officeIDComboBox.SelectedValuePath = "officeID";
+            officeIDComboBox.ItemsSource = Office;
+
+
+            //Populate the Category Combobox
+            var getCategory = (from c in context.Categories
+                               select new { name = c.CategoryName, id = c.CategoryID }).ToList();
+
+            categoryComboBox.ItemsSource = getCategory;
+            categoryComboBox.SelectedValuePath = "id";
+            categoryComboBox.DisplayMemberPath = "name";
+
+            //Populate the Location Combobox
+            var getLocations = (from l in context.Locations
+                                select new { name = l.Location1, id = l.LocationID }).ToList();
+
+            locationComboBox.ItemsSource = getLocations;
+            locationComboBox.SelectedValuePath = "id";
+            locationComboBox.DisplayMemberPath = "name";
+
+            //Populate the Status Combobox
+            var getStatList = (from s in context.StatusLists
+                               select new { name = s.Status, id = s.StatusID }).ToList();
+
+            statusComboBox.ItemsSource = getStatList;
+            statusComboBox.SelectedValuePath = "id";
+            statusComboBox.DisplayMemberPath = "name";
+
+            //Populate the Assigned to Combobox
+            var getEmployeeList = (from u in context.Employees
+                                   select new { name = u.Name, id = u.EmployeeID }).ToList();
+
+            assignedToComboBox.ItemsSource = getEmployeeList;
+            assignedToComboBox.SelectedValuePath = "id";
+            assignedToComboBox.DisplayMemberPath = "name";
         }
 
         private void BtnAddItem_Click(object sender, RoutedEventArgs e)

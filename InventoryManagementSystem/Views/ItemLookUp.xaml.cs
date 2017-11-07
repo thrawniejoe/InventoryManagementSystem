@@ -68,22 +68,58 @@ namespace InventoryManagementSystem.Views
         {
             cboEmplyeeList.ItemsSource = null;
             var context = new InventoryManagementSystem.InventoryDBEntities();
-            var EmployeeList_Name = (from r in context.Employees
-                            select r.Username).ToList();
+
+            //Populate the Employee Combobox
+            var EmployeeList_Name = (from e in context.Employees
+                                     select new { name = e.Name , id = e.EmployeeID }).ToList();
 
             cboEmplyeeList.ItemsSource = EmployeeList_Name;
+            cboEmplyeeList.SelectedValuePath = "id";
+            cboEmplyeeList.DisplayMemberPath = "name";
 
-
+            //Populate the Office Combobox
             var Office = (from r in context.OfficeLists
                                      select r.officeName).ToList();
 
             cboOfficeList.ItemsSource = Office;
 
+            //Populate the Tag Combobox
             var TagNumber = (from r in context.Inventories
                           select r.tag).ToList();
 
             cboTagList.ItemsSource = TagNumber;
+            
+            //Populate the Category Combobox
+            var getCategory = (from c in context.Categories
+                               select new { name = c.CategoryName, id = c.CategoryID }).ToList();
 
+            categoryIDComboBox.ItemsSource = getCategory;
+            categoryIDComboBox.SelectedValuePath = "id";
+            categoryIDComboBox.DisplayMemberPath = "name";
+
+            //Populate the Location Combobox
+            var getLocations = (from l in context.Locations
+                               select new { name = l.Location1, id = l.LocationID }).ToList();
+
+            locationIDComboBox.ItemsSource = getLocations;
+            locationIDComboBox.SelectedValuePath = "id";
+            locationIDComboBox.DisplayMemberPath = "name";
+
+            //Populate the Status Combobox
+            var getStatList = (from s in context.StatusLists
+                                select new { name = s.Status, id = s.StatusID }).ToList();
+
+            statusIDComboBox.ItemsSource = getStatList;
+            statusIDComboBox.SelectedValuePath = "id";
+            statusIDComboBox.DisplayMemberPath = "name";
+
+            //Populate the Assigned to Combobox
+            var getEmployeeList = (from u in context.Employees
+                               select new { name = u.Name, id = u.EmployeeID }).ToList();
+
+            assignedToComboBox.ItemsSource = getEmployeeList;
+            assignedToComboBox.SelectedValuePath = "id";
+            assignedToComboBox.DisplayMemberPath = "name";
         }
 
         //Loads Selected Informatinon
@@ -104,7 +140,7 @@ namespace InventoryManagementSystem.Views
             manufacturerTextBox.Text = item.manufacturer;
             modelIDTextBox.Text = Convert.ToString(item.modelID);
             modelNumberTextBox.Text = item.modelNumber;
-            categoryTextBox.Text = Convert.ToString(item.Category.CategoryName);
+            categoryIDComboBox.Text = Convert.ToString(item.Category.CategoryName);
             locationTextBox.Text = Convert.ToString(item.Location.Location1);
             statusTextBox.Text = item.StatusList.Status;
             assignedToTextBox.Text = Convert.ToString(item.assignedTo);
@@ -152,6 +188,16 @@ namespace InventoryManagementSystem.Views
                 context.SaveChanges();  //Saves changes to the database
             }
             RefreshPage();
+        }
+
+        private void BtnUpdateItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(categoryIDComboBox.Text + " | " + categoryIDComboBox.SelectedValue);
         }
     }
 }

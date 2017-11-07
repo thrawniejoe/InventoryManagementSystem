@@ -229,17 +229,12 @@ namespace InventoryManagementSystem.Views
             return check;
         }
 
-        public void getID(int myid)
+        public void GetID(int myid)
         {
             userID = myid;
         }
 
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

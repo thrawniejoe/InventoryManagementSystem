@@ -217,7 +217,7 @@ namespace InventoryManagementSystem
                 this.DragMove();
         }
 
-        private void btnLookUpItem_Click(object sender, RoutedEventArgs e)
+        private void BtnLookUpItem_Click(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
             int myid = Convert.ToInt16(b.Tag);
