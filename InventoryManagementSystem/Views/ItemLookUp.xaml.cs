@@ -196,13 +196,14 @@ namespace InventoryManagementSystem.Views
             RefreshPage();
         }
 
+
+        //Updates the item information in the DB
         private void BtnUpdateItem_Click(object sender, RoutedEventArgs e)
         {
             var context = new InventoryManagementSystem.InventoryDBEntities();
 
             if (Validate())
             {
-                //Updates user in database
                 using (var db = new InventoryDBEntities())
                 {
                     var item = db.Inventories.SingleOrDefault(b => b.itemID == itemID);
@@ -224,6 +225,7 @@ namespace InventoryManagementSystem.Views
                         item.datePurchased = datePurchasedDatePicker.SelectedDate;
                         item.officeID = Convert.ToInt16(officeIDComboBox.SelectedValue);
                         db.SaveChanges();
+                        RefreshPage();
                     }
                 }
                 this.Close();
@@ -233,13 +235,22 @@ namespace InventoryManagementSystem.Views
 
         private bool Validate()
         {
-
             return true;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(locationIDComboBox.Text + " | " + locationIDComboBox.SelectedValue);
+
+        }
+
+        private void vInventoryListDataGrid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            //Get Item ID
+            var row = (vInventoryList)vInventoryListDataGrid.SelectedItem;
+            itemID = row.itemID;
+
+            //Reload Inventory
+            InventoryListView();
         }
     }
 }

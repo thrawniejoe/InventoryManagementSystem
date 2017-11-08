@@ -19,7 +19,7 @@
             <RowDefinition Height="507*"/>
         </Grid.RowDefinitions>
 
-        <DataGrid x:Name="vInventoryListDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="191,56,10,10" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+        <DataGrid x:Name="vInventoryListDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="191,56,10,10" Tag="{Binding tag}" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" CanUserResizeRows="False" CanUserDeleteRows="False" CanUserAddRows="False" SelectionMode="Single" MouseDown="vInventoryListDataGrid_MouseDown" GridLinesVisibility="None" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="itemNameColumn" Width="120" Header="item Name" Binding="{Binding itemName}"/>
                 <DataGridTextColumn x:Name="tagColumn" Width="90" Header="tag" Binding="{Binding tag}"/>
