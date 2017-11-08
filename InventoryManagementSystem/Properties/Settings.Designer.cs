@@ -45,5 +45,17 @@ namespace InventoryManagementSystem.Properties {
                 return ((string)(this["InventoryDBConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int CurrentUserID {
+            get {
+                return ((int)(this["CurrentUserID"]));
+            }
+            set {
+                this["CurrentUserID"] = value;
+            }
+        }
     }
 }

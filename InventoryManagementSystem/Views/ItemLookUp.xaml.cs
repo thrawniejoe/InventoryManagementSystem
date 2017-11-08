@@ -211,11 +211,18 @@ namespace InventoryManagementSystem.Views
                         item.itemName = itemNameTextBox.Text;
                         item.tag = tagTextBox.Text;
                         item.serialNumber = serialNumberTextBox.Text;
+                        item.manufacturer = manufacturerTextBox.Text;
                         item.modelID = Convert.ToInt16(modelIDTextBox.Text);
-                        item.CategoryID = categoryIDComboBox.SelectedItem.;
-
-
-                        
+                        item.modelNumber = modelNumberTextBox.Text;
+                        item.CategoryID = Convert.ToInt16(categoryIDComboBox.SelectedValue);
+                        item.LocationID = Convert.ToInt16(locationIDComboBox.SelectedValue);
+                        item.StatusID = Convert.ToInt16(statusIDComboBox.SelectedValue);
+                        item.assignedTo = Convert.ToInt16(assignedToComboBox.SelectedValue);
+                        item.dateAssigned = dateAssignedDatePicker.SelectedDate;
+                        item.dateRecordModified = DateTime.Now;
+                        item.recordModifiedBy_userID = Properties.Settings.Default.CurrentUserID;
+                        item.datePurchased = datePurchasedDatePicker.SelectedDate;
+                        item.officeID = Convert.ToInt16(officeIDComboBox.SelectedValue);
                         db.SaveChanges();
                     }
                 }
@@ -232,7 +239,7 @@ namespace InventoryManagementSystem.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(categoryIDComboBox.Text + " | " + categoryIDComboBox.SelectedValue);
+            MessageBox.Show(locationIDComboBox.Text + " | " + locationIDComboBox.SelectedValue);
         }
     }
 }

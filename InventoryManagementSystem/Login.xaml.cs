@@ -36,11 +36,16 @@ namespace InventoryManagementSystem
                            where u.firstName.Equals(userName)
                            select u.roleID).SingleOrDefault();
 
+            var getID = (from u in context.Users
+                           where u.firstName.Equals(userName)
+                           select u.userID).SingleOrDefault();
+
             if (ModelClass.Password.ConfirmPassword(userName, txtPassword.Password))
             {
                 Window mainWindow = null;
                 mainWindow = new MainScreen();
                 Properties.Settings.Default.CurrentUserRole = Convert.ToInt16(getRole); //saves the user role to the applcation settings
+                Properties.Settings.Default.CurrentUserID = Convert.ToInt16(getID); //Saves user ID to app settings
                 Properties.Settings.Default.Save();
                 mainWindow.Show();
                 this.Close();
