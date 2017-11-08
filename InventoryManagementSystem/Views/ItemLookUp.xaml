@@ -19,7 +19,7 @@
             <RowDefinition Height="507*"/>
         </Grid.RowDefinitions>
 
-        <DataGrid x:Name="vInventoryListDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="191,56,10,10" Tag="{Binding tag}" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" CanUserResizeRows="False" CanUserDeleteRows="False" CanUserAddRows="False" SelectionMode="Single" MouseDown="vInventoryListDataGrid_MouseDown" GridLinesVisibility="None" IsReadOnly="True">
+        <DataGrid x:Name="vInventoryListDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="191,56,10,10" Tag="{Binding tag}" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" CanUserResizeRows="False" CanUserDeleteRows="False" CanUserAddRows="False" SelectionMode="Single" MouseDown="VInventoryListDataGrid_MouseDown" GridLinesVisibility="None" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="itemNameColumn" Width="120" Header="item Name" Binding="{Binding itemName}"/>
                 <DataGridTextColumn x:Name="tagColumn" Width="90" Header="tag" Binding="{Binding tag}"/>
@@ -32,9 +32,9 @@
             </DataGrid.Columns>
         </DataGrid>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="11" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="1192"/>
-        <ComboBox x:Name="cboTagList" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="256,13,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="cboOfficeList" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="545,12,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="cboEmplyeeList" ItemsSource="{Binding EmployeeID}" HorizontalAlignment="Left" Margin="886,13,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cboTagList" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="256,13,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CboTagList_SelectionChanged"/>
+        <ComboBox x:Name="cboOfficeList" ItemsSource="{Binding officeID}" HorizontalAlignment="Left" Margin="545,12,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CboOfficeList_SelectionChanged"/>
+        <ComboBox x:Name="cboEmplyeeList" ItemsSource="{Binding EmployeeID}" HorizontalAlignment="Left" Margin="886,13,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CboEmplyeeList_SelectionChanged"/>
         <Button x:Name="btnAddItem" Content="Add Item" HorizontalAlignment="Left" Margin="26,59,0,0" VerticalAlignment="Top" Width="142" Click="BtnAddItem_Click"/>
         <Button x:Name="btnUpdateItem" Content="Update Item" HorizontalAlignment="Left" Margin="26,84,0,0" VerticalAlignment="Top" Width="142" Click="BtnUpdateItem_Click"/>
         <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="26,183,0,0" VerticalAlignment="Top" Width="142" Click="BtnClose_Click"/>

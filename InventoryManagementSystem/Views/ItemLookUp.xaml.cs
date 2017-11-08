@@ -51,7 +51,7 @@ namespace InventoryManagementSystem.Views
             documentationViewSource.View.MoveCurrentToFirst();
             LoadDat();
 
-            if(RequestType == "ModifyItem")
+            if (RequestType == "ModifyItem")
             {
                 InventoryListView();
             }
@@ -71,7 +71,7 @@ namespace InventoryManagementSystem.Views
 
             //Populate the Employee Combobox
             var EmployeeList_Name = (from e in context.Employees
-                                     select new { name = e.Name , id = e.EmployeeID }).ToList();
+                                     select new { name = e.Name, id = e.EmployeeID }).ToList();
 
             cboEmplyeeList.ItemsSource = EmployeeList_Name;
             cboEmplyeeList.SelectedValuePath = "id";
@@ -91,10 +91,10 @@ namespace InventoryManagementSystem.Views
 
             //Populate the Tag Combobox
             var TagNumber = (from r in context.Inventories
-                          select r.tag).ToList();
+                             select r.tag).ToList();
 
             cboTagList.ItemsSource = TagNumber;
-            
+
             //Populate the Category Combobox
             var getCategory = (from c in context.Categories
                                select new { name = c.CategoryName, id = c.CategoryID }).ToList();
@@ -105,7 +105,7 @@ namespace InventoryManagementSystem.Views
 
             //Populate the Location Combobox
             var getLocations = (from l in context.Locations
-                               select new { name = l.Location1, id = l.LocationID }).ToList();
+                                select new { name = l.Location1, id = l.LocationID }).ToList();
 
             locationIDComboBox.ItemsSource = getLocations;
             locationIDComboBox.SelectedValuePath = "id";
@@ -113,7 +113,7 @@ namespace InventoryManagementSystem.Views
 
             //Populate the Status Combobox
             var getStatList = (from s in context.StatusLists
-                                select new { name = s.Status, id = s.StatusID }).ToList();
+                               select new { name = s.Status, id = s.StatusID }).ToList();
 
             statusIDComboBox.ItemsSource = getStatList;
             statusIDComboBox.SelectedValuePath = "id";
@@ -121,7 +121,7 @@ namespace InventoryManagementSystem.Views
 
             //Populate the Assigned to Combobox
             var getEmployeeList = (from u in context.Employees
-                               select new { name = u.Name, id = u.EmployeeID }).ToList();
+                                   select new { name = u.Name, id = u.EmployeeID }).ToList();
 
             assignedToComboBox.ItemsSource = getEmployeeList;
             assignedToComboBox.SelectedValuePath = "id";
@@ -136,8 +136,8 @@ namespace InventoryManagementSystem.Views
 
 
             var SelectedItem = (from i in context.vInventoryLists
-                                     where i.itemID == itemID  //lists by userid
-                                 select i).ToList();
+                                where i.itemID == itemID  //lists by userid
+                                select i).ToList();
 
             Inventory item = context.Inventories.First(i => i.itemID == itemID);
             itemNameTextBox.Text = item.itemName;
@@ -243,14 +243,64 @@ namespace InventoryManagementSystem.Views
 
         }
 
-        private void vInventoryListDataGrid_MouseDown(object sender, MouseButtonEventArgs e)
+        private void VInventoryListDataGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //Get Item ID
-            var row = (vInventoryList)vInventoryListDataGrid.SelectedItem;
-            itemID = row.itemID;
+            try
+            {
+                //Get Item ID
+                var row = (vInventoryList)vInventoryListDataGrid.SelectedItem;
+                itemID = row.itemID;
 
-            //Reload Inventory
-            InventoryListView();
+                //Reload Inventory
+                InventoryListView();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Invalid Selection, please select a record");
+            }
+
+        }
+
+        private void CboEmplyeeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            var id = Convert.ToInt16(cboEmplyeeList.SelectedValue);
+
+            var getItemsFromEmployee = (from r in context.vInventoryLists
+                                        where r.assignedTo == id
+                                        select r).ToList();
+            vInventoryListDataGrid.ItemsSource = null;
+            vInventoryListDataGrid.ItemsSource = getItemsFromEmployee;
+        }
+
+        private void CboOfficeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //if (cboOfficeList.SelectedItem != null)
+            //{
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            var id = Convert.ToInt16(cboOfficeList.SelectedValue);
+
+            var getOfficeList = (from r in context.vInventoryLists
+                                 where r.officeID == id
+                                 select r).ToList();
+
+            vInventoryListDataGrid.ItemsSource = null;
+            vInventoryListDataGrid.ItemsSource = getOfficeList;
+            //}
+
+        }
+
+        private void CboTagList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            string id = Convert.ToString(cboTagList.SelectedValue);
+
+            var getItemsFromEmployee = (from r in context.vInventoryLists
+                                        where r.tag == id
+                                        select r).ToList();
+
+            vInventoryListDataGrid.ItemsSource = null;
+            vInventoryListDataGrid.ItemsSource = getItemsFromEmployee;
         }
     }
 }
