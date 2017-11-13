@@ -195,7 +195,7 @@ namespace InventoryManagementSystem.Views
                 context.SaveChanges();  //Saves changes to the database
 
                 //check the search method and refresh list
-                switch (sType)
+                switch (searchType)
                 {
 
                 }

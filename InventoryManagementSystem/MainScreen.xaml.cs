@@ -53,9 +53,14 @@ namespace InventoryManagementSystem
             inventoryDBDataSetEmployeesTableAdapter.Fill(inventoryDBDataSet.Employees);
             System.Windows.Data.CollectionViewSource employeesViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("employeesViewSource")));
             employeesViewSource.View.MoveCurrentToFirst();
-            
+
             RefreshFilterList();
             RefreshInventory();
+            // Load data into the table OfficeList. You can modify this code as needed.
+            InventoryManagementSystem.InventoryDBDataSetTableAdapters.OfficeListTableAdapter inventoryDBDataSetOfficeListTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.OfficeListTableAdapter();
+            inventoryDBDataSetOfficeListTableAdapter.Fill(inventoryDBDataSet.OfficeList);
+            System.Windows.Data.CollectionViewSource officeListViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("officeListViewSource")));
+            officeListViewSource.View.MoveCurrentToFirst();
         }
 
         private void BtnDeleteUser_Click(object sender, RoutedEventArgs e)
@@ -65,7 +70,7 @@ namespace InventoryManagementSystem
             int myid = Convert.ToInt16(b.Tag);
 
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            
+
             if (result == MessageBoxResult.Yes)
             {
                 User nu = new User { userID = myid };
@@ -74,7 +79,6 @@ namespace InventoryManagementSystem
                 context.SaveChanges();  //Saves changes to the database
             }
             RefreshUserList();
-
         }
 
         private void BtnModifyUser_Click(object sender, RoutedEventArgs e)
@@ -84,7 +88,7 @@ namespace InventoryManagementSystem
 
             Views.AddUser modifyUser = new Views.AddUser
             {
-                
+
                 userID = Convert.ToInt16(myid),
                 RequestType = "Modify",
                 Owner = this,
@@ -131,21 +135,21 @@ namespace InventoryManagementSystem
             var context = new InventoryManagementSystem.InventoryDBEntities();
             string value = Convert.ToString(cboFilterList.SelectedValue);
             //MessageBox.Show(value);
-            if(cboFilterList.Text != "")
+            if (cboFilterList.Text != "")
             {
                 var InventoryList = (from i in context.vInventoryLists
-                                 where i.CategoryName == value
-                                 select i).ToList();
+                                     where i.CategoryName == value
+                                     select i).ToList();
                 vInventoryListDataGrid.ItemsSource = InventoryList;
             }
             else
             {
                 var InventoryList = (from i in context.vInventoryLists
-                                 select i).ToList();
+                                     select i).ToList();
                 vInventoryListDataGrid.ItemsSource = InventoryList;
             }
-            
         }
+
         //--------------------------------------//
         //**********End Refresh Group **********//
         //--------------------------------------//
@@ -230,26 +234,60 @@ namespace InventoryManagementSystem
             lookUp.ShowDialog();
         }
 
-        //Removes Asset From DB
-        //private void btnRemove_Click(object sender, EventArgs e)
-        //{
-        //    if (idTextBox.Text.Length != 0)
-        //    {
-        //        DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this record?", "DELETE RECORD", MessageBoxButtons.YesNo);
-        //        if (dialogResult == DialogResult.Yes)
-        //        {
-        //            int id = Convert.ToInt32(idTextBox.Text);
-        //            var context = new AssetDatabaseEntities();
-        //            Asset asset = (Asset)context.Assets.Where(b => b.Id == id).First(); //Finds the asset
-        //            context.Assets.Remove(asset);                                       //Deletes the asset
-        //            context.SaveChanges();                                              //Saves changes to the database
-        //            MessageBox.Show("Removing asset #" + state_asset_tagTextBox.Text);
-        //            AssetList al = new AssetList();
-        //            al.MdiParent = MainMenu.ActiveForm;
-        //            al.Show();
-        //            this.Close();
-        //        }
-        //    }
-        //}
+        private void BtnAddEmployee_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        //****************************//
+        //   Administration - Office  //
+        //****************************//
+        private void BtnAddOffice_Click(object sender, RoutedEventArgs e)
+        {
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            OfficeList newOffice = new OfficeList();
+            Boolean validateOffice = true;
+            //DO VALIDATION CHECK HERE            
+            if (validateOffice == true)
+            {
+                newOffice.officeName = officeNameTextBox.Text;
+                newOffice.officeFloor = Convert.ToInt16(officeFloorTextBox.Text);
+                context.OfficeLists.Add(newOffice);
+                context.SaveChanges();
+                RefreshOfficeList();
+            }
+        }
+
+        private void RefreshOfficeList()
+        {
+            officeListDataGrid.ItemsSource = null;
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            var OfficeList = (from o in context.OfficeLists
+                            select o).ToList();
+            officeListDataGrid.ItemsSource = OfficeList;
+        }
+
+        private void BtnDeleteOffice_CLick(object sender, RoutedEventArgs e)
+        {
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            Button b = sender as Button;
+            int myid = Convert.ToInt16(b.Tag);
+
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this office?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                OfficeList nu = new OfficeList { officeID = myid };
+                context.OfficeLists.Attach(nu); //attaches the office object by the id given to the object above
+                context.OfficeLists.Remove(nu); //Adds the change to Deletes the office from the database
+                context.SaveChanges();  //Saves changes to the database
+            }
+            RefreshOfficeList();
+        }
+        //****************************//
+        //      END ADMIN OFFICE      //
+        //****************************//
+
+
     }
 }
