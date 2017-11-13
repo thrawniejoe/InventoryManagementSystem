@@ -15,6 +15,7 @@
         <CollectionViewSource x:Key="employeesViewSource" Source="{Binding Employees, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="officeListViewSource" Source="{Binding OfficeList, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="statusListViewSource" Source="{Binding StatusList, Source={StaticResource inventoryDBDataSet}}"/>
+        <CollectionViewSource x:Key="locationsViewSource" Source="{Binding Locations, Source={StaticResource inventoryDBDataSet}}"/>
     </Window.Resources>
     <Grid>
         <TabControl x:Name="tcMainTabController" TabStripPlacement="Left" >
@@ -225,10 +226,16 @@
                     </TabItem>
                     <TabItem Header="Statuses" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="55" Margin="-1.667,0,-5.333,0">
                         <Grid Background="#FFE5E5E5" DataContext="{StaticResource statusListViewSource}">
-                            <DataGrid x:Name="statusListDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="279,61,576,178.667" RowDetailsVisibilityMode="VisibleWhenSelected">
+                            <DataGrid x:Name="statusListDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="279,61,514,179" RowDetailsVisibilityMode="VisibleWhenSelected">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn x:Name="statusIDColumn" Binding="{Binding StatusID}" Header="Status ID" IsReadOnly="True" Width="SizeToHeader"/>
-                                    <DataGridTextColumn x:Name="statusColumn2" Binding="{Binding Status}" Header="Status" Width="SizeToHeader"/>
+                                    <DataGridTemplateColumn x:Name="deleteStatusColumn" Header="" Width="80">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button x:Name="btnDeleteStatus" Content="Delete" Tag="{Binding StatusID}" BorderThickness="0" Margin="0" Padding="1" Grid.IsSharedSizeScope="False" Width="Auto" Click="BtnDeleteStatus_CLick"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn x:Name="statusColumn2" Binding="{Binding Status}" Header="Status" Width="80"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                             <Grid x:Name="grid3" HorizontalAlignment="Left" Margin="58,109,0,0" VerticalAlignment="Top">
@@ -243,6 +250,46 @@
                                 <TextBox x:Name="statusTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding Status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                             </Grid>
                             <Button x:Name="BtnAddStatus" Content="Add Status" HorizontalAlignment="Left" Margin="115,158,0,0" VerticalAlignment="Top" Width="75" Click="BtnAddStatus_Click"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Locations" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="66" Margin="-2,0,0,0">
+                        <Grid Background="#FFE5E5E5" DataContext="{StaticResource locationsViewSource}">
+                            <DataGrid x:Name="locationsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="257,45,313,410" RowDetailsVisibilityMode="VisibleWhenSelected">
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn x:Name="deleteLocationColumn" Header="" Width="80">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button x:Name="btnDeleteLocation" Content="Delete" Tag="{Binding LocationID}" BorderThickness="0" Margin="0" Padding="1" Grid.IsSharedSizeScope="False" Width="Auto" Click="BtnDeleteLocation_CLick"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn x:Name="locationColumn2" Binding="{Binding Location}" Header="Location" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="stateColumn" Binding="{Binding State}" Header="State" Width="SizeToHeader"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Grid x:Name="grid4" HorizontalAlignment="Left" Margin="62,100,0,0" VerticalAlignment="Top">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Content="Location:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                                <TextBox x:Name="locationTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding Location, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                            </Grid>
+                            <Grid x:Name="grid5" HorizontalAlignment="Left" Margin="81,137,0,0" VerticalAlignment="Top">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Content="State:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                                <TextBox x:Name="stateTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding State, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                            </Grid>
+                            <Button x:Name="BtnAddLocation" Content="Add Location" HorizontalAlignment="Left" Margin="113,190,0,0" VerticalAlignment="Top" Width="75" Click="BtnAddLocation_Click"/>
                         </Grid>
                     </TabItem>
                 </TabControl>

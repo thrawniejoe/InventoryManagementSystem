@@ -66,6 +66,11 @@ namespace InventoryManagementSystem
             inventoryDBDataSetStatusListTableAdapter.Fill(inventoryDBDataSet.StatusList);
             System.Windows.Data.CollectionViewSource statusListViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("statusListViewSource")));
             statusListViewSource.View.MoveCurrentToFirst();
+            // Load data into the table Locations. You can modify this code as needed.
+            InventoryManagementSystem.InventoryDBDataSetTableAdapters.LocationsTableAdapter inventoryDBDataSetLocationsTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.LocationsTableAdapter();
+            inventoryDBDataSetLocationsTableAdapter.Fill(inventoryDBDataSet.Locations);
+            System.Windows.Data.CollectionViewSource locationsViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("locationsViewSource")));
+            locationsViewSource.View.MoveCurrentToFirst();
         }
 
         private void BtnDeleteUser_Click(object sender, RoutedEventArgs e)
@@ -319,9 +324,40 @@ namespace InventoryManagementSystem
                               select o).ToList();
             statusListDataGrid.ItemsSource = StatusList;
         }
-
         //****************************//
         //      END ADMIN STATUS      //
+        //****************************//
+
+        //****************************//
+        // Administration - Locations //
+        //****************************//
+
+        private void BtnAddLocation_Click(object sender, RoutedEventArgs e)
+        {
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            Location newLocation = new Location();
+            Boolean validateStatus = true;
+            //DO VALIDATION CHECK HERE            
+            if (validateStatus == true)
+            {
+                newLocation.Location1 = locationTextBox.Text;
+                newLocation.State = stateTextBox.Text;
+                context.SaveChanges();
+                RefreshLocationList();
+            }
+        }
+
+        private void RefreshLocationList()
+        {
+            locationsDataGrid.ItemsSource = null;
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            var LocationList = (from o in context.Locations
+                              select o).ToList();
+            statusListDataGrid.ItemsSource = LocationList;
+        }
+
+        //****************************//
+        //      END ADMIN LOCATIONS   //
         //****************************//
     }
 }
