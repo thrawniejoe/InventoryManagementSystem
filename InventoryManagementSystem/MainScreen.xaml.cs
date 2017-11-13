@@ -61,6 +61,11 @@ namespace InventoryManagementSystem
             inventoryDBDataSetOfficeListTableAdapter.Fill(inventoryDBDataSet.OfficeList);
             System.Windows.Data.CollectionViewSource officeListViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("officeListViewSource")));
             officeListViewSource.View.MoveCurrentToFirst();
+            // Load data into the table StatusList. You can modify this code as needed.
+            InventoryManagementSystem.InventoryDBDataSetTableAdapters.StatusListTableAdapter inventoryDBDataSetStatusListTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.StatusListTableAdapter();
+            inventoryDBDataSetStatusListTableAdapter.Fill(inventoryDBDataSet.StatusList);
+            System.Windows.Data.CollectionViewSource statusListViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("statusListViewSource")));
+            statusListViewSource.View.MoveCurrentToFirst();
         }
 
         private void BtnDeleteUser_Click(object sender, RoutedEventArgs e)
@@ -289,5 +294,34 @@ namespace InventoryManagementSystem
         //****************************//
 
 
+        //****************************//
+        //   Administration - Status  //
+        //****************************//
+        private void BtnAddStatus_Click(object sender, RoutedEventArgs e)
+        {
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            StatusList newStatus = new StatusList();
+            Boolean validateStatus = true;
+            //DO VALIDATION CHECK HERE            
+            if (validateStatus == true)
+            {
+                newStatus.Status = statusTextBox.Text;
+                context.SaveChanges();
+                RefreshStatusList();
+            }
+        }
+
+        private void RefreshStatusList()
+        {
+            statusListDataGrid.ItemsSource = null;
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            var StatusList = (from o in context.StatusLists
+                              select o).ToList();
+            statusListDataGrid.ItemsSource = StatusList;
+        }
+
+        //****************************//
+        //      END ADMIN STATUS      //
+        //****************************//
     }
 }
