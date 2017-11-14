@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -55,6 +56,7 @@ namespace InventoryManagementSystem.Views
             if (RequestType == "ModifyItem")
             {
                 InventoryListView();
+                LoadDocumentList();
             }
         }
 
@@ -318,6 +320,33 @@ namespace InventoryManagementSystem.Views
 
             vInventoryListDataGrid.ItemsSource = null;
             vInventoryListDataGrid.ItemsSource = getItemsFromEmployee;
+        }
+
+        private void BtnAddDoc_Click(object sender, RoutedEventArgs e)
+        {
+            string path;
+            string filename;
+
+            OpenFileDialog file = new OpenFileDialog();
+            file.InitialDirectory = Properties.Settings.Default.DocumentsLocation;
+            if (file.ShowDialog() == DialogResult == true)
+            {
+                path = file.FileName;
+                filename = file.SafeFileName;
+                //textbox.Text = path;
+                var mStore = new ModelClass.DocumentStore();
+                mStore.addDocToDB(path, filename, currentItemID);
+                LoadDocumentList();
+            }
+        }
+
+        private void LoadDocumentList()
+        {
+            documentationDataGrid.ItemsSource = null;
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            var DocumentList = (from o in context.Documentations
+                                select o).ToList();
+            documentationDataGrid.ItemsSource = DocumentList;
         }
     }
 }

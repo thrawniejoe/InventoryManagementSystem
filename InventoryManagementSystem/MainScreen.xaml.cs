@@ -330,6 +330,24 @@ namespace InventoryManagementSystem
                               select o).ToList();
             statusListDataGrid.ItemsSource = StatusList;
         }
+
+        private void BtnDeleteStatus_CLick(object sender, RoutedEventArgs e)
+        {
+            //var context = new InventoryManagementSystem.InventoryDBEntities();
+            //Button b = sender as Button;
+            //int myid = Convert.ToInt16(b.Tag);
+
+            //MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this office?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            //if (result == MessageBoxResult.Yes)
+            //{
+            //    OfficeList nu = new OfficeList { officeID = myid };
+            //    context.OfficeLists.Attach(nu); //attaches the office object by the id given to the object above
+            //    context.OfficeLists.Remove(nu); //Adds the change to Deletes the office from the database
+            //    context.SaveChanges();  //Saves changes to the database
+            //}
+            //RefreshOfficeList();
+        }
         //****************************//
         //      END ADMIN STATUS      //
         //****************************//
@@ -360,6 +378,24 @@ namespace InventoryManagementSystem
             var LocationList = (from o in context.Locations
                               select o).ToList();
             statusListDataGrid.ItemsSource = LocationList;
+        }
+
+        private void BtnDeleteLocation_CLick(object sender, RoutedEventArgs e)
+        {
+            //var context = new InventoryManagementSystem.InventoryDBEntities();
+            //Button b = sender as Button;
+            //int myid = Convert.ToInt16(b.Tag);
+
+            //MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this office?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            //if (result == MessageBoxResult.Yes)
+            //{
+            //    OfficeList nu = new OfficeList { officeID = myid };
+            //    context.OfficeLists.Attach(nu); //attaches the office object by the id given to the object above
+            //    context.OfficeLists.Remove(nu); //Adds the change to Deletes the office from the database
+            //    context.SaveChanges();  //Saves changes to the database
+            //}
+            //RefreshOfficeList();
         }
         //****************************//
         //      END ADMIN LOCATIONS   //
@@ -411,9 +447,9 @@ namespace InventoryManagementSystem
                         }
                     }
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    //MessageBox.Show(e.Message);
+                    MessageBox.Show(ex.Message);
                 }
             }
             else

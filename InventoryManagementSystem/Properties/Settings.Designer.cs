@@ -57,5 +57,14 @@ namespace InventoryManagementSystem.Properties {
                 this["CurrentUserID"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DocumentsLocation {
+            get {
+                return ((string)(this["DocumentsLocation"]));
+            }
+        }
     }
 }

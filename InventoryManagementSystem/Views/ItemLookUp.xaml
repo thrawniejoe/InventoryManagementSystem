@@ -261,6 +261,7 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
         </Grid>
+        <Button x:Name="BtnAddDoc" Content="Add" HorizontalAlignment="Left" Margin="731,95,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="BtnAddDoc_Click"/>
 
     </Grid>
 </Window>
