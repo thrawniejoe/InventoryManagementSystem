@@ -137,6 +137,11 @@
                     <Button x:Name="BtnImportInventory" Content="Import" HorizontalAlignment="Left" Margin="102,100,0,0" VerticalAlignment="Top" Width="75" Click="BtnImportInventory_Click"/>
                     <TextBox x:Name="TxtFileLink" HorizontalAlignment="Left" Height="23" Margin="208,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="317"/>
                     <ProgressBar x:Name="PbImportProgressBar" HorizontalAlignment="Left" Height="23" Margin="208,138,0,0" VerticalAlignment="Top" Width="317"/>
+                    <Label Content="Import Inventory CSV" HorizontalAlignment="Left" Margin="102,46,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Document Location" HorizontalAlignment="Left" Margin="111,207,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Open Directory" HorizontalAlignment="Left" Margin="150,238,0,0" VerticalAlignment="Top" Width="107"/>
+                    <Button Content="Change Directory" HorizontalAlignment="Left" Margin="150,263,0,0" VerticalAlignment="Top" Width="107"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="285,260,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="355"/>
 
                 </Grid>
 
@@ -303,9 +308,15 @@
                     </TabItem>
                     <TabItem Header="Categories" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="65" Margin="-2,0,-15,0">
                         <Grid Background="#FFE5E5E5" DataContext="{StaticResource categoriesViewSource}">
-                            <DataGrid x:Name="categoriesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="350,32,220,423" RowDetailsVisibilityMode="VisibleWhenSelected">
+                            <DataGrid x:Name="categoriesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="350,32,423,423" RowDetailsVisibilityMode="VisibleWhenSelected">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn x:Name="categoryIDColumn" Binding="{Binding CategoryID}" Header="Category ID" IsReadOnly="True" Width="SizeToHeader"/>
+                                    <DataGridTemplateColumn x:Name="deleteCategoryColumn" Header="" Width="80">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button x:Name="btnDeleteCategory" Content="Delete" Tag="{Binding CategoryID}" BorderThickness="0" Margin="0" Padding="1" Grid.IsSharedSizeScope="False" Width="Auto" Click="BtnDeleteCategory_CLick"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
                                     <DataGridTextColumn x:Name="categoryNameColumn1" Binding="{Binding CategoryName}" Header="Category Name" Width="SizeToHeader"/>
                                 </DataGrid.Columns>
                             </DataGrid>
@@ -320,12 +331,11 @@
                                 <Label Content="Category Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                                 <TextBox x:Name="categoryNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding CategoryName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                             </Grid>
-                            <Button Content="Button" HorizontalAlignment="Left" Margin="147,131,0,0" VerticalAlignment="Top" Width="75"/>
+                            <Button x:Name="BtnAddCategory" Content="Add Category" HorizontalAlignment="Left" Margin="147,131,0,0" VerticalAlignment="Top" Width="83" Click="BtnAddCategory_Click"/>
                         </Grid>
                     </TabItem>
                 </TabControl>
             </TabItem>
-
         </TabControl>
     </Grid>
 </Window>

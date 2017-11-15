@@ -16,7 +16,7 @@
     <Setting Name="CurrentUserID" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="DocumentsLocation" Type="System.String" Scope="Application">
+    <Setting Name="DocumentsLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

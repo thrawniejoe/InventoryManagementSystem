@@ -333,20 +333,20 @@ namespace InventoryManagementSystem
 
         private void BtnDeleteStatus_CLick(object sender, RoutedEventArgs e)
         {
-            //var context = new InventoryManagementSystem.InventoryDBEntities();
-            //Button b = sender as Button;
-            //int myid = Convert.ToInt16(b.Tag);
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            Button b = sender as Button;
+            int myid = Convert.ToInt16(b.Tag);
 
-            //MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this office?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this Status?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-            //if (result == MessageBoxResult.Yes)
-            //{
-            //    OfficeList nu = new OfficeList { officeID = myid };
-            //    context.OfficeLists.Attach(nu); //attaches the office object by the id given to the object above
-            //    context.OfficeLists.Remove(nu); //Adds the change to Deletes the office from the database
-            //    context.SaveChanges();  //Saves changes to the database
-            //}
-            //RefreshOfficeList();
+            if (result == MessageBoxResult.Yes)
+            {
+                StatusList nu = new StatusList { StatusID = myid };
+                context.StatusLists.Attach(nu); //attaches the Status object by the id given to the object above
+                context.StatusLists.Remove(nu); //Adds the change to Deletes the office from the database
+                context.SaveChanges();  //Saves changes to the database
+            }
+            RefreshStatusList();
         }
         //****************************//
         //      END ADMIN STATUS      //
@@ -355,7 +355,6 @@ namespace InventoryManagementSystem
         //****************************//
         // Administration - Locations //
         //****************************//
-
         private void BtnAddLocation_Click(object sender, RoutedEventArgs e)
         {
             var context = new InventoryManagementSystem.InventoryDBEntities();
@@ -382,25 +381,71 @@ namespace InventoryManagementSystem
 
         private void BtnDeleteLocation_CLick(object sender, RoutedEventArgs e)
         {
-            //var context = new InventoryManagementSystem.InventoryDBEntities();
-            //Button b = sender as Button;
-            //int myid = Convert.ToInt16(b.Tag);
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            Button b = sender as Button;
+            int myid = Convert.ToInt16(b.Tag);
 
-            //MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this office?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this Location?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-            //if (result == MessageBoxResult.Yes)
-            //{
-            //    OfficeList nu = new OfficeList { officeID = myid };
-            //    context.OfficeLists.Attach(nu); //attaches the office object by the id given to the object above
-            //    context.OfficeLists.Remove(nu); //Adds the change to Deletes the office from the database
-            //    context.SaveChanges();  //Saves changes to the database
-            //}
-            //RefreshOfficeList();
+            if (result == MessageBoxResult.Yes)
+            {
+                Location nu = new Location { LocationID = myid };
+                context.Locations.Attach(nu); //attaches the office object by the id given to the object above
+                context.Locations.Remove(nu); //Adds the change to Deletes the Location from the database
+                context.SaveChanges();  //Saves changes to the database
+            }
+            RefreshLocationList();
         }
         //****************************//
         //      END ADMIN LOCATIONS   //
         //****************************//
 
+        //****************************//
+        // Administration - Category  //
+        //****************************//
+        private void BtnAddCategory_Click(object sender, RoutedEventArgs e)
+        {
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            Category newLocation = new Category();
+            Boolean validateStatus = true;
+            //DO VALIDATION CHECK HERE            
+            if (validateStatus == true)
+            {
+                newLocation.CategoryName = categoryNameTextBox.Text;
+                context.SaveChanges();
+                RefreshCategoryList();
+            }
+        }
+
+        private void RefreshCategoryList()
+        {
+            locationsDataGrid.ItemsSource = null;
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            var CategoryList = (from o in context.Categories
+                                select o).ToList();
+            statusListDataGrid.ItemsSource = CategoryList;
+        }
+
+        private void BtnDeleteCategory_CLick(object sender, RoutedEventArgs e)
+        {
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            Button b = sender as Button;
+            int myid = Convert.ToInt16(b.Tag);
+
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this Category?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                Category nu = new Category { CategoryID = myid };
+                context.Categories.Attach(nu); //attaches the office object by the id given to the object above
+                context.Categories.Remove(nu); //Adds the change to Deletes the Category from the database
+                context.SaveChanges();  //Saves changes to the database
+            }
+            RefreshCategoryList();
+        }
+        //****************************//
+        //     END ADMIN CATEGORY     //
+        //****************************//
 
         //****************************//
         //   Settings - Importer      //
@@ -459,11 +504,11 @@ namespace InventoryManagementSystem
         }
 
         //Brings up filedialog box and ask for a file.
-        private void getFile(TextBox textbox)
+        private void GetFile(TextBox textbox)
         {
             string path;
             OpenFileDialog file = new OpenFileDialog();
-            file.Filter = "Excel Files (*.xlsx)|*.xlsx";
+            file.Filter = "Excel Files (*.csv)|*.csv";
             file.Multiselect = false;
             if (file.ShowDialog() == true)
             {
@@ -474,6 +519,8 @@ namespace InventoryManagementSystem
         //****************************//
         //    END SETTINGS IMPORTER   //
         //****************************//
+
+
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,6 +53,15 @@ namespace InventoryManagementSystem.Views
             System.Windows.Data.CollectionViewSource documentationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("documentationViewSource")));
             documentationViewSource.View.MoveCurrentToFirst();
             LoadDat();
+
+            if(Properties.Settings.Default.DocumentsLocation == "")
+            {
+                Properties.Settings.Default.DocumentsLocation = System.IO.Path.GetFullPath(".") + "\\documents";
+                Properties.Settings.Default.Save();
+                MessageBox.Show(Properties.Settings.Default.DocumentsLocation);
+            }
+
+            
 
             if (RequestType == "ModifyItem")
             {
@@ -327,16 +337,18 @@ namespace InventoryManagementSystem.Views
             string path;
             string filename;
 
-            OpenFileDialog file = new OpenFileDialog();
-            file.InitialDirectory = Properties.Settings.Default.DocumentsLocation;
+            OpenFileDialog file = new OpenFileDialog
+            {
+                InitialDirectory = Properties.Settings.Default.DocumentsLocation
+            };
 
             if (file.ShowDialog() == true)
             {
                 path = file.FileName;
                 filename = file.SafeFileName;
-                //textbox.Text = path;
                 var mStore = new ModelClass.DocumentStore();
-                mStore.addDocToDB(path, filename, currentItemID);
+                mStore.AddDocToDB(Properties.Settings.Default.DocumentsLocation, filename, currentItemID);
+                File.Copy(path, Properties.Settings.Default.DocumentsLocation);
                 LoadDocumentList();
             }
         }

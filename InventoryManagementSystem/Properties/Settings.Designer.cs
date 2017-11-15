@@ -58,12 +58,15 @@ namespace InventoryManagementSystem.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string DocumentsLocation {
             get {
                 return ((string)(this["DocumentsLocation"]));
+            }
+            set {
+                this["DocumentsLocation"] = value;
             }
         }
     }

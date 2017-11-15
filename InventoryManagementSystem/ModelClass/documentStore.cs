@@ -12,7 +12,7 @@ namespace InventoryManagementSystem.ModelClass
         List<string> statusList = new List<string>();
 
         //Adds a document for the current record
-        public void addDocToDB(string path, string filename, int tag)
+        public void AddDocToDB(string path, string filename, int tag)
         {
             try
             {
