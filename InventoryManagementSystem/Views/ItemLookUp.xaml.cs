@@ -329,7 +329,8 @@ namespace InventoryManagementSystem.Views
 
             OpenFileDialog file = new OpenFileDialog();
             file.InitialDirectory = Properties.Settings.Default.DocumentsLocation;
-            if (file.ShowDialog() == DialogResult == true)
+
+            if (file.ShowDialog() == true)
             {
                 path = file.FileName;
                 filename = file.SafeFileName;
