@@ -460,7 +460,7 @@ namespace InventoryManagementSystem
                     var readcsv = System.IO.File.ReadAllText(filePath);
 
                     string[] csvfilerecord = readcsv.Split('\n');
-
+                    var context = new InventoryManagementSystem.InventoryDBEntities();
                     int countTotal = csvfilerecord.Length;
                     int count = 0;
                     //MessageBox.Show(Convert.ToString(csvfilerecord.Length));
@@ -472,25 +472,27 @@ namespace InventoryManagementSystem
                             var cells = row.Split(',');
                             //MessageBox.Show(cells[0] + ", \n" + cells[1] + cells[2] + ", \n" + cells[3] + ", \n" + cells[4] + ", \n" + cells[5] + ", \n" + cells[6] + ", \n" + cells[7] + ", \n" + cells[8] + ", \n" + cells[9] + ", \n" + cells[10] + ", \n" + cells[11] + ", \n" + cells[12] + ", \n" + cells[13] + ", \n" + cells[14] + ", \n" + cells[15] + ", \n" + cells[16] + ", \n" + cells[17] + ", \n" + cells[18] + ", " + cells[19]);
 
-                            var Inventory = new Inventory //creates a new asset and put's the information from the csv into each field
+                            Inventory item = new Inventory //creates a new asset and put's the information from the csv into each field
                             {
                                 itemName = cells[0],
                                 tag = cells[1],
                                 serialNumber = cells[2],
                             };
 
-                            //lblDataUpdate.Text = row;
+                            lblImportStatus.Content = row;
                             //lblDataUpdate.Refresh();
                             PbImportProgressBar.Value = (int)(100.0 * count / countTotal);
 
-                            var context = new InventoryManagementSystem.InventoryDBEntities();
-                            using (var dbAsset = new InventoryDBDataSet())
-                            {
-                                context.Inventories.Add(Inventory);
+                            
+                                context.Inventories.Add(item);
                                 context.SaveChanges();
-                            }
+
                         }
+                        
                     }
+                    PbImportProgressBar.Value = 100;
+                    lblImportStatus.Content = "Done";
+                    RefreshInventory();
                 }
                 catch (Exception ex)
                 {
@@ -515,6 +517,11 @@ namespace InventoryManagementSystem
                 path = file.FileName;
                 textbox.Text = path;
             }
+        }
+
+        private void BtnPickFileImport_Click(object sender, RoutedEventArgs e)
+        {
+            GetFile(TxtFileLink);
         }
         //****************************//
         //    END SETTINGS IMPORTER   //

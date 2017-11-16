@@ -142,6 +142,8 @@
                     <Button Content="Open Directory" HorizontalAlignment="Left" Margin="150,238,0,0" VerticalAlignment="Top" Width="107"/>
                     <Button Content="Change Directory" HorizontalAlignment="Left" Margin="150,263,0,0" VerticalAlignment="Top" Width="107"/>
                     <TextBox HorizontalAlignment="Left" Height="23" Margin="285,260,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="355"/>
+                    <Label x:Name="lblImportStatus" Content="Label" HorizontalAlignment="Left" Margin="208,166,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="BtnPickFileImport" Content="Button" HorizontalAlignment="Left" Margin="530,100,0,0" VerticalAlignment="Top" Width="75" Click="BtnPickFileImport_Click"/>
 
                 </Grid>
 
