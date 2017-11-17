@@ -113,13 +113,20 @@ namespace InventoryManagementSystem.Views
             if (validated == true)
             {
                 int cat = Convert.ToInt16(categoryComboBox.SelectedValue);
-                newItem.dateAssigned = Convert.ToDateTime(assignedToComboBox.SelectedValue);
                 newItem.CategoryID = cat;
                 newItem.dateAssigned = dateAssignedDatePicker.SelectedDate;
                 newItem.datePurchased = datePurchasedDatePicker.SelectedDate;
                 newItem.dateRecordModified = dateRecordModifiedDatePicker.SelectedDate;
-
-
+                newItem.assignedTo = Convert.ToInt16(assignedToComboBox.SelectedValue);
+                newItem.tag = tagTextBox.Text;
+                newItem.StatusID = Convert.ToInt16(statusComboBox.SelectedValue);
+                newItem.serialNumber = serialNumberTextBox.Text;
+                newItem.officeID = Convert.ToInt16(officeIDComboBox.SelectedValue);
+                newItem.manufacturer = manufacturerTextBox.Text;
+                newItem.recordModifiedBy_userID = Properties.Settings.Default.CurrentUserID;
+                newItem.itemName = itemNameTextBox.Text;
+                //newItem.modelID = Convert.ToInt16(modelIDComboBox.SelectedItem);
+                newItem.LocationID = Convert.ToInt16(locationComboBox.SelectedValue);
 
                 context.Inventories.Add(newItem);
                 context.SaveChanges();

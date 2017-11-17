@@ -317,6 +317,7 @@ namespace InventoryManagementSystem
             if (validateStatus == true)
             {
                 newStatus.Status = statusTextBox.Text;
+                context.StatusLists.Add(newStatus);
                 context.SaveChanges();
                 RefreshStatusList();
             }
@@ -365,6 +366,7 @@ namespace InventoryManagementSystem
             {
                 newLocation.Location1 = locationTextBox.Text;
                 newLocation.State = stateTextBox.Text;
+                context.Locations.Add(newLocation);
                 context.SaveChanges();
                 RefreshLocationList();
             }
@@ -376,7 +378,7 @@ namespace InventoryManagementSystem
             var context = new InventoryManagementSystem.InventoryDBEntities();
             var LocationList = (from o in context.Locations
                               select o).ToList();
-            statusListDataGrid.ItemsSource = LocationList;
+            locationsDataGrid.ItemsSource = LocationList;
         }
 
         private void BtnDeleteLocation_CLick(object sender, RoutedEventArgs e)
@@ -406,12 +408,13 @@ namespace InventoryManagementSystem
         private void BtnAddCategory_Click(object sender, RoutedEventArgs e)
         {
             var context = new InventoryManagementSystem.InventoryDBEntities();
-            Category newLocation = new Category();
+            Category newCategory = new Category();
             Boolean validateStatus = true;
             //DO VALIDATION CHECK HERE            
             if (validateStatus == true)
             {
-                newLocation.CategoryName = categoryNameTextBox.Text;
+                newCategory.CategoryName = categoryNameTextBox.Text;
+                context.Categories.Add(newCategory);
                 context.SaveChanges();
                 RefreshCategoryList();
             }
@@ -423,7 +426,7 @@ namespace InventoryManagementSystem
             var context = new InventoryManagementSystem.InventoryDBEntities();
             var CategoryList = (from o in context.Categories
                                 select o).ToList();
-            statusListDataGrid.ItemsSource = CategoryList;
+            categoriesDataGrid.ItemsSource = CategoryList;
         }
 
         private void BtnDeleteCategory_CLick(object sender, RoutedEventArgs e)
@@ -522,6 +525,15 @@ namespace InventoryManagementSystem
         private void BtnPickFileImport_Click(object sender, RoutedEventArgs e)
         {
             GetFile(TxtFileLink);
+        }
+
+        private void tabAdmin_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            RefreshCategoryList();
+            RefreshOfficeList();
+            RefreshStatusList();
+            RefreshLocationList();
+
         }
         //****************************//
         //    END SETTINGS IMPORTER   //

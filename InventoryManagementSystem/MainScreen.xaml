@@ -148,7 +148,7 @@
                 </Grid>
 
             </TabItem>
-            <TabItem Header="Administration" Margin="-2,60,0,-60" Name="tabAdmin" Background="Red">
+            <TabItem Header="Administration" Margin="-2,59.667,0,-59.667" Name="tabAdmin" Background="Red" Height="84" VerticalAlignment="Top" ContextMenuOpening="tabAdmin_ContextMenuOpening">
                 <TabControl Width="976" Margin="0,39,0,7">
                     <TabControl.Resources>
                         <Style TargetType="{x:Type TabItem}">
