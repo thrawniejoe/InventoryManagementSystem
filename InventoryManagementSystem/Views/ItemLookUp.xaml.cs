@@ -210,6 +210,8 @@ namespace InventoryManagementSystem.Views
                 context.Inventories.Attach(nu); //attaches the user object by the id given to the object above
                 context.Inventories.Remove(nu); //Adds the change to Deletes the user from the database
                 context.SaveChanges();  //Saves changes to the database
+                RefreshPage();
+                this.Close();
 
                 //check the search method and refresh list
                 switch (searchType)
@@ -225,7 +227,7 @@ namespace InventoryManagementSystem.Views
                         break;
                 }
             }
-            RefreshPage();
+            
         }
 
 
@@ -233,8 +235,34 @@ namespace InventoryManagementSystem.Views
         private void BtnUpdateItem_Click(object sender, RoutedEventArgs e)
         {
             var context = new InventoryManagementSystem.InventoryDBEntities();
+            string errorMessage = "";
+            //validation
+            if (tagTextBox.Text == "")
+            {
+                errorMessage = "Missing item tag. ";
+            }
+            if (assignedToComboBox.Text == "")
+            {
+                errorMessage = errorMessage + " Missing Checked Out To. ";
+            }
+            if (categoryIDComboBox.Text == "")
+            {
+                errorMessage = errorMessage + " Category is missing. ";
+            }
+            if (locationIDComboBox.Text == "")
+            {
+                errorMessage = errorMessage + " Location is missing. ";
+            }
+            if (statusIDComboBox.Text == "")
+            {
+                errorMessage = errorMessage + " Status is missing. ";
+            }
+            if (officeIDComboBox.Text == "")
+            {
+                errorMessage = errorMessage + " location is missing. ";
+            }
 
-            if (Validate())
+            if (errorMessage == "")
             {
                 using (var db = new InventoryDBEntities())
                 {
@@ -245,7 +273,7 @@ namespace InventoryManagementSystem.Views
                         item.tag = tagTextBox.Text;
                         item.serialNumber = serialNumberTextBox.Text;
                         item.manufacturer = manufacturerTextBox.Text;
-                        item.modelID = Convert.ToInt16(modelIDTextBox.Text);
+                        //item.modelID = Convert.ToInt16(modelIDTextBox.Text);
                         item.modelNumber = modelNumberTextBox.Text;
                         item.CategoryID = Convert.ToInt16(categoryIDComboBox.SelectedValue);
                         item.LocationID = Convert.ToInt16(locationIDComboBox.SelectedValue);
@@ -262,6 +290,10 @@ namespace InventoryManagementSystem.Views
                 }
                 this.Close();
             }
+            else
+            {
+                MessageBox.Show(errorMessage);
+            }
 
         }
 
@@ -270,46 +302,6 @@ namespace InventoryManagementSystem.Views
             return true;
         }
 
-
-        //TEST BUTTON
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var context = new InventoryManagementSystem.InventoryDBEntities();
-            Inventory newItem = new Inventory();
-
-            //Boolean validated = true;
-            //DO VALIDATION CHECK HERE
-
-            //if (validated == true)
-            //{
-            using (var db = new InventoryDBEntities())
-            {
-                newItem.CategoryID = 1;
-                //newItem.dateAssigned = dateAssignedDatePicker.SelectedDate;
-                //newItem.datePurchased = datePurchasedDatePicker.SelectedDate;
-                //newItem.dateRecordModified = dateRecordModifiedDatePicker.SelectedDate;
-                newItem.assignedTo = 1;
-                newItem.tag = "test1";
-                newItem.StatusID = 1;
-                newItem.serialNumber = "test123";
-                newItem.officeID = 1;
-                newItem.manufacturer = "test";
-                newItem.recordModifiedBy_userID = 3;
-                newItem.itemName = "test";
-                //newItem.modelID = Convert.ToInt16(modelIDComboBox.SelectedItem);
-                newItem.LocationID = 1;
-
-                db.Inventories.Add(newItem);
-                db.SaveChanges();
-                RefreshPage();
-            }
-                //int cat = Convert.ToInt16(categoryComboBox.SelectedValue);
-
-                MessageBox.Show("testing");
-
-                this.Close();
-            //}
-        }
 
         private void VInventoryListDataGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {

@@ -78,8 +78,6 @@ namespace InventoryManagementSystem
             System.Windows.Data.CollectionViewSource categoriesViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("categoriesViewSource")));
             categoriesViewSource.View.MoveCurrentToFirst();
 
-
-            invRefresh();
         }
 
         private void BtnDeleteUser_Click(object sender, RoutedEventArgs e)
@@ -154,6 +152,7 @@ namespace InventoryManagementSystem
             var context = new InventoryManagementSystem.InventoryDBEntities();
             string value = Convert.ToString(cboFilterList.SelectedValue);
             //MessageBox.Show(value);
+            vInventoryListDataGrid.ItemsSource = null;
             if (cboFilterList.Text != "")
             {
                 var InventoryList = (from i in context.vInventoryListings
@@ -169,15 +168,6 @@ namespace InventoryManagementSystem
             }
         }
 
-        public void invRefresh()
-        {
-            inventoryDataGrid.ItemsSource = null;
-            var context = new InventoryManagementSystem.InventoryDBEntities();
-            var InventoryList = (from i in context.Inventories
-                                 select i).ToList();
-            inventoryDataGrid.ItemsSource = InventoryList;
-        }
-
         //--------------------------------------//
         //**********End Refresh Group **********//
         //--------------------------------------//
@@ -188,7 +178,7 @@ namespace InventoryManagementSystem
                 Owner = this,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner
             };
-            additem.RefreshPage += RefreshUserList;
+            additem.RefreshPage += RefreshInventory;
             additem.ShowDialog();
         }
 
@@ -548,7 +538,7 @@ namespace InventoryManagementSystem
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)  //TESTING BUTTON
         {
             var context = new InventoryManagementSystem.InventoryDBEntities();
             Inventory newItem = new Inventory();
@@ -577,7 +567,6 @@ namespace InventoryManagementSystem
                 db.Inventories.Add(newItem);
                 db.SaveChanges();
                 RefreshInventory();
-                invRefresh();
                 MessageBox.Show("Item added");
             }
         }

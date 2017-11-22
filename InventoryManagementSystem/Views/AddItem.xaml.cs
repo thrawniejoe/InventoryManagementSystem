@@ -106,17 +106,41 @@ namespace InventoryManagementSystem.Views
         {
             var context = new InventoryManagementSystem.InventoryDBEntities();
             Inventory newItem = new Inventory();
+            string errorMessage = "";
 
-            Boolean validated = true;
-            //DO VALIDATION CHECK HERE
+            //validation
+            if (tagTextBox.Text == "")
+            {
+                errorMessage = "Missing item tag. ";
+            }
+            if (assignedToComboBox.Text == "")
+            {
+                errorMessage = errorMessage + " Missing Checked Out To. ";
+            }
+            if (categoryComboBox.Text == "")
+            {
+                errorMessage = errorMessage + " Category is missing. ";
+            }
+            if (locationComboBox.Text == "")
+            {
+                errorMessage = errorMessage + " Location is missing. ";
+            }
+            if (statusComboBox.Text == "")
+            {
+                errorMessage = errorMessage + " Status is missing. ";
+            }
+            if (officeIDComboBox.Text == "")
+            {
+                errorMessage = errorMessage + " location is missing. ";
+            }
 
-            if (validated == true)
+            if (errorMessage == "")
             {
                 int cat = Convert.ToInt16(categoryComboBox.SelectedValue);
                 newItem.CategoryID = cat;
                 newItem.dateAssigned = dateAssignedDatePicker.SelectedDate;
                 newItem.datePurchased = datePurchasedDatePicker.SelectedDate;
-                newItem.dateRecordModified = dateRecordModifiedDatePicker.SelectedDate;
+                newItem.dateRecordModified = DateTime.Today;
                 newItem.assignedTo = Convert.ToInt16(assignedToComboBox.SelectedValue);
                 newItem.tag = tagTextBox.Text;
                 newItem.StatusID = Convert.ToInt16(statusComboBox.SelectedValue);
@@ -125,13 +149,17 @@ namespace InventoryManagementSystem.Views
                 newItem.manufacturer = manufacturerTextBox.Text;
                 newItem.recordModifiedBy_userID = Properties.Settings.Default.CurrentUserID;
                 newItem.itemName = itemNameTextBox.Text;
-                newItem.modelID = 0;
+                //newItem.modelID = 0;
                 newItem.LocationID = Convert.ToInt16(locationComboBox.SelectedValue);
                 context.Inventories.Add(newItem);
                 context.SaveChanges();
                 MessageBox.Show("User " + assignedToComboBox.Text + " Added to the system.");
                 RefreshPage();
                 this.Close();
+            }
+            else
+            {
+                MessageBox.Show(errorMessage);
             }
         }
     }
