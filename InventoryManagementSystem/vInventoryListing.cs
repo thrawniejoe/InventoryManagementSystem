@@ -12,7 +12,7 @@ namespace InventoryManagementSystem
     using System;
     using System.Collections.Generic;
     
-    public partial class vInventoryList
+    public partial class vInventoryListing
     {
         public string itemName { get; set; }
         public string tag { get; set; }
@@ -29,5 +29,6 @@ namespace InventoryManagementSystem
         public int itemID { get; set; }
         public Nullable<int> officeID { get; set; }
         public Nullable<int> assignedTo { get; set; }
+        public string employeeName { get; set; }
     }
 }

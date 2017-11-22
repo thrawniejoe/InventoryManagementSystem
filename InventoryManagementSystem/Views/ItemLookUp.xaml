@@ -12,6 +12,7 @@
         <CollectionViewSource x:Key="vInventoryListViewSource" Source="{Binding vInventoryList, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="inventoryViewSource" Source="{Binding Inventory, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="documentationViewSource" Source="{Binding Documentation, Source={StaticResource inventoryDBDataSet}}"/>
+        <CollectionViewSource x:Key="vInventoryListingViewSource" Source="{Binding vInventoryListing, Source={StaticResource inventoryDBDataSet}}"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource vInventoryListViewSource}">
         <Grid.RowDefinitions>

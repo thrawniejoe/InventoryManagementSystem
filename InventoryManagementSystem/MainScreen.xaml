@@ -17,6 +17,78 @@
         <CollectionViewSource x:Key="statusListViewSource" Source="{Binding StatusList, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="locationsViewSource" Source="{Binding Locations, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="categoriesViewSource" Source="{Binding Categories, Source={StaticResource inventoryDBDataSet}}"/>
+
+        <Style TargetType="{x:Type DataGrid}">
+            <Setter Property="BorderBrush" Value="#FF373542"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#FF373542"/>
+            <Setter Property="VerticalGridLinesBrush" Value="{x:Null}"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="RowHeaderWidth" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="ColumnHeaderHeight" Value="25"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+
+        </Style>
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Background" >
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF40424E" Offset="0"/>
+                        <GradientStop Color="#FF32353E" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridRow}">
+            <Setter Property="BorderBrush" Value="#FF373542"/>
+            <Setter Property="Background" Value="#FF272731" />
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF23232B" Offset="1"/>
+                                <GradientStop Color="#FF373740" Offset="0"/>
+                                <GradientStop Color="#FF26262E" Offset="0.498"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="#FF00DDFD"/>
+                    <Setter Property="FontWeight" Value="SemiBold" />
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+        <Style TargetType="{x:Type DataGridCell}">
+            <Style.Triggers>
+                <Trigger Property="DataGridCell.IsSelected" Value="True">
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF23232B" Offset="1"/>
+                                <GradientStop Color="#FF373740" Offset="0"/>
+                                <GradientStop Color="#FF26262E" Offset="0.498"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="#FF00DDFD"/>
+                    <Setter Property="FontWeight" Value="SemiBold" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+
     </Window.Resources>
     <Grid>
         <TabControl x:Name="tcMainTabController" TabStripPlacement="Left" >
@@ -66,7 +138,7 @@
                                 <Button x:Name="btnClearFilter" Content="Clear Filter" Width="75" Click="BtnClearFilter_Click"/>
                                 <ComboBox x:Name="cboFilterList" Width="120" SelectionChanged="CboFilterList_SelectionChanged"/>
                             </WrapPanel>
-                            <DataGrid x:Name="vInventoryListDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource inventoryViewSource}}" Margin="10,50,10,10" RowDetailsVisibilityMode="VisibleWhenSelected" GridLinesVisibility="None" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserDeleteRows="False" SelectionMode="Single">
+                            <DataGrid x:Name="vInventoryListDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource inventoryViewSource}}" Margin="10,50,10,251" RowDetailsVisibilityMode="VisibleWhenSelected" GridLinesVisibility="None" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserDeleteRows="False" SelectionMode="Single">
                                 <DataGrid.Columns>
                                     <DataGridTemplateColumn x:Name="btnModifyRecord" Header="" Width="100">
                                         <DataGridTemplateColumn.CellTemplate>
@@ -98,6 +170,93 @@
                                 </DataGrid.Columns>
                             </DataGrid>
                             <Button x:Name="btnLookUpItem" Content="Look Up Item" HorizontalAlignment="Left" Margin="329,11,0,0" VerticalAlignment="Top" Width="75" Click="BtnLookUpItem_Click"/>
+                            <Button Content="Button" HorizontalAlignment="Left" Margin="440,11,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+                            <DataGrid x:Name="inventoryDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource inventoryViewSource}}" Margin="152,446,66,9" RowDetailsVisibilityMode="VisibleWhenSelected">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn x:Name="itemIDColumn" Binding="{Binding itemID}" Header="item ID" IsReadOnly="True" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="itemNameColumn1" Binding="{Binding itemName}" Header="item Name" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="tagColumn1" Binding="{Binding tag}" Header="tag" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="serialNumberColumn" Binding="{Binding serialNumber}" Header="serial Number" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="manufacturerColumn" Binding="{Binding manufacturer}" Header="manufacturer" Width="SizeToHeader"/>
+                                    <DataGridTemplateColumn x:Name="modelIDColumn" Header="model ID" Width="SizeToHeader">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ComboBox>
+                                                    <ComboBoxItem Content="{Binding modelID}"/>
+                                                </ComboBox>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn x:Name="modelNumberColumn" Binding="{Binding modelNumber}" Header="model Number" Width="SizeToHeader"/>
+                                    <DataGridTemplateColumn x:Name="categoryIDColumn" Header="Category ID" Width="SizeToHeader">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ComboBox>
+                                                    <ComboBoxItem Content="{Binding CategoryID}"/>
+                                                </ComboBox>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn x:Name="locationIDColumn" Header="Location ID" Width="SizeToHeader">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ComboBox>
+                                                    <ComboBoxItem Content="{Binding LocationID}"/>
+                                                </ComboBox>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn x:Name="statusIDColumn" Header="Status ID" Width="SizeToHeader">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ComboBox>
+                                                    <ComboBoxItem Content="{Binding StatusID}"/>
+                                                </ComboBox>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn x:Name="assignedToColumn" Header="assigned To" Width="SizeToHeader">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ComboBox>
+                                                    <ComboBoxItem Content="{Binding assignedTo}"/>
+                                                </ComboBox>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn x:Name="dateAssignedColumn1" Header="date Assigned" Width="SizeToHeader">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <DatePicker SelectedDate="{Binding dateAssigned, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn x:Name="dateRecordModifiedColumn1" Header="date Record Modified" Width="SizeToHeader">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <DatePicker SelectedDate="{Binding dateRecordModified, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn x:Name="recordModifiedBy_userIDColumn" Binding="{Binding recordModifiedBy_userID}" Header="record Modified By user ID" Width="SizeToHeader"/>
+                                    <DataGridTemplateColumn x:Name="datePurchasedColumn" Header="date Purchased" Width="SizeToHeader">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <DatePicker SelectedDate="{Binding datePurchased, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn x:Name="officeIDColumn" Header="office ID" Width="SizeToHeader">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ComboBox>
+                                                    <ComboBoxItem Content="{Binding officeID}"/>
+                                                </ComboBox>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </Grid>
                     </TabItem>
                     <TabItem Header="Item Details">

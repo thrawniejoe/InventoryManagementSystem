@@ -796,12 +796,12 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vInventoryListTableAdapter" GeneratorDataComponentClassName="vInventoryListTableAdapter" Name="vInventoryList" UserDataComponentName="vInventoryListTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vInventoryListingTableAdapter" GeneratorDataComponentClassName="vInventoryListingTableAdapter" Name="vInventoryListing" UserDataComponentName="vInventoryListingTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="InventoryDBConnectionString (Settings)" DbObjectName="dbo.vInventoryList" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="InventoryDBConnectionString (Settings)" DbObjectName="dbo.vInventoryListing" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT itemName, tag, serialNumber, modelNumber, CategoryName, Location, Status, Name, dateAssigned, dateRecordModified, emailAddress, datePurchased, itemID, officeID, assignedTo FROM dbo.vInventoryList</CommandText>
+                    <CommandText>SELECT itemName, tag, serialNumber, modelNumber, CategoryName, Location, Status, Name, dateAssigned, dateRecordModified, emailAddress, datePurchased, itemID, officeID, assignedTo, employeeName FROM dbo.vInventoryListing</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -823,6 +823,7 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
               <Mapping SourceColumn="itemID" DataSetColumn="itemID" />
               <Mapping SourceColumn="officeID" DataSetColumn="officeID" />
               <Mapping SourceColumn="assignedTo" DataSetColumn="assignedTo" />
+              <Mapping SourceColumn="employeeName" DataSetColumn="employeeName" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1193,7 +1194,7 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vInventoryList" msprop:Generator_TableClassName="vInventoryListDataTable" msprop:Generator_TableVarName="tablevInventoryList" msprop:Generator_TablePropName="vInventoryList" msprop:Generator_RowDeletingName="vInventoryListRowDeleting" msprop:Generator_RowChangingName="vInventoryListRowChanging" msprop:Generator_RowEvHandlerName="vInventoryListRowChangeEventHandler" msprop:Generator_RowDeletedName="vInventoryListRowDeleted" msprop:Generator_UserTableName="vInventoryList" msprop:Generator_RowChangedName="vInventoryListRowChanged" msprop:Generator_RowEvArgName="vInventoryListRowChangeEvent" msprop:Generator_RowClassName="vInventoryListRow">
+        <xs:element name="vInventoryListing" msprop:Generator_TableClassName="vInventoryListingDataTable" msprop:Generator_TableVarName="tablevInventoryListing" msprop:Generator_TablePropName="vInventoryListing" msprop:Generator_RowDeletingName="vInventoryListingRowDeleting" msprop:Generator_RowChangingName="vInventoryListingRowChanging" msprop:Generator_RowEvHandlerName="vInventoryListingRowChangeEventHandler" msprop:Generator_RowDeletedName="vInventoryListingRowDeleted" msprop:Generator_UserTableName="vInventoryListing" msprop:Generator_RowChangedName="vInventoryListingRowChanged" msprop:Generator_RowEvArgName="vInventoryListingRowChangeEvent" msprop:Generator_RowClassName="vInventoryListingRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="itemName" msprop:Generator_ColumnVarNameInTable="columnitemName" msprop:Generator_ColumnPropNameInRow="itemName" msprop:Generator_ColumnPropNameInTable="itemNameColumn" msprop:Generator_UserColumnName="itemName">
@@ -1220,7 +1221,7 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
               <xs:element name="modelNumber" msprop:Generator_ColumnVarNameInTable="columnmodelNumber" msprop:Generator_ColumnPropNameInRow="modelNumber" msprop:Generator_ColumnPropNameInTable="modelNumberColumn" msprop:Generator_UserColumnName="modelNumber" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
+                    <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -1265,6 +1266,13 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
               <xs:element name="itemID" msprop:Generator_ColumnVarNameInTable="columnitemID" msprop:Generator_ColumnPropNameInRow="itemID" msprop:Generator_ColumnPropNameInTable="itemIDColumn" msprop:Generator_UserColumnName="itemID" type="xs:int" />
               <xs:element name="officeID" msprop:Generator_ColumnVarNameInTable="columnofficeID" msprop:Generator_ColumnPropNameInRow="officeID" msprop:Generator_ColumnPropNameInTable="officeIDColumn" msprop:Generator_UserColumnName="officeID" type="xs:int" minOccurs="0" />
               <xs:element name="assignedTo" msprop:Generator_ColumnVarNameInTable="columnassignedTo" msprop:Generator_ColumnPropNameInRow="assignedTo" msprop:Generator_ColumnPropNameInTable="assignedToColumn" msprop:Generator_UserColumnName="assignedTo" type="xs:int" minOccurs="0" />
+              <xs:element name="employeeName" msprop:Generator_ColumnVarNameInTable="columnemployeeName" msprop:Generator_ColumnPropNameInRow="employeeName" msprop:Generator_ColumnPropNameInTable="employeeNameColumn" msprop:Generator_UserColumnName="employeeName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1310,8 +1318,8 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
       <xs:selector xpath=".//mstns:Users" />
       <xs:field xpath="mstns:userID" />
     </xs:unique>
-    <xs:unique name="vInventoryList_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:vInventoryList" />
+    <xs:unique name="vInventoryListing_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vInventoryListing" />
       <xs:field xpath="mstns:itemID" />
     </xs:unique>
   </xs:element>

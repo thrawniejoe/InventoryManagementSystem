@@ -121,17 +121,16 @@
           <Property Name="hashedPassword" Type="varbinary" MaxLength="256" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAGEMENTSYSTEM\INVENTORYMANAGEMENTSYSTEM\INVENTORYDB.MDF.dbo.vInventoryList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vInventoryList">
+warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAGEMENTSYSTEM\INVENTORYMANAGEMENTSYSTEM\INVENTORYDB.MDF.dbo.vInventoryListing' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vInventoryListing">
           <Key>
-            <PropertyRef Name="itemName" />
             <PropertyRef Name="emailAddress" />
             <PropertyRef Name="itemID" />
           </Key>
           <Property Name="itemName" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="tag" Type="varchar" MaxLength="50" />
+          <Property Name="tag" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="serialNumber" Type="varchar" MaxLength="100" />
-          <Property Name="modelNumber" Type="varchar" MaxLength="100" />
+          <Property Name="modelNumber" Type="varchar" MaxLength="50" />
           <Property Name="CategoryName" Type="varchar" MaxLength="50" />
           <Property Name="Location" Type="varchar" MaxLength="50" />
           <Property Name="Status" Type="varchar" MaxLength="50" />
@@ -143,6 +142,7 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
           <Property Name="itemID" Type="int" Nullable="false" />
           <Property Name="officeID" Type="int" />
           <Property Name="assignedTo" Type="int" />
+          <Property Name="employeeName" Type="varchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK__Documenta__ItemI__4C364F0E">
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
@@ -263,24 +263,25 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StatusList" EntityType="Self.StatusList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="vInventoryList" EntityType="Self.vInventoryList" store:Type="Views" store:Schema="dbo">
+          <EntitySet Name="vInventoryListing" EntityType="Self.vInventoryListing" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [vInventoryList].[itemName] AS [itemName], 
-    [vInventoryList].[tag] AS [tag], 
-    [vInventoryList].[serialNumber] AS [serialNumber], 
-    [vInventoryList].[modelNumber] AS [modelNumber], 
-    [vInventoryList].[CategoryName] AS [CategoryName], 
-    [vInventoryList].[Location] AS [Location], 
-    [vInventoryList].[Status] AS [Status], 
-    [vInventoryList].[Name] AS [Name], 
-    [vInventoryList].[dateAssigned] AS [dateAssigned], 
-    [vInventoryList].[dateRecordModified] AS [dateRecordModified], 
-    [vInventoryList].[emailAddress] AS [emailAddress], 
-    [vInventoryList].[datePurchased] AS [datePurchased], 
-    [vInventoryList].[itemID] AS [itemID], 
-    [vInventoryList].[officeID] AS [officeID], 
-    [vInventoryList].[assignedTo] AS [assignedTo]
-    FROM [dbo].[vInventoryList] AS [vInventoryList]</DefiningQuery>
+    [vInventoryListing].[itemName] AS [itemName], 
+    [vInventoryListing].[tag] AS [tag], 
+    [vInventoryListing].[serialNumber] AS [serialNumber], 
+    [vInventoryListing].[modelNumber] AS [modelNumber], 
+    [vInventoryListing].[CategoryName] AS [CategoryName], 
+    [vInventoryListing].[Location] AS [Location], 
+    [vInventoryListing].[Status] AS [Status], 
+    [vInventoryListing].[Name] AS [Name], 
+    [vInventoryListing].[dateAssigned] AS [dateAssigned], 
+    [vInventoryListing].[dateRecordModified] AS [dateRecordModified], 
+    [vInventoryListing].[emailAddress] AS [emailAddress], 
+    [vInventoryListing].[datePurchased] AS [datePurchased], 
+    [vInventoryListing].[itemID] AS [itemID], 
+    [vInventoryListing].[officeID] AS [officeID], 
+    [vInventoryListing].[assignedTo] AS [assignedTo], 
+    [vInventoryListing].[employeeName] AS [employeeName]
+    FROM [dbo].[vInventoryListing] AS [vInventoryListing]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__Documenta__ItemI__4C364F0E" Association="Self.FK__Documenta__ItemI__4C364F0E">
             <End Role="Inventory" EntitySet="Inventory" />
@@ -334,7 +335,7 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
           <EntitySet Name="Roles" EntityType="InventoryDBModel.Role" />
           <EntitySet Name="StatusLists" EntityType="InventoryDBModel.StatusList" />
           <EntitySet Name="Users" EntityType="InventoryDBModel.User" />
-          <EntitySet Name="vInventoryLists" EntityType="InventoryDBModel.vInventoryList" />
+          <EntitySet Name="vInventoryListings" EntityType="InventoryDBModel.vInventoryListing" />
           <AssociationSet Name="FK_CategoryID" Association="InventoryDBModel.FK_CategoryID">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Inventory" EntitySet="Inventories" />
@@ -505,16 +506,15 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
           <NavigationProperty Name="Inventories" Relationship="InventoryDBModel.FK_UserID" FromRole="User" ToRole="Inventory" />
           <NavigationProperty Name="Role" Relationship="InventoryDBModel.FK__Users__roleID__57A801BA" FromRole="User" ToRole="Role" />
         </EntityType>
-        <EntityType Name="vInventoryList">
+        <EntityType Name="vInventoryListing">
           <Key>
-            <PropertyRef Name="itemName" />
             <PropertyRef Name="emailAddress" />
             <PropertyRef Name="itemID" />
           </Key>
           <Property Name="itemName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="serialNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="modelNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="modelNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -526,6 +526,7 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
           <Property Name="itemID" Type="Int32" Nullable="false" />
           <Property Name="officeID" Type="Int32" />
           <Property Name="assignedTo" Type="Int32" />
+          <Property Name="employeeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_CategoryID">
           <End Type="InventoryDBModel.Category" Role="Category" Multiplicity="0..1" />
@@ -635,7 +636,7 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -766,9 +767,10 @@ warning 6002: The table/view 'C:\USERS\JOE.VELASQUEZ\SOURCE\REPOS\INVENTORYMANAG
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vInventoryLists">
-            <EntityTypeMapping TypeName="InventoryDBModel.vInventoryList">
-              <MappingFragment StoreEntitySet="vInventoryList">
+          <EntitySetMapping Name="vInventoryListings">
+            <EntityTypeMapping TypeName="InventoryDBModel.vInventoryListing">
+              <MappingFragment StoreEntitySet="vInventoryListing">
+                <ScalarProperty Name="employeeName" ColumnName="employeeName" />
                 <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
                 <ScalarProperty Name="officeID" ColumnName="officeID" />
                 <ScalarProperty Name="itemID" ColumnName="itemID" />

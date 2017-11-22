@@ -160,7 +160,7 @@
     <Compile Include="Views\ItemLookUp.xaml.cs">
       <DependentUpon>ItemLookUp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="vInventoryList.cs">
+    <Compile Include="vInventoryListing.cs">
       <DependentUpon>IMS_Model.tt</DependentUpon>
     </Compile>
     <Page Include="Views\Login.xaml">

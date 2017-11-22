@@ -44,7 +44,7 @@ namespace InventoryManagementSystem {
         
         private UsersDataTable tableUsers;
         
-        private vInventoryListDataTable tablevInventoryList;
+        private vInventoryListingDataTable tablevInventoryListing;
         
         private global::System.Data.DataRelation relationFK__Documenta__ItemI__4C364F0E;
         
@@ -122,8 +122,8 @@ namespace InventoryManagementSystem {
                 if ((ds.Tables["Users"] != null)) {
                     base.Tables.Add(new UsersDataTable(ds.Tables["Users"]));
                 }
-                if ((ds.Tables["vInventoryList"] != null)) {
-                    base.Tables.Add(new vInventoryListDataTable(ds.Tables["vInventoryList"]));
+                if ((ds.Tables["vInventoryListing"] != null)) {
+                    base.Tables.Add(new vInventoryListingDataTable(ds.Tables["vInventoryListing"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -247,9 +247,9 @@ namespace InventoryManagementSystem {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public vInventoryListDataTable vInventoryList {
+        public vInventoryListingDataTable vInventoryListing {
             get {
-                return this.tablevInventoryList;
+                return this.tablevInventoryListing;
             }
         }
         
@@ -350,8 +350,8 @@ namespace InventoryManagementSystem {
                 if ((ds.Tables["Users"] != null)) {
                     base.Tables.Add(new UsersDataTable(ds.Tables["Users"]));
                 }
-                if ((ds.Tables["vInventoryList"] != null)) {
-                    base.Tables.Add(new vInventoryListDataTable(ds.Tables["vInventoryList"]));
+                if ((ds.Tables["vInventoryListing"] != null)) {
+                    base.Tables.Add(new vInventoryListingDataTable(ds.Tables["vInventoryListing"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -446,10 +446,10 @@ namespace InventoryManagementSystem {
                     this.tableUsers.InitVars();
                 }
             }
-            this.tablevInventoryList = ((vInventoryListDataTable)(base.Tables["vInventoryList"]));
+            this.tablevInventoryListing = ((vInventoryListingDataTable)(base.Tables["vInventoryListing"]));
             if ((initTable == true)) {
-                if ((this.tablevInventoryList != null)) {
-                    this.tablevInventoryList.InitVars();
+                if ((this.tablevInventoryListing != null)) {
+                    this.tablevInventoryListing.InitVars();
                 }
             }
             this.relationFK__Documenta__ItemI__4C364F0E = this.Relations["FK__Documenta__ItemI__4C364F0E"];
@@ -491,8 +491,8 @@ namespace InventoryManagementSystem {
             base.Tables.Add(this.tableStatusList);
             this.tableUsers = new UsersDataTable();
             base.Tables.Add(this.tableUsers);
-            this.tablevInventoryList = new vInventoryListDataTable();
-            base.Tables.Add(this.tablevInventoryList);
+            this.tablevInventoryListing = new vInventoryListingDataTable();
+            base.Tables.Add(this.tablevInventoryListing);
             this.relationFK__Documenta__ItemI__4C364F0E = new global::System.Data.DataRelation("FK__Documenta__ItemI__4C364F0E", new global::System.Data.DataColumn[] {
                         this.tableInventory.itemIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableDocumentation.ItemIDColumn}, false);
@@ -593,7 +593,7 @@ namespace InventoryManagementSystem {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializevInventoryList() {
+        private bool ShouldSerializevInventoryListing() {
             return false;
         }
         
@@ -683,7 +683,7 @@ namespace InventoryManagementSystem {
         public delegate void UsersRowChangeEventHandler(object sender, UsersRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void vInventoryListRowChangeEventHandler(object sender, vInventoryListRowChangeEvent e);
+        public delegate void vInventoryListingRowChangeEventHandler(object sender, vInventoryListingRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -4154,7 +4154,7 @@ namespace InventoryManagementSystem {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class vInventoryListDataTable : global::System.Data.TypedTableBase<vInventoryListRow> {
+        public partial class vInventoryListingDataTable : global::System.Data.TypedTableBase<vInventoryListingRow> {
             
             private global::System.Data.DataColumn columnitemName;
             
@@ -4186,10 +4186,12 @@ namespace InventoryManagementSystem {
             
             private global::System.Data.DataColumn columnassignedTo;
             
+            private global::System.Data.DataColumn columnemployeeName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public vInventoryListDataTable() {
-                this.TableName = "vInventoryList";
+            public vInventoryListingDataTable() {
+                this.TableName = "vInventoryListing";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -4197,7 +4199,7 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal vInventoryListDataTable(global::System.Data.DataTable table) {
+            internal vInventoryListingDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -4214,7 +4216,7 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected vInventoryListDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected vInventoryListingDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -4341,6 +4343,14 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn employeeNameColumn {
+                get {
+                    return this.columnemployeeName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4350,34 +4360,50 @@ namespace InventoryManagementSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public vInventoryListRow this[int index] {
+            public vInventoryListingRow this[int index] {
                 get {
-                    return ((vInventoryListRow)(this.Rows[index]));
+                    return ((vInventoryListingRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event vInventoryListRowChangeEventHandler vInventoryListRowChanging;
+            public event vInventoryListingRowChangeEventHandler vInventoryListingRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event vInventoryListRowChangeEventHandler vInventoryListRowChanged;
+            public event vInventoryListingRowChangeEventHandler vInventoryListingRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event vInventoryListRowChangeEventHandler vInventoryListRowDeleting;
+            public event vInventoryListingRowChangeEventHandler vInventoryListingRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event vInventoryListRowChangeEventHandler vInventoryListRowDeleted;
+            public event vInventoryListingRowChangeEventHandler vInventoryListingRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddvInventoryListRow(vInventoryListRow row) {
+            public void AddvInventoryListingRow(vInventoryListingRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public vInventoryListRow AddvInventoryListRow(string itemName, string tag, string serialNumber, string modelNumber, string CategoryName, string Location, string Status, string Name, System.DateTime dateAssigned, System.DateTime dateRecordModified, string emailAddress, System.DateTime datePurchased, int itemID, int officeID, int assignedTo) {
-                vInventoryListRow rowvInventoryListRow = ((vInventoryListRow)(this.NewRow()));
+            public vInventoryListingRow AddvInventoryListingRow(
+                        string itemName, 
+                        string tag, 
+                        string serialNumber, 
+                        string modelNumber, 
+                        string CategoryName, 
+                        string Location, 
+                        string Status, 
+                        string Name, 
+                        System.DateTime dateAssigned, 
+                        System.DateTime dateRecordModified, 
+                        string emailAddress, 
+                        System.DateTime datePurchased, 
+                        int itemID, 
+                        int officeID, 
+                        int assignedTo, 
+                        string employeeName) {
+                vInventoryListingRow rowvInventoryListingRow = ((vInventoryListingRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         itemName,
                         tag,
@@ -4393,23 +4419,24 @@ namespace InventoryManagementSystem {
                         datePurchased,
                         itemID,
                         officeID,
-                        assignedTo};
-                rowvInventoryListRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowvInventoryListRow);
-                return rowvInventoryListRow;
+                        assignedTo,
+                        employeeName};
+                rowvInventoryListingRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowvInventoryListingRow);
+                return rowvInventoryListingRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public vInventoryListRow FindByitemID(int itemID) {
-                return ((vInventoryListRow)(this.Rows.Find(new object[] {
+            public vInventoryListingRow FindByitemID(int itemID) {
+                return ((vInventoryListingRow)(this.Rows.Find(new object[] {
                             itemID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                vInventoryListDataTable cln = ((vInventoryListDataTable)(base.Clone()));
+                vInventoryListingDataTable cln = ((vInventoryListingDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -4417,7 +4444,7 @@ namespace InventoryManagementSystem {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new vInventoryListDataTable();
+                return new vInventoryListingDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4438,6 +4465,7 @@ namespace InventoryManagementSystem {
                 this.columnitemID = base.Columns["itemID"];
                 this.columnofficeID = base.Columns["officeID"];
                 this.columnassignedTo = base.Columns["assignedTo"];
+                this.columnemployeeName = base.Columns["employeeName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4473,13 +4501,15 @@ namespace InventoryManagementSystem {
                 base.Columns.Add(this.columnofficeID);
                 this.columnassignedTo = new global::System.Data.DataColumn("assignedTo", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnassignedTo);
+                this.columnemployeeName = new global::System.Data.DataColumn("employeeName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnemployeeName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnitemID}, true));
                 this.columnitemName.AllowDBNull = false;
                 this.columnitemName.MaxLength = 100;
                 this.columntag.MaxLength = 50;
                 this.columnserialNumber.MaxLength = 100;
-                this.columnmodelNumber.MaxLength = 100;
+                this.columnmodelNumber.MaxLength = 50;
                 this.columnCategoryName.MaxLength = 50;
                 this.columnLocation.MaxLength = 50;
                 this.columnStatus.MaxLength = 50;
@@ -4488,32 +4518,33 @@ namespace InventoryManagementSystem {
                 this.columnemailAddress.MaxLength = 55;
                 this.columnitemID.AllowDBNull = false;
                 this.columnitemID.Unique = true;
+                this.columnemployeeName.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public vInventoryListRow NewvInventoryListRow() {
-                return ((vInventoryListRow)(this.NewRow()));
+            public vInventoryListingRow NewvInventoryListingRow() {
+                return ((vInventoryListingRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new vInventoryListRow(builder);
+                return new vInventoryListingRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(vInventoryListRow);
+                return typeof(vInventoryListingRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.vInventoryListRowChanged != null)) {
-                    this.vInventoryListRowChanged(this, new vInventoryListRowChangeEvent(((vInventoryListRow)(e.Row)), e.Action));
+                if ((this.vInventoryListingRowChanged != null)) {
+                    this.vInventoryListingRowChanged(this, new vInventoryListingRowChangeEvent(((vInventoryListingRow)(e.Row)), e.Action));
                 }
             }
             
@@ -4521,8 +4552,8 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.vInventoryListRowChanging != null)) {
-                    this.vInventoryListRowChanging(this, new vInventoryListRowChangeEvent(((vInventoryListRow)(e.Row)), e.Action));
+                if ((this.vInventoryListingRowChanging != null)) {
+                    this.vInventoryListingRowChanging(this, new vInventoryListingRowChangeEvent(((vInventoryListingRow)(e.Row)), e.Action));
                 }
             }
             
@@ -4530,8 +4561,8 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.vInventoryListRowDeleted != null)) {
-                    this.vInventoryListRowDeleted(this, new vInventoryListRowChangeEvent(((vInventoryListRow)(e.Row)), e.Action));
+                if ((this.vInventoryListingRowDeleted != null)) {
+                    this.vInventoryListingRowDeleted(this, new vInventoryListingRowChangeEvent(((vInventoryListingRow)(e.Row)), e.Action));
                 }
             }
             
@@ -4539,14 +4570,14 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.vInventoryListRowDeleting != null)) {
-                    this.vInventoryListRowDeleting(this, new vInventoryListRowChangeEvent(((vInventoryListRow)(e.Row)), e.Action));
+                if ((this.vInventoryListingRowDeleting != null)) {
+                    this.vInventoryListingRowDeleting(this, new vInventoryListingRowChangeEvent(((vInventoryListingRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemovevInventoryListRow(vInventoryListRow row) {
+            public void RemovevInventoryListingRow(vInventoryListingRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -4573,7 +4604,7 @@ namespace InventoryManagementSystem {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "vInventoryListDataTable";
+                attribute2.FixedValue = "vInventoryListingDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -6479,25 +6510,25 @@ namespace InventoryManagementSystem {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class vInventoryListRow : global::System.Data.DataRow {
+        public partial class vInventoryListingRow : global::System.Data.DataRow {
             
-            private vInventoryListDataTable tablevInventoryList;
+            private vInventoryListingDataTable tablevInventoryListing;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal vInventoryListRow(global::System.Data.DataRowBuilder rb) : 
+            internal vInventoryListingRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tablevInventoryList = ((vInventoryListDataTable)(this.Table));
+                this.tablevInventoryListing = ((vInventoryListingDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string itemName {
                 get {
-                    return ((string)(this[this.tablevInventoryList.itemNameColumn]));
+                    return ((string)(this[this.tablevInventoryListing.itemNameColumn]));
                 }
                 set {
-                    this[this.tablevInventoryList.itemNameColumn] = value;
+                    this[this.tablevInventoryListing.itemNameColumn] = value;
                 }
             }
             
@@ -6506,14 +6537,14 @@ namespace InventoryManagementSystem {
             public string tag {
                 get {
                     try {
-                        return ((string)(this[this.tablevInventoryList.tagColumn]));
+                        return ((string)(this[this.tablevInventoryListing.tagColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'tag\' in table \'vInventoryList\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'tag\' in table \'vInventoryListing\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevInventoryList.tagColumn] = value;
+                    this[this.tablevInventoryListing.tagColumn] = value;
                 }
             }
             
@@ -6522,14 +6553,14 @@ namespace InventoryManagementSystem {
             public string serialNumber {
                 get {
                     try {
-                        return ((string)(this[this.tablevInventoryList.serialNumberColumn]));
+                        return ((string)(this[this.tablevInventoryListing.serialNumberColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'serialNumber\' in table \'vInventoryList\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'serialNumber\' in table \'vInventoryListing\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevInventoryList.serialNumberColumn] = value;
+                    this[this.tablevInventoryListing.serialNumberColumn] = value;
                 }
             }
             
@@ -6538,14 +6569,14 @@ namespace InventoryManagementSystem {
             public string modelNumber {
                 get {
                     try {
-                        return ((string)(this[this.tablevInventoryList.modelNumberColumn]));
+                        return ((string)(this[this.tablevInventoryListing.modelNumberColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'modelNumber\' in table \'vInventoryList\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'modelNumber\' in table \'vInventoryListing\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevInventoryList.modelNumberColumn] = value;
+                    this[this.tablevInventoryListing.modelNumberColumn] = value;
                 }
             }
             
@@ -6554,14 +6585,14 @@ namespace InventoryManagementSystem {
             public string CategoryName {
                 get {
                     try {
-                        return ((string)(this[this.tablevInventoryList.CategoryNameColumn]));
+                        return ((string)(this[this.tablevInventoryListing.CategoryNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CategoryName\' in table \'vInventoryList\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'CategoryName\' in table \'vInventoryListing\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevInventoryList.CategoryNameColumn] = value;
+                    this[this.tablevInventoryListing.CategoryNameColumn] = value;
                 }
             }
             
@@ -6570,14 +6601,14 @@ namespace InventoryManagementSystem {
             public string Location {
                 get {
                     try {
-                        return ((string)(this[this.tablevInventoryList.LocationColumn]));
+                        return ((string)(this[this.tablevInventoryListing.LocationColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Location\' in table \'vInventoryList\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Location\' in table \'vInventoryListing\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevInventoryList.LocationColumn] = value;
+                    this[this.tablevInventoryListing.LocationColumn] = value;
                 }
             }
             
@@ -6586,14 +6617,14 @@ namespace InventoryManagementSystem {
             public string Status {
                 get {
                     try {
-                        return ((string)(this[this.tablevInventoryList.StatusColumn]));
+                        return ((string)(this[this.tablevInventoryListing.StatusColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Status\' in table \'vInventoryList\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Status\' in table \'vInventoryListing\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevInventoryList.StatusColumn] = value;
+                    this[this.tablevInventoryListing.StatusColumn] = value;
                 }
             }
             
@@ -6602,14 +6633,14 @@ namespace InventoryManagementSystem {
             public string Name {
                 get {
                     try {
-                        return ((string)(this[this.tablevInventoryList.NameColumn]));
+                        return ((string)(this[this.tablevInventoryListing.NameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Name\' in table \'vInventoryList\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Name\' in table \'vInventoryListing\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevInventoryList.NameColumn] = value;
+                    this[this.tablevInventoryListing.NameColumn] = value;
                 }
             }
             
@@ -6618,14 +6649,14 @@ namespace InventoryManagementSystem {
             public System.DateTime dateAssigned {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tablevInventoryList.dateAssignedColumn]));
+                        return ((global::System.DateTime)(this[this.tablevInventoryListing.dateAssignedColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'dateAssigned\' in table \'vInventoryList\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dateAssigned\' in table \'vInventoryListing\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevInventoryList.dateAssignedColumn] = value;
+                    this[this.tablevInventoryListing.dateAssignedColumn] = value;
                 }
             }
             
@@ -6634,14 +6665,15 @@ namespace InventoryManagementSystem {
             public System.DateTime dateRecordModified {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tablevInventoryList.dateRecordModifiedColumn]));
+                        return ((global::System.DateTime)(this[this.tablevInventoryListing.dateRecordModifiedColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'dateRecordModified\' in table \'vInventoryList\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dateRecordModified\' in table \'vInventoryListing\' is DBNull." +
+                                "", e);
                     }
                 }
                 set {
-                    this[this.tablevInventoryList.dateRecordModifiedColumn] = value;
+                    this[this.tablevInventoryListing.dateRecordModifiedColumn] = value;
                 }
             }
             
@@ -6649,10 +6681,10 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string emailAddress {
                 get {
-                    return ((string)(this[this.tablevInventoryList.emailAddressColumn]));
+                    return ((string)(this[this.tablevInventoryListing.emailAddressColumn]));
                 }
                 set {
-                    this[this.tablevInventoryList.emailAddressColumn] = value;
+                    this[this.tablevInventoryListing.emailAddressColumn] = value;
                 }
             }
             
@@ -6661,14 +6693,14 @@ namespace InventoryManagementSystem {
             public System.DateTime datePurchased {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tablevInventoryList.datePurchasedColumn]));
+                        return ((global::System.DateTime)(this[this.tablevInventoryListing.datePurchasedColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'datePurchased\' in table \'vInventoryList\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'datePurchased\' in table \'vInventoryListing\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevInventoryList.datePurchasedColumn] = value;
+                    this[this.tablevInventoryListing.datePurchasedColumn] = value;
                 }
             }
             
@@ -6676,10 +6708,10 @@ namespace InventoryManagementSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int itemID {
                 get {
-                    return ((int)(this[this.tablevInventoryList.itemIDColumn]));
+                    return ((int)(this[this.tablevInventoryListing.itemIDColumn]));
                 }
                 set {
-                    this[this.tablevInventoryList.itemIDColumn] = value;
+                    this[this.tablevInventoryListing.itemIDColumn] = value;
                 }
             }
             
@@ -6688,14 +6720,14 @@ namespace InventoryManagementSystem {
             public int officeID {
                 get {
                     try {
-                        return ((int)(this[this.tablevInventoryList.officeIDColumn]));
+                        return ((int)(this[this.tablevInventoryListing.officeIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'officeID\' in table \'vInventoryList\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'officeID\' in table \'vInventoryListing\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevInventoryList.officeIDColumn] = value;
+                    this[this.tablevInventoryListing.officeIDColumn] = value;
                 }
             }
             
@@ -6704,159 +6736,187 @@ namespace InventoryManagementSystem {
             public int assignedTo {
                 get {
                     try {
-                        return ((int)(this[this.tablevInventoryList.assignedToColumn]));
+                        return ((int)(this[this.tablevInventoryListing.assignedToColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'assignedTo\' in table \'vInventoryList\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'assignedTo\' in table \'vInventoryListing\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevInventoryList.assignedToColumn] = value;
+                    this[this.tablevInventoryListing.assignedToColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string employeeName {
+                get {
+                    try {
+                        return ((string)(this[this.tablevInventoryListing.employeeNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'employeeName\' in table \'vInventoryListing\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevInventoryListing.employeeNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IstagNull() {
-                return this.IsNull(this.tablevInventoryList.tagColumn);
+                return this.IsNull(this.tablevInventoryListing.tagColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SettagNull() {
-                this[this.tablevInventoryList.tagColumn] = global::System.Convert.DBNull;
+                this[this.tablevInventoryListing.tagColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsserialNumberNull() {
-                return this.IsNull(this.tablevInventoryList.serialNumberColumn);
+                return this.IsNull(this.tablevInventoryListing.serialNumberColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetserialNumberNull() {
-                this[this.tablevInventoryList.serialNumberColumn] = global::System.Convert.DBNull;
+                this[this.tablevInventoryListing.serialNumberColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsmodelNumberNull() {
-                return this.IsNull(this.tablevInventoryList.modelNumberColumn);
+                return this.IsNull(this.tablevInventoryListing.modelNumberColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetmodelNumberNull() {
-                this[this.tablevInventoryList.modelNumberColumn] = global::System.Convert.DBNull;
+                this[this.tablevInventoryListing.modelNumberColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsCategoryNameNull() {
-                return this.IsNull(this.tablevInventoryList.CategoryNameColumn);
+                return this.IsNull(this.tablevInventoryListing.CategoryNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetCategoryNameNull() {
-                this[this.tablevInventoryList.CategoryNameColumn] = global::System.Convert.DBNull;
+                this[this.tablevInventoryListing.CategoryNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsLocationNull() {
-                return this.IsNull(this.tablevInventoryList.LocationColumn);
+                return this.IsNull(this.tablevInventoryListing.LocationColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetLocationNull() {
-                this[this.tablevInventoryList.LocationColumn] = global::System.Convert.DBNull;
+                this[this.tablevInventoryListing.LocationColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsStatusNull() {
-                return this.IsNull(this.tablevInventoryList.StatusColumn);
+                return this.IsNull(this.tablevInventoryListing.StatusColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetStatusNull() {
-                this[this.tablevInventoryList.StatusColumn] = global::System.Convert.DBNull;
+                this[this.tablevInventoryListing.StatusColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsNameNull() {
-                return this.IsNull(this.tablevInventoryList.NameColumn);
+                return this.IsNull(this.tablevInventoryListing.NameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetNameNull() {
-                this[this.tablevInventoryList.NameColumn] = global::System.Convert.DBNull;
+                this[this.tablevInventoryListing.NameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsdateAssignedNull() {
-                return this.IsNull(this.tablevInventoryList.dateAssignedColumn);
+                return this.IsNull(this.tablevInventoryListing.dateAssignedColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetdateAssignedNull() {
-                this[this.tablevInventoryList.dateAssignedColumn] = global::System.Convert.DBNull;
+                this[this.tablevInventoryListing.dateAssignedColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsdateRecordModifiedNull() {
-                return this.IsNull(this.tablevInventoryList.dateRecordModifiedColumn);
+                return this.IsNull(this.tablevInventoryListing.dateRecordModifiedColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetdateRecordModifiedNull() {
-                this[this.tablevInventoryList.dateRecordModifiedColumn] = global::System.Convert.DBNull;
+                this[this.tablevInventoryListing.dateRecordModifiedColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsdatePurchasedNull() {
-                return this.IsNull(this.tablevInventoryList.datePurchasedColumn);
+                return this.IsNull(this.tablevInventoryListing.datePurchasedColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetdatePurchasedNull() {
-                this[this.tablevInventoryList.datePurchasedColumn] = global::System.Convert.DBNull;
+                this[this.tablevInventoryListing.datePurchasedColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsofficeIDNull() {
-                return this.IsNull(this.tablevInventoryList.officeIDColumn);
+                return this.IsNull(this.tablevInventoryListing.officeIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetofficeIDNull() {
-                this[this.tablevInventoryList.officeIDColumn] = global::System.Convert.DBNull;
+                this[this.tablevInventoryListing.officeIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsassignedToNull() {
-                return this.IsNull(this.tablevInventoryList.assignedToColumn);
+                return this.IsNull(this.tablevInventoryListing.assignedToColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetassignedToNull() {
-                this[this.tablevInventoryList.assignedToColumn] = global::System.Convert.DBNull;
+                this[this.tablevInventoryListing.assignedToColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsemployeeNameNull() {
+                return this.IsNull(this.tablevInventoryListing.employeeNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetemployeeNameNull() {
+                this[this.tablevInventoryListing.employeeNameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -7204,22 +7264,22 @@ namespace InventoryManagementSystem {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class vInventoryListRowChangeEvent : global::System.EventArgs {
+        public class vInventoryListingRowChangeEvent : global::System.EventArgs {
             
-            private vInventoryListRow eventRow;
+            private vInventoryListingRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public vInventoryListRowChangeEvent(vInventoryListRow row, global::System.Data.DataRowAction action) {
+            public vInventoryListingRowChangeEvent(vInventoryListingRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public vInventoryListRow Row {
+            public vInventoryListingRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -12262,7 +12322,7 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class vInventoryListTableAdapter : global::System.ComponentModel.Component {
+    public partial class vInventoryListingTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -12276,7 +12336,7 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public vInventoryListTableAdapter() {
+        public vInventoryListingTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -12373,7 +12433,7 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "vInventoryList";
+            tableMapping.DataSetTable = "vInventoryListing";
             tableMapping.ColumnMappings.Add("itemName", "itemName");
             tableMapping.ColumnMappings.Add("tag", "tag");
             tableMapping.ColumnMappings.Add("serialNumber", "serialNumber");
@@ -12389,6 +12449,7 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
             tableMapping.ColumnMappings.Add("itemID", "itemID");
             tableMapping.ColumnMappings.Add("officeID", "officeID");
             tableMapping.ColumnMappings.Add("assignedTo", "assignedTo");
+            tableMapping.ColumnMappings.Add("employeeName", "employeeName");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -12407,7 +12468,7 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT itemName, tag, serialNumber, modelNumber, CategoryName, Location, Status, " +
                 "Name, dateAssigned, dateRecordModified, emailAddress, datePurchased, itemID, off" +
-                "iceID, assignedTo FROM dbo.vInventoryList";
+                "iceID, assignedTo, employeeName FROM dbo.vInventoryListing";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -12415,7 +12476,7 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(InventoryDBDataSet.vInventoryListDataTable dataTable) {
+        public virtual int Fill(InventoryDBDataSet.vInventoryListingDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -12428,9 +12489,9 @@ SELECT userID, firstName, lastName, phone, roleID, password, title, emailAddress
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual InventoryDBDataSet.vInventoryListDataTable GetData() {
+        public virtual InventoryDBDataSet.vInventoryListingDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            InventoryDBDataSet.vInventoryListDataTable dataTable = new InventoryDBDataSet.vInventoryListDataTable();
+            InventoryDBDataSet.vInventoryListingDataTable dataTable = new InventoryDBDataSet.vInventoryListingDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

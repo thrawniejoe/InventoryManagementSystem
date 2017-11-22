@@ -125,9 +125,8 @@ namespace InventoryManagementSystem.Views
                 newItem.manufacturer = manufacturerTextBox.Text;
                 newItem.recordModifiedBy_userID = Properties.Settings.Default.CurrentUserID;
                 newItem.itemName = itemNameTextBox.Text;
-                //newItem.modelID = Convert.ToInt16(modelIDComboBox.SelectedItem);
+                newItem.modelID = 0;
                 newItem.LocationID = Convert.ToInt16(locationComboBox.SelectedValue);
-
                 context.Inventories.Add(newItem);
                 context.SaveChanges();
                 MessageBox.Show("User " + assignedToComboBox.Text + " Added to the system.");
