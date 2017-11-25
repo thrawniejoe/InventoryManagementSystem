@@ -12,6 +12,7 @@
         <CollectionViewSource x:Key="vInventoryListViewSource" Source="{Binding vInventoryList, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="inventoryViewSource" Source="{Binding Inventory, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="documentationViewSource" Source="{Binding Documentation, Source={StaticResource inventoryDBDataSet}}"/>
+        <CollectionViewSource x:Key="vInventoryListingViewSource" Source="{Binding vInventoryListing, Source={StaticResource inventoryDBDataSet}}"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource vInventoryListViewSource}">
         <Grid.RowDefinitions>
@@ -243,7 +244,6 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
         </Grid>
-        <Button Content="Test" HorizontalAlignment="Left" Margin="180,380,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Grid x:Name="grid15" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="367,248,0,0" Grid.Row="1" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>

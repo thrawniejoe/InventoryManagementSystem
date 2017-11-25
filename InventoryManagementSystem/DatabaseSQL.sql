@@ -111,8 +111,7 @@ ADD FOREIGN KEY (role) REFERENCES roles(RoldID);
 
 
 --CREATE VIEW [dbo].[vInventoryList]
---	AS select itemName, i.tag, i.serialNumber, cs.modelNumber, c.CategoryName, l.Location, s.Status, e.Name, i.dateAssigned, i.dateRecordModified, u.emailAddress, i.datePurchased, i.itemID, i.officeID, i.assignedTo, e.Name from Inventory as i
---INNER JOIN ComputerSpecsList as cs on i.modelID = cs.modelID
+--	AS select itemName, i.tag, i.serialNumber, i.modelNumber, c.CategoryName, l.Location, s.Status, e.Name, i.dateAssigned, i.dateRecordModified, u.emailAddress, i.datePurchased, i.itemID, i.officeID, i.assignedTo, e.Name as employeeName from Inventory as i
 --INNER JOIN Employees as e on i.assignedTo = e.EmployeeID
 --INNER JOIN Categories as c on i.CategoryID = c.CategoryID
 --INNER JOIN Locations as l on i.LocationID = l.LocationID

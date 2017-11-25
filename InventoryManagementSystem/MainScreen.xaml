@@ -17,9 +17,128 @@
         <CollectionViewSource x:Key="statusListViewSource" Source="{Binding StatusList, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="locationsViewSource" Source="{Binding Locations, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="categoriesViewSource" Source="{Binding Categories, Source={StaticResource inventoryDBDataSet}}"/>
+
+        <Style TargetType="{x:Type DataGrid}">
+            <Setter Property="BorderBrush" Value="#FF373542"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#FF373542"/>
+            <Setter Property="VerticalGridLinesBrush" Value="{x:Null}"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="RowHeaderWidth" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="ColumnHeaderHeight" Value="25"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+
+        </Style>
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Background" >
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF40424E" Offset="0"/>
+                        <GradientStop Color="#FF32353E" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridRow}">
+            <Setter Property="BorderBrush" Value="#FF373542"/>
+            <Setter Property="Background" Value="#FF272731" />
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF23232B" Offset="1"/>
+                                <GradientStop Color="#FF373740" Offset="0"/>
+                                <GradientStop Color="#FF26262E" Offset="0.498"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="#FF00DDFD"/>
+                    <Setter Property="FontWeight" Value="SemiBold" />
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+        <Style TargetType="{x:Type DataGridCell}">
+            <Style.Triggers>
+                <Trigger Property="DataGridCell.IsSelected" Value="True">
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF23232B" Offset="1"/>
+                                <GradientStop Color="#FF373740" Offset="0"/>
+                                <GradientStop Color="#FF26262E" Offset="0.498"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="#FF00DDFD"/>
+                    <Setter Property="FontWeight" Value="SemiBold" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="TabItemStyle1" TargetType="{x:Type TabItem}" >
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Border x:Name="Border" BorderThickness="0,0,0,0" CornerRadius="0,0,0,0"
+                        Padding="5,5,5,5" Margin="0,0,0,0" BorderBrush="#00E0E0E0">
+                            <ContentPresenter x:Name="ContentSite" ContentSource="Header" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="White"/>
+                                <Setter Property="BorderBrush" TargetName="Border" Value="#00DCDCDC"/>
+                                <Setter Property="FontWeight" Value="Normal"/>
+                                <Setter Property="BorderThickness" TargetName="Border" Value="1"/>
+                                <Setter Property="Background" TargetName="Border">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF3AC6AB" Offset="0.201"/>
+                                            <GradientStop Color="#FF2D74A0" Offset="1"/>
+                                            <GradientStop Color="#FF00F9D7" Offset="0"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="CornerRadius" TargetName="Border" Value="2"/>
+
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="#FFE8E8E8"/>
+                                <Setter Property="Background" TargetName="Border">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF5A5B6E" Offset="0.096"/>
+                                            <GradientStop Color="#FF434551" Offset="0.77"/>
+                                            <GradientStop Color="#FFAFAFB2" Offset="0.013"/>
+                                            <GradientStop Color="#FF2B2B2E" Offset="1"/>
+                                            <GradientStop Color="#FF434551" Offset="0.933"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="CornerRadius" TargetName="Border" Value="2"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Window.Resources>
     <Grid>
-        <TabControl x:Name="tcMainTabController" TabStripPlacement="Left" >
+        <TabControl x:Name="tcMainTabController" TabStripPlacement="Left"  >
             <TabControl.Resources>
                 <Style TargetType="{x:Type TabItem}">
                     <Setter Property="HeaderTemplate">
@@ -36,7 +155,7 @@
                     <Setter Property="Padding" Value="3" />
                 </Style>
             </TabControl.Resources>
-            <TabItem Header="Home" Margin="0,36,0,-60">
+            <TabItem Header="Home" Margin="0,36,0,-60" >
                 <Grid Background="#FFE5E5E5">
                     <Label Content="Welcome to the Inventory Management System" HorizontalAlignment="Left" Margin="270,79,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
                 </Grid>
@@ -98,6 +217,7 @@
                                 </DataGrid.Columns>
                             </DataGrid>
                             <Button x:Name="btnLookUpItem" Content="Look Up Item" HorizontalAlignment="Left" Margin="329,11,0,0" VerticalAlignment="Top" Width="75" Click="BtnLookUpItem_Click"/>
+                            <Button Content="Button" HorizontalAlignment="Left" Margin="440,11,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
                         </Grid>
                     </TabItem>
                     <TabItem Header="Item Details">
@@ -166,7 +286,7 @@
                             <Setter Property="Padding" Value="3" />
                         </Style>
                     </TabControl.Resources>
-                    <TabItem Header="User Management">
+                    <TabItem Header="User Management" Style="{DynamicResource TabItemStyle1}" HorizontalAlignment="Left" Width="123" Margin="0,0,-13,0">
                         <Grid Background="#FFE5E5E5" DataContext="{StaticResource usersViewSource}">
                             <WrapPanel HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" VerticalAlignment="Top" Width="950">
                                 <Button x:Name="btnAdd" Content="Add" Width="75" Click="BtnAdd_Click"/>
@@ -197,10 +317,7 @@
                             </DataGrid>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="User Roles">
-                        <Grid Background="#FFE5E5E5"/>
-                    </TabItem>
-                    <TabItem Header="Offices" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="48" Margin="-1.667,0,0,0">
+                    <TabItem Header="Offices" Style="{DynamicResource TabItemStyle1}" HorizontalAlignment="Left" Width="89" Margin="-2,0,-9,0">
                         <Grid Background="#FFE5E5E5" DataContext="{StaticResource officeListViewSource}">
                             <Grid x:Name="grid1" DataContext="{StaticResource officeListViewSource}" HorizontalAlignment="Left" Margin="48,67,0,0" VerticalAlignment="Top">
                                 <Grid.ColumnDefinitions>
@@ -240,7 +357,7 @@
                             </DataGrid>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Statuses" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="55" Margin="-1.667,0,-5.333,0">
+                    <TabItem Header="Statuses" Style="{DynamicResource TabItemStyle1}" HorizontalAlignment="Left" Width="89" Margin="-2,0,-21,0">
                         <Grid Background="#FFE5E5E5" DataContext="{StaticResource statusListViewSource}">
                             <DataGrid x:Name="statusListDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="279,61,514,179" RowDetailsVisibilityMode="VisibleWhenSelected">
                                 <DataGrid.Columns>
@@ -268,7 +385,7 @@
                             <Button x:Name="BtnAddStatus" Content="Add Status" HorizontalAlignment="Left" Margin="115,158,0,0" VerticalAlignment="Top" Width="75" Click="BtnAddStatus_Click"/>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Locations" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="66" Margin="-2,0,0,0">
+                    <TabItem Header="Locations" Style="{DynamicResource TabItemStyle1}" HorizontalAlignment="Left" Width="88" Margin="-2,0,-15,0">
                         <Grid Background="#FFE5E5E5" DataContext="{StaticResource locationsViewSource}">
                             <DataGrid x:Name="locationsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="257,45,313,410" RowDetailsVisibilityMode="VisibleWhenSelected">
                                 <DataGrid.Columns>
@@ -308,7 +425,7 @@
                             <Button x:Name="BtnAddLocation" Content="Add Location" HorizontalAlignment="Left" Margin="113,190,0,0" VerticalAlignment="Top" Width="75" Click="BtnAddLocation_Click"/>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Categories" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="65" Margin="-2,0,-15,0">
+                    <TabItem Header="Categories" Style="{DynamicResource TabItemStyle1}" HorizontalAlignment="Left" Width="93" Margin="-2,0,-20,0">
                         <Grid Background="#FFE5E5E5" DataContext="{StaticResource categoriesViewSource}">
                             <DataGrid x:Name="categoriesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="350,32,423,423" RowDetailsVisibilityMode="VisibleWhenSelected">
                                 <DataGrid.Columns>

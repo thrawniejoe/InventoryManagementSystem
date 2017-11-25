@@ -77,6 +77,7 @@ namespace InventoryManagementSystem
             inventoryDBDataSetCategoriesTableAdapter.Fill(inventoryDBDataSet.Categories);
             System.Windows.Data.CollectionViewSource categoriesViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("categoriesViewSource")));
             categoriesViewSource.View.MoveCurrentToFirst();
+
         }
 
         private void BtnDeleteUser_Click(object sender, RoutedEventArgs e)
@@ -151,19 +152,30 @@ namespace InventoryManagementSystem
             var context = new InventoryManagementSystem.InventoryDBEntities();
             string value = Convert.ToString(cboFilterList.SelectedValue);
             //MessageBox.Show(value);
+            vInventoryListDataGrid.ItemsSource = null;
             if (cboFilterList.Text != "")
             {
-                var InventoryList = (from i in context.vInventoryLists
+                var InventoryList = (from i in context.vInventoryListings
                                      where i.CategoryName == value
                                      select i).ToList();
                 vInventoryListDataGrid.ItemsSource = InventoryList;
             }
             else
             {
-                var InventoryList = (from i in context.vInventoryLists
+                var InventoryList = (from i in context.vInventoryListings
                                      select i).ToList();
                 vInventoryListDataGrid.ItemsSource = InventoryList;
             }
+        }
+
+        public void RefreshEmployeeList()
+        {
+            employeesDataGrid.ItemsSource = null;
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            var EmpList = (from e in context.Employees
+                              select e).ToList();
+
+            employeesDataGrid.ItemsSource = EmpList;
         }
 
         //--------------------------------------//
@@ -176,7 +188,7 @@ namespace InventoryManagementSystem
                 Owner = this,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner
             };
-            additem.RefreshPage += RefreshUserList;
+            additem.RefreshPage += RefreshInventory;
             additem.ShowDialog();
         }
 
@@ -252,7 +264,14 @@ namespace InventoryManagementSystem
 
         private void BtnAddEmployee_Click(object sender, RoutedEventArgs e)
         {
-
+            Views.AddEmployee addEmployee = new Views.AddEmployee
+            {
+                //RequestType = "Add",
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
+            addEmployee.RefreshEmployeeList += RefreshEmployeeList;
+            addEmployee.ShowDialog();
         }
 
         //****************************//
@@ -534,6 +553,39 @@ namespace InventoryManagementSystem
             RefreshStatusList();
             RefreshLocationList();
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)  //TESTING BUTTON
+        {
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            Inventory newItem = new Inventory();
+            //Boolean validated = true;
+            //DO VALIDATION CHECK HERE
+
+            //if (validated == true)
+            //{
+            using (var db = new InventoryDBEntities())
+            {
+                newItem.CategoryID = 1;
+                //newItem.dateAssigned = dateAssignedDatePicker.SelectedDate;
+                //newItem.datePurchased = datePurchasedDatePicker.SelectedDate;
+                //newItem.dateRecordModified = dateRecordModifiedDatePicker.SelectedDate;
+                newItem.assignedTo = 1;
+                newItem.tag = "test1";
+                newItem.StatusID = 1;
+                newItem.serialNumber = "test123";
+                newItem.officeID = 1;
+                newItem.modelID = 1;
+                newItem.manufacturer = "test";
+                newItem.recordModifiedBy_userID = 3;
+                newItem.itemName = "test";
+                //newItem.modelID = Convert.ToInt16(modelIDComboBox.SelectedItem);
+                newItem.LocationID = 1;
+                db.Inventories.Add(newItem);
+                db.SaveChanges();
+                RefreshInventory();
+                MessageBox.Show("Item added");
+            }
         }
         //****************************//
         //    END SETTINGS IMPORTER   //

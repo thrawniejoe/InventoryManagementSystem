@@ -38,10 +38,10 @@ namespace InventoryManagementSystem.Views
 
             InventoryManagementSystem.InventoryDBDataSet inventoryDBDataSet = ((InventoryManagementSystem.InventoryDBDataSet)(this.FindResource("inventoryDBDataSet")));
             // Load data into the table vInventoryList. You can modify this code as needed.
-            InventoryManagementSystem.InventoryDBDataSetTableAdapters.vInventoryListTableAdapter inventoryDBDataSetvInventoryListTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.vInventoryListTableAdapter();
-            inventoryDBDataSetvInventoryListTableAdapter.Fill(inventoryDBDataSet.vInventoryList);
-            System.Windows.Data.CollectionViewSource vInventoryListViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("vInventoryListViewSource")));
-            vInventoryListViewSource.View.MoveCurrentToFirst();
+            InventoryManagementSystem.InventoryDBDataSetTableAdapters.vInventoryListingTableAdapter inventoryDBDataSetvInventoryListTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.vInventoryListingTableAdapter();
+            inventoryDBDataSetvInventoryListTableAdapter.Fill(inventoryDBDataSet.vInventoryListing);
+            //System.Windows.Data.CollectionViewSource vInventoryListViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("vInventoryListViewSource")));
+            //vInventoryListViewSource.View.MoveCurrentToFirst();
             // Load data into the table Inventory. You can modify this code as needed.
             InventoryManagementSystem.InventoryDBDataSetTableAdapters.InventoryTableAdapter inventoryDBDataSetInventoryTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.InventoryTableAdapter();
             inventoryDBDataSetInventoryTableAdapter.Fill(inventoryDBDataSet.Inventory);
@@ -54,20 +54,25 @@ namespace InventoryManagementSystem.Views
             documentationViewSource.View.MoveCurrentToFirst();
             LoadDat();
 
-            if(Properties.Settings.Default.DocumentsLocation == "")
+            if (Properties.Settings.Default.DocumentsLocation == "")
             {
                 Properties.Settings.Default.DocumentsLocation = System.IO.Path.GetFullPath(".") + "\\documents";
                 Properties.Settings.Default.Save();
                 MessageBox.Show(Properties.Settings.Default.DocumentsLocation);
             }
 
-            
+
 
             if (RequestType == "ModifyItem")
             {
                 InventoryListView();
                 LoadDocumentList();
             }
+            // Load data into the table vInventoryListing. You can modify this code as needed.
+            InventoryManagementSystem.InventoryDBDataSetTableAdapters.vInventoryListingTableAdapter inventoryDBDataSetvInventoryListingTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.vInventoryListingTableAdapter();
+            inventoryDBDataSetvInventoryListingTableAdapter.Fill(inventoryDBDataSet.vInventoryListing);
+            System.Windows.Data.CollectionViewSource vInventoryListingViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("vInventoryListingViewSource")));
+            vInventoryListingViewSource.View.MoveCurrentToFirst();
         }
 
 
@@ -148,7 +153,7 @@ namespace InventoryManagementSystem.Views
             var context = new InventoryManagementSystem.InventoryDBEntities();
 
 
-            var SelectedItem = (from i in context.vInventoryLists
+            var SelectedItem = (from i in context.vInventoryListings
                                 where i.itemID == currentItemID  //lists by userid
                                 select i).ToList();
 
@@ -169,7 +174,7 @@ namespace InventoryManagementSystem.Views
             datePurchasedDatePicker.SelectedDate = item.datePurchased;
             officeIDComboBox.SelectedValue = item.officeID;
 
-            var InventoryList = (from i in context.vInventoryLists
+            var InventoryList = (from i in context.vInventoryListings
                                  where i.assignedTo == item.assignedTo  //lists by userid
                                  select i).ToList();
 
@@ -205,6 +210,8 @@ namespace InventoryManagementSystem.Views
                 context.Inventories.Attach(nu); //attaches the user object by the id given to the object above
                 context.Inventories.Remove(nu); //Adds the change to Deletes the user from the database
                 context.SaveChanges();  //Saves changes to the database
+                RefreshPage();
+                this.Close();
 
                 //check the search method and refresh list
                 switch (searchType)
@@ -220,7 +227,7 @@ namespace InventoryManagementSystem.Views
                         break;
                 }
             }
-            RefreshPage();
+            
         }
 
 
@@ -228,8 +235,34 @@ namespace InventoryManagementSystem.Views
         private void BtnUpdateItem_Click(object sender, RoutedEventArgs e)
         {
             var context = new InventoryManagementSystem.InventoryDBEntities();
+            string errorMessage = "";
+            //validation
+            if (tagTextBox.Text == "")
+            {
+                errorMessage = "Missing item tag. ";
+            }
+            if (assignedToComboBox.Text == "")
+            {
+                errorMessage = errorMessage + " Missing Checked Out To. ";
+            }
+            if (categoryIDComboBox.Text == "")
+            {
+                errorMessage = errorMessage + " Category is missing. ";
+            }
+            if (locationIDComboBox.Text == "")
+            {
+                errorMessage = errorMessage + " Location is missing. ";
+            }
+            if (statusIDComboBox.Text == "")
+            {
+                errorMessage = errorMessage + " Status is missing. ";
+            }
+            if (officeIDComboBox.Text == "")
+            {
+                errorMessage = errorMessage + " location is missing. ";
+            }
 
-            if (Validate())
+            if (errorMessage == "")
             {
                 using (var db = new InventoryDBEntities())
                 {
@@ -240,7 +273,7 @@ namespace InventoryManagementSystem.Views
                         item.tag = tagTextBox.Text;
                         item.serialNumber = serialNumberTextBox.Text;
                         item.manufacturer = manufacturerTextBox.Text;
-                        item.modelID = Convert.ToInt16(modelIDTextBox.Text);
+                        //item.modelID = Convert.ToInt16(modelIDTextBox.Text);
                         item.modelNumber = modelNumberTextBox.Text;
                         item.CategoryID = Convert.ToInt16(categoryIDComboBox.SelectedValue);
                         item.LocationID = Convert.ToInt16(locationIDComboBox.SelectedValue);
@@ -258,6 +291,10 @@ namespace InventoryManagementSystem.Views
                 }
                 this.Close();
             }
+            else
+            {
+                MessageBox.Show(errorMessage);
+            }
 
         }
 
@@ -267,18 +304,12 @@ namespace InventoryManagementSystem.Views
         }
 
 
-        //TEST BUTTON
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void VInventoryListDataGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             try
             {
                 //Get Item ID
-                var row = (vInventoryList)vInventoryListDataGrid.SelectedItem;
+                var row = (vInventoryListing)vInventoryListDataGrid.SelectedItem;
                 currentItemID = row.itemID;
 
                 //Reload Inventory
@@ -296,7 +327,7 @@ namespace InventoryManagementSystem.Views
             var context = new InventoryManagementSystem.InventoryDBEntities();
             var id = Convert.ToInt16(cboEmplyeeList.SelectedValue);
 
-            var getItemsFromEmployee = (from r in context.vInventoryLists
+            var getItemsFromEmployee = (from r in context.vInventoryListings
                                         where r.assignedTo == id
                                         select r).ToList();
             vInventoryListDataGrid.ItemsSource = null;
@@ -310,7 +341,7 @@ namespace InventoryManagementSystem.Views
             var context = new InventoryManagementSystem.InventoryDBEntities();
             var id = Convert.ToInt16(cboOfficeList.SelectedValue);
 
-            var getOfficeList = (from r in context.vInventoryLists
+            var getOfficeList = (from r in context.vInventoryListings
                                  where r.officeID == id
                                  select r).ToList();
 
@@ -325,7 +356,7 @@ namespace InventoryManagementSystem.Views
             var context = new InventoryManagementSystem.InventoryDBEntities();
             string id = Convert.ToString(cboTagList.SelectedValue);
 
-            var getItemsFromEmployee = (from r in context.vInventoryLists
+            var getItemsFromEmployee = (from r in context.vInventoryListings
                                         where r.tag == id
                                         select r).ToList();
 

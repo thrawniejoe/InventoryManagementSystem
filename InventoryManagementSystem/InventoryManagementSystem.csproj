@@ -151,6 +151,9 @@
       <DependentUpon>IMS_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Validations.cs" />
+    <Compile Include="Views\AddEmployee.xaml.cs">
+      <DependentUpon>AddEmployee.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddItem.xaml.cs">
       <DependentUpon>AddItem.xaml</DependentUpon>
     </Compile>
@@ -160,9 +163,16 @@
     <Compile Include="Views\ItemLookUp.xaml.cs">
       <DependentUpon>ItemLookUp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="vInventoryList.cs">
+    <Compile Include="Views\OfficeMap.xaml.cs">
+      <DependentUpon>OfficeMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vInventoryListing.cs">
       <DependentUpon>IMS_Model.tt</DependentUpon>
     </Compile>
+    <Page Include="Views\AddEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -188,6 +198,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ItemLookUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OfficeMap.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
