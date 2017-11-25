@@ -130,7 +130,8 @@
             <Label Content="Phone Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <TextBox x:Name="phoneNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="219,249,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="BtnAddEmployee" Content="Add Employee" HorizontalAlignment="Left" Margin="219,249,0,0" VerticalAlignment="Top" Width="75" Click="BtnAddEmployee_Click"/>
+        <Button x:Name="BtnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="94,249,0,0" VerticalAlignment="Top" Width="75" Click="BtnCancel_Click"/>
 
     </Grid>
 </Window>

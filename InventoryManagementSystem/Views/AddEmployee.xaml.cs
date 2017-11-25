@@ -19,6 +19,9 @@ namespace InventoryManagementSystem.Views
     /// </summary>
     public partial class AddEmployee : Window
     {
+        public delegate void Refresh();
+        public event Refresh RefreshEmployeeList;
+
         public AddEmployee()
         {
             InitializeComponent();
@@ -33,6 +36,44 @@ namespace InventoryManagementSystem.Views
             inventoryDBDataSetEmployeesTableAdapter.Fill(inventoryDBDataSet.Employees);
             System.Windows.Data.CollectionViewSource employeesViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("employeesViewSource")));
             employeesViewSource.View.MoveCurrentToFirst();
+        }
+
+        private void BtnAddEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            Employee newUser = new Employee();
+
+            if (validated == true)
+            {
+                newUser.emailAddress = emailAddressTextBox.Text;
+                newUser.firstName = firstNameTextBox.Text;
+                newUser.lastName = lastNameTextBox.Text;
+
+                // set salt and hashed password, store it to the database
+                byte[] salt = ModelClass.Password.CreateSalt(12);
+                byte[] password = ModelClass.Password.Hash(passwordTextBox.Password, salt);
+                newUser.hashedPassword = password;
+                newUser.passwordSalt = salt;
+                newUser.password = passwordTextBox.Password;
+                newUser.phone = phoneTextBox.Text;
+                newUser.roleID = Convert.ToInt16(roleComboBox.SelectedValue);
+                newUser.title = "Not Availible";
+                context.Users.Add(newUser);
+                context.SaveChanges();
+                MessageBox.Show("User " + firstNameTextBox.Text + " " + lastNameTextBox.Text + " Added to the system.");
+                RefreshPage();
+                this.Close();
+            }
+
+
+
+
+
+            RefreshEmployeeList();
+        }
+
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

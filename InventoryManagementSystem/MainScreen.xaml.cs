@@ -168,6 +168,16 @@ namespace InventoryManagementSystem
             }
         }
 
+        public void RefreshEmployeeList()
+        {
+            employeesDataGrid.ItemsSource = null;
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+            var EmpList = (from e in context.Employees
+                              select e).ToList();
+
+            employeesDataGrid.ItemsSource = EmpList;
+        }
+
         //--------------------------------------//
         //**********End Refresh Group **********//
         //--------------------------------------//
@@ -254,7 +264,14 @@ namespace InventoryManagementSystem
 
         private void BtnAddEmployee_Click(object sender, RoutedEventArgs e)
         {
-
+            Views.AddEmployee addEmployee = new Views.AddEmployee
+            {
+                //RequestType = "Add",
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
+            addEmployee.RefreshEmployeeList += RefreshEmployeeList;
+            addEmployee.ShowDialog();
         }
 
         //****************************//
