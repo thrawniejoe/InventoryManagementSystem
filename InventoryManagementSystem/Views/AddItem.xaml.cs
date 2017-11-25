@@ -127,10 +127,10 @@ namespace InventoryManagementSystem.Views
                 newItem.itemName = itemNameTextBox.Text;
                 //newItem.modelID = Convert.ToInt16(modelIDComboBox.SelectedItem);
                 newItem.LocationID = Convert.ToInt16(locationComboBox.SelectedValue);
-
+                
                 context.Inventories.Add(newItem);
                 context.SaveChanges();
-                MessageBox.Show("User " + assignedToComboBox.Text + " Added to the system.");
+                MessageBox.Show("Item " + itemNameTextBox.Text + " Added to the system.");
                 RefreshPage();
                 this.Close();
             }

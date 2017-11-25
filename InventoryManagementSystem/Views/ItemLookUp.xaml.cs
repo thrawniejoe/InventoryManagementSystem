@@ -253,6 +253,7 @@ namespace InventoryManagementSystem.Views
                         item.officeID = Convert.ToInt16(officeIDComboBox.SelectedValue);
                         db.SaveChanges();
                         RefreshPage();
+                        this.Close();
                     }
                 }
                 this.Close();
