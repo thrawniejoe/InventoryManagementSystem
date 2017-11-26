@@ -18,10 +18,57 @@
         <CollectionViewSource x:Key="locationsViewSource" Source="{Binding Locations, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="categoriesViewSource" Source="{Binding Categories, Source={StaticResource inventoryDBDataSet}}"/>
 
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFC8C8C8" Offset="0"/>
+                        <GradientStop Color="#FFB0B0B0" Offset="0.983"/>
+                        <GradientStop Color="#FFF2F2F2" Offset="0.527"/>
+                        <GradientStop Color="White" Offset="0.021"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="BorderBrush" Value="#FFBBBBBB"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" 
+                            BorderThickness="1"
+                            Padding="4,2" 
+                            CornerRadius="1" 
+                            BorderBrush="#FF898989"
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter  Property="Background" >
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF858585" Offset="0"/>
+                                            <GradientStop Color="White" Offset="1"/>
+                                            <GradientStop Color="#FFD9D9D9" Offset="0.799"/>
+                                            <GradientStop Color="#FFF6F6F6" Offset="0.321"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
         <Style TargetType="{x:Type DataGrid}">
-            <Setter Property="BorderBrush" Value="#FF373542"/>
+            <Setter Property="BorderBrush" Value="#FFC9C9C9"/>
             <Setter Property="SelectionMode" Value="Single"/>
-            <Setter Property="HorizontalGridLinesBrush" Value="#FF373542"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#FFE0E0E0"/>
             <Setter Property="VerticalGridLinesBrush" Value="{x:Null}"/>
             <Setter Property="GridLinesVisibility" Value="Horizontal"/>
             <Setter Property="SelectionMode" Value="Single"/>
@@ -37,32 +84,33 @@
             <Setter Property="Background" >
                 <Setter.Value>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FF40424E" Offset="0"/>
-                        <GradientStop Color="#FF32353E" Offset="1"/>
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="LightGray" Offset="1"/>
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
-            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
         </Style>
         <Style TargetType="{x:Type DataGridRow}">
-            <Setter Property="BorderBrush" Value="#FF373542"/>
-            <Setter Property="Background" Value="#FF272731" />
-            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="BorderBrush" Value="#FFF1F1F1"/>
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="#FF494949"/>
 
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" >
                         <Setter.Value>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF23232B" Offset="1"/>
-                                <GradientStop Color="#FF373740" Offset="0"/>
-                                <GradientStop Color="#FF26262E" Offset="0.498"/>
+                                <GradientStop Color="#FFCDCDCD" Offset="1"/>
+                                <GradientStop Color="LightGray" Offset="0"/>
+                                <GradientStop Color="White" Offset="0.894"/>
+                                <GradientStop Color="#FFF4F4F4" Offset="0.084"/>
                             </LinearGradientBrush>
                         </Setter.Value>
                     </Setter>
                     <Setter Property="BorderBrush" Value="Transparent"/>
-                    <Setter Property="Foreground" Value="#FF00DDFD"/>
+                    <Setter Property="Foreground" Value="#FF4B4B4B"/>
                     <Setter Property="FontWeight" Value="SemiBold" />
                 </Trigger>
             </Style.Triggers>
@@ -74,14 +122,14 @@
                     <Setter Property="Background" >
                         <Setter.Value>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF23232B" Offset="1"/>
-                                <GradientStop Color="#FF373740" Offset="0"/>
-                                <GradientStop Color="#FF26262E" Offset="0.498"/>
+                                <GradientStop Color="#FFCFCFCF" Offset="1"/>
+                                <GradientStop Color="White" Offset="0"/>
+                                <GradientStop Color="White" Offset="0.498"/>
                             </LinearGradientBrush>
                         </Setter.Value>
                     </Setter>
                     <Setter Property="BorderBrush" Value="Transparent"/>
-                    <Setter Property="Foreground" Value="#FF00DDFD"/>
+                    <Setter Property="Foreground" Value="#FF2E2E2E"/>
                     <Setter Property="FontWeight" Value="SemiBold" />
                 </Trigger>
             </Style.Triggers>
@@ -105,9 +153,8 @@
                                 <Setter Property="Background" TargetName="Border">
                                     <Setter.Value>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#FF3AC6AB" Offset="0.201"/>
-                                            <GradientStop Color="#FF2D74A0" Offset="1"/>
-                                            <GradientStop Color="#FF00F9D7" Offset="0"/>
+                                            <GradientStop Color="#FF59F73D" Offset="0.131"/>
+                                            <GradientStop Color="#FF2DA092" Offset="1"/>
                                         </LinearGradientBrush>
                                     </Setter.Value>
                                 </Setter>
@@ -116,19 +163,20 @@
                             </Trigger>
                             <Trigger Property="IsSelected" Value="False">
                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="#FFE8E8E8"/>
+                                <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="Red"/>
                                 <Setter Property="Background" TargetName="Border">
                                     <Setter.Value>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#FF5A5B6E" Offset="0.096"/>
-                                            <GradientStop Color="#FF434551" Offset="0.77"/>
-                                            <GradientStop Color="#FFAFAFB2" Offset="0.013"/>
-                                            <GradientStop Color="#FF2B2B2E" Offset="1"/>
-                                            <GradientStop Color="#FF434551" Offset="0.933"/>
+                                            <GradientStop Color="#FFDBDBDB" Offset="0"/>
+                                            <GradientStop Color="#FFFBFCFF" Offset="0.472"/>
+                                            <GradientStop Color="#FF909090" Offset="1"/>
+                                            <GradientStop Color="White" Offset="0.944"/>
                                         </LinearGradientBrush>
                                     </Setter.Value>
                                 </Setter>
-                                <Setter Property="CornerRadius" TargetName="Border" Value="2"/>
+                                <Setter Property="CornerRadius" TargetName="Border" Value="0"/>
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="BorderBrush" Value="Black"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -136,6 +184,84 @@
             </Setter>
         </Style>
 
+
+        <Style x:Key="TabItemStyleSideBar" TargetType="{x:Type TabItem}" >
+            <Setter Property="Template">
+
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Border x:Name="Border" BorderThickness="0,0,0,0" CornerRadius="0,0,0,0"
+                        Padding="5,5,5,5" Margin="0,0,0,0" BorderBrush="#00E0E0E0">
+                            <ContentPresenter x:Name="ContentSite" ContentSource="Header" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsSelected" Value="True">
+
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="White"/>
+                                <Setter Property="BorderBrush" TargetName="Border" Value="#00DCDCDC"/>
+                                <Setter Property="FontWeight" Value="Normal"/>
+                                <Setter Property="BorderThickness" TargetName="Border" Value="1"/>
+                                <Setter Property="Background" TargetName="Border">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF3BE330" Offset="0"/>
+                                            <GradientStop Color="#FF2DA092" Offset="1"/>
+                                            <GradientStop Color="#FF14B71C" Offset="0.768"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="HeaderTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <ContentPresenter Content="{TemplateBinding Content}">
+                                                <ContentPresenter.LayoutTransform>
+                                                    <RotateTransform Angle="-90" />
+                                                </ContentPresenter.LayoutTransform>
+                                            </ContentPresenter>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="CornerRadius" TargetName="Border" Value="2"/>
+
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="Black"/>
+                                <Setter Property="HeaderTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <ContentPresenter Content="{TemplateBinding Content}">
+                                                <ContentPresenter.LayoutTransform>
+                                                    <RotateTransform Angle="-90" />
+                                                </ContentPresenter.LayoutTransform>
+                                            </ContentPresenter>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Background" TargetName="Border">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFDBDBDB" Offset="0"/>
+                                            <GradientStop Color="#FFFBFCFF" Offset="0.472"/>
+                                            <GradientStop Color="#FF909090" Offset="1"/>
+                                            <GradientStop Color="White" Offset="0.944"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+
+                                <Setter Property="CornerRadius" TargetName="Border" Value="0"/>
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="BorderBrush" Value="Black"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <TabControl x:Name="tcMainTabController" TabStripPlacement="Left"  >
@@ -155,12 +281,12 @@
                     <Setter Property="Padding" Value="3" />
                 </Style>
             </TabControl.Resources>
-            <TabItem Header="Home" Margin="0,36,0,-60" >
+            <TabItem Header="Home" Margin="0,36,0,-60" Style="{DynamicResource TabItemStyleSideBar}">
                 <Grid Background="#FFE5E5E5">
                     <Label Content="Welcome to the Inventory Management System" HorizontalAlignment="Left" Margin="270,79,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Inventory" Margin="0,60,0,-60">
+            <TabItem Header="Inventory" Margin="0,60,0,-60" Style="{DynamicResource TabItemStyleSideBar}">
                 <TabControl Width="976" Margin="0,39,0,7">
                     <TabControl.Resources>
                         <Style TargetType="{x:Type TabItem}">
@@ -185,7 +311,7 @@
                                 <Button x:Name="btnClearFilter" Content="Clear Filter" Width="75" Click="BtnClearFilter_Click"/>
                                 <ComboBox x:Name="cboFilterList" Width="120" SelectionChanged="CboFilterList_SelectionChanged"/>
                             </WrapPanel>
-                            <DataGrid x:Name="vInventoryListDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource inventoryViewSource}}" Margin="10,50,10,10" RowDetailsVisibilityMode="VisibleWhenSelected" GridLinesVisibility="None" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserDeleteRows="False" SelectionMode="Single">
+                            <DataGrid x:Name="vInventoryListDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource inventoryViewSource}}" Margin="10,50,10,10" RowDetailsVisibilityMode="VisibleWhenSelected" GridLinesVisibility="None" CanUserResizeColumns="False" SelectionMode="Single" CanUserAddRows="True" CanUserDeleteRows="False" CanUserResizeRows="False">
                                 <DataGrid.Columns>
                                     <DataGridTemplateColumn x:Name="btnModifyRecord" Header="" Width="100">
                                         <DataGridTemplateColumn.CellTemplate>
@@ -225,7 +351,7 @@
                     </TabItem>
                 </TabControl>
             </TabItem>
-            <TabItem Header="Personnel" Margin="0,60,0,-60" >
+            <TabItem Header="Personnel" Margin="0,60,0,-60" Style="{DynamicResource TabItemStyleSideBar}">
                 <Grid DataContext="{StaticResource employeesViewSource}">
                     <DataGrid x:Name="employeesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="96,80,10,10" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
@@ -250,9 +376,10 @@
                     <Button Content="Button" HorizontalAlignment="Left" Margin="176,49,0,0" VerticalAlignment="Top" Width="75"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Building Map" Margin="0,60,0,-60" />
-            <TabItem Header="Reports" Margin="0,60,0,-60" />
-            <TabItem Header="Settings" Margin="-2,60,0,-60">
+            <TabItem Header="Building Map" Margin="0,60,0,-60" Style="{DynamicResource TabItemStyleSideBar}"/>
+            <TabItem Header="Reports" Margin="0,60,0,-60" Style="{DynamicResource TabItemStyleSideBar}"/>
+            <TabItem Header="Settings" Margin="-2,60,0,-60" Style="{DynamicResource TabItemStyleSideBar}">
+
                 <Grid Margin="0,0,0,0">
                     <Button x:Name="BtnImportInventory" Content="Import" HorizontalAlignment="Left" Margin="102,100,0,0" VerticalAlignment="Top" Width="75" Click="BtnImportInventory_Click"/>
                     <TextBox x:Name="TxtFileLink" HorizontalAlignment="Left" Height="23" Margin="208,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="317"/>
