@@ -233,14 +233,21 @@ namespace InventoryManagementSystem
             int myid = Convert.ToInt16(b.Tag);
 
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this item?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
+            if (context.Inventories.Any(u => u.assignedTo == myid))
             {
-                Inventory nu = new Inventory { itemID = myid };
-                context.Inventories.Attach(nu); //attaches the user object by the id given to the object above
-                context.Inventories.Remove(nu); //Adds the change to Deletes the user from the database
-                context.SaveChanges();  //Saves changes to the database
+                MessageBox.Show("An Item in your inventory is assigned to this employee, please remove the user from the item before deleting this employee");
             }
-            RefreshInventory();
+            else
+            {
+                if (result == MessageBoxResult.Yes)
+                {
+                    Employee nu = new Employee { EmployeeID = myid };
+                    context.Employees.Attach(nu); //attaches the user object by the id given to the object above
+                    context.Employees.Remove(nu); //Adds the change to Deletes the user from the database
+                    context.SaveChanges();  //Saves changes to the database
+                }
+                RefreshEmployeeList();
+            }  
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -309,15 +316,21 @@ namespace InventoryManagementSystem
             int myid = Convert.ToInt16(b.Tag);
 
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this office?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-            if (result == MessageBoxResult.Yes)
+            if (context.Inventories.Any(u => u.officeID == myid))
             {
-                OfficeList nu = new OfficeList { officeID = myid };
-                context.OfficeLists.Attach(nu); //attaches the office object by the id given to the object above
-                context.OfficeLists.Remove(nu); //Adds the change to Deletes the office from the database
-                context.SaveChanges();  //Saves changes to the database
+                MessageBox.Show("Items are using this Office, to remove this Office remove it from all items that are using it first.", "Error");
             }
-            RefreshOfficeList();
+            else
+            {
+                if (result == MessageBoxResult.Yes)
+                {
+                    OfficeList nu = new OfficeList { officeID = myid };
+                    context.OfficeLists.Attach(nu); //attaches the office object by the id given to the object above
+                    context.OfficeLists.Remove(nu); //Adds the change to Deletes the office from the database
+                    context.SaveChanges();  //Saves changes to the database
+                }
+                RefreshOfficeList();
+            }
         }
         //****************************//
         //      END ADMIN OFFICE      //
@@ -358,15 +371,21 @@ namespace InventoryManagementSystem
             int myid = Convert.ToInt16(b.Tag);
 
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this Status?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-            if (result == MessageBoxResult.Yes)
+            if (context.Inventories.Any(u => u.assignedTo == myid))
             {
-                StatusList nu = new StatusList { StatusID = myid };
-                context.StatusLists.Attach(nu); //attaches the Status object by the id given to the object above
-                context.StatusLists.Remove(nu); //Adds the change to Deletes the office from the database
-                context.SaveChanges();  //Saves changes to the database
+                MessageBox.Show("Items are using this status, to remove this status remove it from all items that are using it first.","Error");
             }
-            RefreshStatusList();
+            else
+            {
+                if (result == MessageBoxResult.Yes)
+                {
+                    StatusList nu = new StatusList { StatusID = myid };
+                    context.StatusLists.Attach(nu); //attaches the Status object by the id given to the object above
+                    context.StatusLists.Remove(nu); //Adds the change to Deletes the office from the database
+                    context.SaveChanges();  //Saves changes to the database
+                }
+                RefreshStatusList();
+            }
         }
         //****************************//
         //      END ADMIN STATUS      //
@@ -407,15 +426,21 @@ namespace InventoryManagementSystem
             int myid = Convert.ToInt16(b.Tag);
 
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this Location?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-            if (result == MessageBoxResult.Yes)
+            if (context.Inventories.Any(u => u.LocationID == myid))
             {
-                Location nu = new Location { LocationID = myid };
-                context.Locations.Attach(nu); //attaches the office object by the id given to the object above
-                context.Locations.Remove(nu); //Adds the change to Deletes the Location from the database
-                context.SaveChanges();  //Saves changes to the database
+                MessageBox.Show("Items are using this location, to remove this location remove it from all items that are using it first.", "Error");
             }
-            RefreshLocationList();
+            else
+            {
+                if (result == MessageBoxResult.Yes)
+                {
+                    Location nu = new Location { LocationID = myid };
+                    context.Locations.Attach(nu); //attaches the office object by the id given to the object above
+                    context.Locations.Remove(nu); //Adds the change to Deletes the Location from the database
+                    context.SaveChanges();  //Saves changes to the database
+                }
+                RefreshLocationList();
+            }
         }
         //****************************//
         //      END ADMIN LOCATIONS   //
@@ -455,15 +480,21 @@ namespace InventoryManagementSystem
             int myid = Convert.ToInt16(b.Tag);
 
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this Category?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-            if (result == MessageBoxResult.Yes)
+            if (context.Inventories.Any(u => u.CategoryID == myid))
             {
-                Category nu = new Category { CategoryID = myid };
-                context.Categories.Attach(nu); //attaches the office object by the id given to the object above
-                context.Categories.Remove(nu); //Adds the change to Deletes the Category from the database
-                context.SaveChanges();  //Saves changes to the database
+                MessageBox.Show("Items are using this Category, to remove this Category remove it from all items that are using it first.", "Error");
             }
-            RefreshCategoryList();
+            else
+            {
+                if (result == MessageBoxResult.Yes)
+                {
+                    Category nu = new Category { CategoryID = myid };
+                    context.Categories.Attach(nu); //attaches the office object by the id given to the object above
+                    context.Categories.Remove(nu); //Adds the change to Deletes the Category from the database
+                    context.SaveChanges();  //Saves changes to the database
+                }
+                RefreshCategoryList();
+            }
         }
         //****************************//
         //     END ADMIN CATEGORY     //

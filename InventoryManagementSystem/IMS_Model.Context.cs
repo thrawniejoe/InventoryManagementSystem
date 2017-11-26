@@ -36,5 +36,7 @@ namespace InventoryManagementSystem
         public virtual DbSet<StatusList> StatusLists { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<vInventoryListing> vInventoryListings { get; set; }
+
+
     }
 }
