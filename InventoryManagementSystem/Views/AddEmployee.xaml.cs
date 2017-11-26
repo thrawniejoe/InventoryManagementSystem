@@ -20,7 +20,9 @@ namespace InventoryManagementSystem.Views
     public partial class AddEmployee : Window
     {
         public delegate void Refresh();
-        public event Refresh RefreshEmployeeList;
+        public event Refresh RefreshEmployees;
+        public int userID;
+        public string RequestType { get; internal set; }
 
         public AddEmployee()
         {
@@ -30,6 +32,37 @@ namespace InventoryManagementSystem.Views
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadComboBoxInfo();
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+
+            switch (RequestType)
+            {
+                case "Add":
+                    lblTitle.Content = "Add a User";
+                    break;
+
+                case "Modify":
+                    lblTitle.Content = "Modify a User";
+                    BtnAddEmployee.Content = "Modify User";
+                    var userInfo = (from u in context.Employees
+                                    where u.EmployeeID == userID
+                                    select u).FirstOrDefault();
+
+                    Employee mU = new Employee();
+                    mU = userInfo;
+                    if (mU != null)
+                    {
+                        nameTextBox.Text = mU.Name;
+                        titleTextBox.Text = mU.Title;
+                        usernameTextBox.Text = mU.Username;
+                        emailAddressTextBox.Text = mU.EmailAddress;
+                        managerComboBox.Text = mU.Manager;
+                        divisionTextBox.Text = mU.Division;
+                        locationComboBox.Text = mU.Location;
+                        statusComboBox.Text = mU.Status;
+                        phoneNumberTextBox.Text = mU.PhoneNumber;
+                    }
+                    break;
+            }
         }
 
         private void LoadComboBoxInfo()
@@ -65,24 +98,65 @@ namespace InventoryManagementSystem.Views
 
         private void BtnAddEmployee_Click(object sender, RoutedEventArgs e)
         {
-            Employee newEmployee = new Employee();
-            var context = new InventoryManagementSystem.InventoryDBEntities();
-            if (Validate())
+
+
+            switch (RequestType)
             {
-                newEmployee.Name = nameTextBox.Text;
-                newEmployee.Title = titleTextBox.Text;
-                newEmployee.Username = usernameTextBox.Text;
-                newEmployee.EmailAddress = emailAddressTextBox.Text;
-                newEmployee.Manager = managerComboBox.Text;
-                newEmployee.Division = divisionTextBox.Text;
-                newEmployee.Location = locationComboBox.Text;
-                newEmployee.Status = statusComboBox.Text;
-                newEmployee.PhoneNumber = phoneNumberTextBox.Text;
-                context.Employees.Add(newEmployee);
-                context.SaveChanges();
-                MessageBox.Show("User " + nameTextBox.Text + " Added to the system.");
-                RefreshEmployeeList();
-                this.Close();
+                case "Add":
+                    Employee newEmployee = new Employee();
+                    var context = new InventoryManagementSystem.InventoryDBEntities();
+                    if (Validate())
+                    {
+                        newEmployee.Name = nameTextBox.Text;
+                        newEmployee.Title = titleTextBox.Text;
+                        newEmployee.Username = usernameTextBox.Text;
+                        newEmployee.EmailAddress = emailAddressTextBox.Text;
+                        newEmployee.Manager = managerComboBox.Text;
+                        newEmployee.Division = divisionTextBox.Text;
+                        newEmployee.Location = locationComboBox.Text;
+                        newEmployee.Status = statusComboBox.Text;
+                        newEmployee.PhoneNumber = phoneNumberTextBox.Text;
+                        context.Employees.Add(newEmployee);
+                        context.SaveChanges();
+                        MessageBox.Show("User " + nameTextBox.Text + " Added to the system.");
+                        RefreshEmployees();
+                        this.Close();
+                    }
+                    break;
+                case "Modify":
+
+                    if (Validate())
+                    {
+                        UpdateEmployeeInDB();
+                        this.Close();
+                    }
+                    break;
+
+            }
+
+
+
+        }
+
+        private void UpdateEmployeeInDB()
+        {
+            //Updates user in database
+            using (var db = new InventoryDBEntities())
+            {
+                var result = db.Employees.SingleOrDefault(b => b.EmployeeID == userID);
+                if (result != null)
+                {
+                    result.Name = nameTextBox.Text;
+                    result.Title = titleTextBox.Text;
+                    result.Username = usernameTextBox.Text;
+                    result.EmailAddress = emailAddressTextBox.Text;
+                    result.Manager = managerComboBox.Text;
+                    result.Division = divisionTextBox.Text;
+                    result.Location = locationComboBox.Text;
+                    result.Status = statusComboBox.Text;
+                    result.PhoneNumber = phoneNumberTextBox.Text;
+                    db.SaveChanges();
+                }
             }
         }
 

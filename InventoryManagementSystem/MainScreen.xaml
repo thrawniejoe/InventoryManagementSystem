@@ -282,7 +282,7 @@
                 </Style>
             </TabControl.Resources>
             <TabItem Header="Home" Margin="0,36,0,-60" Style="{DynamicResource TabItemStyleSideBar}">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,-0.333" Width="974">
                     <Label Content="Welcome to the Inventory Management System" HorizontalAlignment="Left" Margin="270,79,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
                 </Grid>
             </TabItem>
@@ -353,8 +353,15 @@
             </TabItem>
             <TabItem Header="Personnel" Margin="0,60,0,-60" Style="{DynamicResource TabItemStyleSideBar}">
                 <Grid DataContext="{StaticResource employeesViewSource}">
-                    <DataGrid x:Name="employeesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="96,80,10,10" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid x:Name="employeesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,80,10.333,9.667" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
+                            <DataGridTemplateColumn x:Name="ModifyEmployee" Header="" Width="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="btnModifyEmployee" Content="Modify" Tag="{Binding EmployeeID, Mode=OneWay}" Click="BtnModifyEmployee_Click"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTemplateColumn x:Name="RemoveEmployee" Header="" Width="100">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -372,8 +379,7 @@
                             <DataGridTextColumn x:Name="statusColumn1" Binding="{Binding Status}" Header="Status" Width="60"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="BtnAddEmployee" Content="Add Employee" HorizontalAlignment="Left" Margin="83,49,0,0" VerticalAlignment="Top" Width="88" Click="BtnAddEmployee_Click"/>
-                    <Button Content="Button" HorizontalAlignment="Left" Margin="176,49,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="BtnAddEmployee" Content="Add Employee" HorizontalAlignment="Left" Margin="96,40,0,0" VerticalAlignment="Top" Width="88" Click="BtnAddEmployee_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Building Map" Margin="0,60,0,-60" Style="{DynamicResource TabItemStyleSideBar}"/>

@@ -105,12 +105,13 @@ namespace InventoryManagementSystem.Views
                     }
                     break;
                 case "Modify":
-                    //if (Validate()== true)
-                    //{
+
+                    if (validated == true)
+                    {
                         UpdateUserInDB();
                         this.Close();
-                        break;
-                    //}
+                    }
+                    break;
 
             }
         }

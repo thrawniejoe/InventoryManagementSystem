@@ -133,6 +133,7 @@
         <Button x:Name="BtnAddEmployee" Content="Add Employee" HorizontalAlignment="Left" Margin="360,249,0,0" VerticalAlignment="Top" Width="91" Click="BtnAddEmployee_Click"/>
         <Button x:Name="BtnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="94,249,0,0" VerticalAlignment="Top" Width="78" Click="BtnCancel_Click"/>
         <Label x:Name="lblErrorMessage" Content="" HorizontalAlignment="Left" Margin="68,274,0,0" VerticalAlignment="Top" Width="400" Foreground="Red" FontWeight="Bold"/>
+        <Label x:Name="lblTitle" Content="" HorizontalAlignment="Left" Margin="181,4,0,0" VerticalAlignment="Top" Width="96"/>
 
     </Grid>
 </Window>

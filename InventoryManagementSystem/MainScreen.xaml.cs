@@ -226,6 +226,9 @@ namespace InventoryManagementSystem
             RefreshInventory();
         }
 
+        /////////////////////////////////////////////
+        //            Employee Section             //
+        /////////////////////////////////////////////
         private void BtnRemoveEmployee_Click(object sender, RoutedEventArgs e)
         {
             var context = new InventoryManagementSystem.InventoryDBEntities();
@@ -250,6 +253,41 @@ namespace InventoryManagementSystem
             }  
         }
 
+        private void BtnModifyEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            int myid = Convert.ToInt16(b.Tag);
+
+            Views.AddEmployee modifyUser = new Views.AddEmployee
+            {
+
+                userID = Convert.ToInt16(myid),
+                RequestType = "Modify",
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
+            modifyUser.RefreshEmployees += RefreshEmployeeList;
+            modifyUser.ShowDialog();
+        }
+
+        private void BtnAddEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            Views.AddEmployee addEmployee = new Views.AddEmployee
+            {
+                RequestType = "Add",
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
+            addEmployee.RefreshEmployees += RefreshEmployeeList;
+            addEmployee.ShowDialog();
+        }
+
+        ////////////////////////////
+        //   END EMPLOYEE SECTION //
+        ////////////////////////////
+
+
+
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -269,17 +307,7 @@ namespace InventoryManagementSystem
             lookUp.ShowDialog();
         }
 
-        private void BtnAddEmployee_Click(object sender, RoutedEventArgs e)
-        {
-            Views.AddEmployee addEmployee = new Views.AddEmployee
-            {
-                //RequestType = "Add",
-                Owner = this,
-                WindowStartupLocation = WindowStartupLocation.CenterOwner
-            };
-            addEmployee.RefreshEmployeeList += RefreshEmployeeList;
-            addEmployee.ShowDialog();
-        }
+
 
         //****************************//
         //   Administration - Office  //
