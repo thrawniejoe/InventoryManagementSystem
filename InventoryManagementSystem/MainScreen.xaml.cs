@@ -12,7 +12,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Microsoft.WindowsAPICodePack.Dialogs;
+
+
+
+
+
+//using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace InventoryManagementSystem
 {
@@ -691,28 +696,34 @@ namespace InventoryManagementSystem
 
         private void BtnChangeDocDir_Click(object sender, RoutedEventArgs e)
         {
-            
 
-            var dlg = new CommonOpenFileDialog();
-            dlg.Title = "My Title";
-            dlg.IsFolderPicker = true;
-            dlg.InitialDirectory = currentDirectory;
-
-            dlg.AddToMostRecentlyUsedList = false;
-            dlg.AllowNonFileSystemItems = false;
-            dlg.DefaultDirectory = currentDirectory;
-            dlg.EnsureFileExists = true;
-            dlg.EnsurePathExists = true;
-            dlg.EnsureReadOnly = false;
-            dlg.EnsureValidNames = true;
-            dlg.Multiselect = false;
-            dlg.ShowPlacesList = true;
-
-            if (dlg.ShowDialog() == CommonFileDialogResult.Ok)
+            string path;
+            FolderBrowserDialog file = new FolderBrowserDialog();
+            if (file.ShowDialog() == DialogResult.OK)
             {
-                var folder = dlg.FileName;
-                // Do something with selected folder string
+                path = file.SelectedPath;
+                txtDocDir.Text = path;
             }
+            //var dlg = new CommonOpenFileDialog();
+            //dlg.Title = "My Title";
+            //dlg.IsFolderPicker = true;
+            //dlg.InitialDirectory = currentDirectory;
+
+            //dlg.AddToMostRecentlyUsedList = false;
+            //dlg.AllowNonFileSystemItems = false;
+            //dlg.DefaultDirectory = currentDirectory;
+            //dlg.EnsureFileExists = true;
+            //dlg.EnsurePathExists = true;
+            //dlg.EnsureReadOnly = false;
+            //dlg.EnsureValidNames = true;
+            //dlg.Multiselect = false;
+            //dlg.ShowPlacesList = true;
+
+            //if (dlg.ShowDialog() == CommonFileDialogResult.Ok)
+            //{
+            //    var folder = dlg.FileName;
+            //    // Do something with selected folder string
+            //}
         }
 
     }
