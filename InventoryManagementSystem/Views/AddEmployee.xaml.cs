@@ -171,7 +171,7 @@ namespace InventoryManagementSystem.Views
             const int min = 2;
             //const int passMin = 6;
             const int max = 30;
-            const int exact = 10;
+            //const int exact = 10;
             lblErrorMessage.Content = "";
 
 
@@ -222,11 +222,6 @@ namespace InventoryManagementSystem.Views
                 check = false;
             }
 
-            if (!Validations.CheckIfExact(phoneNumberTextBox.Text, exact))
-            {
-                lblErrorMessage.Content = "Phone number must be " + exact + " in length";
-                check = false;
-            }
             return check;
         }
     }
