@@ -9,9 +9,60 @@
         Title="AddEmployee" Height="344.828" Width="491.589" Loaded="Window_Loaded">
     <Window.Resources>
         <InventoryManagementSystem:InventoryDBDataSet x:Key="inventoryDBDataSet"/>
-       
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFC8C8C8" Offset="0"/>
+                        <GradientStop Color="#FFB0B0B0" Offset="0.983"/>
+                        <GradientStop Color="#FFF2F2F2" Offset="0.527"/>
+                        <GradientStop Color="White" Offset="0.021"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="BorderBrush" Value="#FFBBBBBB"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" 
+                            BorderThickness="1"
+                            Padding="4,2" 
+                            CornerRadius="1" 
+                            BorderBrush="#FF898989"
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter  Property="Background" >
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF858585" Offset="0"/>
+                                            <GradientStop Color="White" Offset="1"/>
+                                            <GradientStop Color="#FFD9D9D9" Offset="0.799"/>
+                                            <GradientStop Color="#FFF6F6F6" Offset="0.321"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF9B9B9B" Offset="0.996"/>
+                <GradientStop Color="White"/>
+                <GradientStop Color="#FFE3E3E3" Offset="0.961"/>
+            </LinearGradientBrush>
+        </Grid.Background>
 
         <Grid x:Name="grid1" VerticalAlignment="Top" Margin="43,36,0,0" HorizontalAlignment="Left" >
             <Grid.RowDefinitions>
@@ -130,8 +181,8 @@
             <Label Content="Phone Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <TextBox x:Name="phoneNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0"  VerticalAlignment="Center" Width="120"/>
         </Grid>
-        <Button x:Name="BtnAddEmployee" Content="Add Employee" HorizontalAlignment="Left" Margin="360,249,0,0" VerticalAlignment="Top" Width="91" Click="BtnAddEmployee_Click"/>
-        <Button x:Name="BtnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="94,249,0,0" VerticalAlignment="Top" Width="78" Click="BtnCancel_Click"/>
+        <Button x:Name="BtnAddEmployee" Content="Add Employee" HorizontalAlignment="Left" Margin="323,244,0,0" VerticalAlignment="Top" Width="120" Click="BtnAddEmployee_Click" Height="30"/>
+        <Button x:Name="BtnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="52,244,0,0" VerticalAlignment="Top" Width="120" Click="BtnCancel_Click" Height="30"/>
         <Label x:Name="lblErrorMessage" Content="" HorizontalAlignment="Left" Margin="68,274,0,0" VerticalAlignment="Top" Width="400" Foreground="Red" FontWeight="Bold"/>
         <Label x:Name="lblTitle" Content="" HorizontalAlignment="Left" Margin="181,4,0,0" VerticalAlignment="Top" Width="96"/>
 

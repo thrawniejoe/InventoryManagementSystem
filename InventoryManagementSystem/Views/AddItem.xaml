@@ -10,9 +10,60 @@
     <Window.Resources>
         <InventoryManagementSystem:InventoryDBDataSet x:Key="inventoryDBDataSet"/>
         <CollectionViewSource x:Key="inventoryViewSource" Source="{Binding Inventory, Source={StaticResource inventoryDBDataSet}}"/>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFC8C8C8" Offset="0"/>
+                        <GradientStop Color="#FFB0B0B0" Offset="0.983"/>
+                        <GradientStop Color="#FFF2F2F2" Offset="0.527"/>
+                        <GradientStop Color="White" Offset="0.021"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="BorderBrush" Value="#FFBBBBBB"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" 
+                            BorderThickness="1"
+                            Padding="4,2" 
+                            CornerRadius="1" 
+                            BorderBrush="#FF898989"
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter  Property="Background" >
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF858585" Offset="0"/>
+                                            <GradientStop Color="White" Offset="1"/>
+                                            <GradientStop Color="#FFD9D9D9" Offset="0.799"/>
+                                            <GradientStop Color="#FFF6F6F6" Offset="0.321"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
-
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF9B9B9B" Offset="0.996"/>
+                <GradientStop Color="White"/>
+                <GradientStop Color="#FFE3E3E3" Offset="0.961"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid x:Name="grid1" VerticalAlignment="Top" Margin="65,86,0,0" HorizontalAlignment="Left" DataContext="{StaticResource inventoryViewSource}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>

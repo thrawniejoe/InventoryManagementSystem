@@ -258,6 +258,7 @@
     <Content Include="DatabaseSQL.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\Office Map - Lincoln.jpg" />
     <Content Include="IMS_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>IMS_Model.edmx</DependentUpon>

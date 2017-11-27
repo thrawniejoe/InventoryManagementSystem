@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryManagementSystem.Views"
         mc:Ignorable="d"
-        Title="OfficeMap" Height="744" Width="1130">
+        Title="OfficeMap" Height="843" Width="1286">
     <Grid>
-
+        <Image HorizontalAlignment="Left" Height="776" Margin="10,10,0,0" VerticalAlignment="Top" Width="1258" Source="/InventoryManagementSystem;component/Images/Office Map - Lincoln.jpg" Stretch="None"/>
     </Grid>
 </Window>

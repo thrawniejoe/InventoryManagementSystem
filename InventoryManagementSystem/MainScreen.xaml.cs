@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace InventoryManagementSystem
 {
@@ -77,6 +78,42 @@ namespace InventoryManagementSystem
             inventoryDBDataSetCategoriesTableAdapter.Fill(inventoryDBDataSet.Categories);
             System.Windows.Data.CollectionViewSource categoriesViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("categoriesViewSource")));
             categoriesViewSource.View.MoveCurrentToFirst();
+
+            ShowTotals();
+        }
+
+        private void ShowTotals()
+        {
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+                            
+            int TotalItems = (from r in context.Inventories
+                            select r).Count();
+             lblTotalItems.Content = Convert.ToString(TotalItems);
+
+            int TotalActiveItems = (from r in context.Inventories
+                                    where r.StatusList.Status == "Active"
+                                    select r).Count();
+            lblTotalActiveItems.Content = Convert.ToString(TotalActiveItems);
+
+            int TotalEmployees = (from r in context.Employees
+                                    select r).Count();
+            lblTotalEmployees.Content = Convert.ToString(TotalEmployees);
+
+            int TotalActiveEmployees = (from r in context.Employees
+                                        where r.Status == "Active"
+                                    select r).Count();
+            lblEmployeesActiveTotal.Content = Convert.ToString(TotalActiveEmployees);
+
+            int TotalActiveDesktops = (from r in context.Inventories
+                                        where r.Category.CategoryName == "Desktop"
+                                        select r).Count();
+            lblDesktopTotal.Content = Convert.ToString(TotalActiveDesktops);
+
+            int TotalActiveLaptops = (from r in context.Inventories
+                                       where r.Category.CategoryName == "Laptop"
+                                       select r).Count();
+            lblTotalLaptops.Content = Convert.ToString(TotalActiveLaptops);
+
 
         }
 
@@ -646,11 +683,37 @@ namespace InventoryManagementSystem
                 MessageBox.Show("Item added");
             }
         }
+
+
         //****************************//
         //    END SETTINGS IMPORTER   //
         //****************************//
 
+        private void BtnChangeDocDir_Click(object sender, RoutedEventArgs e)
+        {
+            
 
+            var dlg = new CommonOpenFileDialog();
+            dlg.Title = "My Title";
+            dlg.IsFolderPicker = true;
+            dlg.InitialDirectory = currentDirectory;
+
+            dlg.AddToMostRecentlyUsedList = false;
+            dlg.AllowNonFileSystemItems = false;
+            dlg.DefaultDirectory = currentDirectory;
+            dlg.EnsureFileExists = true;
+            dlg.EnsurePathExists = true;
+            dlg.EnsureReadOnly = false;
+            dlg.EnsureValidNames = true;
+            dlg.Multiselect = false;
+            dlg.ShowPlacesList = true;
+
+            if (dlg.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                var folder = dlg.FileName;
+                // Do something with selected folder string
+            }
+        }
 
     }
 }

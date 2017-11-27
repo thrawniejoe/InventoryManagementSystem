@@ -6,15 +6,137 @@
         xmlns:local="clr-namespace:InventoryManagementSystem.Views"
         xmlns:InventoryManagementSystem="clr-namespace:InventoryManagementSystem" x:Class="InventoryManagementSystem.Views.ItemLookUp"
         mc:Ignorable="d"
-        Title="ItemLookUp" Height="654.742" Width="1023.514" Loaded="Window_Loaded">
+        Title="Item Look Up" Height="654.742" Width="1023.514" Loaded="Window_Loaded">
     <Window.Resources>
         <InventoryManagementSystem:InventoryDBDataSet x:Key="inventoryDBDataSet"/>
         <CollectionViewSource x:Key="vInventoryListViewSource" Source="{Binding vInventoryList, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="inventoryViewSource" Source="{Binding Inventory, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="documentationViewSource" Source="{Binding Documentation, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="vInventoryListingViewSource" Source="{Binding vInventoryListing, Source={StaticResource inventoryDBDataSet}}"/>
+        <Style TargetType="{x:Type DataGrid}">
+            <Setter Property="BorderBrush" Value="#FFC9C9C9"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#FFE0E0E0"/>
+            <Setter Property="VerticalGridLinesBrush" Value="{x:Null}"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="RowHeaderWidth" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="ColumnHeaderHeight" Value="25"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+
+        </Style>
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Background" >
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="LightGray" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridRow}">
+            <Setter Property="BorderBrush" Value="#FFF1F1F1"/>
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="#FF494949"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFCDCDCD" Offset="1"/>
+                                <GradientStop Color="LightGray" Offset="0"/>
+                                <GradientStop Color="White" Offset="0.894"/>
+                                <GradientStop Color="#FFF4F4F4" Offset="0.084"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="#FF4B4B4B"/>
+                    <Setter Property="FontWeight" Value="SemiBold" />
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+        <Style TargetType="{x:Type DataGridCell}">
+            <Style.Triggers>
+                <Trigger Property="DataGridCell.IsSelected" Value="True">
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFCFCFCF" Offset="1"/>
+                                <GradientStop Color="White" Offset="0"/>
+                                <GradientStop Color="White" Offset="0.498"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="#FF2E2E2E"/>
+                    <Setter Property="FontWeight" Value="SemiBold" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFC8C8C8" Offset="0"/>
+                        <GradientStop Color="#FFB0B0B0" Offset="0.983"/>
+                        <GradientStop Color="#FFF2F2F2" Offset="0.527"/>
+                        <GradientStop Color="White" Offset="0.021"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="BorderBrush" Value="#FFBBBBBB"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" 
+                            BorderThickness="1"
+                            Padding="4,2" 
+                            CornerRadius="1" 
+                            BorderBrush="#FF898989"
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter  Property="Background" >
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF858585" Offset="0"/>
+                                            <GradientStop Color="White" Offset="1"/>
+                                            <GradientStop Color="#FFD9D9D9" Offset="0.799"/>
+                                            <GradientStop Color="#FFF6F6F6" Offset="0.321"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid DataContext="{StaticResource vInventoryListViewSource}">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="#FFF3F3F3" Offset="1"/>
+                <GradientStop Color="#FFF6F6F6" Offset="0.5"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="262*"/>
             <RowDefinition Height="507*"/>
@@ -36,10 +158,10 @@
         <ComboBox x:Name="cboTagList" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="256,13,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CboTagList_SelectionChanged"/>
         <ComboBox x:Name="cboOfficeList" ItemsSource="{Binding officeID}" HorizontalAlignment="Left" Margin="545,12,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CboOfficeList_SelectionChanged"/>
         <ComboBox x:Name="cboEmplyeeList" ItemsSource="{Binding EmployeeID}" HorizontalAlignment="Left" Margin="886,13,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CboEmplyeeList_SelectionChanged"/>
-        <Button x:Name="btnAddItem" Content="Add Item" HorizontalAlignment="Left" Margin="26,59,0,0" VerticalAlignment="Top" Width="142" Click="BtnAddItem_Click"/>
-        <Button x:Name="btnUpdateItem" Content="Update Item" HorizontalAlignment="Left" Margin="26,84,0,0" VerticalAlignment="Top" Width="142" Click="BtnUpdateItem_Click"/>
-        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="26,183,0,0" VerticalAlignment="Top" Width="142" Click="BtnClose_Click"/>
-        <Button x:Name="btnRemoveItem" Content="Remove Item" HorizontalAlignment="Left" Margin="26,134,0,0" VerticalAlignment="Top" Width="142" Click="BtnRemoveItem_Click"/>
+        <Button x:Name="btnAddItem" Content="Add Item" HorizontalAlignment="Left" Margin="26,59,0,0" VerticalAlignment="Top" Width="142" Click="BtnAddItem_Click" Height="35"/>
+        <Button x:Name="btnUpdateItem" Content="Update Item" HorizontalAlignment="Left" Margin="26,95,0,0" VerticalAlignment="Top" Width="142" Click="BtnUpdateItem_Click" Height="35"/>
+        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="26,169,0,0" VerticalAlignment="Top" Width="142" Click="BtnClose_Click" Height="35"/>
+        <Button x:Name="btnRemoveItem" Content="Remove Item" HorizontalAlignment="Left" Margin="26,132,0,0" VerticalAlignment="Top" Width="142" Click="BtnRemoveItem_Click" Height="35"/>
         <Grid x:Name="grid1" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="65,78,0,0" Grid.Row="1" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -48,7 +170,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="item Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Item Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <TextBox x:Name="itemNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding itemName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
         <Grid x:Name="grid2" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="106,110,0,0" Grid.Row="1" VerticalAlignment="Top">
@@ -59,7 +181,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="tag:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Tag:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <TextBox x:Name="tagTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding tag, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
         <Grid x:Name="grid3" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="49,142,0,0" Grid.Row="1" VerticalAlignment="Top">
@@ -70,7 +192,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="serial Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Serial Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <TextBox x:Name="serialNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding serialNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
         <Grid x:Name="grid4" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="52,174,0,0" Grid.Row="1" VerticalAlignment="Top">
@@ -81,7 +203,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="manufacturer:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Manufacturer:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <TextBox x:Name="manufacturerTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding manufacturer, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
         <Grid x:Name="grid5" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="75,206,0,0" Grid.Row="1" VerticalAlignment="Top">
@@ -92,7 +214,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="model ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Model:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <TextBox x:Name="modelIDTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding modelID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
         <Grid x:Name="grid6" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="43,243,0,0" Grid.Row="1" VerticalAlignment="Top">
@@ -103,7 +225,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="model Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Model Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <TextBox x:Name="modelNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding modelNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
         <Grid x:Name="grid7" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="77,280,0,0" Grid.Row="1" VerticalAlignment="Top">
@@ -123,7 +245,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="date Assigned:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Date Assigned:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <DatePicker x:Name="dateAssignedDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" SelectedDate="{Binding dateAssigned, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
         </Grid>
         <Grid x:Name="grid12" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="671,20,0,0" Grid.Row="1" VerticalAlignment="Top">
@@ -134,7 +256,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="date Record Modified:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Date Record Modified:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <DatePicker x:Name="dateRecordModifiedDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" SelectedDate="{Binding dateRecordModified, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
         </Grid>
         <Grid x:Name="grid13" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="626,57,0,0" Grid.Row="1" VerticalAlignment="Top">
@@ -145,7 +267,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="record Modified By user ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Record Modified By user ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <TextBox x:Name="recordModifiedBy_userIDTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding recordModifiedBy_userID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
         <Grid x:Name="grid14" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="332,206,0,0" Grid.Row="1" VerticalAlignment="Top">
@@ -156,14 +278,14 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="date Purchased:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Date Purchased:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <DatePicker x:Name="datePurchasedDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" SelectedDate="{Binding datePurchased, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
         </Grid>
         <DataGrid x:Name="documentationDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource documentationViewSource}}" Margin="731,124,10,10" Grid.Row="1" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="docIDColumn" Binding="{Binding DocID}" Header="Doc ID" IsReadOnly="True" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="docLinkColumn" Binding="{Binding DocLink}" Header="Doc Link" Width="SizeToHeader"/>
-                <DataGridTemplateColumn x:Name="dateAddedColumn" Header="Date Added" Width="SizeToHeader">
+                <!--<DataGridTextColumn x:Name="docIDColumn" Binding="{Binding DocID}" Header="Doc ID" IsReadOnly="True" Width="SizeToHeader"/>-->
+                <DataGridTextColumn x:Name="docLinkColumn" Binding="{Binding DocLink}" Header="Doc Link" Width="160"/>
+                <DataGridTemplateColumn x:Name="dateAddedColumn" Header="Date Added" Width="80">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <DatePicker SelectedDate="{Binding DateAdded, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
@@ -184,7 +306,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="Category ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Category:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <ComboBox x:Name="categoryIDComboBox" Grid.Column="1" DisplayMemberPath="CategoryID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -201,7 +323,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="Location ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Location:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <ComboBox x:Name="locationIDComboBox" Grid.Column="1" DisplayMemberPath="LocationID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -218,7 +340,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="Status ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Status:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <ComboBox x:Name="statusIDComboBox" Grid.Column="1" DisplayMemberPath="StatusID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -252,7 +374,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="office ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Office:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <ComboBox x:Name="officeIDComboBox" Grid.Column="1" DisplayMemberPath="officeID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -261,7 +383,7 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
         </Grid>
-        <Button x:Name="BtnAddDoc" Content="Add" HorizontalAlignment="Left" Margin="731,95,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="BtnAddDoc_Click"/>
+        <Button x:Name="BtnAddDoc" Content="Add" HorizontalAlignment="Left" Margin="731,89,0,0" Grid.Row="1" VerticalAlignment="Top" Width="105" Click="BtnAddDoc_Click" Height="28"/>
 
     </Grid>
 </Window>

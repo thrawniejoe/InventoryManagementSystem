@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryManagementSystem"
         mc:Ignorable="d"
-        Title="MainScreen" Height="768" Width="1024" Loaded="Window_Loaded" MouseDown="Window_MouseDown">
+        Title="Inventory Management System" Height="768" Width="1024" Loaded="Window_Loaded" MouseDown="Window_MouseDown">
 
     <Window.Resources>
         <local:InventoryDBDataSet x:Key="inventoryDBDataSet"/>
-        <CollectionViewSource x:Key="vInventoryListViewSource" Source="{Binding vInventoryList, Source={StaticResource inventoryDBDataSet}}"/>
+        <CollectionViewSource x:Key="vInventoryListViewSource" Source="{Binding vInventoryListing, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="inventoryViewSource" Source="{Binding Inventory, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="usersViewSource" Source="{Binding Users, Source={StaticResource inventoryDBDataSet}}"/>
         <CollectionViewSource x:Key="employeesViewSource" Source="{Binding Employees, Source={StaticResource inventoryDBDataSet}}"/>
@@ -74,7 +74,7 @@
             <Setter Property="SelectionMode" Value="Single"/>
             <Setter Property="RowHeaderWidth" Value="0"/>
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="ColumnHeaderHeight" Value="25"/>
             <Setter Property="CanUserAddRows" Value="False"/>
             <Setter Property="IsReadOnly" Value="True"/>
@@ -89,6 +89,7 @@
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
+            <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
         </Style>
@@ -96,7 +97,7 @@
             <Setter Property="BorderBrush" Value="#FFF1F1F1"/>
             <Setter Property="Background" Value="White" />
             <Setter Property="Foreground" Value="#FF494949"/>
-
+            <Setter Property="BorderThickness" Value="0"/>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" >
@@ -109,6 +110,7 @@
                             </LinearGradientBrush>
                         </Setter.Value>
                     </Setter>
+                    <Setter Property="BorderThickness" Value="0"/>
                     <Setter Property="BorderBrush" Value="Transparent"/>
                     <Setter Property="Foreground" Value="#FF4B4B4B"/>
                     <Setter Property="FontWeight" Value="SemiBold" />
@@ -128,6 +130,7 @@
                             </LinearGradientBrush>
                         </Setter.Value>
                     </Setter>
+                    <Setter Property="BorderThickness" Value="0"/>
                     <Setter Property="BorderBrush" Value="Transparent"/>
                     <Setter Property="Foreground" Value="#FF2E2E2E"/>
                     <Setter Property="FontWeight" Value="SemiBold" />
@@ -262,6 +265,92 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="TabItemStyleSideBarAdmin" TargetType="{x:Type TabItem}" >
+            <Setter Property="Template">
+
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Border x:Name="Border" BorderThickness="0,0,0,0" CornerRadius="0,0,0,0"
+                        Padding="5,5,5,5" Margin="0,0,0,0" BorderBrush="#00E0E0E0">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFE33030" Offset="0"/>
+                                    <GradientStop Color="#FF590000" Offset="1"/>
+                                    <GradientStop Color="#FFB71414" Offset="0.768"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <ContentPresenter x:Name="ContentSite" ContentSource="Header" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsSelected" Value="True">
+
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="White"/>
+                                <Setter Property="BorderBrush" TargetName="Border" Value="#00DCDCDC"/>
+                                <Setter Property="FontWeight" Value="Normal"/>
+                                <Setter Property="BorderThickness" TargetName="Border" Value="1"/>
+                                <Setter Property="Background" TargetName="Border">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFE33030" Offset="0"/>
+                                            <GradientStop Color="#FFA02D2D" Offset="1"/>
+                                            <GradientStop Color="#FFB71414" Offset="0.768"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="HeaderTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <ContentPresenter Content="{TemplateBinding Content}">
+                                                <ContentPresenter.LayoutTransform>
+                                                    <RotateTransform Angle="-90" />
+                                                </ContentPresenter.LayoutTransform>
+                                            </ContentPresenter>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="CornerRadius" TargetName="Border" Value="2"/>
+
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="White"/>
+
+                                <Setter Property="HeaderTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <ContentPresenter Content="{TemplateBinding Content}">
+                                                <ContentPresenter.LayoutTransform>
+                                                    <RotateTransform Angle="-90" />
+                                                </ContentPresenter.LayoutTransform>
+                                            </ContentPresenter>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Background" TargetName="Border">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFCF0000" Offset="0"/>
+                                            <GradientStop Color="Red" Offset="0.472"/>
+                                            <GradientStop Color="#FF8D0000" Offset="1"/>
+                                            <GradientStop Color="#FFF90000" Offset="0.944"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+
+                                <Setter Property="CornerRadius" TargetName="Border" Value="0"/>
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="BorderBrush" Value="Black"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <TabControl x:Name="tcMainTabController" TabStripPlacement="Left"  >
@@ -281,9 +370,37 @@
                     <Setter Property="Padding" Value="3" />
                 </Style>
             </TabControl.Resources>
+            <TabControl.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF495366" Offset="1"/>
+                    <GradientStop Color="#FFD2D5D9" Offset="0.991"/>
+                </LinearGradientBrush>
+            </TabControl.Background>
             <TabItem Header="Home" Margin="0,36,0,-60" Style="{DynamicResource TabItemStyleSideBar}">
-                <Grid Background="#FFE5E5E5" Margin="0,0,0,-0.333" Width="974">
+                <Grid Margin="0,0,0,-0.333" Width="974">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFC1C1C1" Offset="1"/>
+                            <GradientStop Color="#FFF0F0F0"/>
+                            <GradientStop Color="#FFEEEEEE" Offset="0.957"/>
+                            <GradientStop Color="White" Offset="0.457"/>
+                            <GradientStop Color="#FFFBFBFB" Offset="0.161"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
                     <Label Content="Welcome to the Inventory Management System" HorizontalAlignment="Left" Margin="270,79,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label Content="Total Items in the Inventory" HorizontalAlignment="Left" Margin="270,226,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Total Active Items in the Inventory" HorizontalAlignment="Left" Margin="270,257,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Total Employees" HorizontalAlignment="Left" Margin="547,226,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Total Active Employees" HorizontalAlignment="Left" Margin="547,252,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Total Active Desktop Computers" HorizontalAlignment="Left" Margin="270,319,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Total Active Laptops" HorizontalAlignment="Left" Margin="270,350,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblTotalLaptops" Content="Label" HorizontalAlignment="Left" Margin="477,350,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblDesktopTotal" Content="Label" HorizontalAlignment="Left" Margin="477,319,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblTotalActiveItems" Content="Label" HorizontalAlignment="Left" Margin="477,257,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblTotalItems" Content="Label" HorizontalAlignment="Left" Margin="477,226,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblTotalEmployees" Content="Label" HorizontalAlignment="Left" Margin="727,226,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblEmployeesActiveTotal" Content="Label" HorizontalAlignment="Left" Margin="727,252,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Inventory" Margin="0,60,0,-60" Style="{DynamicResource TabItemStyleSideBar}">
@@ -305,7 +422,13 @@
                         </Style>
                     </TabControl.Resources>
                     <TabItem Header="Inventory List">
-                        <Grid Background="#FFE5E5E5" DataContext="{StaticResource vInventoryListViewSource}">
+                        <Grid DataContext="{StaticResource vInventoryListViewSource}">
+                            <Grid.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White" Offset="0"/>
+                                    <GradientStop Color="#FFC3C3C3" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Grid.Background>
                             <WrapPanel HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" VerticalAlignment="Top" Width="950">
                                 <Button x:Name="btnAddItem" Content="Add Item" Width="75" Click="BtnAddItem_Click"/>
                                 <Button x:Name="btnClearFilter" Content="Clear Filter" Width="75" Click="BtnClearFilter_Click"/>
@@ -369,7 +492,6 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn x:Name="employeeIDColumn" Binding="{Binding EmployeeID}" Header="Employee ID" Width="SizeToHeader"/>
                             <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="120"/>
                             <DataGridTextColumn x:Name="titleColumn1" Binding="{Binding Title}" Header="Title" Width="120"/>
                             <DataGridTextColumn x:Name="emailAddressColumn" Binding="{Binding EmailAddress}" Header="Email Address" Width="120"/>
@@ -392,16 +514,16 @@
                     <ProgressBar x:Name="PbImportProgressBar" HorizontalAlignment="Left" Height="23" Margin="208,138,0,0" VerticalAlignment="Top" Width="317"/>
                     <Label Content="Import Inventory CSV" HorizontalAlignment="Left" Margin="102,46,0,0" VerticalAlignment="Top"/>
                     <Label Content="Document Location" HorizontalAlignment="Left" Margin="111,207,0,0" VerticalAlignment="Top"/>
-                    <Button Content="Open Directory" HorizontalAlignment="Left" Margin="150,238,0,0" VerticalAlignment="Top" Width="107"/>
-                    <Button Content="Change Directory" HorizontalAlignment="Left" Margin="150,263,0,0" VerticalAlignment="Top" Width="107"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="285,260,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="355"/>
+                    <Button x:Name="BtnOpenDocDir" Content="Open Directory" HorizontalAlignment="Left" Margin="150,238,0,0" VerticalAlignment="Top" Width="107"/>
+                    <Button x:Name="BtnChangeDocDir" Content="Change Directory" HorizontalAlignment="Left" Margin="150,263,0,0" VerticalAlignment="Top" Width="107" Click="BtnChangeDocDir_Click"/>
+                    <TextBox x:Name="txtDocDir" HorizontalAlignment="Left" Height="23" Margin="262,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378"/>
                     <Label x:Name="lblImportStatus" Content="Label" HorizontalAlignment="Left" Margin="208,166,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="BtnPickFileImport" Content="Button" HorizontalAlignment="Left" Margin="530,100,0,0" VerticalAlignment="Top" Width="75" Click="BtnPickFileImport_Click"/>
 
                 </Grid>
 
             </TabItem>
-            <TabItem Header="Administration" Margin="-2,59.667,0,-59.667" Name="tabAdmin" Background="Red" Height="84" VerticalAlignment="Top" ContextMenuOpening="tabAdmin_ContextMenuOpening">
+            <TabItem Header="Administration"  Style="{DynamicResource TabItemStyleSideBarAdmin}" Margin="-2,59.667,0,-59.667" Name="tabAdmin" Background="Red" Height="84" VerticalAlignment="Top" ContextMenuOpening="tabAdmin_ContextMenuOpening" Foreground="Black">
                 <TabControl Width="976" Margin="0,39,0,7">
                     <TabControl.Resources>
                         <Style TargetType="{x:Type TabItem}">
@@ -429,9 +551,9 @@
                             </WrapPanel>
                             <DataGrid x:Name="usersDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="109,50,352,214" RowDetailsVisibilityMode="VisibleWhenSelected">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn x:Name="firstNameColumn" Binding="{Binding firstName}" Header="first Name" Width="120"/>
-                                    <DataGridTextColumn x:Name="lastNameColumn" Binding="{Binding lastName}" Header="last Name" Width="120"/>
-                                    <DataGridTextColumn x:Name="titleColumn" Binding="{Binding title}" Header="title" Width="120"/>
+                                    <DataGridTextColumn x:Name="firstNameColumn" Binding="{Binding firstName}" Header="First Name" Width="120"/>
+                                    <DataGridTextColumn x:Name="lastNameColumn" Binding="{Binding lastName}" Header="Last Name" Width="120"/>
+                                    <DataGridTextColumn x:Name="titleColumn" Binding="{Binding title}" Header="Title" Width="120"/>
                                     <DataGridTemplateColumn x:Name="modifyUserColumn" Header="" Width="70">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
@@ -451,7 +573,7 @@
                         </Grid>
                     </TabItem>
                     <TabItem Header="Offices" Style="{DynamicResource TabItemStyle1}" HorizontalAlignment="Left" Width="89" Margin="-2,0,-9,0">
-                        <Grid Background="#FFE5E5E5" DataContext="{StaticResource officeListViewSource}">
+                        <Grid Background="#FFE5E5E5" DataContext="{StaticResource officeListViewSource}" Width="971">
                             <Grid x:Name="grid1" DataContext="{StaticResource officeListViewSource}" HorizontalAlignment="Left" Margin="48,67,0,0" VerticalAlignment="Top">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
@@ -460,7 +582,7 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Label Content="office Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                                <Label Content="Office Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                                 <TextBox x:Name="officeNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding officeName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                             </Grid>
                             <Grid x:Name="grid2" DataContext="{StaticResource officeListViewSource}" HorizontalAlignment="Left" Margin="52,104,0,0" VerticalAlignment="Top">
@@ -471,11 +593,11 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Label Content="office Floor:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                                <Label Content="Office Floor:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                                 <TextBox x:Name="officeFloorTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding officeFloor, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                             </Grid>
-                            <Button x:Name="BtnAddOffice" Content="Add Office" HorizontalAlignment="Left" Margin="113,150,0,0" VerticalAlignment="Top" Width="75" Click="BtnAddOffice_Click"/>
-                            <DataGrid x:Name="officeListDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="341,49,405,206.667" RowDetailsVisibilityMode="VisibleWhenSelected">
+                            <Button x:Name="BtnAddOffice" Content="Add Office" HorizontalAlignment="Left" Margin="99,161,0,0" VerticalAlignment="Top" Width="120" Click="BtnAddOffice_Click" Height="30"/>
+                            <DataGrid x:Name="officeListDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,49,405,207" RowDetailsVisibilityMode="VisibleWhenSelected" HorizontalAlignment="Right" Width="290">
                                 <DataGrid.Columns>
                                     <DataGridTemplateColumn x:Name="deleteOfficeColumn" Header="" Width="70">
                                         <DataGridTemplateColumn.CellTemplate>
@@ -484,8 +606,8 @@
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
-                                    <DataGridTextColumn x:Name="officeNameColumn" Binding="{Binding officeName}" Header="office Name" Width="SizeToHeader"/>
-                                    <DataGridTextColumn x:Name="officeFloorColumn" Binding="{Binding officeFloor}" Header="office Floor" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="officeNameColumn" Binding="{Binding officeName}" Header="Office Name" Width="110"/>
+                                    <DataGridTextColumn x:Name="officeFloorColumn" Binding="{Binding officeFloor}" Header="Office Floor" Width="90"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Grid>
@@ -515,12 +637,12 @@
                                 <Label Content="Status:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                                 <TextBox x:Name="statusTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding Status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                             </Grid>
-                            <Button x:Name="BtnAddStatus" Content="Add Status" HorizontalAlignment="Left" Margin="115,158,0,0" VerticalAlignment="Top" Width="75" Click="BtnAddStatus_Click"/>
+                            <Button x:Name="BtnAddStatus" Content="Add Status" HorizontalAlignment="Left" Margin="115,158,0,0" VerticalAlignment="Top" Width="120" Click="BtnAddStatus_Click" Height="30"/>
                         </Grid>
                     </TabItem>
                     <TabItem Header="Locations" Style="{DynamicResource TabItemStyle1}" HorizontalAlignment="Left" Width="88" Margin="-2,0,-15,0">
-                        <Grid Background="#FFE5E5E5" DataContext="{StaticResource locationsViewSource}">
-                            <DataGrid x:Name="locationsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="257,45,313,410" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <Grid Background="#FFE5E5E5" DataContext="{StaticResource locationsViewSource}" Width="960">
+                            <DataGrid x:Name="locationsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,46,303,249" RowDetailsVisibilityMode="VisibleWhenSelected" HorizontalAlignment="Right" Width="365">
                                 <DataGrid.Columns>
                                     <DataGridTemplateColumn x:Name="deleteLocationColumn" Header="" Width="80">
                                         <DataGridTemplateColumn.CellTemplate>
@@ -529,8 +651,8 @@
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
-                                    <DataGridTextColumn x:Name="locationColumn2" Binding="{Binding Location}" Header="Location" Width="SizeToHeader"/>
-                                    <DataGridTextColumn x:Name="stateColumn" Binding="{Binding State}" Header="State" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="locationColumn2" Binding="{Binding Location}" Header="Location" Width="120"/>
+                                    <DataGridTextColumn x:Name="stateColumn" Binding="{Binding State}" Header="State" Width="120"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                             <Grid x:Name="grid4" HorizontalAlignment="Left" Margin="62,100,0,0" VerticalAlignment="Top">
@@ -555,12 +677,12 @@
                                 <Label Content="State:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                                 <TextBox x:Name="stateTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding State, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                             </Grid>
-                            <Button x:Name="BtnAddLocation" Content="Add Location" HorizontalAlignment="Left" Margin="113,190,0,0" VerticalAlignment="Top" Width="75" Click="BtnAddLocation_Click"/>
+                            <Button x:Name="BtnAddLocation" Content="Add Location" HorizontalAlignment="Left" Margin="113,190,0,0" VerticalAlignment="Top" Width="120" Click="BtnAddLocation_Click" Height="30"/>
                         </Grid>
                     </TabItem>
                     <TabItem Header="Categories" Style="{DynamicResource TabItemStyle1}" HorizontalAlignment="Left" Width="93" Margin="-2,0,-20,0">
-                        <Grid Background="#FFE5E5E5" DataContext="{StaticResource categoriesViewSource}">
-                            <DataGrid x:Name="categoriesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="350,32,423,423" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <Grid Background="#FFE5E5E5" DataContext="{StaticResource categoriesViewSource}" Width="955">
+                            <DataGrid x:Name="categoriesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,56,356,298" RowDetailsVisibilityMode="VisibleWhenSelected" HorizontalAlignment="Right" Width="263">
                                 <DataGrid.Columns>
                                     <DataGridTemplateColumn x:Name="deleteCategoryColumn" Header="" Width="80">
                                         <DataGridTemplateColumn.CellTemplate>
@@ -569,7 +691,7 @@
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
-                                    <DataGridTextColumn x:Name="categoryNameColumn1" Binding="{Binding CategoryName}" Header="Category Name" Width="SizeToHeader"/>
+                                    <DataGridTextColumn x:Name="categoryNameColumn1" Binding="{Binding CategoryName}" Header="Category Name" Width="120"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                             <Grid x:Name="grid6" HorizontalAlignment="Left" Margin="64,94,0,0" VerticalAlignment="Top">
@@ -583,7 +705,7 @@
                                 <Label Content="Category Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                                 <TextBox x:Name="categoryNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding CategoryName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                             </Grid>
-                            <Button x:Name="BtnAddCategory" Content="Add Category" HorizontalAlignment="Left" Margin="147,131,0,0" VerticalAlignment="Top" Width="83" Click="BtnAddCategory_Click"/>
+                            <Button x:Name="BtnAddCategory" Content="Add Category" HorizontalAlignment="Left" Margin="138,144,0,0" VerticalAlignment="Top" Width="120" Click="BtnAddCategory_Click" Height="30"/>
                         </Grid>
                     </TabItem>
                 </TabControl>

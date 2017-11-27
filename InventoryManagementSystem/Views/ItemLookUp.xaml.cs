@@ -380,6 +380,7 @@ namespace InventoryManagementSystem.Views
                 filename = file.SafeFileName;
                 var mStore = new ModelClass.DocumentStore();
                 mStore.AddDocToDB(Properties.Settings.Default.DocumentsLocation, filename, currentItemID);
+                MessageBox.Show(path + " ||| " + Properties.Settings.Default.DocumentsLocation);
                 File.Copy(path, Properties.Settings.Default.DocumentsLocation);
                 LoadDocumentList();
             }
