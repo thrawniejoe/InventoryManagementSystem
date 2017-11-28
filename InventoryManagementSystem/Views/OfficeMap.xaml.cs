@@ -27,54 +27,68 @@ namespace InventoryManagementSystem.Views
         private void LoadMap()
         {
             //Get Data From Offices Table then assign a username and office ID to all button text based on button tag
-            //    var context = new InventoryManagementSystem.InventoryDBEntities();
+                var context = new InventoryManagementSystem.InventoryDBEntities();
 
-            //    foreach (Control b in this.Controls)
-            //    {
-            //        if (b.Tag != "menuItem")
-            //        {
-            //            var selectedOffice = (from o in context.Offices
-            //                                  where o.Office1 == b.Tag
-            //                                  select o.AssignedUser).FirstOrDefault();
+            foreach (Button b in FindVisualChildren<Button>(this))
+            {
+                if (b.Tag != "menuItem")
+                {
+                    var selectedOffice = (from o in context.OfficeLists
+                                          where o.officeName == b.Tag
+                                          select o.officeName).FirstOrDefault();
 
-            //            var empName = (from emp in context.Employees
-            //                           where emp.emailAddress == selectedOffice
-            //                           select emp.employeeName).FirstOrDefault();
+                    var empName = (from emp in context.Employees
+                                   where emp.EmailAddress == selectedOffice
+                                   select emp.Name).FirstOrDefault();
 
-            //            b.Text = b.Tag + "\r\n" + "\r\n" + empName;
-            //        }
-            //    }
-            //}
-
-            //private void button1_Click(object sender, EventArgs e)
-            //{
-            //    officeClick(sender);
-            //}
-
-
-
-            ////goes to asset lookup with selected office
-            //private void officeClick(object sender)
-            //{
-            //    Button clickedButton = sender as Button;
-
-            //    //gets the id for the record corrently selected
-            //    string OfficeID = clickedButton.Tag.ToString();
-
-            //    AssetLookUp frmAssLUp = new AssetLookUp();
-            //    frmAssLUp.JobReq = "OfficeID";
-            //    frmAssLUp.OfficeId = OfficeID;
-            //    //frmAssLUp.SendObjectId = dataid;
-            //    frmAssLUp.MdiParent = MainMenu.ActiveForm;
-            //    frmAssLUp.Show();
-            //    this.Close();
-            //}
-
-            //private void btnClose_Click(object sender, EventArgs e)
-            //{
-            //    this.Close();
-            //}
+                    b.Content = b.Tag + "\r\n" + "\r\n" + empName;
+                }
+            }
         }
 
+
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
+        }
+
+        ////goes to asset lookup with selected office
+        //private void officeClick(object sender)
+        //{
+        //    Button clickedButton = sender as Button;
+
+        //    //gets the id for the record corrently selected
+        //    string OfficeID = clickedButton.Tag.ToString();
+
+        //    AssetLookUp frmAssLUp = new AssetLookUp();
+        //    frmAssLUp.JobReq = "OfficeID";
+        //    frmAssLUp.OfficeId = OfficeID;
+        //    //frmAssLUp.SendObjectId = dataid;
+        //    frmAssLUp.MdiParent = MainMenu.ActiveForm;
+        //    frmAssLUp.Show();
+        //    this.Close();
+        //}
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
+
+    
 }

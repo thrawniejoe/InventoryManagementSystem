@@ -494,7 +494,7 @@
                             <DataGridTextColumn x:Name="statusColumn1" Binding="{Binding Status}" Header="Status" Width="60"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="BtnAddEmployee" Content="Add Employee" HorizontalAlignment="Left" Margin="96,40,0,0" VerticalAlignment="Top" Width="88" Click="BtnAddEmployee_Click"/>
+                    <Button x:Name="BtnAddEmployee" Content="Add Employee" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Width="120" Click="BtnAddEmployee_Click" Height="30"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Building Map" Margin="0,48,0,-48" Style="{DynamicResource TabItemStyleSideBar}" Height="100"/>
