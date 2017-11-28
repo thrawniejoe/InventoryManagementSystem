@@ -144,22 +144,20 @@
 
         <DataGrid x:Name="vInventoryListDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="191,56,10,10" Tag="{Binding tag}" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" CanUserResizeRows="False" CanUserDeleteRows="False" CanUserAddRows="False" SelectionMode="Single" MouseDown="VInventoryListDataGrid_MouseDown" GridLinesVisibility="None" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="itemNameColumn" Width="120" Header="item Name" Binding="{Binding itemName}"/>
-                <DataGridTextColumn x:Name="tagColumn" Width="90" Header="tag" Binding="{Binding tag}"/>
-                <DataGridTextColumn x:Name="categoryColumn" Width="120" Header="category" Binding="{Binding category}"/>
-                <DataGridTextColumn x:Name="locationColumn" Width="90" Header="location" Binding="{Binding location}"/>
-                <DataGridTextColumn x:Name="statusColumn" Width="90" Header="status" Binding="{Binding status}"/>
+                <DataGridTextColumn x:Name="itemNameColumn" Width="120" Header="Item Name" Binding="{Binding itemName}"/>
+                <DataGridTextColumn x:Name="tagColumn" Width="90" Header="Tag" Binding="{Binding tag}"/>
+                <DataGridTextColumn x:Name="categoryColumn" Width="120" Header="Category" Binding="{Binding category}"/>
+                <DataGridTextColumn x:Name="locationColumn" Width="90" Header="Location" Binding="{Binding location}"/>
+                <DataGridTextColumn x:Name="statusColumn" Width="90" Header="Status" Binding="{Binding status}"/>
                 <DataGridTextColumn x:Name="nameColumn" Width="120" Header="Name" Binding="{Binding Name}"/>
-                <DataGridTextColumn x:Name="itemIDColumn" Width="SizeToHeader" Header="item ID" Binding="{Binding itemID}"/>
-                <DataGridTextColumn x:Name="officeIDColumn" Width="SizeToHeader" Header="office ID" Binding="{Binding officeID}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="11" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="1192"/>
         <ComboBox x:Name="cboTagList" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="256,13,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CboTagList_SelectionChanged"/>
         <ComboBox x:Name="cboOfficeList" ItemsSource="{Binding officeID}" HorizontalAlignment="Left" Margin="545,12,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CboOfficeList_SelectionChanged"/>
         <ComboBox x:Name="cboEmplyeeList" ItemsSource="{Binding EmployeeID}" HorizontalAlignment="Left" Margin="886,13,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CboEmplyeeList_SelectionChanged"/>
-        <Button x:Name="btnAddItem" Content="Add Item" HorizontalAlignment="Left" Margin="26,59,0,0" VerticalAlignment="Top" Width="142" Click="BtnAddItem_Click" Height="35"/>
-        <Button x:Name="btnUpdateItem" Content="Update Item" HorizontalAlignment="Left" Margin="26,95,0,0" VerticalAlignment="Top" Width="142" Click="BtnUpdateItem_Click" Height="35"/>
+        <Button x:Name="btnAddItem" Content="Add Item" HorizontalAlignment="Left" Margin="26,59,0,0" VerticalAlignment="Top" Width="142" Click="BtnAddItem_Click" Height="35" TabIndex="14"/>
+        <Button x:Name="btnUpdateItem" Content="Update Item" HorizontalAlignment="Left" Margin="26,95,0,0" VerticalAlignment="Top" Width="142" Click="BtnUpdateItem_Click" Height="35" TabIndex="15"/>
         <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="26,169,0,0" VerticalAlignment="Top" Width="142" Click="BtnClose_Click" Height="35"/>
         <Button x:Name="btnRemoveItem" Content="Remove Item" HorizontalAlignment="Left" Margin="26,132,0,0" VerticalAlignment="Top" Width="142" Click="BtnRemoveItem_Click" Height="35"/>
         <Grid x:Name="grid1" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="65,78,0,0" Grid.Row="1" VerticalAlignment="Top">
@@ -171,7 +169,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Item Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="itemNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding itemName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="itemNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding itemName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" TabIndex="1"/>
         </Grid>
         <Grid x:Name="grid2" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="106,110,0,0" Grid.Row="1" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
@@ -182,7 +180,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Tag:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="tagTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding tag, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="tagTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding tag, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" TabIndex="2"/>
         </Grid>
         <Grid x:Name="grid3" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="49,142,0,0" Grid.Row="1" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
@@ -193,7 +191,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Serial Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="serialNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding serialNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="serialNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding serialNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" TabIndex="3"/>
         </Grid>
         <Grid x:Name="grid4" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="52,174,0,0" Grid.Row="1" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
@@ -204,9 +202,9 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Manufacturer:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="manufacturerTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding manufacturer, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="manufacturerTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding manufacturer, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" TabIndex="4"/>
         </Grid>
-        <Grid x:Name="grid5" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="75,206,0,0" Grid.Row="1" VerticalAlignment="Top">
+        <Grid x:Name="grid5" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="89,206,0,0" Grid.Row="1" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -215,7 +213,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Model:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="modelIDTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding modelID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="modelIDTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding modelID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" TabIndex="5"/>
         </Grid>
         <Grid x:Name="grid6" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="43,243,0,0" Grid.Row="1" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
@@ -226,7 +224,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Model Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="modelNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding modelNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="modelNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding modelNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" TabIndex="6"/>
         </Grid>
         <Grid x:Name="grid7" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="77,280,0,0" Grid.Row="1" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
@@ -237,7 +235,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
         </Grid>
-        <Grid x:Name="grid11" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="339,174,0,0" Grid.Row="1" VerticalAlignment="Top">
+        <Grid x:Name="grid11" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="338,78,0,0" Grid.Row="1" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -246,9 +244,9 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Date Assigned:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <DatePicker x:Name="dateAssignedDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" SelectedDate="{Binding dateAssigned, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+            <DatePicker x:Name="dateAssignedDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" SelectedDate="{Binding dateAssigned, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" TabIndex="9"/>
         </Grid>
-        <Grid x:Name="grid12" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="671,20,0,0" Grid.Row="1" VerticalAlignment="Top">
+        <Grid x:Name="grid12" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="731,20,0,0" Grid.Row="1" VerticalAlignment="Top" Width="275">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -257,9 +255,9 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Date Record Modified:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <DatePicker x:Name="dateRecordModifiedDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" SelectedDate="{Binding dateRecordModified, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+            <DatePicker x:Name="dateRecordModifiedDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3,4,-27,4" Grid.Row="0" SelectedDate="{Binding dateRecordModified, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="132"/>
         </Grid>
-        <Grid x:Name="grid13" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="626,57,0,0" Grid.Row="1" VerticalAlignment="Top">
+        <Grid x:Name="grid13" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="26,20,0,0" Grid.Row="1" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -268,9 +266,9 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Record Modified By user ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="recordModifiedBy_userIDTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding recordModifiedBy_userID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="recordModifiedBy_userIDTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,0,0,4" Grid.Row="0" Text="{Binding recordModifiedBy_userID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Bottom" Width="120" IsEnabled="False"/>
         </Grid>
-        <Grid x:Name="grid14" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="332,206,0,0" Grid.Row="1" VerticalAlignment="Top">
+        <Grid x:Name="grid14" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="331,110,0,0" Grid.Row="1" VerticalAlignment="Top" Width="212">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -279,7 +277,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Date Purchased:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <DatePicker x:Name="datePurchasedDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" SelectedDate="{Binding datePurchased, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+            <DatePicker x:Name="datePurchasedDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" SelectedDate="{Binding datePurchased, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" TabIndex="10"/>
         </Grid>
         <DataGrid x:Name="documentationDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource documentationViewSource}}" Margin="731,124,10,10" Grid.Row="1" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
@@ -298,7 +296,7 @@
         <Label Content="Office:" HorizontalAlignment="Left" Margin="496,9,0,0" VerticalAlignment="Top" Width="44"/>
         <Label Content="Item Tag:" HorizontalAlignment="Left" Margin="191,10,0,0" VerticalAlignment="Top" Width="60"/>
         <Label x:Name="lblCompanyName" Content="Company Name" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="168"/>
-        <Grid x:Name="grid16" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="61,285,0,0" Grid.Row="1" VerticalAlignment="Top">
+        <Grid x:Name="grid16" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="75,285,0,0" Grid.Row="1" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -307,7 +305,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Category:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <ComboBox x:Name="categoryIDComboBox" Grid.Column="1" DisplayMemberPath="CategoryID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
+            <ComboBox x:Name="categoryIDComboBox" Grid.Column="1" DisplayMemberPath="CategoryID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120" TabIndex="7">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
@@ -324,7 +322,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Location:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <ComboBox x:Name="locationIDComboBox" Grid.Column="1" DisplayMemberPath="LocationID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
+            <ComboBox x:Name="locationIDComboBox" Grid.Column="1" DisplayMemberPath="LocationID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120" TabIndex="12">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
@@ -332,7 +330,7 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
         </Grid>
-        <Grid x:Name="grid18" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="76,322,0,0" Grid.Row="1" VerticalAlignment="Top">
+        <Grid x:Name="grid18" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="89,322,0,0" Grid.Row="1" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -341,7 +339,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Status:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <ComboBox x:Name="statusIDComboBox" Grid.Column="1" DisplayMemberPath="StatusID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
+            <ComboBox x:Name="statusIDComboBox" Grid.Column="1" DisplayMemberPath="StatusID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120" TabIndex="8">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
@@ -349,7 +347,7 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
         </Grid>
-        <Grid x:Name="grid19" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="348,322,0,0" Grid.Row="1" VerticalAlignment="Top">
+        <Grid x:Name="grid19" DataContext="{StaticResource inventoryViewSource}" HorizontalAlignment="Left" Margin="332,322,0,0" Grid.Row="1" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -358,7 +356,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Assigned To:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <ComboBox x:Name="assignedToComboBox" Grid.Column="1" DisplayMemberPath="assignedTo" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
+            <ComboBox x:Name="assignedToComboBox" Grid.Column="1" DisplayMemberPath="assignedTo" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120" TabIndex="11">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
@@ -375,7 +373,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Office:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <ComboBox x:Name="officeIDComboBox" Grid.Column="1" DisplayMemberPath="officeID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
+            <ComboBox x:Name="officeIDComboBox" Grid.Column="1" DisplayMemberPath="officeID" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120" TabIndex="11">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
@@ -384,6 +382,7 @@
             </ComboBox>
         </Grid>
         <Button x:Name="BtnAddDoc" Content="Add" HorizontalAlignment="Left" Margin="731,89,0,0" Grid.Row="1" VerticalAlignment="Top" Width="105" Click="BtnAddDoc_Click" Height="28"/>
+        <Label x:Name="lblerror" Content="" HorizontalAlignment="Left" Margin="256,375,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.342,0.577" Width="367" Foreground="Red" FontWeight="Bold" FontSize="14"/>
 
     </Grid>
 </Window>

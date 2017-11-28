@@ -79,6 +79,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -258,7 +259,7 @@
     <Content Include="DatabaseSQL.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Images\Office Map - Lincoln.jpg" />
+    <Resource Include="Images\Office Map- Special.jpg" />
     <Content Include="IMS_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>IMS_Model.edmx</DependentUpon>

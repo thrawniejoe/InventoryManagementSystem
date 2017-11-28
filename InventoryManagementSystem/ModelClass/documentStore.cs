@@ -19,10 +19,9 @@ namespace InventoryManagementSystem.ModelClass
                 var context = new InventoryManagementSystem.InventoryDBEntities();
 
                 Documentation newDoc = new Documentation();
-                newDoc.DocLink = path;
+                newDoc.DocLink = Properties.Settings.Default.DocumentsLocation + "\\" + filename;
                 newDoc.ItemID = tag;
                 newDoc.DateAdded = DateTime.Now;
-                newDoc.DocLink = filename;
                 context.Documentations.Add(newDoc);
                 context.SaveChanges();
 

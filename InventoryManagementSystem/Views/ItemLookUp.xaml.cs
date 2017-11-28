@@ -68,6 +68,21 @@ namespace InventoryManagementSystem.Views
                 InventoryListView();
                 LoadDocumentList();
             }
+            else if (RequestType == "LookUpItem")
+            {
+                itemNameTextBox.Text = "";
+                tagTextBox.Text = "";
+                serialNumberTextBox.Text = "";
+                manufacturerTextBox.Text = "";
+                modelIDTextBox.Text = "";
+                modelNumberTextBox.Text = "";
+                categoryIDComboBox.Text = "";
+                statusIDComboBox.Text = "";
+                officeIDComboBox.Text = "";
+                locationIDComboBox.Text = "";
+                assignedToComboBox.Text = "";
+            }
+
             // Load data into the table vInventoryListing. You can modify this code as needed.
             InventoryManagementSystem.InventoryDBDataSetTableAdapters.vInventoryListingTableAdapter inventoryDBDataSetvInventoryListingTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.vInventoryListingTableAdapter();
             inventoryDBDataSetvInventoryListingTableAdapter.Fill(inventoryDBDataSet.vInventoryListing);
@@ -201,7 +216,7 @@ namespace InventoryManagementSystem.Views
         {
             var context = new InventoryManagementSystem.InventoryDBEntities();
 
-            
+
 
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
@@ -227,7 +242,7 @@ namespace InventoryManagementSystem.Views
                         break;
                 }
             }
-            
+
         }
 
 
@@ -368,22 +383,33 @@ namespace InventoryManagementSystem.Views
         {
             string path;
             string filename;
-
-            OpenFileDialog file = new OpenFileDialog
+            try
             {
-                InitialDirectory = Properties.Settings.Default.DocumentsLocation
-            };
+                OpenFileDialog file = new OpenFileDialog
+                {
+                    InitialDirectory = Properties.Settings.Default.DocumentsLocation
+                };
 
-            if (file.ShowDialog() == true)
-            {
-                path = file.FileName;
-                filename = file.SafeFileName;
-                var mStore = new ModelClass.DocumentStore();
-                mStore.AddDocToDB(Properties.Settings.Default.DocumentsLocation, filename, currentItemID);
-                MessageBox.Show(path + " ||| " + Properties.Settings.Default.DocumentsLocation);
-                File.Copy(path, Properties.Settings.Default.DocumentsLocation);
-                LoadDocumentList();
+                if (file.ShowDialog() == true)
+                {
+                    path = file.FileName;
+                    filename = file.SafeFileName;
+                    var mStore = new ModelClass.DocumentStore();
+                    File.Copy(path, Properties.Settings.Default.DocumentsLocation + "\\" + filename, true);
+                    mStore.AddDocToDB(Properties.Settings.Default.DocumentsLocation, filename, currentItemID);
+                    LoadDocumentList();
+                }
             }
+            catch (Exception ex)
+            {
+                using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter(@System.AppDomain.CurrentDomain.BaseDirectory + "\\Log.txt", true))
+                {
+                    file.WriteLine(ex);
+                }
+                lblerror.Content = "An error occured during the last operation, please check the Error Log.";
+            }
+
         }
 
         private void LoadDocumentList()

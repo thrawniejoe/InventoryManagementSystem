@@ -8,11 +8,12 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+//using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using WinForms = System.Windows.Forms;
 
 
 
@@ -83,7 +84,7 @@ namespace InventoryManagementSystem
             inventoryDBDataSetCategoriesTableAdapter.Fill(inventoryDBDataSet.Categories);
             System.Windows.Data.CollectionViewSource categoriesViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("categoriesViewSource")));
             categoriesViewSource.View.MoveCurrentToFirst();
-
+            txtDocDir.Text = Properties.Settings.Default.DocumentsLocation;
             ShowTotals();
         }
 
@@ -656,39 +657,6 @@ namespace InventoryManagementSystem
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)  //TESTING BUTTON
-        {
-            var context = new InventoryManagementSystem.InventoryDBEntities();
-            Inventory newItem = new Inventory();
-            //Boolean validated = true;
-            //DO VALIDATION CHECK HERE
-
-            //if (validated == true)
-            //{
-            using (var db = new InventoryDBEntities())
-            {
-                newItem.CategoryID = 1;
-                //newItem.dateAssigned = dateAssignedDatePicker.SelectedDate;
-                //newItem.datePurchased = datePurchasedDatePicker.SelectedDate;
-                //newItem.dateRecordModified = dateRecordModifiedDatePicker.SelectedDate;
-                newItem.assignedTo = 1;
-                newItem.tag = "test1";
-                newItem.StatusID = 1;
-                newItem.serialNumber = "test123";
-                newItem.officeID = 1;
-                newItem.modelID = 1;
-                newItem.manufacturer = "test";
-                newItem.recordModifiedBy_userID = 3;
-                newItem.itemName = "test";
-                //newItem.modelID = Convert.ToInt16(modelIDComboBox.SelectedItem);
-                newItem.LocationID = 1;
-                db.Inventories.Add(newItem);
-                db.SaveChanges();
-                RefreshInventory();
-                MessageBox.Show("Item added");
-            }
-        }
-
 
         //****************************//
         //    END SETTINGS IMPORTER   //
@@ -696,34 +664,14 @@ namespace InventoryManagementSystem
 
         private void BtnChangeDocDir_Click(object sender, RoutedEventArgs e)
         {
-
             string path;
-            FolderBrowserDialog file = new FolderBrowserDialog();
-            if (file.ShowDialog() == DialogResult.OK)
+            WinForms.FolderBrowserDialog file = new WinForms.FolderBrowserDialog();
+            if (file.ShowDialog() == WinForms.DialogResult.OK)
             {
                 path = file.SelectedPath;
                 txtDocDir.Text = path;
+                Properties.Settings.Default.DocumentsLocation = path;
             }
-            //var dlg = new CommonOpenFileDialog();
-            //dlg.Title = "My Title";
-            //dlg.IsFolderPicker = true;
-            //dlg.InitialDirectory = currentDirectory;
-
-            //dlg.AddToMostRecentlyUsedList = false;
-            //dlg.AllowNonFileSystemItems = false;
-            //dlg.DefaultDirectory = currentDirectory;
-            //dlg.EnsureFileExists = true;
-            //dlg.EnsurePathExists = true;
-            //dlg.EnsureReadOnly = false;
-            //dlg.EnsureValidNames = true;
-            //dlg.Multiselect = false;
-            //dlg.ShowPlacesList = true;
-
-            //if (dlg.ShowDialog() == CommonFileDialogResult.Ok)
-            //{
-            //    var folder = dlg.FileName;
-            //    // Do something with selected folder string
-            //}
         }
 
     }

@@ -194,26 +194,22 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TabItem}">
                         <Border x:Name="Border" BorderThickness="0,0,0,0" CornerRadius="0,0,0,0"
-                        Padding="5,5,5,5" Margin="0,0,0,0" BorderBrush="#00E0E0E0">
+                        Padding="5,5,5,5" BorderBrush="#00E0E0E0" Margin="0,-1,0,1">
                             <ContentPresenter x:Name="ContentSite" ContentSource="Header" HorizontalAlignment="Center" VerticalAlignment="Center" />
-
                         </Border>
-
                         <ControlTemplate.Triggers>
-
                             <Trigger Property="IsSelected" Value="True">
-
                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                 <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="White"/>
-                                <Setter Property="BorderBrush" TargetName="Border" Value="#00DCDCDC"/>
+                                <Setter Property="BorderBrush" TargetName="Border" Value="Black"/>
                                 <Setter Property="FontWeight" Value="Normal"/>
-                                <Setter Property="BorderThickness" TargetName="Border" Value="1"/>
+                                <Setter Property="BorderThickness" TargetName="Border" Value="0"/>
                                 <Setter Property="Background" TargetName="Border">
                                     <Setter.Value>
                                         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                                            <GradientStop Color="#FF3BE330" Offset="0"/>
-                                            <GradientStop Color="#FF2DA092" Offset="1"/>
-                                            <GradientStop Color="#FF14B71C" Offset="0.768"/>
+                                            <GradientStop Color="#FF25E618" Offset="0"/>
+                                            <GradientStop Color="#FF155B2B" Offset="1"/>
+                                            <GradientStop Color="#FF14B71C" Offset="0.762"/>
                                         </LinearGradientBrush>
                                     </Setter.Value>
                                 </Setter>
@@ -257,7 +253,7 @@
                                 </Setter>
 
                                 <Setter Property="CornerRadius" TargetName="Border" Value="0"/>
-                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="BorderThickness" Value="0"/>
                                 <Setter Property="BorderBrush" Value="Black"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -292,13 +288,13 @@
                                 <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="White"/>
                                 <Setter Property="BorderBrush" TargetName="Border" Value="#00DCDCDC"/>
                                 <Setter Property="FontWeight" Value="Normal"/>
-                                <Setter Property="BorderThickness" TargetName="Border" Value="1"/>
+                                <Setter Property="BorderThickness" TargetName="Border" Value="0"/>
                                 <Setter Property="Background" TargetName="Border">
                                     <Setter.Value>
                                         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                                            <GradientStop Color="#FFE33030" Offset="0"/>
-                                            <GradientStop Color="#FFA02D2D" Offset="1"/>
-                                            <GradientStop Color="#FFB71414" Offset="0.768"/>
+                                            <GradientStop Color="#FF25E618" Offset="0"/>
+                                            <GradientStop Color="#FF155B2B" Offset="1"/>
+                                            <GradientStop Color="#FF14B71C" Offset="0.762"/>
                                         </LinearGradientBrush>
                                     </Setter.Value>
                                 </Setter>
@@ -343,7 +339,7 @@
                                 </Setter>
 
                                 <Setter Property="CornerRadius" TargetName="Border" Value="0"/>
-                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="BorderThickness" Value="0"/>
                                 <Setter Property="BorderBrush" Value="Black"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -377,7 +373,7 @@
                     <GradientStop Color="#FFD2D5D9" Offset="0.991"/>
                 </LinearGradientBrush>
             </TabControl.Background>
-            <TabItem Header="Home" Margin="0,36,0,-60" Style="{DynamicResource TabItemStyleSideBar}">
+            <TabItem Header="Home" Margin="0,50,0,-50" Style="{DynamicResource TabItemStyleSideBar}" Height="100">
                 <Grid Margin="0,0,0,-0.333" Width="974">
                     <Grid.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -403,7 +399,7 @@
                     <Label x:Name="lblEmployeesActiveTotal" Content="Label" HorizontalAlignment="Left" Margin="727,252,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Inventory" Margin="0,60,0,-60" Style="{DynamicResource TabItemStyleSideBar}">
+            <TabItem Header="Inventory" Margin="0,50,0,-50" Style="{DynamicResource TabItemStyleSideBar}" Height="100">
                 <TabControl Width="976" Margin="0,39,0,7">
                     <TabControl.Resources>
                         <Style TargetType="{x:Type TabItem}">
@@ -429,10 +425,11 @@
                                     <GradientStop Color="#FFC3C3C3" Offset="1"/>
                                 </LinearGradientBrush>
                             </Grid.Background>
-                            <WrapPanel HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" VerticalAlignment="Top" Width="950">
-                                <Button x:Name="btnAddItem" Content="Add Item" Width="75" Click="BtnAddItem_Click"/>
-                                <Button x:Name="btnClearFilter" Content="Clear Filter" Width="75" Click="BtnClearFilter_Click"/>
+                            <WrapPanel HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" VerticalAlignment="Top" Width="950" RenderTransformOrigin="0,0">
+                                <Button x:Name="btnAddItem" Content="Add Item" Width="120" Click="BtnAddItem_Click" Height="30"/>
+                                <Label Content="Filter List:" Width="62" HorizontalAlignment="Right"/>
                                 <ComboBox x:Name="cboFilterList" Width="120" SelectionChanged="CboFilterList_SelectionChanged"/>
+                                <Button x:Name="btnClearFilter"  Content="Clear Filter" Width="120" Click="BtnClearFilter_Click" Height="30"/>
                             </WrapPanel>
                             <DataGrid x:Name="vInventoryListDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource inventoryViewSource}}" Margin="10,50,10,10" RowDetailsVisibilityMode="VisibleWhenSelected" GridLinesVisibility="None" CanUserResizeColumns="False" SelectionMode="Single" CanUserAddRows="True" CanUserDeleteRows="False" CanUserResizeRows="False">
                                 <DataGrid.Columns>
@@ -443,20 +440,20 @@
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
-                                    <DataGridTextColumn x:Name="itemNameColumn" Binding="{Binding itemName}" Header="item Name" Width="120"/>
-                                    <DataGridTextColumn x:Name="tagColumn" Binding="{Binding tag}" Header="tag" Width="90"/>
+                                    <DataGridTextColumn x:Name="itemNameColumn" Binding="{Binding itemName}" Header="Item Name" Width="120"/>
+                                    <DataGridTextColumn x:Name="tagColumn" Binding="{Binding tag}" Header="Tag" Width="90"/>
                                     <DataGridTextColumn x:Name="categoryNameColumn" Binding="{Binding CategoryName}" Header="Category Name" Width="100"/>
                                     <DataGridTextColumn x:Name="locationColumn" Binding="{Binding Location}" Header="Location" Width="100"/>
                                     <DataGridTextColumn x:Name="statusColumn" Binding="{Binding Status}" Header="Status" Width="60"/>
                                     <DataGridTextColumn x:Name="nameColumn1" Binding="{Binding Name}" Header="Name" Width="120"/>
-                                    <DataGridTemplateColumn x:Name="dateAssignedColumn" Header="date Assigned" Width="120">
+                                    <DataGridTemplateColumn x:Name="dateAssignedColumn" Header="Date Assigned" Width="120">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <DatePicker SelectedDate="{Binding dateAssigned, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
-                                    <DataGridTemplateColumn x:Name="dateRecordModifiedColumn" Header="date Record Modified" Width="120">
+                                    <DataGridTemplateColumn x:Name="dateRecordModifiedColumn" Header="Date Record Modified" Width="120">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <DatePicker SelectedDate="{Binding dateRecordModified, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
@@ -465,16 +462,12 @@
                                     </DataGridTemplateColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
-                            <Button x:Name="btnLookUpItem" Content="Look Up Item" HorizontalAlignment="Left" Margin="329,11,0,0" VerticalAlignment="Top" Width="75" Click="BtnLookUpItem_Click"/>
-                            <Button Content="Button" HorizontalAlignment="Left" Margin="440,11,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+                            <Button x:Name="btnLookUpItem" Content="Look Up Item" HorizontalAlignment="Left" Margin="509,10,0,0" VerticalAlignment="Top" Width="120" Click="BtnLookUpItem_Click" Height="30"/>
                         </Grid>
-                    </TabItem>
-                    <TabItem Header="Item Details">
-                        <Grid Background="#FFE5E5E5"/>
                     </TabItem>
                 </TabControl>
             </TabItem>
-            <TabItem Header="Personnel" Margin="0,60,0,-60" Style="{DynamicResource TabItemStyleSideBar}">
+            <TabItem Header="Personnel" Margin="0,49,0,-49" Style="{DynamicResource TabItemStyleSideBar}" Height="100">
                 <Grid DataContext="{StaticResource employeesViewSource}">
                     <DataGrid x:Name="employeesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,80,10.333,9.667" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
@@ -504,9 +497,8 @@
                     <Button x:Name="BtnAddEmployee" Content="Add Employee" HorizontalAlignment="Left" Margin="96,40,0,0" VerticalAlignment="Top" Width="88" Click="BtnAddEmployee_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Building Map" Margin="0,60,0,-60" Style="{DynamicResource TabItemStyleSideBar}"/>
-            <TabItem Header="Reports" Margin="0,60,0,-60" Style="{DynamicResource TabItemStyleSideBar}"/>
-            <TabItem Header="Settings" Margin="-2,60,0,-60" Style="{DynamicResource TabItemStyleSideBar}">
+            <TabItem Header="Building Map" Margin="0,48,0,-48" Style="{DynamicResource TabItemStyleSideBar}" Height="100"/>
+            <TabItem Header="Settings" Margin="-2,47,0,-47" Style="{DynamicResource TabItemStyleSideBar}" Height="100">
 
                 <Grid Margin="0,0,0,0">
                     <Button x:Name="BtnImportInventory" Content="Import" HorizontalAlignment="Left" Margin="102,100,0,0" VerticalAlignment="Top" Width="75" Click="BtnImportInventory_Click"/>
@@ -523,7 +515,7 @@
                 </Grid>
 
             </TabItem>
-            <TabItem Header="Administration"  Style="{DynamicResource TabItemStyleSideBarAdmin}" Margin="-2,59.667,0,-59.667" Name="tabAdmin" Background="Red" Height="84" VerticalAlignment="Top" ContextMenuOpening="tabAdmin_ContextMenuOpening" Foreground="Black">
+            <TabItem Header="Administration"  Style="{DynamicResource TabItemStyleSideBarAdmin}" Margin="-2,46,0,-46" Name="tabAdmin" Background="Red" Height="102" VerticalAlignment="Top" ContextMenuOpening="tabAdmin_ContextMenuOpening" Foreground="Black">
                 <TabControl Width="976" Margin="0,39,0,7">
                     <TabControl.Resources>
                         <Style TargetType="{x:Type TabItem}">
@@ -544,10 +536,9 @@
                     <TabItem Header="User Management" Style="{DynamicResource TabItemStyle1}" HorizontalAlignment="Left" Width="123" Margin="0,0,-13,0">
                         <Grid Background="#FFE5E5E5" DataContext="{StaticResource usersViewSource}">
                             <WrapPanel HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" VerticalAlignment="Top" Width="950">
-                                <Button x:Name="btnAdd" Content="Add" Width="75" Click="BtnAdd_Click"/>
-                                <Button x:Name="btnRemove" Content="Remove" Width="75"/>
-                                <Button x:Name="btnClear" Content="Clear Filter" Width="75"/>
-                                <ComboBox Width="120"/>
+                                <Button x:Name="btnAdd" Content="Add" Width="120" Click="BtnAdd_Click" Height="30"/>
+                                <Button x:Name="btnClear" Content="Clear Filter" Width="120"/>
+                                <ComboBox Width="128"/>
                             </WrapPanel>
                             <DataGrid x:Name="usersDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="109,50,352,214" RowDetailsVisibilityMode="VisibleWhenSelected">
                                 <DataGrid.Columns>
@@ -642,19 +633,6 @@
                     </TabItem>
                     <TabItem Header="Locations" Style="{DynamicResource TabItemStyle1}" HorizontalAlignment="Left" Width="88" Margin="-2,0,-15,0">
                         <Grid Background="#FFE5E5E5" DataContext="{StaticResource locationsViewSource}" Width="960">
-                            <DataGrid x:Name="locationsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,46,303,249" RowDetailsVisibilityMode="VisibleWhenSelected" HorizontalAlignment="Right" Width="365">
-                                <DataGrid.Columns>
-                                    <DataGridTemplateColumn x:Name="deleteLocationColumn" Header="" Width="80">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <Button x:Name="btnDeleteLocation" Content="Delete" Tag="{Binding LocationID}" BorderThickness="0" Margin="0" Padding="1" Grid.IsSharedSizeScope="False" Width="Auto" Click="BtnDeleteLocation_CLick"/>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn x:Name="locationColumn2" Binding="{Binding Location}" Header="Location" Width="120"/>
-                                    <DataGridTextColumn x:Name="stateColumn" Binding="{Binding State}" Header="State" Width="120"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
                             <Grid x:Name="grid4" HorizontalAlignment="Left" Margin="62,100,0,0" VerticalAlignment="Top">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
@@ -678,11 +656,26 @@
                                 <TextBox x:Name="stateTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding State, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                             </Grid>
                             <Button x:Name="BtnAddLocation" Content="Add Location" HorizontalAlignment="Left" Margin="113,190,0,0" VerticalAlignment="Top" Width="120" Click="BtnAddLocation_Click" Height="30"/>
+                            <DataGrid x:Name="locationsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="313,37,313,10" RowDetailsVisibilityMode="VisibleWhenSelected">
+
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn x:Name="deleteLocationColumn" Header="" Width="80">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button x:Name="btnDeleteLocation" Content="Delete" Tag="{Binding LocationID}" BorderThickness="0" Margin="0" Padding="1" Grid.IsSharedSizeScope="False" Width="Auto" Click="BtnDeleteLocation_CLick"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                    <DataGridTextColumn x:Name="locationColumn3" Binding="{Binding Location}" Header="Location" Width="120"/>
+                                    <DataGridTextColumn x:Name="stateColumn1" Binding="{Binding State}" Header="State" Width="120"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </Grid>
                     </TabItem>
                     <TabItem Header="Categories" Style="{DynamicResource TabItemStyle1}" HorizontalAlignment="Left" Width="93" Margin="-2,0,-20,0">
                         <Grid Background="#FFE5E5E5" DataContext="{StaticResource categoriesViewSource}" Width="955">
-                            <DataGrid x:Name="categoriesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,56,356,298" RowDetailsVisibilityMode="VisibleWhenSelected" HorizontalAlignment="Right" Width="263">
+                            <DataGrid x:Name="categoriesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,56,387,298" RowDetailsVisibilityMode="VisibleWhenSelected" HorizontalAlignment="Right" Width="232">
                                 <DataGrid.Columns>
                                     <DataGridTemplateColumn x:Name="deleteCategoryColumn" Header="" Width="80">
                                         <DataGridTemplateColumn.CellTemplate>
