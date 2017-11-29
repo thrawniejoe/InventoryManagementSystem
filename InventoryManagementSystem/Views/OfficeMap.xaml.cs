@@ -27,14 +27,16 @@ namespace InventoryManagementSystem.Views
         private void LoadMap()
         {
             //Get Data From Offices Table then assign a username and office ID to all button text based on button tag
-                var context = new InventoryManagementSystem.InventoryDBEntities();
+            var context = new InventoryManagementSystem.InventoryDBEntities();
+
 
             foreach (Button b in FindVisualChildren<Button>(this))
             {
-                if (b.Tag != "menuItem")
+                if (Convert.ToString(b.Tag) != "menuItem")
                 {
+                    string tag = b.Tag.ToString();
                     var selectedOffice = (from o in context.OfficeLists
-                                          where o.officeName == b.Tag
+                                          where o.officeName == tag
                                           select o.officeName).FirstOrDefault();
 
                     var empName = (from emp in context.Employees
@@ -68,25 +70,35 @@ namespace InventoryManagementSystem.Views
         }
 
         ////goes to asset lookup with selected office
-        //private void officeClick(object sender)
-        //{
-        //    Button clickedButton = sender as Button;
+        private void officeClick(object sender)
+        {
+            Button clickedButton = sender as Button;
 
-        //    //gets the id for the record corrently selected
-        //    string OfficeID = clickedButton.Tag.ToString();
+            //gets the id for the record corrently selected
+            string OfficeID = clickedButton.Tag.ToString();
 
-        //    AssetLookUp frmAssLUp = new AssetLookUp();
-        //    frmAssLUp.JobReq = "OfficeID";
-        //    frmAssLUp.OfficeId = OfficeID;
-        //    //frmAssLUp.SendObjectId = dataid;
-        //    frmAssLUp.MdiParent = MainMenu.ActiveForm;
-        //    frmAssLUp.Show();
-        //    this.Close();
-        //}
+            Views.ItemLookUp frmAssLUp = new Views.ItemLookUp();
+            frmAssLUp.RequestType = "OfficeLookUp";
+            frmAssLUp.officeNumber = OfficeID;
+            //frmAssLUp.SendObjectId = dataid;
+            frmAssLUp.Show();
+            this.Close();
+        }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadMap();
+            lblCompanyName.Content = Properties.Settings.Default.CompanyName;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            officeClick(sender);
         }
     }
 

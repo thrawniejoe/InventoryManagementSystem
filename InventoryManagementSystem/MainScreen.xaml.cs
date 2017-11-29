@@ -11,6 +11,7 @@ using System.Windows.Documents;
 //using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WinForms = System.Windows.Forms;
@@ -674,5 +675,22 @@ namespace InventoryManagementSystem
             }
         }
 
+        private void BtnOpenMap_Click(object sender, RoutedEventArgs e)
+        {
+            Views.OfficeMap addEmployee = new Views.OfficeMap
+            {
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
+            addEmployee.ShowDialog();
+        }
+
+        private void BtnUpdateCompName_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.CompanyName = txtCompanyName.Text;
+            lblCNUpdateMsg.Content = "Company name updated to " + txtCompanyName.Text;
+            Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+            sb.Begin(lblCNUpdateMsg);
+        }
     }
 }

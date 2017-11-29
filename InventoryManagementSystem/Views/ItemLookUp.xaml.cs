@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -27,6 +28,7 @@ namespace InventoryManagementSystem.Views
         public event Refresh RefreshPage;
         public string RequestType;
         private string searchType;
+        public string officeNumber;
 
         public ItemLookUp()
         {
@@ -70,18 +72,16 @@ namespace InventoryManagementSystem.Views
             }
             else if (RequestType == "LookUpItem")
             {
-                itemNameTextBox.Text = "";
-                tagTextBox.Text = "";
-                serialNumberTextBox.Text = "";
-                manufacturerTextBox.Text = "";
-                modelIDTextBox.Text = "";
-                modelNumberTextBox.Text = "";
-                categoryIDComboBox.Text = "";
-                statusIDComboBox.Text = "";
-                officeIDComboBox.Text = "";
-                locationIDComboBox.Text = "";
-                assignedToComboBox.Text = "";
+                clearAll();
             }
+            else if (RequestType == "OfficeLookUp")
+            {
+                LoadOfficeLUData(officeNumber);
+                cboOfficeList.Text = officeNumber;
+                clearAll();
+            }
+
+            
 
             // Load data into the table vInventoryListing. You can modify this code as needed.
             InventoryManagementSystem.InventoryDBDataSetTableAdapters.vInventoryListingTableAdapter inventoryDBDataSetvInventoryListingTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.vInventoryListingTableAdapter();
@@ -90,6 +90,26 @@ namespace InventoryManagementSystem.Views
             vInventoryListingViewSource.View.MoveCurrentToFirst();
         }
 
+        private void clearAll()
+        {
+            itemNameTextBox.Text = "";
+            tagTextBox.Text = "";
+            serialNumberTextBox.Text = "";
+            manufacturerTextBox.Text = "";
+            modelIDTextBox.Text = "";
+            modelNumberTextBox.Text = "";
+            categoryIDComboBox.Text = "";
+            statusIDComboBox.Text = "";
+            officeIDComboBox.Text = "";
+            locationIDComboBox.Text = "";
+            assignedToComboBox.Text = "";
+        }
+
+        private void LoadOfficeLUData(string officeNumber)
+        {
+            
+
+        }
 
         public void GetID(int myid)
         {
@@ -166,7 +186,6 @@ namespace InventoryManagementSystem.Views
         {
             vInventoryListDataGrid.ItemsSource = null;
             var context = new InventoryManagementSystem.InventoryDBEntities();
-
 
             var SelectedItem = (from i in context.vInventoryListings
                                 where i.itemID == currentItemID  //lists by userid
@@ -326,7 +345,6 @@ namespace InventoryManagementSystem.Views
                 //Get Item ID
                 var row = (vInventoryListing)vInventoryListDataGrid.SelectedItem;
                 currentItemID = row.itemID;
-
                 //Reload Inventory
                 InventoryListView();
             }
@@ -351,8 +369,6 @@ namespace InventoryManagementSystem.Views
 
         private void CboOfficeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //if (cboOfficeList.SelectedItem != null)
-            //{
             var context = new InventoryManagementSystem.InventoryDBEntities();
             var id = Convert.ToInt16(cboOfficeList.SelectedValue);
 
@@ -362,8 +378,6 @@ namespace InventoryManagementSystem.Views
 
             vInventoryListDataGrid.ItemsSource = null;
             vInventoryListDataGrid.ItemsSource = getOfficeList;
-            //}
-
         }
 
         private void CboTagList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -408,6 +422,8 @@ namespace InventoryManagementSystem.Views
                     file.WriteLine(ex);
                 }
                 lblerror.Content = "An error occured during the last operation, please check the Error Log.";
+                Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                sb.Begin(lblerror);
             }
 
         }
