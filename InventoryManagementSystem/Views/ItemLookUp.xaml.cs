@@ -235,32 +235,39 @@ namespace InventoryManagementSystem.Views
         {
             var context = new InventoryManagementSystem.InventoryDBEntities();
 
-
-
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
+            MessageBox.Show(currentItemID.ToString());
+            if (currentItemID != 0)
             {
-                Inventory nu = new Inventory { itemID = currentItemID };
-                context.Inventories.Attach(nu); //attaches the user object by the id given to the object above
-                context.Inventories.Remove(nu); //Adds the change to Deletes the user from the database
-                context.SaveChanges();  //Saves changes to the database
-                RefreshPage();
-                this.Close();
-
-                //check the search method and refresh list
-                switch (searchType)
+                MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
                 {
-                    case "EmployeeSearch":
+                    Inventory nu = new Inventory { itemID = currentItemID };
+                    context.Inventories.Attach(nu); //attaches the user object by the id given to the object above
+                    context.Inventories.Remove(nu); //Adds the change to Deletes the user from the database
+                    context.SaveChanges();  //Saves changes to the database
+                    RefreshPage();
+                    this.Close();
 
-                        break;
-                    case "OfficeSearch":
+                    //check the search method and refresh list
+                    switch (searchType)
+                    {
+                        case "EmployeeSearch":
 
-                        break;
-                    case "TagSearch":
+                            break;
+                        case "OfficeSearch":
 
-                        break;
+                            break;
+                        case "TagSearch":
+
+                            break;
+                    }
                 }
             }
+            else
+            {
+                MessageBox.Show("No item is selected");
+            }
+            
 
         }
 

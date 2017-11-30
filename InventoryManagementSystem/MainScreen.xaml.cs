@@ -340,10 +340,10 @@ namespace InventoryManagementSystem
 
         private void BtnLookUpItem_Click(object sender, RoutedEventArgs e)
         {
-            Button b = sender as Button;
-            int myid = Convert.ToInt16(b.Tag);
+            //Button b = sender as Button;
+            //int myid = Convert.ToInt16(b.Tag);
             Views.ItemLookUp lookUp = new Views.ItemLookUp();
-            getItemID del = new getItemID(lookUp.GetID);
+            //getItemID del = new getItemID(lookUp.GetID);
             lookUp.RequestType = "LookUpItem";
             lookUp.Owner = this;
             lookUp.WindowStartupLocation = WindowStartupLocation.CenterOwner;
