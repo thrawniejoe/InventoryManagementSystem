@@ -520,7 +520,7 @@
             <TabItem Header="Building Map" Margin="0,48,0,-48" Style="{DynamicResource TabItemStyleSideBar}" Height="100">
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource usersViewSource}" Margin="0,0,0,16">
                     <WrapPanel HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" VerticalAlignment="Top" Width="950"/>
-                    <Button x:Name="BtnOpenMap" Content="Button" HorizontalAlignment="Left" Margin="129,70,0,0" VerticalAlignment="Top" Width="75" Click="BtnOpenMap_Click"/>
+                    <Button x:Name="BtnOpenMap" Content="Open Map" HorizontalAlignment="Left" Margin="113,86,0,0" VerticalAlignment="Top" Width="724" Click="BtnOpenMap_Click" Height="513" FontSize="24"/>
                 </Grid>
             </TabItem>
 
@@ -535,13 +535,13 @@
                     <Button x:Name="BtnOpenDocDir" Content="Open Directory" HorizontalAlignment="Left" Margin="102,238,0,0" VerticalAlignment="Top" Width="107"/>
                     <Button x:Name="BtnChangeDocDir" Content="Change Directory" HorizontalAlignment="Left" Margin="102,263,0,0" VerticalAlignment="Top" Width="107" Click="BtnChangeDocDir_Click"/>
                     <TextBox x:Name="txtDocDir" HorizontalAlignment="Left" Height="23" Margin="214,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378"/>
-                    <Label x:Name="lblImportStatus" Content="Label" HorizontalAlignment="Left" Margin="208,166,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblImportStatus" Content="" HorizontalAlignment="Left" Margin="208,166,0,0" VerticalAlignment="Top" Width="317"/>
                     <Button x:Name="BtnPickFileImport" Content="Button" HorizontalAlignment="Left" Margin="530,97,0,0" VerticalAlignment="Top" Width="75" Click="BtnPickFileImport_Click"/>
-                    <Button x:Name="BtnUpdateCompName" Content="Submit" HorizontalAlignment="Left" Margin="245,404,0,0" VerticalAlignment="Top" Width="101" Click="BtnUpdateCompName_Click"/>
-                    <TextBox x:Name="txtCompanyName" HorizontalAlignment="Left" Height="23" Margin="245,376,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="329"/>
-                    <Label Content="Company Name" HorizontalAlignment="Left" Margin="245,350,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="BtnUpdateCompName" Content="Submit" HorizontalAlignment="Left" Margin="108,377,0,0" VerticalAlignment="Top" Width="101" Click="BtnUpdateCompName_Click"/>
+                    <TextBox x:Name="txtCompanyName" HorizontalAlignment="Left" Height="23" Margin="214,376,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="329"/>
+                    <Label Content="Company Name" HorizontalAlignment="Left" Margin="214,345,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="lblCNUpdateMsg" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="245,431,0,0" VerticalAlignment="Top" Width="329" Foreground="#FF00B819">
- 
+
                     </Label>
 
                 </Grid>

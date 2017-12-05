@@ -613,7 +613,7 @@ namespace InventoryManagementSystem
                                 context.SaveChanges();
 
                         }
-                        
+                      
                     }
                     PbImportProgressBar.Value = 100;
                     lblImportStatus.Content = "Done";
