@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -27,6 +28,10 @@ namespace InventoryManagementSystem
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+
+            
             //add user check here
             var password = txtPassword.Password;
             var context = new InventoryManagementSystem.InventoryDBEntities();
@@ -52,7 +57,17 @@ namespace InventoryManagementSystem
             }
             else
             {
-                MessageBox.Show("Invalid Username and/or Password. Please try again.");
+                lblError.Content = "Invalid Username and / or Password.Please try again.";
+                Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                sb.Begin(lblError);
+                //MessageBox.Show("Invalid Username and/or Password. Please try again.");
+            }
+            }
+            catch
+            {
+                lblError.Content = "No password found";
+                Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                sb.Begin(lblError);
             }
         }
 
@@ -69,7 +84,6 @@ namespace InventoryManagementSystem
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
             InventoryManagementSystem.InventoryDBDataSet inventoryDBDataSet = ((InventoryManagementSystem.InventoryDBDataSet)(this.FindResource("inventoryDBDataSet")));
             // Load data into the table Users. You can modify this code as needed.
             InventoryManagementSystem.InventoryDBDataSetTableAdapters.UsersTableAdapter inventoryDBDataSetUsersTableAdapter = new InventoryManagementSystem.InventoryDBDataSetTableAdapters.UsersTableAdapter();

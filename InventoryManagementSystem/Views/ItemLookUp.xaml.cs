@@ -55,6 +55,7 @@ namespace InventoryManagementSystem.Views
             System.Windows.Data.CollectionViewSource documentationViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("documentationViewSource")));
             documentationViewSource.View.MoveCurrentToFirst();
             LoadDat();
+            lblCompanyName.Content = Properties.Settings.Default.CompanyName;
 
             if (Properties.Settings.Default.DocumentsLocation == "")
             {
@@ -72,13 +73,13 @@ namespace InventoryManagementSystem.Views
             }
             else if (RequestType == "LookUpItem")
             {
-                clearAll();
+                ClearAll();
             }
             else if (RequestType == "OfficeLookUp")
             {
                 LoadOfficeLUData(officeNumber);
                 cboOfficeList.Text = officeNumber;
-                clearAll();
+                ClearAll();
             }
 
             
@@ -90,7 +91,7 @@ namespace InventoryManagementSystem.Views
             vInventoryListingViewSource.View.MoveCurrentToFirst();
         }
 
-        private void clearAll()
+        private void ClearAll()
         {
             itemNameTextBox.Text = "";
             tagTextBox.Text = "";
@@ -235,16 +236,18 @@ namespace InventoryManagementSystem.Views
         {
             var context = new InventoryManagementSystem.InventoryDBEntities();
 
-            MessageBox.Show(currentItemID.ToString());
+            //MessageBox.Show(currentItemID.ToString());
             if (currentItemID != 0)
             {
                 MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
                     Inventory nu = new Inventory { itemID = currentItemID };
+                    string itemName = nu.itemName;
                     context.Inventories.Attach(nu); //attaches the user object by the id given to the object above
                     context.Inventories.Remove(nu); //Adds the change to Deletes the user from the database
                     context.SaveChanges();  //Saves changes to the database
+                    MessageBox.Show(itemName + " has been deleted");
                     RefreshPage();
                     this.Close();
 

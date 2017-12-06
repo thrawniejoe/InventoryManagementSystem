@@ -524,7 +524,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Settings" Margin="-2,47,0,-47" Style="{DynamicResource TabItemStyleSideBar}" Height="100">
+            <TabItem Header="Settings" Name="tabSettings" Margin="-2,47,0,-47" Style="{DynamicResource TabItemStyleSideBar}" Height="100">
 
                 <Grid Margin="0,0,0,0" Width="1487">
                     <Button x:Name="BtnImportInventory" Content="Import" HorizontalAlignment="Left" Margin="102,97,0,0" VerticalAlignment="Top" Width="101" Click="BtnImportInventory_Click"/>
@@ -536,7 +536,7 @@
                     <Button x:Name="BtnChangeDocDir" Content="Change Directory" HorizontalAlignment="Left" Margin="102,263,0,0" VerticalAlignment="Top" Width="107" Click="BtnChangeDocDir_Click"/>
                     <TextBox x:Name="txtDocDir" HorizontalAlignment="Left" Height="23" Margin="214,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378"/>
                     <Label x:Name="lblImportStatus" Content="" HorizontalAlignment="Left" Margin="208,166,0,0" VerticalAlignment="Top" Width="317"/>
-                    <Button x:Name="BtnPickFileImport" Content="Button" HorizontalAlignment="Left" Margin="530,97,0,0" VerticalAlignment="Top" Width="75" Click="BtnPickFileImport_Click"/>
+                    <Button x:Name="BtnPickFileImport" Content="Select File" HorizontalAlignment="Left" Margin="530,97,0,0" VerticalAlignment="Top" Width="75" Click="BtnPickFileImport_Click"/>
                     <Button x:Name="BtnUpdateCompName" Content="Submit" HorizontalAlignment="Left" Margin="108,377,0,0" VerticalAlignment="Top" Width="101" Click="BtnUpdateCompName_Click"/>
                     <TextBox x:Name="txtCompanyName" HorizontalAlignment="Left" Height="23" Margin="214,376,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="329"/>
                     <Label Content="Company Name" HorizontalAlignment="Left" Margin="214,345,0,0" VerticalAlignment="Top"/>
@@ -688,7 +688,7 @@
                                 <TextBox x:Name="stateTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding State, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                             </Grid>
                             <Button x:Name="BtnAddLocation" Content="Add Location" HorizontalAlignment="Left" Margin="133,174,0,0" VerticalAlignment="Top" Width="120" Click="BtnAddLocation_Click" Height="30"/>
-                            <DataGrid x:Name="locationsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="277,26,349,21" RowDetailsVisibilityMode="VisibleWhenSelected">
+                            <DataGrid x:Name="locationsDataGridAdmin" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="277,26,349,21" RowDetailsVisibilityMode="VisibleWhenSelected">
 
                                 <DataGrid.Columns>
                                     <DataGridTemplateColumn x:Name="deleteLocationColumn" Header="" Width="80">

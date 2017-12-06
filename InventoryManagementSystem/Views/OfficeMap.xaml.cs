@@ -19,6 +19,9 @@ namespace InventoryManagementSystem.Views
     /// </summary>
     public partial class OfficeMap : Window
     {
+        public delegate void Refresh();
+        public event Refresh RefreshPage;
+
         public OfficeMap()
         {
             InitializeComponent();
@@ -80,9 +83,15 @@ namespace InventoryManagementSystem.Views
             Views.ItemLookUp frmAssLUp = new Views.ItemLookUp();
             frmAssLUp.RequestType = "OfficeLookUp";
             frmAssLUp.officeNumber = OfficeID;
+            frmAssLUp.RefreshPage += TestRefresh;
             //frmAssLUp.SendObjectId = dataid;
             frmAssLUp.Show();
             this.Close();
+        }
+
+        private void TestRefresh()
+        {
+            RefreshPage();
         }
 
         private void BtnClose_Click(object sender, EventArgs e)

@@ -152,12 +152,10 @@
 
         <DataGrid x:Name="vInventoryListDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="191,56,10,10" Tag="{Binding tag}" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" CanUserResizeRows="False" CanUserDeleteRows="False" CanUserAddRows="False" SelectionMode="Single" MouseDown="VInventoryListDataGrid_MouseDown" GridLinesVisibility="None" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="itemNameColumn" Width="120" Header="Item Name" Binding="{Binding itemName}"/>
-                <DataGridTextColumn x:Name="tagColumn" Width="90" Header="Tag" Binding="{Binding tag}"/>
-                <DataGridTextColumn x:Name="categoryColumn" Width="120" Header="Category" Binding="{Binding category}"/>
-                <DataGridTextColumn x:Name="locationColumn" Width="90" Header="Location" Binding="{Binding location}"/>
-                <DataGridTextColumn x:Name="statusColumn" Width="90" Header="Status" Binding="{Binding status}"/>
-                <DataGridTextColumn x:Name="nameColumn" Width="120" Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn x:Name="itemNameColumn" Width="240" Header="Item Name" Binding="{Binding itemName}"/>
+                <DataGridTextColumn x:Name="tagColumn" Width="120" Header="Tag" Binding="{Binding tag}"/>
+                <DataGridTextColumn x:Name="statusColumn" Width="90" Header="Status" Binding="{Binding Status}"/>
+                <DataGridTextColumn x:Name="nameColumn" Width="190" Header="Name" Binding="{Binding Name}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Rectangle HorizontalAlignment="Left" Height="11" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="1192">

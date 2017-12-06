@@ -8,6 +8,12 @@
         mc:Ignorable="d"
         Title="AddEmployee" Height="344.828" Width="491.589" Loaded="Window_Loaded">
     <Window.Resources>
+        <Storyboard x:Key="sbHideAnimation" >
+            <DoubleAnimation Storyboard.TargetProperty="Opacity"  From="1" To="1" Duration="0:0:3" />
+            <!--label shows for 3 sec-->
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:3" From="1" To="0" DecelerationRatio=".5" Duration="0:0:2" />
+            <!--Fade out the label after 3 sec-->
+        </Storyboard>
         <InventoryManagementSystem:InventoryDBDataSet x:Key="inventoryDBDataSet"/>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background">

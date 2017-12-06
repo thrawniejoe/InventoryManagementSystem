@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -180,18 +181,24 @@ namespace InventoryManagementSystem.Views
             if (!Validations.CheckEmptyString(nameTextBox.Text))
             {
                 lblErrorMessage.Content = "First name cannot be blank.";
+                Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                sb.Begin(lblErrorMessage);
                 check = false;
             }
 
             if (!Validations.CheckStringMinMax(nameTextBox.Text, min, max))
             {
                 lblErrorMessage.Content = "First name must be between " + min + " and " + max + " in length";
+                Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                sb.Begin(lblErrorMessage);
                 check = false;
             }
 
             if (!Validations.CheckIfAlpha(nameTextBox.Text))
             {
                 lblErrorMessage.Content = "First name must be letters only.";
+                Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                sb.Begin(lblErrorMessage);
                 check = false;
             }
 
@@ -199,6 +206,8 @@ namespace InventoryManagementSystem.Views
             if (!Validations.CheckEmptyString(titleTextBox.Text))
             {
                 lblErrorMessage.Content = "Title cannot be blank.";
+                Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                sb.Begin(lblErrorMessage);
                 check = false;
             }
 
@@ -206,6 +215,8 @@ namespace InventoryManagementSystem.Views
             if (!Validations.CheckEmptyString(emailAddressTextBox.Text))
             {
                 lblErrorMessage.Content = "Email cannot be blank.";
+                Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                sb.Begin(lblErrorMessage);
                 check = false;
             }
 
@@ -213,6 +224,8 @@ namespace InventoryManagementSystem.Views
             if (!Validations.CheckEmptyString(statusComboBox.Text))
             {
                 lblErrorMessage.Content = "Status cannot be blank.";
+                Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                sb.Begin(lblErrorMessage);
                 check = false;
             }
 
@@ -220,6 +233,8 @@ namespace InventoryManagementSystem.Views
             if (!Validations.CheckIfNumeric(phoneNumberTextBox.Text))
             {
                 lblErrorMessage.Content = "Phone number must be numbers only.";
+                Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+                sb.Begin(lblErrorMessage);
                 check = false;
             }
 

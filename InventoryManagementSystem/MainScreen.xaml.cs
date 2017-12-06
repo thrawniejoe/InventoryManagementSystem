@@ -42,11 +42,13 @@ namespace InventoryManagementSystem
             //Role Check
             if (Properties.Settings.Default.CurrentUserRole == 1)
             {
-                tcMainTabController.SelectedIndex = 6;
+                tcMainTabController.SelectedIndex = 5;
+                tabSettings.Visibility = Visibility.Visible;
                 tabAdmin.Visibility = Visibility.Visible;
             }
             else
             {
+                tabSettings.Visibility = Visibility.Hidden;
                 tabAdmin.Visibility = Visibility.Hidden;
             }
 
@@ -87,6 +89,7 @@ namespace InventoryManagementSystem
             categoriesViewSource.View.MoveCurrentToFirst();
             txtDocDir.Text = Properties.Settings.Default.DocumentsLocation;
             ShowTotals();
+            txtCompanyName.Text = Properties.Settings.Default.CompanyName;
         }
 
         private void ShowTotals()
@@ -484,11 +487,11 @@ namespace InventoryManagementSystem
 
         private void RefreshLocationList()
         {
-            locationsDataGrid.ItemsSource = null;
+            locationsDataGridAdmin.ItemsSource = null;
             var context = new InventoryManagementSystem.InventoryDBEntities();
             var LocationList = (from o in context.Locations
                               select o).ToList();
-            locationsDataGrid.ItemsSource = LocationList;
+            locationsDataGridAdmin.ItemsSource = LocationList;
         }
 
         private void BtnDeleteLocation_CLick(object sender, RoutedEventArgs e)
@@ -538,7 +541,7 @@ namespace InventoryManagementSystem
 
         private void RefreshCategoryList()
         {
-            locationsDataGrid.ItemsSource = null;
+            categoriesDataGrid.ItemsSource = null;
             var context = new InventoryManagementSystem.InventoryDBEntities();
             var CategoryList = (from o in context.Categories
                                 select o).ToList();
@@ -677,12 +680,12 @@ namespace InventoryManagementSystem
 
         private void BtnOpenMap_Click(object sender, RoutedEventArgs e)
         {
-            Views.OfficeMap addEmployee = new Views.OfficeMap
-            {
-                Owner = this,
-                WindowStartupLocation = WindowStartupLocation.CenterOwner
-            };
-            addEmployee.ShowDialog();
+            Views.OfficeMap OpenOffice = new Views.OfficeMap();
+            //getItemID del = new getItemID(lookUp.GetID);
+            OpenOffice.Owner = this;
+            OpenOffice.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            OpenOffice.RefreshPage += RefreshInventory;
+            OpenOffice.ShowDialog();
         }
 
         private void BtnUpdateCompName_Click(object sender, RoutedEventArgs e)
@@ -692,5 +695,7 @@ namespace InventoryManagementSystem
             Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
             sb.Begin(lblCNUpdateMsg);
         }
+
+        
     }
 }
